@@ -81,7 +81,9 @@
 
         .input-group-custom {
             position: relative;
-            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
         }
 
         .input-group-custom i {
@@ -93,10 +95,11 @@
             transition: all 0.3s ease;
             z-index: 10;
             pointer-events: none;
+            font-size: 1rem;
         }
 
         .form-control-custom {
-            padding: 0.875rem 1rem 0.875rem 3rem;
+            padding: 0.875rem 1.25rem 0.875rem 3.5rem;
             border-radius: var(--radius-md);
             border: 2px solid var(--line);
             font-size: 0.95rem;
@@ -105,6 +108,7 @@
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             background-color: #fff;
             width: 100%;
+            display: block;
         }
 
         .form-control-custom:focus {
