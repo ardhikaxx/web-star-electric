@@ -3,17 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
+use App\Models\AdminSetting;
 
 class AuthController extends Controller
 {
-    private $pinKey = 'admin_pin';
-
     protected function getPin()
     {
-        return config('app.admin_pin', '1234');
+        return AdminSetting::getPin();
     }
 
     public function showLogin()
@@ -76,30 +73,8 @@ class AuthController extends Controller
             return back()->with('error', 'PIN saat ini tidak cocok');
         }
 
-        $this->updatePinInConfig($request->new_pin);
+        AdminSetting::setPin($request->new_pin);
 
         return redirect()->route('admin.dashboard')->with('success', 'PIN berhasil diubah');
-    }
-
-    private function updatePinInConfig($newPin)
-    {
-        $configPath = base_path('config/app.php');
-        $configContent = file_get_contents($configPath);
-        
-        if (preg_match('/admin_pin.*?=>.*?[\'"](\d+)[\'"]/', $configContent, $matches)) {
-            $configContent = preg_replace(
-                '/(\'admin_pin\'\s*=>\s*\')(\d+)(\')/',
-                '$1' . $newPin . '$3',
-                $configContent
-            );
-        } else {
-            $configContent = preg_replace(
-                '/(\'app\'\s*=>\s*\[)/',
-                "$1\n    'admin_pin' => '$newPin',",
-                $configContent
-            );
-        }
-        
-        file_put_contents($configPath, $configContent);
     }
 }
