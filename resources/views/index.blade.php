@@ -36,8 +36,8 @@
             --surface-strong: #ffffff;
             --text: #102132;
             --muted: #607080;
-            --primary: #0c8f74;
-            --primary-dark: #086d59;
+            --primary: #FF0205;
+            --primary-dark: #DA0003;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);
@@ -54,7 +54,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(12, 143, 116, 0.14), transparent 28%),
+                radial-gradient(circle at top left, rgba(255, 2, 5, 0.14), transparent 28%),
                 radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 20%),
                 linear-gradient(180deg, #f8fbfd 0%, #eef5f8 100%);
         }
@@ -191,7 +191,7 @@
             padding: 0.85rem 1.25rem;
             border-radius: 14px;
             font-weight: 700;
-            box-shadow: 0 14px 30px rgba(12, 143, 116, 0.24);
+            box-shadow: 0 14px 30px rgba(255, 2, 5, 0.24);
         }
 
         .btn-brand:hover,
@@ -321,7 +321,7 @@
         .empty-icon-wrap {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, rgba(12, 143, 116, 0.15), rgba(12, 143, 116, 0.05));
+            background: linear-gradient(135deg, rgba(255, 2, 5, 0.15), rgba(255, 2, 5, 0.05));
             border-radius: 24px;
             display: flex;
             align-items: center;
@@ -350,13 +350,13 @@
             padding: 0.875rem 1.75rem;
             font-weight: 600;
             border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(12, 143, 116, 0.24);
+            box-shadow: 0 14px 30px rgba(255, 2, 5, 0.24);
             transition: all 0.3s ease;
         }
 
         .empty-products-card .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(12, 143, 116, 0.32);
+            box-shadow: 0 20px 40px rgba(255, 2, 5, 0.32);
         }
 
         .product-image-wrap {
@@ -428,7 +428,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(180deg, rgba(12, 143, 116, 0.06), rgba(245, 158, 11, 0.02));
+            background: linear-gradient(180deg, rgba(255, 2, 5, 0.06), rgba(245, 158, 11, 0.02));
         }
 
         .testimonial-card {

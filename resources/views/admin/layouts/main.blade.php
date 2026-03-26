@@ -13,8 +13,8 @@
             --surface-strong: #ffffff;
             --text: #102132;
             --muted: #607080;
-            --primary: #0c8f74;
-            --primary-dark: #086d59;
+            --primary: #FF0205;
+            --primary-dark: #DA0003;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);
@@ -27,7 +27,7 @@
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --primary-light-alpha: rgba(12, 143, 116, 0.15); /* Added for consistent focus states */
+            --primary-light-alpha: rgba(255, 2, 5, 0.15); /* Added for consistent focus states */
             --success-light-alpha: rgba(16, 185, 129, 0.1);
             --warning-light-alpha: rgba(245, 158, 11, 0.1);
         }
@@ -39,7 +39,7 @@
         body {
             font-family: 'Plus Jakarta Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
             background:
-                radial-gradient(circle at top left, rgba(12, 143, 116, 0.14), transparent 28%),
+                radial-gradient(circle at top left, rgba(255, 2, 5, 0.14), transparent 28%),
                 radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 20%),
                 linear-gradient(180deg, #f8fbfd 0%, #eef5f8 100%);
             color: var(--text);

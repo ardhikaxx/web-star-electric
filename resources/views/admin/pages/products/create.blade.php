@@ -269,13 +269,13 @@
         .btn-modern-primary {
             background: var(--primary);
             color: #fff;
-            box-shadow: 0 4px 12px rgba(12, 143, 116, 0.3);
+            box-shadow: 0 4px 12px rgba(255, 2, 5, 0.3);
         }
 
         .btn-modern-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(12, 143, 116, 0.4);
+            box-shadow: 0 6px 16px rgba(255, 2, 5, 0.4);
             color: #fff;
         }
 

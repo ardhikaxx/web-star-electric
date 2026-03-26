@@ -13,8 +13,8 @@
             --surface-strong: #ffffff;
             --text: #102132;
             --muted: #607080;
-            --primary: #0c8f74;
-            --primary-dark: #086d59;
+            --primary: #FF0205;
+            --primary-dark: #DA0003;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);
@@ -27,7 +27,7 @@
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --primary-light-alpha: rgba(12, 143, 116, 0.15); /* Added for consistent focus states */
+            --primary-light-alpha: rgba(255, 2, 5, 0.15); /* Added for consistent focus states */
             --secondary: #343a40; /* Assuming a secondary color for login page background */
         }
 

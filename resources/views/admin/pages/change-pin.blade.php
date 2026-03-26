@@ -29,7 +29,7 @@
 
         .pin-input-group input:focus {
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(12, 143, 116, 0.15);
+            box-shadow: 0 0 0 3px rgba(255, 2, 5, 0.15);
             outline: none;
         }
 
@@ -51,7 +51,7 @@
         }
 
         .info-box {
-            background: rgba(12, 143, 116, 0.1);
+            background: rgba(255, 2, 5, 0.1);
             border: 1px solid var(--primary);
             border-radius: 12px;
             padding: 1rem 1.25rem;
