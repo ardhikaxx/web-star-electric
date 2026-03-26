@@ -662,7 +662,7 @@
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
-                <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 40px;">
+                <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -952,7 +952,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="#home">
-                        <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 40px;">
+                        <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 50px;">
                     </a>
                     <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
                         untuk aktivitas sehari-hari.</p>
