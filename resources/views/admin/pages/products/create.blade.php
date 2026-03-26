@@ -210,148 +210,139 @@
 @endpush
 
 @section('content')
-    <div class="admin-wrapper">
-        @include('admin.layouts.sidebar')
+    <div class="page-content">
+        @include('admin.partials.breadcrumb', [
+            'links' => [
+                ['label' => 'Admin', 'url' => route('admin.dashboard')],
+                ['label' => 'Produk', 'url' => route('admin.products.index')],
+                ['label' => 'Tambah Produk'],
+            ],
+        ])
 
-        <div class="main-content">
-            @include('admin.layouts.header')
+        <div class="page-header">
+            <h2>
+                <i class="fa-solid fa-plus-circle"></i>
+                Tambah Produk Baru
+            </h2>
+        </div>
 
-            <div class="page-content">
-                @include('admin.partials.breadcrumb', [
-                    'links' => [
-                        ['label' => 'Admin', 'url' => route('admin.dashboard')],
-                        ['label' => 'Produk', 'url' => route('admin.products.index')],
-                        ['label' => 'Tambah Produk'],
-                    ],
-                ])
+        <div class="form-card">
+            <div class="form-card-header">
+                <h3><i class="fa-solid fa-box me-2"></i>Form Tambah Produk</h3>
+            </div>
+            <div class="form-card-body">
+                <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
 
-                <div class="page-header">
-                    <h2>
-                        <i class="fa-solid fa-plus-circle"></i>
-                        Tambah Produk Baru
-                    </h2>
-                </div>
+                    <div class="row">
+                        <div class="col-12 col-md-4 mb-4">
+                            <label class="form-label">
+                                Gambar Produk <span class="required">*</span>
+                            </label>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <p>Klik atau drag gambar di sini</p>
+                                <p class="form-hint">JPG, PNG, WebP max 2MB</p>
+                                <span class="browse-text">Pilih File</span>
+                            </div>
+                            <input type="file" name="image" id="imageInput" class="image-input"
+                                accept="image/jpeg,image/png,image/webp">
+                            @error('image')
+                                <div class="error-message">{{ $message }}</div>
+                            @enderror
+                        </div>
 
-                <div class="form-card">
-                    <div class="form-card-header">
-                        <h3><i class="fa-solid fa-box me-2"></i>Form Tambah Produk</h3>
-                    </div>
-                    <div class="form-card-body">
-                        <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
+                        <div class="col-12 col-md-8">
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Nama Produk <span class="required">*</span>
+                                </label>
+                                <input type="text" name="name"
+                                    class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}"
+                                    placeholder="Contoh: Sepeda Listrik Model X1">
+                                @error('name')
+                                    <div class="error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
 
-                            <div class="row">
-                                <div class="col-12 col-md-4 mb-4">
-                                    <label class="form-label">
-                                        Gambar Produk <span class="required">*</span>
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Deskripsi Produk <span class="required">*</span>
+                                </label>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror"
+                                    placeholder="Tuliskan deskripsi produk...">{{ old('description') }}</textarea>
+                                @error('description')
+                                    <div class="error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">
+                                    Harga <span class="required">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text" style="border-radius: 10px 0 0 10px;">Rp</span>
+                                    <input type="number" name="price"
+                                        class="form-control @error('price') is-invalid @enderror"
+                                        value="{{ old('price') }}" placeholder="0" min="0">
+                                </div>
+                                @error('price')
+                                    <div class="error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Harga Coret (Opsional)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text" style="border-radius: 10px 0 0 10px;">Rp</span>
+                                    <input type="number" name="old_price"
+                                        class="form-control @error('old_price') is-invalid @enderror"
+                                        value="{{ old('old_price') }}" placeholder="0" min="0">
+                                </div>
+                                <p class="form-hint">Harga asli sebelum diskon (akan ditampilkan dengan garis coret)
+                                </p>
+                                @error('old_price')
+                                    <div class="error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Link Produk (Opsional)</label>
+                                <input type="url" name="link"
+                                    class="form-control @error('link') is-invalid @enderror" value="{{ old('link') }}"
+                                    placeholder="https://example.com/product">
+                                <p class="form-hint">Link ke marketplace atau website penjualan</p>
+                                @error('link')
+                                    <div class="error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" name="is_active" id="isActive"
+                                        value="1" checked>
+                                    <label class="form-check-label" for="isActive">
+                                        Tampilkan di Landing Page
                                     </label>
-                                    <div class="image-upload-area" id="imageUploadArea">
-                                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                                        <p>Klik atau drag gambar di sini</p>
-                                        <p class="form-hint">JPG, PNG, WebP max 2MB</p>
-                                        <span class="browse-text">Pilih File</span>
-                                    </div>
-                                    <input type="file" name="image" id="imageInput" class="image-input"
-                                        accept="image/jpeg,image/png,image/webp">
-                                    @error('image')
-                                        <div class="error-message">{{ $message }}</div>
-                                    @enderror
-                                </div>
-
-                                <div class="col-12 col-md-8">
-                                    <div class="mb-3">
-                                        <label class="form-label">
-                                            Nama Produk <span class="required">*</span>
-                                        </label>
-                                        <input type="text" name="name"
-                                            class="form-control @error('name') is-invalid @enderror"
-                                            value="{{ old('name') }}" placeholder="Contoh: Sepeda Listrik Model X1">
-                                        @error('name')
-                                            <div class="error-message">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">
-                                            Deskripsi Produk <span class="required">*</span>
-                                        </label>
-                                        <textarea name="description" class="form-control @error('description') is-invalid @enderror"
-                                            placeholder="Tuliskan deskripsi produk...">{{ old('description') }}</textarea>
-                                        @error('description')
-                                            <div class="error-message">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">
-                                            Harga <span class="required">*</span>
-                                        </label>
-                                        <div class="input-group">
-                                            <span class="input-group-text" style="border-radius: 10px 0 0 10px;">Rp</span>
-                                            <input type="number" name="price"
-                                                class="form-control @error('price') is-invalid @enderror"
-                                                value="{{ old('price') }}" placeholder="0" min="0">
-                                        </div>
-                                        @error('price')
-                                            <div class="error-message">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Harga Coret (Opsional)</label>
-                                        <div class="input-group">
-                                            <span class="input-group-text" style="border-radius: 10px 0 0 10px;">Rp</span>
-                                            <input type="number" name="old_price"
-                                                class="form-control @error('old_price') is-invalid @enderror"
-                                                value="{{ old('old_price') }}" placeholder="0" min="0">
-                                        </div>
-                                        <p class="form-hint">Harga asli sebelum diskon (akan ditampilkan dengan garis coret)
-                                        </p>
-                                        @error('old_price')
-                                            <div class="error-message">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Link Produk (Opsional)</label>
-                                        <input type="url" name="link"
-                                            class="form-control @error('link') is-invalid @enderror"
-                                            value="{{ old('link') }}" placeholder="https://example.com/product">
-                                        <p class="form-hint">Link ke marketplace atau website penjualan</p>
-                                        @error('link')
-                                            <div class="error-message">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" name="is_active" id="isActive"
-                                                value="1" checked>
-                                            <label class="form-check-label" for="isActive">
-                                                Tampilkan di Landing Page
-                                            </label>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-
-                            <div class="action-buttons">
-                                <button type="submit" class="btn-submit">
-                                    <i class="fa-solid fa-save"></i>
-                                    Simpan Produk
-                                </button>
-                                <a href="{{ route('admin.products.index') }}" class="btn-cancel">
-                                    <i class="fa-solid fa-times"></i>
-                                    Batal
-                                </a>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="action-buttons">
+                        <button type="submit" class="btn-submit">
+                            <i class="fa-solid fa-save"></i>
+                            Simpan Produk
+                        </button>
+                        <a href="{{ route('admin.products.index') }}" class="btn-cancel">
+                            <i class="fa-solid fa-times"></i>
+                            Batal
+                        </a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <div class="sidebar-overlay"></div>
 @endsection
 
 @push('scripts')
