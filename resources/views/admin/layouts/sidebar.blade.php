@@ -15,15 +15,15 @@
             <i class="fa-solid fa-box"></i>
             Produk
         </a>
+        <a href="{{ route('admin.change-pin') }}" class="{{ request()->routeIs('admin.change-pin') ? 'active' : '' }}">
+            <i class="fa-solid fa-key"></i>
+            Ganti PIN
+        </a>
     </nav>
     <div class="sidebar-footer">
         <a href="{{ url('/') }}" target="_blank">
             <i class="fa-solid fa-globe"></i>
             Lihat Website
-        </a>
-        <a href="{{ route('admin.change-pin') }}" class="{{ request()->routeIs('admin.change-pin') ? 'active' : '' }}">
-            <i class="fa-solid fa-key"></i>
-            Ganti PIN
         </a>
         <form action="{{ route('admin.logout') }}" method="POST" class="d-inline">
             @csrf
