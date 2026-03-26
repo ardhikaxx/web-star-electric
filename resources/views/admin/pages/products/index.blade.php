@@ -630,22 +630,4 @@
             @endif
         @endif
     </div>
-    <div class="sidebar-overlay"></div>
-    @push('scripts')
-        <script>
-            // Auto-hide alert toast after 3 seconds
-            document.addEventListener('DOMContentLoaded', function() {
-                const alertToast = document.getElementById('alertToast');
-                if (alertToast) {
-                    setTimeout(function() {
-                        alertToast.style.animation = 'slideIn 0.3s ease reverse';
-                        setTimeout(function() {
-                            alertToast.remove();
-                        }, 300);
-                    }, 4000);
-                }
-            });
-        </script>
-    @endpush
-
 @endsection
