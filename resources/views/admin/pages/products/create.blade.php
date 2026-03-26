@@ -1,6 +1,7 @@
 @extends('admin.layouts.main')
 
 @section('title', 'Tambah Produk - Admin')
+@section('page-title', 'Tambah Produk')
 
 @push('styles')
     <style>
