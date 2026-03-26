@@ -9,9 +9,20 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(10);
+        $products = Product::orderBy('created_at', 'desc');
+
+        if ($request->has('search') && $request->search != '') {
+            $products->where('name', 'like', '%' . $request->search . '%')
+                     ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->has('status') && $request->status != '') {
+            $products->where('is_active', $request->status == 'active');
+        }
+
+        $products = $products->paginate(10)->appends($request->except('page'));
         return view('admin.pages.products.index', compact('products'));
     }
 
