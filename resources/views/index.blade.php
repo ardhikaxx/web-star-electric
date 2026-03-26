@@ -134,37 +134,11 @@
             border: 1px solid rgba(255, 255, 255, 0.42);
             box-shadow: 0 14px 40px rgba(16, 33, 50, 0.08);
             border-radius: 24px;
-            padding: 0.75rem 1rem;
+            padding: 0.75rem;
         }
 
         .navbar-brand {
-            color: var(--text);
-            font-weight: 800;
             text-decoration: none;
-        }
-
-        .navbar-brand span {
-            display: inline-flex;
-            flex-direction: column;
-            line-height: 1.05;
-        }
-
-        .navbar-brand small {
-            font-size: 0.72rem;
-            color: var(--muted);
-            font-weight: 600;
-        }
-
-        .brand-mark {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            background: linear-gradient(135deg, var(--primary), #ff4d4d);
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .nav-link {
@@ -661,7 +635,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="#home">
+            <a class="navbar-brand d-flex align-items-center" href="#home">
                 <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 70px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
