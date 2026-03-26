@@ -634,10 +634,10 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <nav class="navbar navbar-expand-lg fixed-top py-3 px-2">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#home">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 95px;">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 85px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -649,7 +649,7 @@
                     <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
                     <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
                     <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6281331978800"
+                    <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6285231260016"
                             target="_blank" rel="noopener">Hubungi Kami</a></li>
                 </ul>
             </div>
@@ -693,7 +693,7 @@
                                     <p>Dapatkan penawaran terbaik untuk berbagai model sepeda listrik dengan desain
                                         elegan dan fitur kekinian.</p>
                                     <div class="hero-actions">
-                                        <a href="https://wa.me/6281331978800" class="btn btn-brand" target="_blank"
+                                        <a href="https://wa.me/6285231260016" class="btn btn-brand" target="_blank"
                                             rel="noopener">Pesan via WhatsApp</a>
                                     </div>
                                 </div>
@@ -896,11 +896,11 @@
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-phone-volume"></i>
-                                    <a href="tel:+6281331978800">+62 813-3197-8800</a>
+                                    <a href="tel:+6285231260016">+62 852-3126-0016</a>
                                 </li>
                                 <li>
                                     <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">Chat
+                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">Chat
                                         WhatsApp Sekarang</a>
                                 </li>
                                 <li>
@@ -944,8 +944,8 @@
                 <div>
                     <h3>Kontak</h3>
                     <ul class="footer-links list-unstyled">
-                        <li><a href="tel:+6281331978800">+62 813-3197-8800</a></li>
-                        <li><a href="https://wa.me/6281331978800" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="tel:+6285231260016">+62 852-3126-0016</a></li>
+                        <li><a href="https://wa.me/6285231260016" target="_blank" rel="noopener">WhatsApp</a></li>
                         <li><span>Bondowoso, Jawa Timur</span></li>
                     </ul>
                 </div>
