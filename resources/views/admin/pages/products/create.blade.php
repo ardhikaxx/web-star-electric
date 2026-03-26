@@ -86,13 +86,15 @@
             align-items: center;
         }
 
-        .input-group-custom i {
+        .input-group-icon {
             position: absolute;
             left: 1.25rem;
             top: 50%;
             transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--muted);
-            transition: all 0.3s ease;
             z-index: 10;
             pointer-events: none;
             font-size: 1rem;
@@ -428,7 +430,9 @@
                             <div class="mb-4">
                                 <label class="form-label">Nama Produk <span class="required">*</span></label>
                                 <div class="input-group-custom">
-                                    <i class="fa-solid fa-box"></i>
+                                    <span class="input-group-icon" aria-hidden="true">
+                                        <i class="fa-solid fa-box"></i>
+                                    </span>
                                     <input type="text" name="name"
                                         class="form-control-custom @error('name') is-invalid @enderror"
                                         value="{{ old('name') }}"
@@ -451,7 +455,9 @@
                             <div class="mb-0">
                                 <label class="form-label">Link Pembelian (Opsional)</label>
                                 <div class="input-group-custom">
-                                    <i class="fa-solid fa-link"></i>
+                                    <span class="input-group-icon" aria-hidden="true">
+                                        <i class="fa-solid fa-link"></i>
+                                    </span>
                                     <input type="url" name="link"
                                         class="form-control-custom @error('link') is-invalid @enderror"
                                         value="{{ old('link') }}"
