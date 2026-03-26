@@ -236,136 +236,128 @@
 @endpush
 
 @section('content')
-    <div class="admin-wrapper">
-        @include('admin.layouts.sidebar')
+    <div class="page-content">
+        @include('admin.partials.breadcrumb', [
+            'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Dashboard']],
+        ])
 
-        <div class="main-content">
-            @include('admin.layouts.header')
+        <div class="welcome-banner">
+            <h2>Selamat Datang, Admin!</h2>
+            <p>Kelola website STAR SEPEDA LISTRIK dengan mudah</p>
+            <div class="quick-actions">
+                <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
+                    <i class="fa-solid fa-plus"></i>
+                    Tambah Produk
+                </a>
+                <a href="{{ route('admin.products.index') }}" class="quick-action-btn">
+                    <i class="fa-solid fa-box"></i>
+                    Lihat Produk
+                </a>
+                <a href="{{ url('/') }}" target="_blank" class="quick-action-btn">
+                    <i class="fa-solid fa-eye"></i>
+                    Lihat Website
+                </a>
+            </div>
+        </div>
 
-            <div class="page-content">
-                @include('admin.partials.breadcrumb', [
-                    'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Dashboard']],
-                ])
-
-                <div class="welcome-banner">
-                    <h2>Selamat Datang, Admin!</h2>
-                    <p>Kelola website STAR SEPEDA LISTRIK dengan mudah</p>
-                    <div class="quick-actions">
-                        <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
-                            <i class="fa-solid fa-plus"></i>
-                            Tambah Produk
-                        </a>
-                        <a href="{{ route('admin.products.index') }}" class="quick-action-btn">
-                            <i class="fa-solid fa-box"></i>
-                            Lihat Produk
-                        </a>
-                        <a href="{{ url('/') }}" target="_blank" class="quick-action-btn">
-                            <i class="fa-solid fa-eye"></i>
-                            Lihat Website
-                        </a>
-                    </div>
+        <div class="stats-grid mb-4">
+            <div class="stats-card">
+                <div class="stats-icon primary">
+                    <i class="fa-solid fa-box-open"></i>
                 </div>
-
-                <div class="stats-grid mb-4">
-                    <div class="stats-card">
-                        <div class="stats-icon primary">
-                            <i class="fa-solid fa-box-open"></i>
-                        </div>
-                        <div class="stats-info">
-                            <h3>{{ $totalProducts }}</h3>
-                            <p>Total Produk</p>
-                        </div>
-                    </div>
-                    <div class="stats-card">
-                        <div class="stats-icon success">
-                            <i class="fa-solid fa-check-circle"></i>
-                        </div>
-                        <div class="stats-info">
-                            <h3>{{ $activeProducts }}</h3>
-                            <p>Produk Aktif</p>
-                        </div>
-                    </div>
+                <div class="stats-info">
+                    <h3>{{ $totalProducts }}</h3>
+                    <p>Total Produk</p>
                 </div>
+            </div>
+            <div class="stats-card">
+                <div class="stats-icon success">
+                    <i class="fa-solid fa-check-circle"></i>
+                </div>
+                <div class="stats-info">
+                    <h3>{{ $activeProducts }}</h3>
+                    <p>Produk Aktif</p>
+                </div>
+            </div>
+        </div>
 
-                <div class="row g-4">
-                    <div class="col-12 col-md-6">
-                        <div class="info-card h-100">
-                            <div class="info-card-header">
-                                <i class="fa-solid fa-circle-info"></i>
-                                <h3>Informasi Sistem</h3>
+        <div class="row g-4">
+            <div class="col-12 col-md-6">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="fa-solid fa-circle-info"></i>
+                        <h3>Informasi Sistem</h3>
+                    </div>
+                    <div class="info-card-body">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-store"></i>
                             </div>
-                            <div class="info-card-body">
-                                <div class="info-item">
-                                    <div class="info-icon">
-                                        <i class="fa-solid fa-store"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Admin Panel</h4>
-                                        <p>Kelola produk, lihat statistik, dan konfigurasi website dengan mudah.</p>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <div class="info-icon">
-                                        <i class="fa-solid fa-bolt"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Sepeda Listrik Bondowoso</h4>
-                                        <p>Website resmi penjualan sepeda listrik terpercaya di Bondowoso.</p>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <div class="info-icon">
-                                        <i class="fa-solid fa-lock"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Keamanan</h4>
-                                        <p>Gunakan PIN dengan hati-hati. Default PIN: 1234</p>
-                                    </div>
-                                </div>
+                            <div class="info-content">
+                                <h4>Admin Panel</h4>
+                                <p>Kelola produk, lihat statistik, dan konfigurasi website dengan mudah.</p>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="info-card h-100">
-                            <div class="info-card-header">
+                        <div class="info-item">
+                            <div class="info-icon">
                                 <i class="fa-solid fa-bolt"></i>
-                                <h3>Quick Links</h3>
                             </div>
-                            <div class="info-card-body">
-                                <div class="info-item">
-                                    <div class="info-icon" style="background: var(--primary-light-alpha);">
-                                        <i class="fa-solid fa-plus"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Tambah Produk Baru</h4>
-                                        <p><a href="{{ route('admin.products.create') }}" class="text-decoration-none"
-                                                style="color: var(--primary);">Klik di sini</a> untuk menambahkan produk
-                                            baru ke website.</p>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <div class="info-icon"
-                                        style="background: var(--success-light-alpha); color: var(--success);">
-                                        <i class="fa-solid fa-list"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Kelola Produk</h4>
-                                        <p><a href="{{ route('admin.products.index') }}" class="text-decoration-none"
-                                                style="color: var(--primary);">Klik di sini</a> untuk melihat dan mengelola
-                                            semua produk.</p>
-                                    </div>
-                                </div>
-                                <div class="info-item">
-                                    <div class="info-icon" style="background: var(--warning-light-alpha); color: var(--warning);">
-                                        <i class="fa-solid fa-globe"></i>
-                                    </div>
-                                    <div class="info-content">
-                                        <h4>Landing Page</h4>
-                                        <p><a href="{{ url('/') }}" target="_blank" class="text-decoration-none"
-                                                style="color: var(--primary);">Klik di sini</a> untuk melihat tampilan
-                                            website publik.</p>
-                                    </div>
-                                </div>
+                            <div class="info-content">
+                                <h4>Sepeda Listrik Bondowoso</h4>
+                                <p>Website resmi penjualan sepeda listrik terpercaya di Bondowoso.</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Keamanan</h4>
+                                <p>Gunakan PIN dengan hati-hati. Default PIN: 1234</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h3>Quick Links</h3>
+                    </div>
+                    <div class="info-card-body">
+                        <div class="info-item">
+                            <div class="info-icon" style="background: var(--primary-light-alpha);">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Tambah Produk Baru</h4>
+                                <p><a href="{{ route('admin.products.create') }}" class="text-decoration-none"
+                                        style="color: var(--primary);">Klik di sini</a> untuk menambahkan produk
+                                    baru ke website.</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon"
+                                style="background: var(--success-light-alpha); color: var(--success);">
+                                <i class="fa-solid fa-list"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Kelola Produk</h4>
+                                <p><a href="{{ route('admin.products.index') }}" class="text-decoration-none"
+                                        style="color: var(--primary);">Klik di sini</a> untuk melihat dan mengelola
+                                    semua produk.</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon" style="background: var(--warning-light-alpha); color: var(--warning);">
+                                <i class="fa-solid fa-globe"></i>
+                            </div>
+                            <div class="info-content">
+                                <h4>Landing Page</h4>
+                                <p><a href="{{ url('/') }}" target="_blank" class="text-decoration-none"
+                                        style="color: var(--primary);">Klik di sini</a> untuk melihat tampilan
+                                    website publik.</p>
                             </div>
                         </div>
                     </div>
@@ -373,5 +365,4 @@
             </div>
         </div>
     </div>
-    <div class="sidebar-overlay"></div>
 @endsection
