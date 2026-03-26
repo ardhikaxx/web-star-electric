@@ -127,8 +127,8 @@
             background: var(--primary-dark);
             border-color: var(--primary-dark);
         }
-        @stack('styles')
     </style>
+    @stack('styles')
 </head>
 <body>
     @yield('content')

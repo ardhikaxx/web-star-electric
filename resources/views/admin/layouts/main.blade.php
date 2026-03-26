@@ -461,8 +461,8 @@
                 height: 45px;
             }
         }
-        @stack('styles')
     </style>
+    @stack('styles')
 </head>
 <body>
     <div class="admin-wrapper">
