@@ -559,6 +559,8 @@
             font-family: 'Sora', sans-serif;
             font-size: 1.1rem;
             color: #fff;
+            margin-top: -15px;
+            margin-bottom: -15px;
         }
 
         .site-footer h3 {
