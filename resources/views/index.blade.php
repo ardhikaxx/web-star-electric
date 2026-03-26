@@ -926,7 +926,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="#home">
-                        <img src="{{ asset('assets/logo.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 70px;">
+<img src="{{ asset('assets/logo-footer.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 70px;">
                     </a>
                     <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
                         untuk aktivitas sehari-hari.</p>
