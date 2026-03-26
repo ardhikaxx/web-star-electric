@@ -139,7 +139,8 @@
 
         .navbar-brand {
             text-decoration: none;
-            margin-left: -15px;
+            margin-top: -10px;
+            margin-bottom: -10px;
         }
 
         .nav-link {
