@@ -56,7 +56,7 @@
         .sidebar {
             width: var(--sidebar-width);
             background:
-                radial-gradient(circle at 18% 8%, rgba(255,255,255,0.12), transparent 22%),
+                radial-gradient(circle at 18% 8%, rgba(255,255,255,0.1), transparent 20%),
                 linear-gradient(180deg, #ff1f24 0%, var(--primary-dark) 100%);
             position: fixed;
             top: 0;
@@ -64,18 +64,17 @@
             height: 100vh;
             z-index: 1000;
             transition: transform 0.3s ease;
-            box-shadow: 0 28px 60px rgba(255, 2, 5, 0.24);
-            border-right: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 24px 56px rgba(255, 2, 5, 0.22);
+            border-right: 1px solid rgba(255,255,255,0.1);
             overflow: hidden;
         }
 
         .sidebar::before {
             content: "";
             position: absolute;
-            inset: 14px;
-            border-radius: 30px;
+            inset: 16px;
+            border-radius: 28px;
             border: 1px solid rgba(255,255,255,0.08);
-            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
             pointer-events: none;
         }
 
@@ -85,48 +84,35 @@
             height: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding: 1rem 0 1.1rem;
-        }
-
-        .sidebar-top {
-            padding: 0 1rem;
+            padding: 1.15rem 0.9rem 1rem;
         }
 
         .sidebar-brand {
-            padding: 0.95rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            color: #fff;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: 24px;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+            padding: 0 0.25rem 1.1rem;
+            margin-bottom: 0.85rem;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
 
         .brand-logo {
             display: flex;
             align-items: center;
             gap: 0.85rem;
-            color: inherit;
+            color: #fff;
             text-decoration: none;
             min-width: 0;
         }
 
         .brand-mark {
-            width: 46px;
-            height: 46px;
-            border-radius: 16px;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
             background: rgba(255,255,255,0.14);
             border: 1px solid rgba(255,255,255,0.18);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.12rem;
+            font-size: 1.08rem;
             color: #fff;
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
             flex-shrink: 0;
         }
 
@@ -144,52 +130,18 @@
         }
 
         .brand-sub {
-            color: rgba(255,255,255,0.76);
+            color: rgba(255,255,255,0.72);
             font-size: 0.78rem;
         }
 
-        .brand-pill {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.38rem;
-            padding: 0.36rem 0.72rem;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.2);
-            color: #fff;
-            font-size: 0.72rem;
-            letter-spacing: 0.35px;
-            flex-shrink: 0;
-        }
-
-        .brand-pill::before {
-            content: "";
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: #fff;
-            box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
-        }
-
-        .sidebar-nav-shell {
+        .sidebar-menu {
             flex: 1;
             min-height: 0;
-            margin: 0 1rem;
-            padding: 1rem 0.8rem 0.8rem;
-            border-radius: 26px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            overflow: hidden;
-        }
-
-        .sidebar-menu {
-            height: 100%;
-            overflow-y: auto;
-            padding-right: 0.15rem;
             display: flex;
             flex-direction: column;
-            gap: 0.45rem;
+            gap: 0.35rem;
+            overflow-y: auto;
+            padding: 0 0.1rem;
         }
 
         .sidebar-menu::-webkit-scrollbar {
@@ -197,49 +149,54 @@
         }
 
         .sidebar-menu::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.18);
+            background: rgba(255,255,255,0.16);
             border-radius: 999px;
         }
 
         .sidebar-menu .menu-title {
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.58);
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0.2rem 0.45rem 0.35rem;
+            padding: 0.2rem 0.45rem 0.3rem;
             font-weight: 700;
         }
 
         .sidebar-menu .menu-item {
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 0.8rem;
-            padding: 0.45rem 0.4rem 0.45rem 0.45rem;
+            gap: 0.78rem;
+            padding: 0.68rem 0.8rem 0.68rem 0.95rem;
             text-decoration: none;
             color: rgba(255,255,255,0.84);
-            border-radius: 18px;
+            border-radius: 16px;
             border: 1px solid transparent;
-            transition: all 0.22s ease;
+            transition: all 0.2s ease;
         }
 
-        .menu-main {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            min-width: 0;
+        .sidebar-menu .menu-item::before {
+            content: "";
+            position: absolute;
+            left: 0.35rem;
+            top: 10px;
+            bottom: 10px;
+            width: 3px;
+            border-radius: 999px;
+            background: transparent;
+            transition: background 0.2s ease;
         }
 
         .menu-icon,
         .footer-link-icon,
         .logout-btn .item-left i {
-            width: 42px;
-            height: 42px;
-            border-radius: 14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             border: 1px solid rgba(255,255,255,0.12);
             color: #fff;
             flex-shrink: 0;
@@ -247,19 +204,9 @@
 
         .menu-label,
         .footer-link-title {
-            font-weight: 700;
+            font-weight: 600;
             line-height: 1.2;
             min-width: 0;
-        }
-
-        .menu-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.28);
-            box-shadow: 0 0 0 5px transparent;
-            transition: all 0.22s ease;
-            flex-shrink: 0;
         }
 
         .menu-item:hover,
@@ -267,67 +214,53 @@
         .logout-btn:hover {
             color: #fff;
             background: rgba(255,255,255,0.08);
-            border-color: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.12);
         }
 
         .menu-item:hover .menu-icon,
         .footer-link:hover .footer-link-icon,
         .logout-btn:hover .item-left i {
-            background: rgba(255,255,255,0.18);
-            border-color: rgba(255,255,255,0.18);
-        }
-
-        .menu-item:hover .menu-indicator {
-            background: rgba(255,255,255,0.55);
+            background: rgba(255,255,255,0.14);
+            border-color: rgba(255,255,255,0.16);
         }
 
         .menu-item.active {
             color: #fff;
-            background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+            background: rgba(255,255,255,0.14);
             border-color: rgba(255,255,255,0.16);
-            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .menu-item.active::before {
+            background: #fff;
         }
 
         .menu-item.active .menu-icon {
             background: #fff;
             color: var(--primary);
-            border-color: rgba(255,255,255,0.34);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
-        }
-
-        .menu-item.active .menu-indicator {
-            background: #fff;
-            box-shadow: 0 0 0 5px rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.3);
         }
 
         .sidebar-footer {
-            padding: 0 1rem;
+            margin-top: 0.9rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.12);
             display: flex;
             flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .footer-label {
-            color: rgba(255,255,255,0.58);
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 0 0.45rem;
-            font-weight: 700;
+            gap: 0.5rem;
         }
 
         .footer-link,
         .logout-btn {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.78rem;
             color: rgba(255,255,255,0.84);
             text-decoration: none;
-            padding: 0.72rem 0.78rem;
-            transition: all 0.22s ease;
-            border-radius: 18px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: rgba(255,255,255,0.05);
+            padding: 0.68rem 0.8rem;
+            transition: all 0.2s ease;
+            border-radius: 16px;
+            border: 1px solid transparent;
+            background: transparent;
         }
 
         .logout-form {
@@ -343,12 +276,12 @@
         .logout-btn .item-left {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.78rem;
             min-width: 0;
         }
 
         .logout-btn .item-left span {
-            font-weight: 700;
+            font-weight: 600;
         }
 
         .main-content {
@@ -727,14 +660,8 @@
                 box-shadow: 0 28px 60px rgba(255, 2, 5, 0.28);
             }
 
-            .sidebar-nav-shell {
-                margin: 0 0.85rem;
-            }
-
-            .sidebar-footer,
-            .sidebar-top {
-                padding-left: 0.85rem;
-                padding-right: 0.85rem;
+            .sidebar-inner {
+                padding: 1rem 0.8rem 0.95rem;
             }
 
             .sidebar-overlay.show {
@@ -773,12 +700,13 @@
                 width: min(92vw, 320px);
             }
 
-            .sidebar-nav-shell {
-                padding: 0.85rem 0.7rem 0.7rem;
+            .sidebar-inner {
+                padding: 0.95rem 0.75rem 0.9rem;
             }
 
             .sidebar-brand {
-                padding: 0.8rem 0.85rem;
+                padding-bottom: 0.95rem;
+                margin-bottom: 0.75rem;
             }
 
             .header-left {
