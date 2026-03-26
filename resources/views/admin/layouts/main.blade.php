@@ -22,7 +22,7 @@
             --radius-lg: 28px;
             --radius-md: 20px;
             --radius-sm: 16px;
-            --sidebar-width: 260px;
+            --sidebar-width: 272px;
             --bg-light: #f4f8fb;
             --border: #e2e8f0;
             --success: #10b981;
@@ -55,131 +55,158 @@
 
         .sidebar {
             width: var(--sidebar-width);
-            background: radial-gradient(circle at 30% 10%, rgba(255,255,255,0.12), transparent 32%),
-                        linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%);
+            background:
+                radial-gradient(circle at 18% 8%, rgba(255,255,255,0.12), transparent 22%),
+                linear-gradient(180deg, #ff1f24 0%, var(--primary-dark) 100%);
             position: fixed;
             top: 0;
             left: 0;
             height: 100vh;
             z-index: 1000;
             transition: transform 0.3s ease;
+            box-shadow: 0 28px 60px rgba(255, 2, 5, 0.24);
+            border-right: 1px solid rgba(255,255,255,0.12);
+            overflow: hidden;
+        }
+
+        .sidebar::before {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            pointer-events: none;
+        }
+
+        .sidebar-inner {
+            position: relative;
+            z-index: 1;
+            height: 100%;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 24px 50px rgba(255, 2, 5, 0.25);
-            border-right: 1px solid rgba(255,255,255,0.12);
-            backdrop-filter: blur(10px);
+            gap: 1rem;
+            padding: 1rem 0 1.1rem;
+        }
+
+        .sidebar-top {
+            padding: 0 1rem;
         }
 
         .sidebar-brand {
-            padding: 1.1rem 1.4rem;
+            padding: 0.95rem 1rem;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 0.75rem;
             color: #fff;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 24px;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
         }
 
         .brand-logo {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.85rem;
             color: inherit;
             text-decoration: none;
+            min-width: 0;
         }
 
         .brand-mark {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.16);
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            background: rgba(255,255,255,0.14);
             border: 1px solid rgba(255,255,255,0.18);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1.12rem;
             color: #fff;
-            box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+            flex-shrink: 0;
         }
 
         .brand-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.2;
+            min-width: 0;
+            line-height: 1.18;
         }
 
         .brand-name {
             font-weight: 700;
             font-size: 1rem;
+            letter-spacing: 0.2px;
         }
 
         .brand-sub {
-            color: rgba(255,255,255,0.8);
-            font-size: 0.8rem;
+            color: rgba(255,255,255,0.76);
+            font-size: 0.78rem;
         }
 
         .brand-pill {
-            border: 1px solid rgba(255,255,255,0.45);
-            background: rgba(255,255,255,0.18);
-            color: #fff;
-            font-size: 0.75rem;
-            padding: 0.3rem 0.75rem;
-            border-radius: 999px;
-            letter-spacing: 0.3px;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
-        }
-
-        .sidebar-card {
-            margin: 0.25rem 1.25rem 1rem;
-            padding: 1rem;
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 16px;
-            color: #fff;
-            display: flex;
-            gap: 0.85rem;
-            box-shadow: 0 16px 30px rgba(0,0,0,0.18);
-        }
-
-        .sidebar-card .card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.14);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.1rem;
+            gap: 0.38rem;
+            padding: 0.36rem 0.72rem;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 0.72rem;
+            letter-spacing: 0.35px;
+            flex-shrink: 0;
         }
 
-        .sidebar-card .card-title {
-            font-weight: 700;
-            margin: 0;
+        .brand-pill::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.1);
         }
 
-        .sidebar-card .card-sub {
-            margin: 0.15rem 0 0;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-        }
-
-        .sidebar-card .card-text {
-            display: flex;
-            flex-direction: column;
-            gap: 0.1rem;
+        .sidebar-nav-shell {
+            flex: 1;
+            min-height: 0;
+            margin: 0 1rem;
+            padding: 1rem 0.8rem 0.8rem;
+            border-radius: 26px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
         }
 
         .sidebar-menu {
-            flex: 1;
-            padding: 0.35rem 0 0.75rem;
+            height: 100%;
             overflow-y: auto;
+            padding-right: 0.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .sidebar-menu::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .sidebar-menu::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.18);
+            border-radius: 999px;
         }
 
         .sidebar-menu .menu-title {
-            color: rgba(255,255,255,0.55);
+            color: rgba(255,255,255,0.6);
             font-size: 0.72rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 0.5rem 1.5rem 0.35rem;
+            padding: 0.2rem 0.45rem 0.35rem;
             font-weight: 700;
         }
 
@@ -187,96 +214,141 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 0.75rem;
-            color: rgba(255,255,255,0.8);
+            gap: 0.8rem;
+            padding: 0.45rem 0.4rem 0.45rem 0.45rem;
             text-decoration: none;
-            padding: 0.85rem 1.5rem;
-            transition: all 0.2s ease;
-            border-left: 4px solid transparent;
-            position: relative;
+            color: rgba(255,255,255,0.84);
+            border-radius: 18px;
+            border: 1px solid transparent;
+            transition: all 0.22s ease;
         }
 
-        .menu-item .item-left {
+        .menu-main {
             display: flex;
             align-items: center;
             gap: 0.8rem;
+            min-width: 0;
         }
 
-        .menu-item i {
-            width: 1.2rem;
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        .menu-item .chevron {
-            color: rgba(255,255,255,0.35);
-            font-size: 0.85rem;
-        }
-
-        .menu-item:hover {
+        .menu-icon,
+        .footer-link-icon,
+        .logout-btn .item-left i {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
             color: #fff;
-            transform: translateX(4px);
+            flex-shrink: 0;
         }
 
-        .menu-item:hover .chevron,
-        .menu-item.active .chevron {
+        .menu-label,
+        .footer-link-title {
+            font-weight: 700;
+            line-height: 1.2;
+            min-width: 0;
+        }
+
+        .menu-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.28);
+            box-shadow: 0 0 0 5px transparent;
+            transition: all 0.22s ease;
+            flex-shrink: 0;
+        }
+
+        .menu-item:hover,
+        .footer-link:hover,
+        .logout-btn:hover {
             color: #fff;
+            background: rgba(255,255,255,0.08);
+            border-color: rgba(255,255,255,0.14);
+        }
+
+        .menu-item:hover .menu-icon,
+        .footer-link:hover .footer-link-icon,
+        .logout-btn:hover .item-left i {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.18);
+        }
+
+        .menu-item:hover .menu-indicator {
+            background: rgba(255,255,255,0.55);
         }
 
         .menu-item.active {
-            background: rgba(255,255,255,0.14);
             color: #fff;
-            border-left-color: #fff;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
+            background: linear-gradient(90deg, rgba(255,255,255,0.18), rgba(255,255,255,0.08));
+            border-color: rgba(255,255,255,0.16);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+
+        .menu-item.active .menu-icon {
+            background: #fff;
+            color: var(--primary);
+            border-color: rgba(255,255,255,0.34);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+        }
+
+        .menu-item.active .menu-indicator {
+            background: #fff;
+            box-shadow: 0 0 0 5px rgba(255,255,255,0.12);
         }
 
         .sidebar-footer {
-            padding: 1rem 1.3rem 1.2rem;
-            border-top: 1px solid rgba(255,255,255,0.14);
+            padding: 0 1rem;
             display: flex;
             flex-direction: column;
-            gap: 0.35rem;
+            gap: 0.6rem;
         }
 
-        .sidebar-footer a,
+        .footer-label {
+            color: rgba(255,255,255,0.58);
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 0.45rem;
+            font-weight: 700;
+        }
+
+        .footer-link,
         .logout-btn {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            gap: 0.75rem;
-            color: rgba(255,255,255,0.8);
+            gap: 0.8rem;
+            color: rgba(255,255,255,0.84);
             text-decoration: none;
-            padding: 0.7rem 0.85rem;
-            transition: all 0.2s ease;
-            border-radius: 12px;
-            border: 1px solid transparent;
-            background: rgba(255,255,255,0.06);
+            padding: 0.72rem 0.78rem;
+            transition: all 0.22s ease;
+            border-radius: 18px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.05);
         }
 
-        .sidebar-footer a .item-left,
-        .logout-btn .item-left {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .sidebar-footer a:hover,
-        .logout-btn:hover {
-            color: #fff;
-            border-color: rgba(255,255,255,0.25);
-            background: rgba(255,255,255,0.12);
+        .logout-form {
+            margin: 0;
         }
 
         .logout-btn {
             width: 100%;
             text-align: left;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.12);
             cursor: pointer;
         }
 
-        .logout-btn .chevron {
-            color: rgba(255,255,255,0.35);
+        .logout-btn .item-left {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            min-width: 0;
+        }
+
+        .logout-btn .item-left span {
+            font-weight: 700;
         }
 
         .main-content {
@@ -645,12 +717,24 @@
 
         @media (max-width: 991.98px) {
             .sidebar {
+                width: min(88vw, var(--sidebar-width));
                 transform: translateX(-100%);
                 box-shadow: none;
             }
 
             .sidebar.show {
                 transform: translateX(0);
+                box-shadow: 0 28px 60px rgba(255, 2, 5, 0.28);
+            }
+
+            .sidebar-nav-shell {
+                margin: 0 0.85rem;
+            }
+
+            .sidebar-footer,
+            .sidebar-top {
+                padding-left: 0.85rem;
+                padding-right: 0.85rem;
             }
 
             .sidebar-overlay.show {
@@ -685,6 +769,18 @@
         }
 
         @media (max-width: 767.98px) {
+            .sidebar {
+                width: min(92vw, 320px);
+            }
+
+            .sidebar-nav-shell {
+                padding: 0.85rem 0.7rem 0.7rem;
+            }
+
+            .sidebar-brand {
+                padding: 0.8rem 0.85rem;
+            }
+
             .header-left {
                 gap: 0.75rem;
             }
