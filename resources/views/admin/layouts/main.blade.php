@@ -466,10 +466,10 @@
 </head>
 <body>
     <div class="admin-wrapper">
-        @include('admin.layouts.sidebar')
+        @include('admin.partials.sidebar')
         
         <div class="main-content">
-            @include('admin.layouts.header')
+            @include('admin.partials.header')
 
             <div class="page-content">
                 @yield('content')
