@@ -785,7 +785,11 @@
                                 </div>
                                 <div class="product-body">
                                     <h3>{{ $product->name }}</h3>
-                                    <p>{{ $product->description }}</p>
+                                    @php
+                                        $desc = strip_tags($product->description);
+                                        $desc = strlen($desc) > 80 ? substr($desc, 0, 80) . '...' : $desc;
+                                    @endphp
+                                    <p>{{ $desc }}</p>
                                     <div class="price-wrap">
                                         <span
                                             class="current-price">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
