@@ -635,7 +635,7 @@
     <nav class="navbar navbar-expand-lg fixed-top py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="#home">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" style="width: 200px;">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" style="height: 70px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
