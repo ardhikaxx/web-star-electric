@@ -326,7 +326,7 @@
             ],
         ])
 
-        <div class="page-header d-flex align-items-center justify-content-between">
+        <div class="page-header d-flex align-items-center justify-content-between mb-4">
             <h2>
                 <i class="fa-solid fa-pen-nib"></i>
                 Edit Produk
