@@ -9,6 +9,28 @@ use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
+    private function resolveOldPrice(float $price, $oldPrice = null): ?float
+    {
+        if ($oldPrice !== null && $oldPrice !== '') {
+            return (float) $oldPrice;
+        }
+
+        if ($price <= 0) {
+            return null;
+        }
+
+        $roundingBase = match (true) {
+            $price >= 5000000 => 100000,
+            $price >= 1000000 => 50000,
+            $price >= 100000 => 10000,
+            default => 1000,
+        };
+
+        $suggested = ceil(($price * 1.15) / $roundingBase) * $roundingBase;
+
+        return $suggested <= $price ? $price + $roundingBase : $suggested;
+    }
+
     public function index(Request $request)
     {
         $products = Product::orderBy('created_at', 'desc');
@@ -56,7 +78,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'old_price' => $request->old_price,
+            'old_price' => $this->resolveOldPrice((float) $request->price, $request->old_price),
             'image' => $imageName,
             'link' => $request->link,
             'is_active' => $request->has('is_active'),
@@ -91,7 +113,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'old_price' => $request->old_price,
+            'old_price' => $this->resolveOldPrice((float) $request->price, $request->old_price),
             'link' => $request->link,
             'is_active' => $request->has('is_active'),
         ];

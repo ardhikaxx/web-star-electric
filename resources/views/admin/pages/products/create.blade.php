@@ -257,11 +257,12 @@
         }
 
         .btn-modern {
-            padding: 0.875rem 2rem;
+            padding: 0.9rem 1.8rem;
             border-radius: var(--radius-md);
             font-weight: 700;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
@@ -284,11 +285,12 @@
             background: #fff;
             color: var(--muted);
             border: 2px solid var(--line);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .btn-modern-light:hover {
             background: var(--bg-light);
-            border-color: var(--muted);
+            border-color: rgba(16, 33, 50, 0.15);
             color: var(--text);
             transform: translateY(-2px);
         }
@@ -319,6 +321,13 @@
 
         .form-control-price {
             padding-left: 3.5rem;
+        }
+
+        .price-helper {
+            margin-top: 0.65rem;
+            color: var(--muted);
+            font-size: 0.78rem;
+            line-height: 1.55;
         }
 
         @media (max-width: 991.98px) {
@@ -485,7 +494,7 @@
                                     <label class="form-label">Harga Jual <span class="required">*</span></label>
                                     <div class="price-input-wrapper">
                                         <span class="price-symbol">Rp</span>
-                                        <input type="number" name="price"
+                                        <input type="number" name="price" id="priceInput"
                                             class="form-control-custom form-control-price @error('price') is-invalid @enderror"
                                             value="{{ old('price') }}" placeholder="0" min="0">
                                     </div>
@@ -497,10 +506,13 @@
                                     <label class="form-label">Harga Coret (Diskon)</label>
                                     <div class="price-input-wrapper">
                                         <span class="price-symbol">Rp</span>
-                                        <input type="number" name="old_price"
+                                        <input type="number" name="old_price" id="oldPriceInput"
                                             class="form-control-custom form-control-price @error('old_price') is-invalid @enderror"
                                             value="{{ old('old_price') }}" placeholder="0"
                                             min="0">
+                                    </div>
+                                    <div class="price-helper">
+                                        Otomatis disarankan sekitar 15% di atas harga jual agar diskon terlihat lebih menarik. Tetap bisa Anda ubah manual.
                                     </div>
                                     @error('old_price')
                                         <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
@@ -514,7 +526,7 @@
                     <div class="action-bar">
                         <a href="{{ route('admin.products.index') }}" class="btn-modern btn-modern-light">
                             <i class="fa-solid fa-arrow-left"></i>
-                            Batal & Kembali
+                            Kembali
                         </a>
                         <button type="submit" class="btn-modern btn-modern-primary">
                             <i class="fa-solid fa-cloud-arrow-up"></i>
@@ -534,6 +546,80 @@
             const imageInput = document.getElementById('imageInput');
             const previewImg = document.getElementById('previewImg');
             const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+            const priceInput = document.getElementById('priceInput');
+            const oldPriceInput = document.getElementById('oldPriceInput');
+
+            function setupOldPriceSuggestion(priceField, oldPriceField) {
+                if (!priceField || !oldPriceField) {
+                    return;
+                }
+
+                let oldPriceManuallyEdited = oldPriceField.value.trim() !== '';
+
+                function parseNumeric(value) {
+                    return Number(String(value).replace(/[^\d]/g, '')) || 0;
+                }
+
+                function getRoundingBase(price) {
+                    if (price >= 5000000) {
+                        return 100000;
+                    }
+
+                    if (price >= 1000000) {
+                        return 50000;
+                    }
+
+                    if (price >= 100000) {
+                        return 10000;
+                    }
+
+                    return 1000;
+                }
+
+                function suggestOldPrice(price) {
+                    if (!price) {
+                        return '';
+                    }
+
+                    const roundingBase = getRoundingBase(price);
+                    const suggested = Math.ceil((price * 1.15) / roundingBase) * roundingBase;
+                    return suggested <= price ? price + roundingBase : suggested;
+                }
+
+                function syncOldPrice() {
+                    const currentPrice = parseNumeric(priceField.value);
+
+                    if (!currentPrice) {
+                        if (!oldPriceManuallyEdited) {
+                            oldPriceField.value = '';
+                        }
+
+                        return;
+                    }
+
+                    oldPriceField.value = suggestOldPrice(currentPrice);
+                }
+
+                if (!oldPriceManuallyEdited && parseNumeric(priceField.value) > 0) {
+                    syncOldPrice();
+                }
+
+                priceField.addEventListener('input', function() {
+                    if (!oldPriceManuallyEdited) {
+                        syncOldPrice();
+                    }
+                });
+
+                oldPriceField.addEventListener('input', function() {
+                    oldPriceManuallyEdited = oldPriceField.value.trim() !== '';
+
+                    if (!oldPriceManuallyEdited) {
+                        syncOldPrice();
+                    }
+                });
+            }
+
+            setupOldPriceSuggestion(priceInput, oldPriceInput);
 
             imageUploadArea.addEventListener('click', function() {
                 imageInput.click();
