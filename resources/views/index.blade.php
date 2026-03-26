@@ -185,7 +185,7 @@
         }
 
         .btn-brand {
-            background: linear-gradient(135deg, var(--primary), #14b28f);
+            background: linear-gradient(135deg, var(--primary), #ff4d4d);
             border: 0;
             color: #fff;
             padding: 0.85rem 1.25rem;
