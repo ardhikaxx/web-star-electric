@@ -41,7 +41,12 @@
                 </span>
                 <span class="footer-link-title">Lihat Website</span>
             </a>
-            <form action="{{ route('admin.logout') }}" method="POST" class="logout-form">
+            <form action="{{ route('admin.logout') }}" method="POST" class="logout-form" data-swal-confirm
+                data-confirm-title="Keluar dari panel admin?"
+                data-confirm-text="Sesi admin saat ini akan diakhiri dan Anda perlu login kembali."
+                data-confirm-button-text="Ya, logout"
+                data-cancel-button-text="Batal"
+                data-confirm-icon="question">
                 @csrf
                 <button type="submit" class="logout-btn">
                     <div class="item-left">

@@ -15,13 +15,6 @@
                 <p>Masukkan PIN 4 digit untuk masuk</p>
             </div>
 
-            @if (session('error'))
-                <div class="alert alert-danger d-flex align-items-center mb-3">
-                    <i class="fa-solid fa-circle-exclamation me-2"></i>
-                    {{ session('error') }}
-                </div>
-            @endif
-
             <form action="{{ route('admin.login') }}" method="POST" id="pinForm">
                 @csrf
                 <div class="pin-input">
@@ -103,6 +96,11 @@
                             input.classList.add('error');
                             setTimeout(() => input.classList.remove('error'), 500);
                         });
+
+                        if (window.AdminAlerts) {
+                            window.AdminAlerts.toastError('PIN harus terdiri dari 4 digit angka.');
+                        }
+
                         return;
                     }
 

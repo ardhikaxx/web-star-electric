@@ -345,43 +345,6 @@
             color: #fff;
         }
 
-        .alert-toast {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 1rem 1.25rem;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 500;
-            z-index: 9999;
-            animation: slideIn 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .alert-toast.success {
-            background: #10b981;
-            color: #fff;
-        }
-
-        .alert-toast.error {
-            background: var(--danger);
-            color: #fff;
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
         .empty-state {
             text-align: center;
             padding: 4rem 2rem;
@@ -475,20 +438,6 @@
         @include('admin.partials.breadcrumb', [
             'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Produk']],
         ])
-
-        @if (session('success'))
-            <div class="alert-toast success" id="alertToast">
-                <i class="fa-solid fa-circle-check"></i>
-                {{ session('success') }}
-            </div>
-        @endif
-
-        @if (session('error'))
-            <div class="alert-toast error" id="alertToast">
-                <i class="fa-solid fa-circle-xmark"></i>
-                {{ session('error') }}
-            </div>
-        @endif
 
         <div class="page-header d-flex align-items-center justify-content-between mb-3">
             <div class="page-header-left">
@@ -608,11 +557,15 @@
                                     Edit
                                 </a>
                                 <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
-                                    class="d-inline">
+                                    class="d-inline" data-swal-confirm
+                                    data-confirm-title="Hapus produk ini?"
+                                    data-confirm-text="Produk {{ $product->name }} akan dihapus permanen."
+                                    data-confirm-button-text="Ya, hapus"
+                                    data-cancel-button-text="Batal"
+                                    data-confirm-icon="warning">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn-action btn-delete"
-                                        onclick="return confirm('Apakah Anda yakin ingin menghapus produk \'{{ $product->name }}\'?')">
+                                    <button type="submit" class="btn-action btn-delete">
                                         <i class="fa-solid fa-trash"></i>
                                         Hapus
                                     </button>

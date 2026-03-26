@@ -257,41 +257,6 @@
             margin-top: 0.15rem;
         }
 
-        .pin-alert {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 1rem 1.1rem;
-            border-radius: var(--radius-md);
-            border: 1px solid;
-            margin-bottom: 1rem;
-        }
-
-        .pin-alert i {
-            margin-top: 0.15rem;
-        }
-
-        .pin-alert.success {
-            background: rgba(16, 185, 129, 0.08);
-            border-color: rgba(16, 185, 129, 0.18);
-            color: #0f766e;
-        }
-
-        .pin-alert.danger {
-            background: rgba(239, 68, 68, 0.08);
-            border-color: rgba(239, 68, 68, 0.18);
-            color: #b91c1c;
-        }
-
-        .pin-alert ul {
-            margin: 0;
-            padding-left: 1rem;
-        }
-
-        .pin-alert.hidden {
-            display: none;
-        }
-
         .pin-action-bar {
             display: flex;
             gap: 1rem;
@@ -449,38 +414,6 @@
         </div>
 
         <div class="col-12 col-lg-8">
-            @if (session('success'))
-                <div class="pin-alert success">
-                    <i class="fa-solid fa-circle-check"></i>
-                    <div>{{ session('success') }}</div>
-                </div>
-            @endif
-
-            @if (session('error'))
-                <div class="pin-alert danger">
-                    <i class="fa-solid fa-circle-exclamation"></i>
-                    <div>{{ session('error') }}</div>
-                </div>
-            @endif
-
-            @if ($errors->any())
-                <div class="pin-alert danger">
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-                    <div>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            @endif
-
-            <div class="pin-alert danger hidden" id="pinClientError">
-                <i class="fa-solid fa-circle-exclamation"></i>
-                <div id="pinClientErrorText"></div>
-            </div>
-
             <form action="{{ route('admin.change-pin') }}" method="POST" id="changePinForm">
                 @csrf
 
@@ -629,22 +562,18 @@
             const newPin = setupPinInputs('newPinGroup', 'newPin');
             const confirmPin = setupPinInputs('confirmPinGroup', 'confirmPin');
             const form = document.getElementById('changePinForm');
-            const clientError = document.getElementById('pinClientError');
-            const clientErrorText = document.getElementById('pinClientErrorText');
 
             function getPinValue(inputs) {
                 return inputs.map((input) => input.value).join('');
             }
 
-            function clearClientError() {
-                clientError.classList.add('hidden');
-                clientErrorText.textContent = '';
-            }
-
             function showClientError(message) {
-                clientErrorText.textContent = message;
-                clientError.classList.remove('hidden');
-                clientError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                if (window.AdminAlerts) {
+                    window.AdminAlerts.toastError(message);
+                    return;
+                }
+
+                alert(message);
             }
 
             function flashError(inputs) {
@@ -656,13 +585,14 @@
 
             [currentPin, newPin, confirmPin].forEach((group) => {
                 group.inputs.forEach((input) => {
-                    input.addEventListener('input', clearClientError);
+                    input.addEventListener('input', function() {
+                        input.classList.remove('error');
+                    });
                 });
             });
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                clearClientError();
 
                 const currentPinValue = getPinValue(currentPin.inputs);
                 const newPinValue = getPinValue(newPin.inputs);
@@ -695,6 +625,21 @@
                 currentPin.hiddenInput.value = currentPinValue;
                 newPin.hiddenInput.value = newPinValue;
                 confirmPin.hiddenInput.value = confirmPinValue;
+
+                if (window.AdminAlerts) {
+                    window.AdminAlerts.confirm({
+                        icon: 'question',
+                        title: 'Simpan PIN baru?',
+                        text: 'PIN admin akan diperbarui. Pastikan kombinasi angka sudah benar.',
+                        confirmButtonText: 'Ya, simpan',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                    return;
+                }
 
                 this.submit();
             });
