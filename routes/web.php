@@ -15,6 +15,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/change-pin', [AuthController::class, 'showChangePin'])->name('change-pin');
+    Route::post('/change-pin', [AuthController::class, 'changePin']);
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     

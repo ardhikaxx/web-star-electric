@@ -21,6 +21,10 @@
             <i class="fa-solid fa-globe"></i>
             Lihat Website
         </a>
+        <a href="{{ route('admin.change-pin') }}" class="{{ request()->routeIs('admin.change-pin') ? 'active' : '' }}">
+            <i class="fa-solid fa-key"></i>
+            Ganti PIN
+        </a>
         <form action="{{ route('admin.logout') }}" method="POST" class="d-inline">
             @csrf
             <button type="submit" style="background: none; border: none; color: rgba(255,255,255,0.6); padding: 0.5rem 0; cursor: pointer; display: flex; align-items: center; gap: 0.75rem; width: 100%;">

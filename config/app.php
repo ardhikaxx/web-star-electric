@@ -67,6 +67,8 @@ return [
 
     'timezone' => 'UTC',
 
+    'admin_pin' => '1234',
+
     /*
     |--------------------------------------------------------------------------
     | Application Locale Configuration
