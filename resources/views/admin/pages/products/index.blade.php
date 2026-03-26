@@ -52,7 +52,7 @@
 
         .btn-tambah {
             position: relative;
-            background: linear-gradient(135deg, var(--primary) 0%, #0a6b5a 100%);
+            background: linear-gradient(135deg, var(--primary) 0%, #ff4d4d 100%);
             color: #fff;
             border: none;
             padding: 0;
