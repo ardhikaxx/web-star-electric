@@ -899,9 +899,18 @@
                                     <a href="tel:+6285231260016">+62 852-3126-0016</a>
                                 </li>
                                 <li>
+                                    <i class="fa-solid fa-phone-volume"></i>
+                                    <a href="tel:+6281331978800">+62 813-3197-8800</a>
+                                </li>
+                                <li>
                                     <i class="fa-brands fa-whatsapp"></i>
                                     <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">Chat
-                                        WhatsApp Sekarang</a>
+                                        WhatsApp</a>
+                                </li>
+                                <li>
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">Chat
+                                        WhatsApp</a>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-clock"></i>
@@ -945,7 +954,9 @@
                     <h3>Kontak</h3>
                     <ul class="footer-links list-unstyled">
                         <li><a href="tel:+6285231260016">+62 852-3126-0016</a></li>
-                        <li><a href="https://wa.me/6285231260016" target="_blank" rel="noopener">WhatsApp</a></li>
+                        <li><a href="tel:+6281331978800">+62 813-3197-8800</a></li>
+                        <li><a href="https://wa.me/6285231260016" target="_blank" rel="noopener">WhatsApp 1</a></li>
+                        <li><a href="https://wa.me/6281331978800" target="_blank" rel="noopener">WhatsApp 2</a></li>
                         <li><span>Bondowoso, Jawa Timur</span></li>
                     </ul>
                 </div>
