@@ -92,6 +92,7 @@
             color: var(--muted);
             transition: all 0.3s ease;
             z-index: 10;
+            pointer-events: none;
         }
 
         .form-control-custom {
