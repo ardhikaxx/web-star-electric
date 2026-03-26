@@ -888,12 +888,12 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
-                                        CABANG ARRAHMAN E-BIKE
+                                        UWINFLY PUJER BONDOWOSO
                                     </div>
                                     <div class="store-address">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <span>Jl. Raya Pakisan, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten
-                                            Bondowoso, Jawa Timur 67281</span>
+                                        <span>Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten
+                                            Bondowoso, Jawa Timur 68271</span>
                                     </div>
                                 </li>
                                 <li>
