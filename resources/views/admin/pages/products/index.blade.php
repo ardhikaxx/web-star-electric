@@ -247,36 +247,65 @@
         .toolbar-search,
         .toolbar-filter {
             position: relative;
+            width: 100%;
+            display: flex;
+            align-items: center;
             min-width: 0;
         }
 
-        .toolbar-search i,
-        .toolbar-filter i {
+        .toolbar-input-icon {
             position: absolute;
-            left: 1rem;
+            left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--muted);
             pointer-events: none;
+            z-index: 2;
+            font-size: 0.98rem;
         }
 
         .toolbar-search-control,
         .toolbar-filter-select {
             width: 100%;
             height: 56px;
-            border-radius: 16px;
-            border: 1px solid var(--line);
+            border-radius: var(--radius-md);
+            border: 2px solid var(--line);
             background: #fff;
             box-shadow: 0 12px 26px rgba(8, 19, 33, 0.06);
             font-weight: 500;
+            color: var(--text);
+            transition: all 0.25s ease;
         }
 
         .toolbar-search-control {
-            padding-left: 2.8rem;
+            padding: 0.875rem 1.1rem 0.875rem 3.35rem;
         }
 
         .toolbar-filter-select {
-            padding-left: 2.75rem;
+            padding: 0.875rem 2.85rem 0.875rem 3.35rem;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+                linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+            background-position: calc(100% - 18px) calc(50% - 3px), calc(100% - 12px) calc(50% - 3px);
+            background-size: 6px 6px, 6px 6px;
+            background-repeat: no-repeat;
+        }
+
+        .toolbar-search:focus-within .toolbar-input-icon,
+        .toolbar-filter:focus-within .toolbar-input-icon {
+            color: var(--primary);
+        }
+
+        .toolbar-search-control:focus,
+        .toolbar-filter-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px var(--primary-light-alpha);
+            outline: none;
         }
 
         .toolbar-search-btn {
@@ -763,7 +792,9 @@
                     <input type="hidden" name="status" value="{{ request('status') }}">
                 @endif
                 <div class="toolbar-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span class="toolbar-input-icon" aria-hidden="true">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </span>
                     <input type="text" name="search" class="form-control toolbar-search-control"
                         placeholder="Cari nama atau deskripsi produk..." value="{{ request('search') }}">
                 </div>
@@ -781,7 +812,9 @@
                     <input type="hidden" name="search" value="{{ request('search') }}">
                 @endif
                 <div class="toolbar-filter">
-                    <i class="fa-solid fa-sliders"></i>
+                    <span class="toolbar-input-icon" aria-hidden="true">
+                        <i class="fa-solid fa-sliders"></i>
+                    </span>
                     <select name="status" class="form-select toolbar-filter-select" onchange="this.form.submit()">
                         <option value="">Semua Status</option>
                         <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
