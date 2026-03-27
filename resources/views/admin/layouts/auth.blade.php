@@ -130,19 +130,18 @@
         }
 
 .login-logo {
-            width: 120px;
-            height: 120px;
+            width: 180px;
+            height: 80px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            padding: 10px;
+            padding: 0;
         }
 
         .login-logo img {
             width: 100%;
             height: auto;
-            border-radius: 16px;
         }
 
         /* General styles that should apply to both admin and auth if they are derived from master */
