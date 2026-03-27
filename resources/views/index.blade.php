@@ -1013,7 +1013,7 @@
                     </div>
                     <div class="stat-card">
                         <h3>Fast Respon</h3>
-                        <p>Konsultasi cepat melalui WhatsApp untuk cek stok dan promo.</p>
+                        <p>Konsultasi cepat melalui WhatsApp untuk cek stok.</p>
                     </div>
                 </div>
             </div>
@@ -1024,8 +1024,7 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Pilihan</span>
                     <h3>Model sepeda listrik yang siap menunjang mobilitas Anda</h3>
-                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan <a href="{{ route('home') }}" data-scroll-target="#testimoni">harga promo</a>
-                        yang lebih menarik. Lihat juga <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
+                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
                 <div class="row g-4">
                     @forelse($products as $product)
@@ -1147,7 +1146,7 @@
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
                             <h2>Kunjungi toko kami di Bondowoso</h2>
-                            <p>Datang langsung untuk melihat unit, cek promo, dan konsultasi model sepeda listrik yang
+                            <p>Datang langsung untuk melihat unit dan konsultasi model sepeda listrik yang
                                 paling sesuai dengan kebutuhan Anda.</p>
                             <ul class="contact-list list-unstyled mb-0">
                                 <li class="store-item">
