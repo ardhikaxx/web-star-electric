@@ -388,24 +388,36 @@
         }
 
         .product-card {
+            position: relative;
             background: var(--surface-strong);
-            border-radius: 20px;
-            box-shadow: var(--shadow);
+            border-radius: 24px;
+            box-shadow: 0 22px 52px rgba(8, 19, 33, 0.1);
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid transparent;
+            border: 1px solid rgba(16, 33, 50, 0.08);
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(255, 2, 5, 0.15);
+            transform: translateY(-6px);
+            border-color: rgba(255, 2, 5, 0.22);
+            box-shadow: 0 26px 50px rgba(255, 2, 5, 0.14);
         }
 
         .product-image-container {
             position: relative;
-            height: clamp(190px, 24vw, 220px);
+            height: clamp(210px, 24vw, 236px);
             overflow: hidden;
+        }
+
+        .product-image-container::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0;
+            height: 72px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(8, 19, 33, 0.38));
+            pointer-events: none;
         }
 
         .product-image-container img {
@@ -423,12 +435,14 @@
             position: absolute;
             top: 12px;
             right: 12px;
-            padding: 0.4rem 0.85rem;
+            padding: 0.42rem 0.82rem;
             border-radius: 20px;
             font-size: 0.7rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            z-index: 2;
+            box-shadow: 0 10px 24px rgba(8, 19, 33, 0.16);
         }
 
         .product-status-badge.active {
@@ -442,14 +456,52 @@
         }
 
         .product-content {
-            padding: 1.25rem;
+            padding: 1.2rem 1.2rem 1.15rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.95rem;
+            flex: 1;
+        }
+
+        .product-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .product-meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            padding: 0.42rem 0.72rem;
+            border-radius: 999px;
+            background: rgba(16, 33, 50, 0.05);
+            color: var(--muted);
+            font-size: 0.72rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .product-meta-pill i {
+            font-size: 0.72rem;
+        }
+
+        .product-meta-pill.promo {
+            background: rgba(255, 2, 5, 0.1);
+            color: var(--primary);
+        }
+
+        .product-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
         }
 
         .product-content h3 {
-            font-size: 1rem;
+            font-size: 1.04rem;
             font-weight: 700;
             color: var(--text);
-            margin: 0 0 0.5rem;
+            margin: 0;
             line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
@@ -458,66 +510,81 @@
         }
 
         .product-content p {
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             color: var(--muted);
-            margin: 0 0 1rem;
-            line-height: 1.5;
+            margin: 0;
+            line-height: 1.6;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
 
         .product-price-row {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             justify-content: space-between;
             gap: 0.75rem;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
+            margin-top: auto;
+            padding: 1rem 0 0;
+            border-top: 1px solid rgba(16, 33, 50, 0.08);
         }
 
         .product-price {
             display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.2rem;
+            min-width: 0;
         }
 
         .current-price {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.22rem;
+            font-weight: 800;
             color: var(--primary);
+            line-height: 1.15;
         }
 
         .old-price {
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             color: var(--muted);
             text-decoration: line-through;
+            line-height: 1.1;
+        }
+
+        .product-price-caption {
+            font-size: 0.74rem;
+            color: var(--muted);
+            line-height: 1.45;
         }
 
         .product-link-btn {
             display: inline-flex;
             align-items: center;
-            gap: 0.35rem;
-            padding: 0.35rem 0.75rem;
-            background: var(--bg);
-            border-radius: 8px;
-            font-size: 0.75rem;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 2, 5, 0.08);
+            border: 1px solid rgba(255, 2, 5, 0.12);
+            border-radius: 12px;
+            font-size: 0.82rem;
             color: var(--primary);
             text-decoration: none;
             transition: all 0.2s ease;
+            flex-shrink: 0;
         }
 
         .product-link-btn:hover {
             background: var(--primary);
             color: #fff;
+            border-color: var(--primary);
         }
 
         .product-actions {
             display: flex;
             gap: 0.75rem;
             padding-top: 1rem;
-            border-top: 1px solid var(--line);
+            margin-top: 0.05rem;
         }
 
         .product-delete-form {
@@ -527,8 +594,9 @@
 
         .btn-action {
             flex: 1;
-            padding: 0.65rem;
-            border-radius: 10px;
+            min-height: 44px;
+            padding: 0.75rem 0.85rem;
+            border-radius: 14px;
             font-size: 0.8rem;
             font-weight: 600;
             text-decoration: none;
@@ -542,8 +610,9 @@
         }
 
         .btn-edit {
-            background: rgba(255, 2, 5, 0.1);
+            background: rgba(255, 2, 5, 0.09);
             color: var(--primary);
+            border: 1px solid rgba(255, 2, 5, 0.12);
         }
 
         .btn-edit:hover {
@@ -554,6 +623,7 @@
         .btn-delete {
             background: rgba(239, 68, 68, 0.1);
             color: var(--danger);
+            border: 1px solid rgba(239, 68, 68, 0.12);
         }
 
         .btn-delete:hover {
@@ -700,6 +770,10 @@
             .product-card {
                 border-radius: 18px;
             }
+
+            .product-price-row {
+                align-items: flex-start;
+            }
         }
 
         @media (max-width: 575.98px) {
@@ -720,6 +794,10 @@
 
             .product-content {
                 padding: 1rem;
+            }
+
+            .product-price-row {
+                flex-wrap: wrap;
             }
 
             .product-actions {
@@ -875,8 +953,24 @@
                         </span>
                     </div>
                     <div class="product-content">
-                        <h3>{{ $product->name }}</h3>
-                        <p>{{ $product->description }}</p>
+                        <div class="product-meta-row">
+                            <span class="product-meta-pill">
+                                <i class="fa-solid {{ $product->link ? 'fa-link' : 'fa-link-slash' }}"></i>
+                                {{ $product->link ? 'Link tersedia' : 'Belum ada link' }}
+                            </span>
+                            @if ($product->old_price)
+                                <span class="product-meta-pill promo">
+                                    <i class="fa-solid fa-tag"></i>
+                                    Diskon aktif
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="product-copy">
+                            <h3>{{ $product->name }}</h3>
+                            <p>{{ $product->description }}</p>
+                        </div>
+
                         <div class="product-price-row">
                             <div class="product-price">
                                 @if ($product->old_price)
@@ -885,6 +979,9 @@
                                 @endif
                                 <span class="current-price">Rp
                                     {{ number_format($product->price, 0, ',', '.') }}</span>
+                                <span class="product-price-caption">
+                                    {{ $product->link ? 'Siap diarahkan ke halaman pembelian.' : 'Tambahkan link untuk memudahkan pembeli.' }}
+                                </span>
                             </div>
                             @if ($product->link)
                                 <a href="{{ $product->link }}" target="_blank" class="product-link-btn">
