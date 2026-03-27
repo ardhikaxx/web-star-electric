@@ -133,11 +133,6 @@
             color: var(--warning);
         }
 
-        .stats-icon.dark {
-            background: linear-gradient(135deg, rgba(16, 33, 50, 0.14), rgba(16, 33, 50, 0.06));
-            color: var(--text);
-        }
-
         .stats-info h3 {
             font-size: clamp(1.55rem, 1.35rem + 0.7vw, 1.95rem);
             font-weight: 700;
@@ -204,9 +199,25 @@
             padding: 1.25rem 1.35rem 1.35rem;
         }
 
+        .chart-card {
+            height: 100%;
+        }
+
+        .chart-card .info-card-body {
+            display: flex;
+            flex-direction: column;
+        }
+
         .chart-shell {
             position: relative;
-            min-height: 340px;
+            flex: 1;
+            min-height: 320px;
+            height: 100%;
+        }
+
+        #productClicksChart {
+            width: 100% !important;
+            height: 100% !important;
         }
 
         .analytics-empty {
@@ -250,6 +261,34 @@
             display: flex;
             flex-direction: column;
             gap: 0.85rem;
+            max-height: 480px;
+            overflow-y: auto;
+            padding-right: 0.35rem;
+            margin-right: -0.15rem;
+        }
+
+        .ranking-list::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .ranking-list::-webkit-scrollbar-track {
+            background: rgba(244, 248, 251, 0.9);
+            border-radius: 999px;
+        }
+
+        .ranking-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 2, 5, 0.22);
+            border-radius: 999px;
+        }
+
+        .ranking-card {
+            max-height: 640px;
+        }
+
+        .ranking-card .info-card-body {
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
         }
 
         .ranking-item {
@@ -401,6 +440,10 @@
             .chart-shell {
                 min-height: 320px;
             }
+
+            .ranking-card {
+                max-height: 600px;
+            }
         }
 
         @media (max-width: 767.98px) {
@@ -443,6 +486,18 @@
                 min-height: 300px;
             }
 
+            .chart-shell {
+                min-height: 300px;
+            }
+
+            .ranking-card {
+                max-height: 560px;
+            }
+
+            .ranking-list {
+                max-height: 380px;
+            }
+
             .ranking-head {
                 flex-direction: column;
                 align-items: flex-start;
@@ -468,6 +523,11 @@
             .analytics-empty {
                 padding: 1.5rem 1rem;
             }
+
+            .ranking-list {
+                max-height: 340px;
+                padding-right: 0.25rem;
+            }
         }
     </style>
 @endpush
@@ -483,8 +543,8 @@
 
     <div class="welcome-banner">
         <div class="welcome-banner-copy">
-            <h2>Dashboard performa produk dan minat pengunjung</h2>
-            <p>Pantau produk aktif, total klik tombol beli, klik unik, dan minat pembeli pada produk yang belum memiliki link pembelian langsung.</p>
+            <h2>Dashboard performa produk dan klik pengunjung</h2>
+            <p>Pantau produk aktif, total klik tombol beli, klik unik, dan produk yang paling sering menarik perhatian pengunjung.</p>
         </div>
         <div class="quick-actions">
             <a href="{{ route('admin.products.create') }}" class="quick-action-btn">
@@ -548,20 +608,11 @@
                 <p>Klik unik per sesi pengunjung.</p>
             </div>
         </div>
-        <div class="stats-card">
-            <div class="stats-icon dark">
-                <i class="fa-solid fa-bell-concierge"></i>
-            </div>
-            <div class="stats-info">
-                <h3>{{ number_format($totalInterestClicks) }}</h3>
-                <p>Minat pembeli pada produk yang belum punya link.</p>
-            </div>
-        </div>
     </div>
 
     <div class="row g-4 mb-4">
         <div class="col-12 col-xl-8">
-            <div class="info-card h-100">
+            <div class="info-card chart-card h-100">
                 <div class="info-card-header">
                     <div class="info-card-icon">
                         <i class="fa-solid fa-chart-column"></i>
@@ -591,7 +642,7 @@
             </div>
         </div>
         <div class="col-12 col-xl-4">
-            <div class="info-card h-100">
+            <div class="info-card ranking-card h-100">
                 <div class="info-card-header">
                     <div class="info-card-icon">
                         <i class="fa-solid fa-fire"></i>

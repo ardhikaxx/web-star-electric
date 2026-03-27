@@ -15,8 +15,6 @@ class DashboardController extends Controller
         $inactiveProducts = max($totalProducts - $activeProducts, 0);
         $totalClicks = Product::sum('click_count');
         $totalUniqueClicks = Product::sum('unique_click_count');
-        $totalInterestClicks = Product::sum('interest_click_count');
-
         $clickStats = Product::query()
             ->select([
                 'id',
@@ -44,7 +42,6 @@ class DashboardController extends Controller
             'inactiveProducts',
             'totalClicks',
             'totalUniqueClicks',
-            'totalInterestClicks',
             'clickStats',
             'topClickedProducts',
             'clickChartLabels',

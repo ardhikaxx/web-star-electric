@@ -917,7 +917,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#home">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" data-scroll-target="#home">
                 <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -926,10 +926,10 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-0 align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimoni">Testimoni</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#testimoni">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#kontak">Kontak</a></li>
                     <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6285231260016"
                             target="_blank" rel="noopener">Hubungi Kami</a></li>
                 </ul>
@@ -958,8 +958,8 @@
                                     <p>STAR SEPEDA LISTRIK BONDOWOSO menghadirkan pilihan sepeda listrik untuk mobilitas
                                         harian, usaha, hingga gaya hidup modern.</p>
                                     <div class="hero-actions">
-                                        <a href="#produk" class="btn btn-brand">Lihat Produk</a>
-                                        <a href="#kontak" class="btn btn-outline-light">Kunjungi Toko</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#produk" class="btn btn-brand">Lihat Produk</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#kontak" class="btn btn-outline-light">Kunjungi Toko</a>
                                     </div>
                                 </div>
                             </div>
@@ -990,7 +990,7 @@
                                     <p>Unit pilihan dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
                                         setiap hari.</p>
                                     <div class="hero-actions">
-                                        <a href="#testimoni" class="btn btn-outline-light">Lihat Testimoni</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#testimoni" class="btn btn-outline-light">Lihat Testimoni</a>
                                     </div>
                                 </div>
                             </div>
@@ -1024,8 +1024,8 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Pilihan</span>
                     <h3>Model sepeda listrik yang siap menunjang mobilitas Anda</h3>
-                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan <a href="#testimoni">harga promo</a>
-                        yang lebih menarik. Lihat juga <a href="#kontak">layanan purna jual</a> kami!</p>
+                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan <a href="{{ route('home') }}" data-scroll-target="#testimoni">harga promo</a>
+                        yang lebih menarik. Lihat juga <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
                 <div class="row g-4">
                     @forelse($products as $product)
@@ -1224,7 +1224,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a class="footer-brand" href="#home">
+                    <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
                         <img src="{{ asset('assets/logo-footer.png') }}" alt="STAR SEPEDA LISTRIK" class="footer-logo">
                     </a>
                     <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
@@ -1233,10 +1233,10 @@
                 <div>
                     <h3>Navigasi</h3>
                     <ul class="footer-links list-unstyled">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#produk">Produk</a></li>
-                        <li><a href="#testimoni">Testimoni</a></li>
-                        <li><a href="#kontak">Kontak</a></li>
+                        <li><a href="{{ route('home') }}" data-scroll-target="#home">Home</a></li>
+                        <li><a href="{{ route('home') }}" data-scroll-target="#produk">Produk</a></li>
+                        <li><a href="{{ route('home') }}" data-scroll-target="#testimoni">Testimoni</a></li>
+                        <li><a href="{{ route('home') }}" data-scroll-target="#kontak">Kontak</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1332,33 +1332,41 @@
                 });
             });
 
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const hash = this.getAttribute('href');
-                    const target = document.querySelector(hash);
+            const scrollToSection = function(hash) {
+                const target = document.querySelector(hash);
 
-                    if (!target) {
-                        return;
-                    }
+                if (!target) {
+                    return false;
+                }
+
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                if (navbarCollapseEl && navbarCollapseEl.classList.contains('show')) {
+                    navbarCollapse.hide();
+                }
+
+                window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+
+                return true;
+            };
+
+            document.querySelectorAll('[data-scroll-target]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const hash = this.dataset.scrollTarget;
 
                     e.preventDefault();
-
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-
-                    if (navbarCollapseEl && navbarCollapseEl.classList.contains('show')) {
-                        navbarCollapse.hide();
-                    }
-
-                    const nextUrl = hash === '#home'
-                        ? `${window.location.pathname}${window.location.search}`
-                        : hash;
-
-                    window.history.replaceState(null, '', nextUrl);
+                    scrollToSection(hash);
                 });
             });
+
+            if (window.location.hash) {
+                requestAnimationFrame(function() {
+                    scrollToSection(window.location.hash);
+                });
+            }
         });
     </script>
 </body>
