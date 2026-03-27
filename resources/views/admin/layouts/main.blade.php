@@ -100,15 +100,36 @@
             padding: 0 0.25rem 1.1rem;
             margin-bottom: 0.85rem;
             border-bottom: 1px solid rgba(255,255,255,0.12);
+            display: flex;
+            justify-content: center;
         }
 
         .brand-logo {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 0.85rem;
+            gap: 0.7rem;
             color: #fff;
             text-decoration: none;
             min-width: 0;
+            width: 100%;
+        }
+
+        .brand-sidebar-image {
+            width: min(100%, 176px);
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 24px rgba(97, 3, 5, 0.18));
+        }
+
+        .brand-caption {
+            color: rgba(255,255,255,0.74);
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            line-height: 1.3;
+            text-align: center;
         }
 
         .brand-mark {
@@ -711,6 +732,10 @@
                 margin-bottom: 0.75rem;
             }
 
+            .brand-sidebar-image {
+                width: min(100%, 162px);
+            }
+
             .header-left {
                 gap: 0.75rem;
             }
@@ -777,6 +802,10 @@
             .footer-link,
             .logout-btn {
                 padding-inline: 0.72rem;
+            }
+
+            .brand-caption {
+                font-size: 0.68rem;
             }
 
             .top-header {

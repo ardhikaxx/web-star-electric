@@ -2,13 +2,8 @@
     <div class="sidebar-inner">
         <div class="sidebar-brand">
             <a href="{{ route('admin.dashboard') }}" class="brand-logo">
-                <span class="brand-mark">
-                    <i class="fa-solid fa-bolt"></i>
-                </span>
-                <span class="brand-text">
-                    <span class="brand-name">STAR Admin</span>
-                    <small class="brand-sub">Panel pengelolaan</small>
-                </span>
+                <img src="{{ asset('assets/logo-sidebar.png') }}" alt="STAR SEPEDA LISTRIK" class="brand-sidebar-image">
+                <span class="brand-caption">Panel pengelolaan admin</span>
             </a>
         </div>
 
