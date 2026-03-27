@@ -1153,23 +1153,23 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
-                                        Ar-Rahman E-Bike Bondowoso
-                                    </div>
-                                    <div class="store-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kabupaten Bondowoso,
-                                            Jawa Timur 68214</span>
-                                    </div>
-                                </li>
-                                <li class="store-item">
-                                    <div class="store-name">
-                                        <i class="fa-solid fa-store"></i>
                                         ARRAHMAN E-BIKE BONDOWOSO
                                     </div>
                                     <div class="store-address">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <span>Depan Dinas Pengairan, Jl. Ahmad Yani No.89, Penatu, Badean, Kec.
                                             Bondowoso, Kabupaten Bondowoso, Jawa Timur 68214</span>
+                                    </div>
+                                </li>
+                                <li class="store-item">
+                                    <div class="store-name">
+                                        <i class="fa-solid fa-store"></i>
+                                        STAR SEPEDA LISTRIK
+                                    </div>
+                                    <div class="store-address">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span>Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kabupaten Bondowoso,
+                                            Jawa Timur 68214</span>
                                     </div>
                                 </li>
                                 <li class="store-item">
@@ -1193,13 +1193,9 @@
                                 </li>
                                 <li>
                                     <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">Chat
-                                        WhatsApp</a>
-                                </li>
-                                <li>
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">Chat
-                                        WhatsApp</a>
+                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">+62 852-3126-0016</a>
+                                    /
+                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62 813-3197-8800</a>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-clock"></i>
