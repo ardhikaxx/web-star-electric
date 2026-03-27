@@ -167,6 +167,8 @@
         .navbar-logo {
             height: clamp(58px, 7vw, 84px);
             width: auto;
+            margin-top: -25px;
+            margin-bottom: -25px;
         }
 
         .nav-link {
