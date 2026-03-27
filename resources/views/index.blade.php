@@ -1186,9 +1186,7 @@
                                 <li>
                                     <i class="fa-solid fa-phone-volume"></i>
                                     <a href="tel:+6285231260016">+62 852-3126-0016</a>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-phone-volume"></i>
+                                    /
                                     <a href="tel:+6281331978800">+62 813-3197-8800</a>
                                 </li>
                                 <li>
