@@ -1146,8 +1146,7 @@
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
                             <h2>Kunjungi toko kami di Bondowoso</h2>
-                            <p>Datang langsung untuk melihat unit dan konsultasi model sepeda listrik yang
-                                paling sesuai dengan kebutuhan Anda.</p>
+                            <p>Kunjugi toko kami untuk melihat langsung berbagai model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi yang paling sesuai dengan kebutuhan dan budget Anda.</p>
                             <ul class="contact-list list-unstyled mb-0">
                                 <li class="store-item">
                                     <div class="store-name">
