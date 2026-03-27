@@ -1,59 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/assets/logo.png" width="200" alt="STAR SEPEDA LISTRIK">
 </p>
 
-## About Laravel
+<h1 align="center">STAR SEPEDA LISTRIK BONDOWOSO</h1>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<p align="center">
+  Website e-commerce penjualan sepeda listrik terpercaya di Bondowoso, Jawa Timur.<br>
+  <strong>Tech Stack:</strong> Laravel 11 + Bootstrap 5 + MySQL
+</p>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Fitur
 
-## Learning Laravel
+### Landing Page
+- Homepage dengan Hero Section, Produk, Testimoni, dan Kontak
+- Filter dan tampilan produk lengkap
+- Tracking klik produk (untuk analitik)
+- SEO-optimized dengan meta tags lengkap
+- Responsive design
+- WhatsApp Integration untuk pemesanan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### Admin Panel
+- Dashboard dengan statistik produk dan klik
+- Manajemen produk (CRUD)
+- Ganti PIN admin
+- Login dengan sistem PIN 4 digit
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## 🛠️ Tech Stack
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- **Framework:** Laravel 11
+- **Frontend:** Bootstrap 5, Font Awesome 6
+- **Database:** MySQL
+- **Design:** Custom responsive design
+- **Icons:** Font Awesome 6.6.0
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## 📦 Installation
 
-## Contributing
+```bash
+# Clone repository
+git clone https://github.com/ardhikaxx/web-star-electric.git
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Install dependencies
+composer install
+npm install
 
-## Code of Conduct
+# Copy environment file
+cp .env.example .env
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# Generate key
+php artisan key:generate
 
-## Security Vulnerabilities
+# Run migration
+php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Seed data (optional)
+php artisan db:seed --class=AdminSettingSeeder
 
-## License
+# Run server
+php artisan serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## 👤 Default Credentials
+
+| Item | Value |
+|------|-------|
+| PIN Admin | `1234` |
+| WhatsApp | `+62 852-3126-0016` |
+
+---
+
+## 📂 Project Structure
+
+```
+web-star-electric/
+├── app/
+│   ├── Http/Controllers/
+│   │   ├── Admin/          # Admin controllers
+│   │   └── LandingController.php
+│   └── Models/
+│       ├── AdminSetting.php
+│       └── Product.php
+├── database/
+│   ├── migrations/
+│   └── seeders/
+├── public/
+│   └── assets/             # Images, logos
+├── resources/
+│   └── views/
+│       ├── admin/          # Admin panel views
+│       ├── index.blade.php # Landing page
+├── routes/
+│   └── web.php
+└── .env
+```
+
+---
+
+## 📱 Screenshots
+
+### Landing Page
+- Hero section dengan call-to-action
+- Daftar produk lengkap
+- Halaman testimoni
+- Peta lokasi toko
+
+### Admin Panel
+- Dashboard statistik
+- Manajemen produk
+- Ganti PIN
+
+---
+
+## 📞 Kontak
+
+| Channel | Info |
+|---------|------|
+| Alamat | Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten Bondowoso, Jawa Timur 68271 |
+| Telepon | +62 852-3126-0016, +62 813-3197-8800 |
+| WhatsApp | [Chat via WhatsApp](https://wa.me/6285231260016) |
+
+---
+
+## 📝 Lisensi
+
+MIT License - Copyright © 2026 STAR SEPEDA LISTRIK BONDOWOSO
+
+---
+
+<p align="center">Made with ❤️ for STAR SEPEDA LISTRIK Bondowoso</p>
