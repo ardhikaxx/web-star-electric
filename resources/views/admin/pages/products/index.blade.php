@@ -367,6 +367,21 @@
             color: #6b7280;
         }
 
+        .stat-icon.clicks {
+            background: linear-gradient(135deg, rgba(255, 2, 5, 0.16), rgba(255, 77, 77, 0.08));
+            color: var(--primary);
+        }
+
+        .stat-icon.unique {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.18), rgba(245, 158, 11, 0.08));
+            color: var(--warning);
+        }
+
+        .stat-icon.interest {
+            background: linear-gradient(135deg, rgba(16, 33, 50, 0.12), rgba(96, 112, 128, 0.06));
+            color: var(--text);
+        }
+
         .stat-info h4 {
             margin: 0;
             font-size: 1.5rem;
@@ -491,6 +506,16 @@
             color: var(--primary);
         }
 
+        .product-meta-pill.analytics {
+            background: rgba(245, 158, 11, 0.12);
+            color: #b45309;
+        }
+
+        .product-meta-pill.interest {
+            background: rgba(16, 33, 50, 0.06);
+            color: var(--text);
+        }
+
         .product-copy {
             display: flex;
             flex-direction: column;
@@ -518,6 +543,40 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+        }
+
+        .product-insights-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+        }
+
+        .product-insight {
+            padding: 0.78rem 0.85rem;
+            border-radius: 16px;
+            background: rgba(244, 248, 251, 0.95);
+            border: 1px solid rgba(16, 33, 50, 0.06);
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            min-width: 0;
+        }
+
+        .product-insight span {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .product-insight strong {
+            font-size: 0.86rem;
+            color: var(--text);
+            line-height: 1.35;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         .product-price-row {
@@ -771,6 +830,10 @@
                 border-radius: 18px;
             }
 
+            .product-insights-row {
+                grid-template-columns: 1fr;
+            }
+
             .product-price-row {
                 align-items: flex-start;
             }
@@ -804,6 +867,10 @@
                 flex-direction: column;
             }
 
+            .product-insight strong {
+                white-space: normal;
+            }
+
             .pagination-wrap .pagination {
                 gap: 0.35rem;
                 flex-wrap: wrap;
@@ -835,7 +902,7 @@
         <div class="page-header-right">
             <div class="page-header-chip">
                 <span class="page-header-chip-label">Total Produk</span>
-                <span class="page-header-chip-value">{{ $products->total() }} item</span>
+                <span class="page-header-chip-value">{{ $productStats['total'] }} item</span>
             </div>
             <div class="btn-tambah-wrapper">
                 <a href="{{ route('admin.products.create') }}" class="btn-tambah">
@@ -906,7 +973,7 @@
                 <i class="fa-solid fa-box"></i>
             </div>
             <div class="stat-info">
-                <h4>{{ $products->total() }}</h4>
+                <h4>{{ $productStats['total'] }}</h4>
                 <p>Total Produk</p>
             </div>
         </div>
@@ -915,7 +982,7 @@
                 <i class="fa-solid fa-check-circle"></i>
             </div>
             <div class="stat-info">
-                <h4>{{ $products->where('is_active', true)->count() }}</h4>
+                <h4>{{ $productStats['active'] }}</h4>
                 <p>Produk Aktif</p>
             </div>
         </div>
@@ -924,8 +991,35 @@
                 <i class="fa-solid fa-eye-slash"></i>
             </div>
             <div class="stat-info">
-                <h4>{{ $products->where('is_active', false)->count() }}</h4>
+                <h4>{{ $productStats['inactive'] }}</h4>
                 <p>Produk Nonaktif</p>
+            </div>
+        </div>
+        <div class="stat-card-mini">
+            <div class="stat-icon clicks">
+                <i class="fa-solid fa-hand-pointer"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ number_format($productStats['total_clicks']) }}</h4>
+                <p>Total Klik</p>
+            </div>
+        </div>
+        <div class="stat-card-mini">
+            <div class="stat-icon unique">
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ number_format($productStats['unique_clicks']) }}</h4>
+                <p>Klik Unik</p>
+            </div>
+        </div>
+        <div class="stat-card-mini">
+            <div class="stat-icon interest">
+                <i class="fa-solid fa-bell-concierge"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ number_format($productStats['interest_clicks']) }}</h4>
+                <p>Minat Tanpa Link</p>
             </div>
         </div>
     </div>
@@ -958,6 +1052,20 @@
                                 <i class="fa-solid {{ $product->link ? 'fa-link' : 'fa-link-slash' }}"></i>
                                 {{ $product->link ? 'Link tersedia' : 'Belum ada link' }}
                             </span>
+                            <span class="product-meta-pill analytics">
+                                <i class="fa-solid fa-hand-pointer"></i>
+                                {{ number_format($product->click_count) }} klik
+                            </span>
+                            <span class="product-meta-pill analytics">
+                                <i class="fa-solid fa-users"></i>
+                                {{ number_format($product->unique_click_count) }} unik
+                            </span>
+                            @if ($product->interest_click_count > 0)
+                                <span class="product-meta-pill interest">
+                                    <i class="fa-solid fa-bell-concierge"></i>
+                                    {{ number_format($product->interest_click_count) }} minat
+                                </span>
+                            @endif
                             @if ($product->old_price)
                                 <span class="product-meta-pill promo">
                                     <i class="fa-solid fa-tag"></i>
@@ -971,6 +1079,17 @@
                             <p>{{ $product->description }}</p>
                         </div>
 
+                        <div class="product-insights-row">
+                            <div class="product-insight">
+                                <span>Minat Tanpa Link</span>
+                                <strong>{{ number_format($product->interest_click_count) }} klik</strong>
+                            </div>
+                            <div class="product-insight">
+                                <span>Klik Terakhir</span>
+                                <strong>{{ $product->last_clicked_at ? $product->last_clicked_at->format('d M Y, H:i') : 'Belum ada klik' }}</strong>
+                            </div>
+                        </div>
+
                         <div class="product-price-row">
                             <div class="product-price">
                                 @if ($product->old_price)
@@ -980,7 +1099,7 @@
                                 <span class="current-price">Rp
                                     {{ number_format($product->price, 0, ',', '.') }}</span>
                                 <span class="product-price-caption">
-                                    {{ $product->link ? 'Siap diarahkan ke halaman pembelian.' : 'Tambahkan link untuk memudahkan pembeli.' }}
+                                    {{ $product->link ? 'Tombol beli akan diarahkan ke link produk dan kliknya tercatat otomatis.' : 'Klik tanpa link tetap tercatat sebagai minat pembeli.' }}
                                 </span>
                             </div>
                             @if ($product->link)

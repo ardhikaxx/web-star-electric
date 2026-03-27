@@ -1051,13 +1051,14 @@
                                             class="current-price">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
                                     </div>
                                     @if ($product->link)
-                                        <a href="{{ $product->link }}"
+                                        <a href="{{ route('products.click', $product) }}"
                                             target="_blank" rel="noopener" class="btn btn-brand w-100">
                                             <i class="fa-solid fa-cart-shopping me-2"></i>Beli Produk
                                         </a>
                                     @else
                                         <button type="button" class="btn btn-brand w-100 product-unavailable-btn"
-                                            data-product-name="{{ $product->name }}">
+                                            data-product-name="{{ $product->name }}"
+                                            data-track-url="{{ route('products.click', $product) }}">
                                             <i class="fa-solid fa-cart-shopping me-2"></i>Beli Produk
                                         </button>
                                     @endif
@@ -1264,31 +1265,70 @@
                 toggle: false
             }) : null;
             const unavailableButtons = document.querySelectorAll('.product-unavailable-btn');
+            const productAlert = @json(session('product_alert'));
+
+            const showProductAlert = function(payload) {
+                const title = payload?.title || 'Link pembelian belum tersedia';
+                const message = payload?.message ||
+                    'Link pembelian produk ini belum tersedia saat ini. Silakan hubungi toko untuk informasi pemesanan lebih lanjut.';
+                const icon = payload?.icon || 'info';
+
+                if (typeof Swal === 'undefined') {
+                    window.alert(message);
+                    return;
+                }
+
+                Swal.fire({
+                    icon: icon,
+                    title: title,
+                    text: message,
+                    confirmButtonText: 'Mengerti',
+                    buttonsStyling: false,
+                    customClass: {
+                        popup: 'swal-landing-popup',
+                        title: 'swal-landing-title',
+                        htmlContainer: 'swal-landing-content',
+                        confirmButton: 'swal-landing-confirm'
+                    }
+                });
+            };
+
+            if (productAlert) {
+                showProductAlert(productAlert);
+            }
 
             unavailableButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
+                button.addEventListener('click', async function() {
                     const productName = this.dataset.productName || 'Produk ini';
-                    const message =
-                        `Link pembelian untuk ${productName} belum tersedia saat ini. Silakan hubungi toko untuk informasi pemesanan lebih lanjut.`;
+                    const trackUrl = this.dataset.trackUrl;
+                    const fallbackPayload = {
+                        icon: 'info',
+                        title: 'Link pembelian belum tersedia',
+                        message: `Link pembelian untuk ${productName} belum tersedia saat ini. Silakan hubungi toko untuk informasi pemesanan lebih lanjut.`
+                    };
 
-                    if (typeof Swal === 'undefined') {
-                        window.alert(message);
+                    if (!trackUrl) {
+                        showProductAlert(fallbackPayload);
                         return;
                     }
 
-                    Swal.fire({
-                        icon: 'info',
-                        title: 'Link pembelian belum tersedia',
-                        text: message,
-                        confirmButtonText: 'Mengerti',
-                        buttonsStyling: false,
-                        customClass: {
-                            popup: 'swal-landing-popup',
-                            title: 'swal-landing-title',
-                            htmlContainer: 'swal-landing-content',
-                            confirmButton: 'swal-landing-confirm'
-                        }
-                    });
+                    this.disabled = true;
+
+                    try {
+                        const response = await fetch(trackUrl, {
+                            headers: {
+                                'Accept': 'application/json',
+                                'X-Requested-With': 'XMLHttpRequest'
+                            }
+                        });
+
+                        const payload = await response.json();
+                        showProductAlert(response.ok ? payload : fallbackPayload);
+                    } catch (error) {
+                        showProductAlert(fallbackPayload);
+                    } finally {
+                        this.disabled = false;
+                    }
                 });
             });
 

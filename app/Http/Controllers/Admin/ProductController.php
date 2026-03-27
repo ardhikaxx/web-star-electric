@@ -33,19 +33,31 @@ class ProductController extends Controller
 
     public function index(Request $request)
     {
-        $products = Product::orderBy('created_at', 'desc');
+        $query = Product::query()->orderByDesc('created_at');
 
-        if ($request->has('search') && $request->search != '') {
-            $products->where('name', 'like', '%' . $request->search . '%')
-                     ->orWhere('description', 'like', '%' . $request->search . '%');
+        if ($request->filled('search')) {
+            $query->where(function ($builder) use ($request) {
+                $builder->where('name', 'like', '%' . $request->search . '%')
+                    ->orWhere('description', 'like', '%' . $request->search . '%');
+            });
         }
 
-        if ($request->has('status') && $request->status != '') {
-            $products->where('is_active', $request->status == 'active');
+        if ($request->filled('status')) {
+            $query->where('is_active', $request->status === 'active');
         }
 
-        $products = $products->paginate(10)->appends($request->except('page'));
-        return view('admin.pages.products.index', compact('products'));
+        $statsQuery = clone $query;
+        $products = $query->paginate(10)->appends($request->except('page'));
+        $productStats = [
+            'total' => (clone $statsQuery)->count(),
+            'active' => (clone $statsQuery)->where('is_active', true)->count(),
+            'inactive' => (clone $statsQuery)->where('is_active', false)->count(),
+            'total_clicks' => (clone $statsQuery)->sum('click_count'),
+            'unique_clicks' => (clone $statsQuery)->sum('unique_click_count'),
+            'interest_clicks' => (clone $statsQuery)->sum('interest_click_count'),
+        ];
+
+        return view('admin.pages.products.index', compact('products', 'productStats'));
     }
 
     public function create()

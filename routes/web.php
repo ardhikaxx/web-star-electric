@@ -1,15 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Models\Product;
 
-Route::get('/', function () {
-    $products = Product::where('is_active', true)->orderBy('created_at', 'desc')->get();
-    return view('index', compact('products'));
-});
+Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

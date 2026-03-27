@@ -21,6 +21,11 @@ class Product extends Model
 
     protected $casts = [
         'price' => 'decimal:2',
+        'old_price' => 'decimal:2',
         'is_active' => 'boolean',
+        'click_count' => 'integer',
+        'unique_click_count' => 'integer',
+        'interest_click_count' => 'integer',
+        'last_clicked_at' => 'datetime',
     ];
 }
