@@ -13,6 +13,7 @@
             --surface-strong: #ffffff;
             --text: #102132;
             --muted: #607080;
+            --text-muted: #607080;
             --primary: #FF0205;
             --primary-dark: #DA0003;
             --accent: #f59e0b;
@@ -40,6 +41,11 @@
             color: var(--text);
             margin: 0;
             min-height: 100vh;
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(255, 2, 5, 0.16), transparent 28%),
+                radial-gradient(circle at bottom right, rgba(245, 158, 11, 0.12), transparent 24%),
+                linear-gradient(135deg, #23272f 0%, #161a20 100%);
         }
 
         /* Styles specific to Login Page, extracted from master.blade.php */
@@ -48,21 +54,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--secondary) 0%, #2d2d2d 100%);
+            position: relative;
+            padding: clamp(1rem, 3vw, 2rem);
         }
 
         .login-card {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 28px;
+            box-shadow: 0 24px 64px rgba(0,0,0,0.24);
             width: 100%;
-            max-width: 400px;
-            padding: 2.5rem;
+            max-width: 430px;
+            padding: clamp(1.4rem, 3.6vw, 2.5rem);
+            backdrop-filter: blur(14px);
         }
 
         .login-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.85rem;
         }
 
         .login-header h2 {
@@ -77,27 +88,41 @@
             font-size: 0.9rem;
         }
 
+        .login-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(circle at 15% 18%, rgba(255, 2, 5, 0.18), transparent 18%),
+                radial-gradient(circle at 84% 20%, rgba(255, 255, 255, 0.08), transparent 14%),
+                radial-gradient(circle at 72% 78%, rgba(245, 158, 11, 0.12), transparent 18%);
+        }
+
         .pin-input {
             display: flex;
             justify-content: center;
-            gap: 0.75rem;
+            gap: clamp(0.55rem, 2vw, 0.8rem);
             margin-bottom: 1.5rem;
         }
 
         .pin-input input {
-            width: 60px;
-            height: 70px;
+            flex: 1 1 0;
+            width: 100%;
+            max-width: 64px;
+            height: clamp(60px, 9vw, 72px);
             text-align: center;
-            font-size: 1.75rem;
+            font-size: clamp(1.4rem, 3.4vw, 1.75rem);
             font-weight: 700;
             border: 2px solid var(--border);
-            border-radius: 12px;
+            border-radius: 18px;
             transition: all 0.2s ease;
+            background: linear-gradient(180deg, #ffffff 0%, #f8fbfd 100%);
         }
 
         .pin-input input:focus {
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(230, 32, 38, 0.1);
+            transform: translateY(-2px);
         }
 
         .pin-input input.error {
@@ -108,24 +133,51 @@
             width: 80px;
             height: 80px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 50%;
+            border-radius: 26px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: #fff;
+            box-shadow: 0 16px 32px rgba(255, 2, 5, 0.22);
         }
 
         /* General styles that should apply to both admin and auth if they are derived from master */
         .btn-primary {
             background: var(--primary);
             border-color: var(--primary);
+            border-radius: 18px;
+            min-height: 56px;
         }
 
         .btn-primary:hover {
             background: var(--primary-dark);
             border-color: var(--primary-dark);
+        }
+
+        @media (max-width: 575.98px) {
+            .login-card {
+                border-radius: 24px;
+                padding: 1.25rem;
+            }
+
+            .login-logo {
+                width: 68px;
+                height: 68px;
+                border-radius: 22px;
+                font-size: 1.7rem;
+                margin-bottom: 1.2rem;
+            }
+
+            .login-header {
+                margin-bottom: 1.5rem;
+            }
+
+            .pin-input input {
+                max-width: 58px;
+                border-radius: 16px;
+            }
         }
     </style>
     @stack('styles')

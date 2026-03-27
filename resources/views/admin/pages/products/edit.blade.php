@@ -10,16 +10,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
         .page-header h2 {
             margin: 0;
-            font-size: 1.75rem;
+            font-size: clamp(1.45rem, 1.2rem + 1vw, 1.82rem);
             font-weight: 800;
             color: var(--text);
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            line-height: 1.2;
         }
 
         .page-header h2 i {
@@ -44,12 +47,14 @@
         }
 
         .form-card-header {
-            padding: 1.5rem 2rem;
+            padding: clamp(1.15rem, 2vw, 1.5rem) clamp(1.2rem, 2.5vw, 2rem);
             border-bottom: 1px solid var(--line);
             background: rgba(248, 251, 253, 0.5);
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 0.85rem;
+            flex-wrap: wrap;
         }
 
         .form-card-header h3 {
@@ -63,7 +68,7 @@
         }
 
         .form-card-body {
-            padding: 2rem;
+            padding: clamp(1.2rem, 2.6vw, 2rem);
         }
 
         .form-label {
@@ -112,6 +117,7 @@
             background-color: #fff;
             width: 100%;
             display: block;
+            min-height: 58px;
         }
 
         .form-control-custom:focus {
@@ -196,6 +202,7 @@
             font-weight: 700;
             background: var(--bg-light);
             border: 1px solid var(--line);
+            white-space: nowrap;
         }
 
         .status-badge.active {
@@ -237,6 +244,7 @@
             gap: 1rem;
             justify-content: flex-end;
             margin-top: 2rem;
+            flex-wrap: wrap;
         }
 
         .btn-modern {
@@ -249,6 +257,7 @@
             gap: 0.75rem;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: none;
+            min-height: 56px;
         }
 
         .btn-modern-primary {
@@ -316,8 +325,12 @@
         @media (max-width: 991.98px) {
             .page-header {
                 flex-direction: column;
-                align-items: flex-start;
+                align-items: stretch;
                 gap: 1rem;
+            }
+
+            .status-badge {
+                width: fit-content;
             }
             
             .action-bar {
@@ -330,193 +343,226 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 767.98px) {
+            .page-header h2 i {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                font-size: 1.1rem;
+            }
+
+            .status-badge {
+                width: 100%;
+                justify-content: center;
+                border-radius: 16px;
+            }
+
+            .image-preview-wrapper {
+                max-width: 360px;
+                margin-inline: auto;
+            }
+
+            .custom-switch {
+                padding: 0.9rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .form-card {
+                border-radius: 22px;
+            }
+
+            .btn-modern {
+                padding-inline: 1.2rem;
+            }
+        }
     </style>
 @endpush
 
 @section('content')
-    <div class="page-content">
-        @include('admin.partials.breadcrumb', [
-            'links' => [
-                ['label' => 'Admin', 'url' => route('admin.dashboard')],
-                ['label' => 'Produk', 'url' => route('admin.products.index')],
-                ['label' => 'Edit Produk'],
-            ],
-        ])
+    @include('admin.partials.breadcrumb', [
+        'links' => [
+            ['label' => 'Admin', 'url' => route('admin.dashboard')],
+            ['label' => 'Produk', 'url' => route('admin.products.index')],
+            ['label' => 'Edit Produk'],
+        ],
+    ])
 
-        <div class="page-header d-flex align-items-center justify-content-between mb-4">
-            <h2>
-                <i class="fa-solid fa-pen-nib"></i>
-                Edit Produk
-            </h2>
-            <div class="status-badge {{ $product->is_active ? 'active' : '' }}">
-                <i class="fa-solid {{ $product->is_active ? 'fa-circle-check' : 'fa-circle-xmark' }}"></i>
-                {{ $product->is_active ? 'Produk Aktif' : 'Draft / Nonaktif' }}
-            </div>
+    <div class="page-header d-flex align-items-center justify-content-between mb-4">
+        <h2>
+            <i class="fa-solid fa-pen-nib"></i>
+            Edit Produk
+        </h2>
+        <div class="status-badge {{ $product->is_active ? 'active' : '' }}">
+            <i class="fa-solid {{ $product->is_active ? 'fa-circle-check' : 'fa-circle-xmark' }}"></i>
+            {{ $product->is_active ? 'Produk Aktif' : 'Draft / Nonaktif' }}
         </div>
+    </div>
 
-        <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
-            <div class="row">
-                <div class="col-12 col-lg-4">
-                    <!-- Image Card -->
-                    <div class="form-card">
-                        <div class="form-card-header">
-                            <h3><i class="fa-solid fa-image me-2"></i>Foto Produk</h3>
+        <div class="row g-4">
+            <div class="col-12 col-lg-4">
+                <!-- Image Card -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h3><i class="fa-solid fa-image me-2"></i>Foto Produk</h3>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="image-preview-wrapper" id="imageUploadArea">
+                            <img src="{{ asset('uploads/products/' . $product->image) }}" id="previewImg"
+                                alt="{{ $product->name }}">
+                            <div class="image-overlay">
+                                <i class="fa-solid fa-camera-rotate"></i>
+                                <span>Ganti Foto Produk</span>
+                            </div>
                         </div>
-                        <div class="form-card-body">
-                            <div class="image-preview-wrapper" id="imageUploadArea">
-                                <img src="{{ asset('uploads/products/' . $product->image) }}" id="previewImg"
-                                    alt="{{ $product->name }}">
-                                <div class="image-overlay">
-                                    <i class="fa-solid fa-camera-rotate"></i>
-                                    <span>Ganti Foto Produk</span>
-                                </div>
+                        <input type="file" name="image" id="imageInput" class="d-none"
+                            accept="image/jpeg,image/png,image/webp">
+                        
+                        <div class="mt-4">
+                            <div class="alert alert-info py-2 px-3 mb-0" style="font-size: 0.8rem; border-radius: var(--radius-sm);">
+                                <i class="fa-solid fa-circle-info me-2"></i>
+                                Format: JPG, PNG, WebP (Max 2MB). Kosongkan jika tidak ingin mengubah foto.
                             </div>
-                            <input type="file" name="image" id="imageInput" class="d-none"
-                                accept="image/jpeg,image/png,image/webp">
-                            
-                            <div class="mt-4">
-                                <div class="alert alert-info py-2 px-3 mb-0" style="font-size: 0.8rem; border-radius: var(--radius-sm);">
-                                    <i class="fa-solid fa-circle-info me-2"></i>
-                                    Format: JPG, PNG, WebP (Max 2MB). Kosongkan jika tidak ingin mengubah foto.
-                                </div>
+                        </div>
+                        @error('image')
+                            <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Status Card -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h3><i class="fa-solid fa-sliders me-2"></i>Pengaturan</h3>
+                    </div>
+                    <div class="form-card-body">
+                        <label class="form-label">Status Visibilitas</label>
+                        <label class="custom-switch" for="isActive">
+                            <div class="form-check form-switch p-0 m-0">
+                                <input class="form-check-input ms-0" type="checkbox" name="is_active" id="isActive"
+                                    value="1" {{ old('is_active', $product->is_active) ? 'checked' : '' }}>
                             </div>
-                            @error('image')
+                            <div>
+                                <div style="font-weight: 700; color: var(--text); font-size: 0.9rem;">Tampilkan Produk</div>
+                                <div style="font-size: 0.75rem; color: var(--muted);">Produk akan terlihat oleh pengunjung</div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-8">
+                <!-- General Info Card -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h3><i class="fa-solid fa-circle-info me-2"></i>Informasi Umum</h3>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="mb-4">
+                            <label class="form-label">Nama Produk <span class="required">*</span></label>
+                            <div class="input-group-custom">
+                                <span class="input-group-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-box"></i>
+                                </span>
+                                <input type="text" name="name"
+                                    class="form-control-custom @error('name') is-invalid @enderror"
+                                    value="{{ old('name', $product->name) }}"
+                                    placeholder="Masukkan nama produk sepeda listrik">
+                            </div>
+                            @error('name')
+                                <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Deskripsi Lengkap <span class="required">*</span></label>
+                            <textarea name="description" class="form-control-custom @error('description') is-invalid @enderror"
+                                placeholder="Jelaskan detail, spesifikasi, dan keunggulan produk...">{{ old('description', $product->description) }}</textarea>
+                            @error('description')
+                                <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-0">
+                            <label class="form-label">Link Pembelian (Opsional)</label>
+                            <div class="input-group-custom">
+                                <span class="input-group-icon" aria-hidden="true">
+                                    <i class="fa-solid fa-link"></i>
+                                </span>
+                                <input type="url" name="link"
+                                    class="form-control-custom @error('link') is-invalid @enderror"
+                                    value="{{ old('link', $product->link) }}"
+                                    placeholder="https://shopee.co.id/produk-anda">
+                            </div>
+                            <div class="mt-2" style="font-size: 0.75rem; color: var(--muted);">
+                                Arahkan pembeli ke halaman marketplace atau WhatsApp.
+                            </div>
+                            @error('link')
                                 <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
                             @enderror
                         </div>
                     </div>
+                </div>
 
-                    <!-- Status Card -->
-                    <div class="form-card">
-                        <div class="form-card-header">
-                            <h3><i class="fa-solid fa-sliders me-2"></i>Pengaturan</h3>
-                        </div>
-                        <div class="form-card-body">
-                            <label class="form-label">Status Visibilitas</label>
-                            <label class="custom-switch" for="isActive">
-                                <div class="form-check form-switch p-0 m-0">
-                                    <input class="form-check-input ms-0" type="checkbox" name="is_active" id="isActive"
-                                        value="1" {{ old('is_active', $product->is_active) ? 'checked' : '' }}>
+                <!-- Pricing Card -->
+                <div class="form-card">
+                    <div class="form-card-header">
+                        <h3><i class="fa-solid fa-tags me-2"></i>Informasi Harga</h3>
+                    </div>
+                    <div class="form-card-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="form-label">Harga Jual <span class="required">*</span></label>
+                                <div class="price-input-wrapper">
+                                    <span class="price-symbol">Rp</span>
+                                    <input type="number" name="price" id="priceInput"
+                                        class="form-control-custom form-control-price @error('price') is-invalid @enderror"
+                                        value="{{ old('price', $product->price) }}" placeholder="0" min="0">
                                 </div>
-                                <div>
-                                    <div style="font-weight: 700; color: var(--text); font-size: 0.9rem;">Tampilkan Produk</div>
-                                    <div style="font-size: 0.75rem; color: var(--muted);">Produk akan terlihat oleh pengunjung</div>
+                                @error('price')
+                                    <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Harga Coret (Diskon)</label>
+                                <div class="price-input-wrapper">
+                                    <span class="price-symbol">Rp</span>
+                                    <input type="number" name="old_price" id="oldPriceInput"
+                                        class="form-control-custom form-control-price @error('old_price') is-invalid @enderror"
+                                        value="{{ old('old_price', $product->old_price) }}" placeholder="0"
+                                        min="0">
                                 </div>
-                            </label>
+                                <div class="price-helper">
+                                    Jika harga coret masih kosong, nilainya akan disarankan otomatis dari harga jual. Tetap bisa Anda sesuaikan manual.
+                                </div>
+                                @error('old_price')
+                                    <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-12 col-lg-8">
-                    <!-- General Info Card -->
-                    <div class="form-card">
-                        <div class="form-card-header">
-                            <h3><i class="fa-solid fa-circle-info me-2"></i>Informasi Umum</h3>
-                        </div>
-                        <div class="form-card-body">
-                            <div class="mb-4">
-                                <label class="form-label">Nama Produk <span class="required">*</span></label>
-                                <div class="input-group-custom">
-                                    <span class="input-group-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-box"></i>
-                                    </span>
-                                    <input type="text" name="name"
-                                        class="form-control-custom @error('name') is-invalid @enderror"
-                                        value="{{ old('name', $product->name) }}"
-                                        placeholder="Masukkan nama produk sepeda listrik">
-                                </div>
-                                @error('name')
-                                    <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-4">
-                                <label class="form-label">Deskripsi Lengkap <span class="required">*</span></label>
-                                <textarea name="description" class="form-control-custom @error('description') is-invalid @enderror"
-                                    placeholder="Jelaskan detail, spesifikasi, dan keunggulan produk...">{{ old('description', $product->description) }}</textarea>
-                                @error('description')
-                                    <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
-                                @enderror
-                            </div>
-
-                            <div class="mb-0">
-                                <label class="form-label">Link Pembelian (Opsional)</label>
-                                <div class="input-group-custom">
-                                    <span class="input-group-icon" aria-hidden="true">
-                                        <i class="fa-solid fa-link"></i>
-                                    </span>
-                                    <input type="url" name="link"
-                                        class="form-control-custom @error('link') is-invalid @enderror"
-                                        value="{{ old('link', $product->link) }}"
-                                        placeholder="https://shopee.co.id/produk-anda">
-                                </div>
-                                <div class="mt-2" style="font-size: 0.75rem; color: var(--muted);">
-                                    Arahkan pembeli ke halaman marketplace atau WhatsApp.
-                                </div>
-                                @error('link')
-                                    <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
-                                @enderror
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card -->
-                    <div class="form-card">
-                        <div class="form-card-header">
-                            <h3><i class="fa-solid fa-tags me-2"></i>Informasi Harga</h3>
-                        </div>
-                        <div class="form-card-body">
-                            <div class="row">
-                                <div class="col-md-6 mb-4 mb-md-0">
-                                    <label class="form-label">Harga Jual <span class="required">*</span></label>
-                                    <div class="price-input-wrapper">
-                                        <span class="price-symbol">Rp</span>
-                                        <input type="number" name="price" id="priceInput"
-                                            class="form-control-custom form-control-price @error('price') is-invalid @enderror"
-                                            value="{{ old('price', $product->price) }}" placeholder="0" min="0">
-                                    </div>
-                                    @error('price')
-                                        <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
-                                    @enderror
-                                </div>
-                                <div class="col-md-6">
-                                    <label class="form-label">Harga Coret (Diskon)</label>
-                                    <div class="price-input-wrapper">
-                                        <span class="price-symbol">Rp</span>
-                                        <input type="number" name="old_price" id="oldPriceInput"
-                                            class="form-control-custom form-control-price @error('old_price') is-invalid @enderror"
-                                            value="{{ old('old_price', $product->old_price) }}" placeholder="0"
-                                            min="0">
-                                    </div>
-                                    <div class="price-helper">
-                                        Jika harga coret masih kosong, nilainya akan disarankan otomatis dari harga jual. Tetap bisa Anda sesuaikan manual.
-                                    </div>
-                                    @error('old_price')
-                                        <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Action Buttons -->
-                    <div class="action-bar">
-                        <a href="{{ route('admin.products.index') }}" class="btn-modern btn-modern-light">
-                            <i class="fa-solid fa-arrow-left"></i>
-                            Kembali
-                        </a>
-                        <button type="submit" class="btn-modern btn-modern-primary">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
-                            Simpan Perubahan
-                        </button>
-                    </div>
+                <!-- Action Buttons -->
+                <div class="action-bar">
+                    <a href="{{ route('admin.products.index') }}" class="btn-modern btn-modern-light">
+                        <i class="fa-solid fa-arrow-left"></i>
+                        Kembali
+                    </a>
+                    <button type="submit" class="btn-modern btn-modern-primary">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Simpan Perubahan
+                    </button>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 @endsection
 
 @push('scripts')

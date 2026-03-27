@@ -11,7 +11,7 @@
             justify-content: space-between;
             margin-bottom: 2rem;
             flex-wrap: wrap;
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .page-header-left {
@@ -36,9 +36,10 @@
 
         .page-header-info h2 {
             margin: 0;
-            font-size: 1.5rem;
+            font-size: clamp(1.38rem, 1.2rem + 0.8vw, 1.65rem);
             font-weight: 700;
             color: var(--text);
+            line-height: 1.2;
         }
 
         .page-header-info .subtitle {
@@ -49,6 +50,7 @@
 
         .btn-tambah-wrapper {
             display: inline-block;
+            max-width: 100%;
         }
 
         .btn-tambah {
@@ -67,6 +69,7 @@
             box-shadow: 0 8px 24px rgba(255, 2, 5, 0.35);
             overflow: hidden;
             height: 52px;
+            max-width: 100%;
         }
 
         .btn-tambah:hover {
@@ -125,9 +128,65 @@
             margin-bottom: 2rem;
         }
 
+        .products-toolbar {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.7fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .toolbar-search-form,
+        .toolbar-filter-form {
+            min-width: 0;
+        }
+
+        .toolbar-search-form {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.75rem;
+        }
+
+        .toolbar-search,
+        .toolbar-filter {
+            position: relative;
+        }
+
+        .toolbar-search i,
+        .toolbar-filter i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--muted);
+            pointer-events: none;
+        }
+
+        .toolbar-search-control,
+        .toolbar-filter-select {
+            height: 54px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: #fff;
+            box-shadow: 0 12px 26px rgba(8, 19, 33, 0.06);
+        }
+
+        .toolbar-search-control {
+            padding-left: 2.8rem;
+        }
+
+        .toolbar-filter-select {
+            padding-left: 2.75rem;
+        }
+
+        .toolbar-search-btn {
+            min-width: 110px;
+            border-radius: 16px;
+            font-weight: 600;
+        }
+
         .stat-card-mini {
             background: var(--surface-strong);
-            border-radius: 16px;
+            border-radius: 18px;
             padding: 1.25rem;
             box-shadow: var(--shadow);
             display: flex;
@@ -175,8 +234,9 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 1.5rem;
+            align-items: start;
         }
 
         .product-card {
@@ -196,7 +256,7 @@
 
         .product-image-container {
             position: relative;
-            height: 200px;
+            height: clamp(190px, 24vw, 220px);
             overflow: hidden;
         }
 
@@ -262,8 +322,10 @@
 
         .product-price-row {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
             margin-bottom: 1rem;
         }
 
@@ -308,6 +370,11 @@
             gap: 0.75rem;
             padding-top: 1rem;
             border-top: 1px solid var(--line);
+        }
+
+        .product-delete-form {
+            flex: 1;
+            display: flex;
         }
 
         .btn-action {
@@ -412,176 +479,234 @@
             color: #fff;
         }
 
+        @media (max-width: 991.98px) {
+            .products-toolbar {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-row {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
         @media (max-width: 767.98px) {
             .page-header {
                 flex-direction: column;
                 align-items: stretch;
-                text-align: center;
             }
 
             .page-header-left {
                 flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
             }
 
             .btn-tambah {
-                justify-content: center;
+                width: 100%;
+                justify-content: flex-start;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .toolbar-search-form {
+                grid-template-columns: 1fr;
+            }
+
+            .toolbar-search-btn {
+                width: 100%;
+                min-height: 52px;
+            }
+
+            .stats-row {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card {
+                border-radius: 18px;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .page-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 14px;
+            }
+
+            .product-content {
+                padding: 1rem;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .pagination-wrap .pagination {
+                gap: 0.35rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
 @endpush
 
 @section('content')
-    <div class="page-content">
-        @include('admin.partials.breadcrumb', [
-            'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Produk']],
-        ])
+    @include('admin.partials.breadcrumb', [
+        'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Produk']],
+    ])
 
-        <div class="page-header d-flex align-items-center justify-content-between mb-3">
-            <div class="page-header-left">
-                <div class="page-icon">
-                    <i class="fa-solid fa-box"></i>
-                </div>
-                <div class="page-header-info">
-                    <h2>Manajemen Produk</h2>
-                    <p class="subtitle">Kelola semua produk Anda di satu tempat</p>
-                </div>
+    <div class="page-header d-flex align-items-center justify-content-between mb-3">
+        <div class="page-header-left">
+            <div class="page-icon">
+                <i class="fa-solid fa-box"></i>
             </div>
-            <div class="btn-tambah-wrapper">
-                <a href="{{ route('admin.products.create') }}" class="btn-tambah">
-                    <div class="btn-tambah-icon">
-                        <i class="fa-solid fa-plus"></i>
-                    </div>
-                    <div class="btn-tambah-text">
-                        <span class="btn-tambah-title">Tambah Produk</span>
-                        <span class="btn-tambah-subtitle">Buat produk baru</span>
-                    </div>
-                </a>
+            <div class="page-header-info">
+                <h2>Manajemen Produk</h2>
+                <p class="subtitle">Kelola semua produk Anda di satu tempat</p>
             </div>
         </div>
-
-        <div class="row mb-4">
-            <div class="col-md-6 mb-3 mb-md-0">
-                <form action="{{ route('admin.products.index') }}" method="GET" class="d-flex">
-                    <input type="text" name="search" class="form-control me-2" placeholder="Cari produk..."
-                        value="{{ request('search') }}">
-                    <button type="submit" class="btn btn-primary">Cari</button>
-                </form>
-            </div>
-            <div class="col-md-3 ms-auto">
-                <form action="{{ route('admin.products.index') }}" method="GET">
-                    <select name="status" class="form-select" onchange="this.form.submit()">
-                        <option value="">Semua Status</option>
-                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
-                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Nonaktif</option>
-                    </select>
-                </form>
-            </div>
-        </div>
-
-        <div class="stats-row">
-            <div class="stat-card-mini">
-                <div class="stat-icon total">
-                    <i class="fa-solid fa-box"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>{{ $products->total() }}</h4>
-                    <p>Total Produk</p>
-                </div>
-            </div>
-            <div class="stat-card-mini">
-                <div class="stat-icon active">
-                    <i class="fa-solid fa-check-circle"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>{{ $products->where('is_active', true)->count() }}</h4>
-                    <p>Produk Aktif</p>
-                </div>
-            </div>
-            <div class="stat-card-mini">
-                <div class="stat-icon inactive">
-                    <i class="fa-solid fa-eye-slash"></i>
-                </div>
-                <div class="stat-info">
-                    <h4>{{ $products->where('is_active', false)->count() }}</h4>
-                    <p>Produk Nonaktif</p>
-                </div>
-            </div>
-        </div>
-
-        @if ($products->isEmpty())
-            <div class="empty-state">
-                <div class="empty-icon">
-                    <i class="fa-solid fa-box-open"></i>
-                </div>
-                <h3>Belum Ada Produk</h3>
-                <p>Silakan tambahkan produk pertama Anda</p>
-                <a href="{{ route('admin.products.create') }}" class="btn-tambah">
+        <div class="btn-tambah-wrapper">
+            <a href="{{ route('admin.products.create') }}" class="btn-tambah">
+                <div class="btn-tambah-icon">
                     <i class="fa-solid fa-plus"></i>
-                    Tambah Produk Pertama
-                </a>
+                </div>
+                <div class="btn-tambah-text">
+                    <span class="btn-tambah-title">Tambah Produk</span>
+                    <span class="btn-tambah-subtitle">Buat produk baru</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="products-toolbar">
+        <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-search-form">
+            @if (request('status'))
+                <input type="hidden" name="status" value="{{ request('status') }}">
+            @endif
+            <div class="toolbar-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" name="search" class="form-control toolbar-search-control"
+                    placeholder="Cari nama atau deskripsi produk..." value="{{ request('search') }}">
             </div>
-        @else
-            <div class="products-grid">
-                @foreach ($products as $product)
-                    <div class="product-card">
-                        <div class="product-image-container">
-                            <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
-                            <span class="product-status-badge {{ $product->is_active ? 'active' : 'inactive' }}">
-                                {{ $product->is_active ? 'Aktif' : 'Nonaktif' }}
-                            </span>
-                        </div>
-                        <div class="product-content">
-                            <h3>{{ $product->name }}</h3>
-                            <p>{{ $product->description }}</p>
-                            <div class="product-price-row">
-                                <div class="product-price">
-                                    @if ($product->old_price)
-                                        <span class="old-price">Rp
-                                            {{ number_format($product->old_price, 0, ',', '.') }}</span>
-                                    @endif
-                                    <span class="current-price">Rp
-                                        {{ number_format($product->price, 0, ',', '.') }}</span>
-                                </div>
-                                @if ($product->link)
-                                    <a href="{{ $product->link }}" target="_blank" class="product-link-btn">
-                                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                                    </a>
+            <button type="submit" class="btn btn-primary toolbar-search-btn">Cari</button>
+        </form>
+
+        <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-filter-form">
+            @if (request('search'))
+                <input type="hidden" name="search" value="{{ request('search') }}">
+            @endif
+            <div class="toolbar-filter">
+                <i class="fa-solid fa-sliders"></i>
+                <select name="status" class="form-select toolbar-filter-select" onchange="this.form.submit()">
+                    <option value="">Semua Status</option>
+                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
+                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Nonaktif</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="stats-row">
+        <div class="stat-card-mini">
+            <div class="stat-icon total">
+                <i class="fa-solid fa-box"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ $products->total() }}</h4>
+                <p>Total Produk</p>
+            </div>
+        </div>
+        <div class="stat-card-mini">
+            <div class="stat-icon active">
+                <i class="fa-solid fa-check-circle"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ $products->where('is_active', true)->count() }}</h4>
+                <p>Produk Aktif</p>
+            </div>
+        </div>
+        <div class="stat-card-mini">
+            <div class="stat-icon inactive">
+                <i class="fa-solid fa-eye-slash"></i>
+            </div>
+            <div class="stat-info">
+                <h4>{{ $products->where('is_active', false)->count() }}</h4>
+                <p>Produk Nonaktif</p>
+            </div>
+        </div>
+    </div>
+
+    @if ($products->isEmpty())
+        <div class="empty-state">
+            <div class="empty-icon">
+                <i class="fa-solid fa-box-open"></i>
+            </div>
+            <h3>Belum Ada Produk</h3>
+            <p>Silakan tambahkan produk pertama Anda</p>
+            <a href="{{ route('admin.products.create') }}" class="btn-tambah">
+                <i class="fa-solid fa-plus"></i>
+                Tambah Produk Pertama
+            </a>
+        </div>
+    @else
+        <div class="products-grid">
+            @foreach ($products as $product)
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
+                        <span class="product-status-badge {{ $product->is_active ? 'active' : 'inactive' }}">
+                            {{ $product->is_active ? 'Aktif' : 'Nonaktif' }}
+                        </span>
+                    </div>
+                    <div class="product-content">
+                        <h3>{{ $product->name }}</h3>
+                        <p>{{ $product->description }}</p>
+                        <div class="product-price-row">
+                            <div class="product-price">
+                                @if ($product->old_price)
+                                    <span class="old-price">Rp
+                                        {{ number_format($product->old_price, 0, ',', '.') }}</span>
                                 @endif
+                                <span class="current-price">Rp
+                                    {{ number_format($product->price, 0, ',', '.') }}</span>
                             </div>
-                            <div class="product-actions">
-                                <a href="{{ route('admin.products.edit', $product->id) }}" class="btn-action btn-edit">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                    Edit
+                            @if ($product->link)
+                                <a href="{{ $product->link }}" target="_blank" class="product-link-btn">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
-                                <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
-                                    class="d-inline" data-swal-confirm
-                                    data-confirm-title="Hapus produk ini?"
-                                    data-confirm-text="Produk {{ $product->name }} akan dihapus permanen."
-                                    data-confirm-button-text="Ya, hapus"
-                                    data-cancel-button-text="Batal"
-                                    data-confirm-icon="warning">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn-action btn-delete">
-                                        <i class="fa-solid fa-trash"></i>
-                                        Hapus
-                                    </button>
-                                </form>
-                            </div>
+                            @endif
+                        </div>
+                        <div class="product-actions">
+                            <a href="{{ route('admin.products.edit', $product->id) }}" class="btn-action btn-edit">
+                                <i class="fa-solid fa-pen-to-square"></i>
+                                Edit
+                            </a>
+                            <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                                class="product-delete-form" data-swal-confirm
+                                data-confirm-title="Hapus produk ini?"
+                                data-confirm-text="Produk {{ $product->name }} akan dihapus permanen."
+                                data-confirm-button-text="Ya, hapus"
+                                data-cancel-button-text="Batal"
+                                data-confirm-icon="warning">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn-action btn-delete">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Hapus
+                                </button>
+                            </form>
                         </div>
                     </div>
-                @endforeach
-            </div>
-
-            @if ($products->hasPages())
-                <div class="pagination-wrap">
-                    {{ $products->links('pagination::bootstrap-5') }}
                 </div>
-            @endif
+            @endforeach
+        </div>
+
+        @if ($products->hasPages())
+            <div class="pagination-wrap">
+                {{ $products->links('pagination::bootstrap-5') }}
+            </div>
         @endif
-    </div>
+    @endif
 @endsection

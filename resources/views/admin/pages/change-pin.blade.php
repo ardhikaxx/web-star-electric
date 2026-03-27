@@ -15,12 +15,13 @@
 
         .pin-page-header h2 {
             margin: 0;
-            font-size: 1.75rem;
+            font-size: clamp(1.45rem, 1.2rem + 1vw, 1.8rem);
             font-weight: 800;
             color: var(--text);
             display: flex;
             align-items: center;
             gap: 0.75rem;
+            line-height: 1.2;
         }
 
         .pin-page-header h2 i {
@@ -63,7 +64,7 @@
         .pin-side-card,
         .pin-form-card {
             background: #fff;
-            border-radius: var(--radius-lg);
+            border-radius: 24px;
             border: 1px solid var(--line);
             box-shadow: var(--shadow);
             overflow: hidden;
@@ -148,7 +149,7 @@
         }
 
         .pin-form-card-header {
-            padding: 1.45rem 1.75rem;
+            padding: clamp(1.2rem, 2vw, 1.45rem) clamp(1.2rem, 2.4vw, 1.75rem);
             border-bottom: 1px solid var(--line);
             background: rgba(248, 251, 253, 0.58);
             display: flex;
@@ -178,7 +179,7 @@
         }
 
         .pin-form-card-body {
-            padding: 1.75rem;
+            padding: clamp(1.2rem, 2.4vw, 1.75rem);
         }
 
         .pin-section + .pin-section {
@@ -208,6 +209,7 @@
             gap: 0.8rem;
             justify-content: flex-start;
             flex-wrap: nowrap;
+            max-width: 340px;
         }
 
         .pin-digit {
@@ -314,6 +316,10 @@
                 flex-direction: column;
             }
 
+            .pin-status-badge {
+                width: fit-content;
+            }
+
             .pin-side-card {
                 position: static;
             }
@@ -334,19 +340,45 @@
                 padding: 1.2rem;
             }
 
+            .pin-status-badge {
+                width: 100%;
+                justify-content: center;
+                border-radius: 18px;
+            }
+
             .pin-input-group {
                 gap: 0.55rem;
+                max-width: 100%;
+                justify-content: space-between;
             }
 
             .pin-digit {
-                width: 56px;
+                width: auto;
+                flex: 1 1 0;
                 height: 62px;
                 border-radius: 16px;
                 font-size: 1.4rem;
+                min-width: 0;
             }
 
             .pin-page-header h2 {
                 font-size: 1.45rem;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .pin-page-header p {
+                font-size: 0.9rem;
+            }
+
+            .pin-digit {
+                height: 58px;
+                font-size: 1.25rem;
+                border-radius: 15px;
+            }
+
+            .pin-helper {
+                font-size: 0.8rem;
             }
         }
     </style>
