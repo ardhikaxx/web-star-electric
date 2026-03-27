@@ -135,7 +135,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 0.5rem;
             padding: 0;
         }
 
