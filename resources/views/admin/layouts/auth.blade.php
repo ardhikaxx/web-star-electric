@@ -130,16 +130,13 @@
         }
 
 .login-logo {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            border-radius: 26px;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
             padding: 10px;
-            box-shadow: 0 16px 32px rgba(255, 2, 5, 0.22);
         }
 
         .login-logo img {
