@@ -148,22 +148,14 @@
 
         .btn-tambah-text {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             padding: 0 1.25rem 0 0.75rem;
-            gap: 0.05rem;
         }
 
         .btn-tambah-title {
             font-size: 0.9rem;
             font-weight: 600;
             line-height: 1.2;
-        }
-
-        .btn-tambah-subtitle {
-            font-size: 0.7rem;
-            font-weight: 400;
-            opacity: 0.8;
         }
 
         .btn-tambah::before {
@@ -774,7 +766,6 @@
                     </div>
                     <div class="btn-tambah-text">
                         <span class="btn-tambah-title">Tambah Produk</span>
-                        <span class="btn-tambah-subtitle">Buat produk baru</span>
                     </div>
                 </a>
             </div>
