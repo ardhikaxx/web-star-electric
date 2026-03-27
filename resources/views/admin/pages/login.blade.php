@@ -9,7 +9,7 @@
         <div class="login-card">
             <div class="login-header">
                 <div class="login-logo">
-                    <img src="{{ asset('assets/logo-auth.png') }}" alt="STAR" style="width: 60px; height: auto;">
+                    <img src="{{ asset('assets/logo-auth.png') }}" alt="STAR">
                 </div>
                 <h2>ADMIN</h2>
                 <p>Masukkan PIN 4 digit untuk masuk</p>
