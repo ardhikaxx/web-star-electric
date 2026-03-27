@@ -6,25 +6,30 @@
 @push('styles')
     <style>
         .page-header {
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
             gap: 1.25rem;
+            margin-bottom: 1.6rem;
+            padding: 1.35rem 1.4rem;
+            background: rgba(255, 255, 255, 0.88);
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            box-shadow: 0 18px 42px rgba(8, 19, 33, 0.08);
         }
 
         .page-header-left {
             display: flex;
             align-items: center;
             gap: 1.25rem;
+            min-width: 0;
         }
 
         .page-icon {
-            width: 56px;
-            height: 56px;
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            border-radius: 16px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -34,22 +39,74 @@
             flex-shrink: 0;
         }
 
+        .page-header-info {
+            min-width: 0;
+        }
+
+        .page-header-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.38rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
         .page-header-info h2 {
             margin: 0;
-            font-size: clamp(1.38rem, 1.2rem + 0.8vw, 1.65rem);
+            font-size: clamp(1.38rem, 1.2rem + 0.8vw, 1.72rem);
             font-weight: 700;
             color: var(--text);
             line-height: 1.2;
         }
 
         .page-header-info .subtitle {
-            font-size: 0.85rem;
+            font-size: 0.88rem;
             color: var(--muted);
-            margin: 0.25rem 0 0;
+            margin: 0.35rem 0 0;
+            max-width: 540px;
+            line-height: 1.6;
+        }
+
+        .page-header-right {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .page-header-chip {
+            display: inline-flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            padding: 0.8rem 1rem;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(248, 251, 253, 0.92));
+            border: 1px solid rgba(16, 33, 50, 0.08);
+            min-width: 148px;
+            box-shadow: 0 12px 26px rgba(8, 19, 33, 0.06);
+        }
+
+        .page-header-chip-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .page-header-chip-value {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
         }
 
         .btn-tambah-wrapper {
-            display: inline-block;
+            display: flex;
             max-width: 100%;
         }
 
@@ -64,11 +121,12 @@
             font-size: 0.9rem;
             display: inline-flex;
             align-items: center;
+            justify-content: flex-start;
             transition: all 0.3s ease;
             text-decoration: none;
             box-shadow: 0 8px 24px rgba(255, 2, 5, 0.35);
             overflow: hidden;
-            height: 52px;
+            min-height: 56px;
             max-width: 100%;
         }
 
@@ -130,9 +188,41 @@
 
         .products-toolbar {
             display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.7fr);
+            grid-template-columns: minmax(0, 1.55fr) minmax(280px, 0.95fr);
             gap: 1rem;
             margin-bottom: 2rem;
+            align-items: stretch;
+        }
+
+        .toolbar-card {
+            min-width: 0;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--line);
+            border-radius: 22px;
+            box-shadow: 0 18px 38px rgba(8, 19, 33, 0.06);
+            padding: 1rem 1.05rem;
+        }
+
+        .toolbar-card-head {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+            margin-bottom: 0.95rem;
+        }
+
+        .toolbar-card-kicker {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary);
+        }
+
+        .toolbar-card-caption {
+            margin: 0;
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.55;
         }
 
         .toolbar-search-form,
@@ -144,11 +234,20 @@
             display: grid;
             grid-template-columns: minmax(0, 1fr) auto;
             gap: 0.75rem;
+            align-items: center;
+        }
+
+        .toolbar-filter-form {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 0.75rem;
+            align-items: center;
         }
 
         .toolbar-search,
         .toolbar-filter {
             position: relative;
+            min-width: 0;
         }
 
         .toolbar-search i,
@@ -163,11 +262,13 @@
 
         .toolbar-search-control,
         .toolbar-filter-select {
-            height: 54px;
+            width: 100%;
+            height: 56px;
             border-radius: 16px;
             border: 1px solid var(--line);
             background: #fff;
             box-shadow: 0 12px 26px rgba(8, 19, 33, 0.06);
+            font-weight: 500;
         }
 
         .toolbar-search-control {
@@ -179,9 +280,35 @@
         }
 
         .toolbar-search-btn {
-            min-width: 110px;
+            min-width: 118px;
+            min-height: 56px;
             border-radius: 16px;
             font-weight: 600;
+            box-shadow: 0 12px 28px rgba(255, 2, 5, 0.2);
+        }
+
+        .toolbar-reset-btn {
+            min-width: 104px;
+            min-height: 56px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.85rem 1rem;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: #fff;
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 12px 26px rgba(8, 19, 33, 0.06);
+            transition: all 0.2s ease;
+        }
+
+        .toolbar-reset-btn:hover {
+            color: var(--text);
+            border-color: rgba(16, 33, 50, 0.14);
+            background: var(--bg-light);
         }
 
         .stat-card-mini {
@@ -480,6 +607,14 @@
         }
 
         @media (max-width: 991.98px) {
+            .page-header {
+                grid-template-columns: 1fr;
+            }
+
+            .page-header-right {
+                justify-content: space-between;
+            }
+
             .products-toolbar {
                 grid-template-columns: 1fr;
             }
@@ -491,19 +626,29 @@
 
         @media (max-width: 767.98px) {
             .page-header {
-                flex-direction: column;
-                align-items: stretch;
+                padding: 1.1rem;
             }
 
             .page-header-left {
                 flex-direction: column;
                 align-items: flex-start;
                 text-align: left;
+                gap: 1rem;
+            }
+
+            .page-header-right {
+                flex-direction: column;
+                align-items: stretch;
             }
 
             .btn-tambah {
                 width: 100%;
                 justify-content: flex-start;
+            }
+
+            .page-header-chip {
+                width: 100%;
+                min-width: 0;
             }
 
             .products-grid {
@@ -514,9 +659,17 @@
                 grid-template-columns: 1fr;
             }
 
+            .toolbar-filter-form {
+                grid-template-columns: 1fr;
+            }
+
             .toolbar-search-btn {
                 width: 100%;
                 min-height: 52px;
+            }
+
+            .toolbar-reset-btn {
+                width: 100%;
             }
 
             .stats-row {
@@ -529,10 +682,19 @@
         }
 
         @media (max-width: 575.98px) {
+            .page-header {
+                border-radius: 20px;
+            }
+
             .page-icon {
                 width: 50px;
                 height: 50px;
                 border-radius: 14px;
+            }
+
+            .toolbar-card {
+                padding: 0.9rem;
+                border-radius: 20px;
             }
 
             .product-content {
@@ -557,55 +719,83 @@
         'links' => [['label' => 'Admin', 'url' => route('admin.dashboard')], ['label' => 'Produk']],
     ])
 
-    <div class="page-header d-flex align-items-center justify-content-between mb-3">
+    <div class="page-header">
         <div class="page-header-left">
             <div class="page-icon">
                 <i class="fa-solid fa-box"></i>
             </div>
             <div class="page-header-info">
+                <span class="page-header-kicker">
+                    <i class="fa-solid fa-layer-group"></i>
+                    Katalog Admin
+                </span>
                 <h2>Manajemen Produk</h2>
-                <p class="subtitle">Kelola semua produk Anda di satu tempat</p>
+                <p class="subtitle">Kelola produk, perbarui status, dan susun katalog Anda dengan tampilan yang lebih rapi di semua ukuran layar.</p>
             </div>
         </div>
-        <div class="btn-tambah-wrapper">
-            <a href="{{ route('admin.products.create') }}" class="btn-tambah">
-                <div class="btn-tambah-icon">
-                    <i class="fa-solid fa-plus"></i>
-                </div>
-                <div class="btn-tambah-text">
-                    <span class="btn-tambah-title">Tambah Produk</span>
-                    <span class="btn-tambah-subtitle">Buat produk baru</span>
-                </div>
-            </a>
+        <div class="page-header-right">
+            <div class="page-header-chip">
+                <span class="page-header-chip-label">Total Produk</span>
+                <span class="page-header-chip-value">{{ $products->total() }} item</span>
+            </div>
+            <div class="btn-tambah-wrapper">
+                <a href="{{ route('admin.products.create') }}" class="btn-tambah">
+                    <div class="btn-tambah-icon">
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="btn-tambah-text">
+                        <span class="btn-tambah-title">Tambah Produk</span>
+                        <span class="btn-tambah-subtitle">Buat produk baru</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 
     <div class="products-toolbar">
-        <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-search-form">
-            @if (request('status'))
-                <input type="hidden" name="status" value="{{ request('status') }}">
-            @endif
-            <div class="toolbar-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" name="search" class="form-control toolbar-search-control"
-                    placeholder="Cari nama atau deskripsi produk..." value="{{ request('search') }}">
+        <div class="toolbar-card">
+            <div class="toolbar-card-head">
+                <span class="toolbar-card-kicker">Pencarian</span>
+                <p class="toolbar-card-caption">Temukan produk berdasarkan nama atau deskripsi tanpa harus membuka seluruh daftar.</p>
             </div>
-            <button type="submit" class="btn btn-primary toolbar-search-btn">Cari</button>
-        </form>
+            <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-search-form">
+                @if (request('status'))
+                    <input type="hidden" name="status" value="{{ request('status') }}">
+                @endif
+                <div class="toolbar-search">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" name="search" class="form-control toolbar-search-control"
+                        placeholder="Cari nama atau deskripsi produk..." value="{{ request('search') }}">
+                </div>
+                <button type="submit" class="btn btn-primary toolbar-search-btn">Cari</button>
+            </form>
+        </div>
 
-        <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-filter-form">
-            @if (request('search'))
-                <input type="hidden" name="search" value="{{ request('search') }}">
-            @endif
-            <div class="toolbar-filter">
-                <i class="fa-solid fa-sliders"></i>
-                <select name="status" class="form-select toolbar-filter-select" onchange="this.form.submit()">
-                    <option value="">Semua Status</option>
-                    <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
-                    <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Nonaktif</option>
-                </select>
+        <div class="toolbar-card">
+            <div class="toolbar-card-head">
+                <span class="toolbar-card-kicker">Filter</span>
+                <p class="toolbar-card-caption">Saring hasil berdasarkan status produk agar daftar lebih fokus dan mudah ditinjau.</p>
             </div>
-        </form>
+            <form action="{{ route('admin.products.index') }}" method="GET" class="toolbar-filter-form">
+                @if (request('search'))
+                    <input type="hidden" name="search" value="{{ request('search') }}">
+                @endif
+                <div class="toolbar-filter">
+                    <i class="fa-solid fa-sliders"></i>
+                    <select name="status" class="form-select toolbar-filter-select" onchange="this.form.submit()">
+                        <option value="">Semua Status</option>
+                        <option value="active" {{ request('status') == 'active' ? 'selected' : '' }}>Aktif</option>
+                        <option value="inactive" {{ request('status') == 'inactive' ? 'selected' : '' }}>Nonaktif</option>
+                    </select>
+                </div>
+                @if (request('search') || request('status'))
+                    <a href="{{ route('admin.products.index') }}" class="toolbar-reset-btn">
+                        <i class="fa-solid fa-rotate-left"></i>
+                        Reset
+                    </a>
+                @endif
+            </form>
+        </div>
     </div>
 
     <div class="stats-row">
