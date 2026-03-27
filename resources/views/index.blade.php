@@ -8,12 +8,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Sepeda Listrik Bondowoso - STAR SEPEDA LISTRIK | Spesialis Sepeda Listrik Jawa Timur</title>
+    <title>Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike Bondowoso | Spesialis Sepeda Listrik Jawa Timur</title>
     <meta name="description"
         content="Toko spesialis sepeda listrik yang melayani kebutuhan pelanggan di seluruh Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama, serta menjual beragam perlengkapan pendukung seperti sparepart, karpet sepeda listrik, baterai, dan charger baterai sepeda listrik. Dengan harga yang bersaing dan kualitas terjamin, StarBWS hadir sebagai solusi terpercaya untuk Anda yang mencari produk sepeda listrik dengan harga termurah di Jawa Timur.">
     <meta name="keywords"
         content="sepeda listrik, electric bike, e-bike, e-bike Bondowoso, Star Sepeda Listrik, StarBWS, jual sepeda listrik, beli sepeda listrik, harga sepeda listrik, promo sepeda listrik, sepeda listrik terbaik, toko sepeda listrik terpercaya, toko sepeda listrik terdekat, distributor sepeda listrik, agen sepeda listrik resmi, NUV Sepeda Listrik, Star Volt, Sepeda Listrik Urban, Sepeda Listrik Keluarga, Sepeda Listrik Harian, Sepeda Listrik Anak Sekolah, Sepeda Listrik Kerja Kantor, Sepeda Listrik Murah, Sepeda Listrik Promo, Sepeda Listrik Garansi, Sepeda Listrik Service, Sparepart Sepeda Listrik, Karpet Sepeda Listrik, Baterai Sepeda Listrik, Charger Sepeda Listrik, Motor Listrik Sepeda, Kendaraan Hijau, Transportasi Ramah Lingkungan, Eco Friendly, Green Energy, Mobility Solution, Sepeda Listrik Jawa Timur, Toko Sepeda Listrik Jawa Timur, Harga Promo Sepeda Listrik, Best Seller Sepeda Listrik, Sepeda Listrik Modern, Sepeda Listrik Stylish, Sepeda Listrik Nyaman, Sepeda Listrik Irit, Sepeda Listrik Hemat, Sepeda Listrik Berkualitas, Sepeda Listrik Terpercaya Jawa Timur, Sepeda Listrik Termurah Jawa Timur, Jual Beli Sepeda Listrik Bondowoso, Toko Sepeda Listrik Bondowoso, Pusat Sepeda Listrik Bondowoso, Agen Resmi Sepeda Listrik Bondowoso, Sepeda Listrik Sport, Sepeda Listrik Foldable, Sepeda Listrik Battery, Sepeda Listrik Charging, Sepeda Listrik Garansi Resmi, Service Center Sepeda Listrik, Aksesoris Sepeda Listrik, Helm Sepeda Listrik, Locks Sepeda Listrik, Spesialis Sepeda Listrik, Toko Sepeda Listrik Terbaik, Sepeda Listrik Termurah, Grosir Sepeda Listrik, Retail Sepeda Listrik, Electric Vehicle, E-Vehicle, Sustainable Transport, Sepeda Listrik Indonesia, Merk Sepeda Listrik, Vintage Sepeda Listrik, Premium Sepeda Listrik, Affordable E-Bike, Cheap E-Bike, Quality E-Bike, Trusted E-Bike Shop, E-Bike Bondowoso, E-Bike Store East Java, Electric Scooter, Electric Motorcycle, Sepeda Listrik Custom, Modifikasi Sepeda Listrik, Perbaikan Sepeda Listrik, Servis Sepeda Listrik, Rental Sepeda Listrik">
-    <meta name="author" content="STAR SEPEDA LISTRIK BONDOWOSO">
+    <meta name="author" content="Ar-Rahman E-Bike Bondowoso">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Indonesian">
     <meta name="revisit-after" content="7 days">
@@ -918,7 +918,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" data-scroll-target="#home">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="STAR SEPEDA LISTRIK" class="navbar-logo">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -955,7 +955,7 @@
                             <div class="container">
                                 <div class="hero-content">
                                     <h1>Jelajahi kota dengan sepeda listrik yang hemat dan nyaman.</h1>
-                                    <p>STAR SEPEDA LISTRIK BONDOWOSO menghadirkan pilihan sepeda listrik untuk mobilitas
+                                    <p>Ar-Rahman E-Bike Bondowoso menghadirkan pilihan sepeda listrik untuk mobilitas
                                         harian, usaha, hingga gaya hidup modern.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#produk" class="btn btn-brand">Lihat Produk</a>
@@ -1090,7 +1090,7 @@
             <div class="container">
                 <div class="section-heading text-center">
                     <span class="section-tag">Testimoni</span>
-                    <h3>Apa kata pelanggan STAR SEPEDA LISTRIK BONDOWOSO</h3>
+                    <h3>Apa kata pelanggan Ar-Rahman E-Bike Bondowoso</h3>
                     <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
                 </div>
                 <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel"
@@ -1153,7 +1153,7 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
-                                        STAR SEPEDA LISTRIK
+                                        Ar-Rahman E-Bike Bondowoso
                                     </div>
                                     <div class="store-address">
                                         <i class="fa-solid fa-location-dot"></i>
@@ -1210,7 +1210,7 @@
                     </div>
                     <div class="col-12 col-lg-7">
                         <div class="map-card h-100">
-                            <iframe title="Lokasi STAR SEPEDA LISTRIK BONDOWOSO"
+                            <iframe title="Lokasi Ar-Rahman E-Bike Bondowoso"
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.741758460526!2d113.81527601072808!3d-7.9220198788369105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dd5a2b77ad85%3A0xb9c33635d00b3d8e!2sARRAHMAN%20E-BIKE%20BONDOWOSO!5e0!3m2!1sid!2sid!4v1774357546917!5m2!1sid!2sid"
                                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
@@ -1225,7 +1225,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="STAR SEPEDA LISTRIK" class="footer-logo">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
                     </a>
                     <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
                         untuk aktivitas sehari-hari.</p>
@@ -1251,7 +1251,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="mb-0">&copy; 2026 STAR SEPEDA LISTRIK BONDOWOSO. All rights reserved.</p>
+                <p class="mb-0">&copy; 2026 Ar-Rahman E-Bike Bondowoso. All rights reserved.</p>
             </div>
         </div>
     </footer>
