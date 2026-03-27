@@ -129,7 +129,7 @@
             border-color: var(--danger);
         }
 
-        .login-logo {
+.login-logo {
             width: 80px;
             height: 80px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
@@ -138,9 +138,14 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 1.5rem;
-            font-size: 2rem;
-            color: #fff;
+            padding: 10px;
             box-shadow: 0 16px 32px rgba(255, 2, 5, 0.22);
+        }
+
+        .login-logo img {
+            width: 100%;
+            height: auto;
+            border-radius: 16px;
         }
 
         /* General styles that should apply to both admin and auth if they are derived from master */
