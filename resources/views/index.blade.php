@@ -1213,6 +1213,10 @@
                                     <i class="fa-solid fa-clock"></i>
                                     <span>Siap melayani konsultasi pembelian dan info stok produk.</span>
                                 </li>
+                                <li>
+                                    <i class="fa-solid fa-shop"></i>
+                                    <a href="https://shopee.co.id/diahayuros8" target="_blank" rel="noopener">Shopee - Ar-Rahman E-Bike</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
