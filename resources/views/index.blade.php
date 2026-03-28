@@ -1265,7 +1265,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="mb-0">&copy; 2026 Ar-Rahman E-Bike Bondowoso. All rights reserved.</p>
+                <p class="mb-0">&copy; {{ date('Y') }} Ar-Rahman E-Bike Bondowoso. All rights reserved.</p>
             </div>
         </div>
     </footer>
