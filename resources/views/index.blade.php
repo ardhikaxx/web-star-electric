@@ -1157,7 +1157,7 @@
                     <div class="col-12 col-lg-5">
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
-                            <h2>Kontak & Lokasi Toko</h2>
+                            <h2>Kontak & Lokasi Toko Kami</h2>
                             <p>Kunjugi toko offline kami atau pesan online melalui Shopee untuk melihat langsung berbagai
                                 model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi
                                 yang paling sesuai dengan kebutuhan dan budget Anda.</p>
