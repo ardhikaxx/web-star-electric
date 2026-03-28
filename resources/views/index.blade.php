@@ -1241,8 +1241,8 @@
                         <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
                             class="footer-logo">
                     </a>
-                    <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
-                        untuk aktivitas sehari-hari.</p>
+                    <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
+                        dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>
                 </div>
                 <div>
                     <h3>Navigasi</h3>
