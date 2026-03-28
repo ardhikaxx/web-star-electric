@@ -504,9 +504,10 @@
         }
 
         #googleReviews iframe {
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             width: 100%;
             max-width: 100%;
+            overflow: hidden;
         }
 
         .testimonial-card {
