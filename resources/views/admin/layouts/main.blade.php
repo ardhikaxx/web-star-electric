@@ -14,8 +14,8 @@
             --text: #102132;
             --muted: #607080;
             --text-muted: #607080;
-            --primary: #FF0205;
-            --primary-dark: #DA0003;
+            --primary: #E53935;
+            --primary-dark: #B71C1C;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);

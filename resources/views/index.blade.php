@@ -36,8 +36,8 @@
             --surface-strong: #ffffff;
             --text: #102132;
             --muted: #607080;
-            --primary: #FF0205;
-            --primary-dark: #DA0003;
+            --primary: #E53935;
+            --primary-dark: #B71C1C;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);
@@ -764,6 +764,7 @@
         }
 
         @media (min-width: 768px) {
+
             .stats-grid,
             .footer-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -862,6 +863,7 @@
         }
 
         @media (max-width: 575.98px) {
+
             .section-tag,
             .eyebrow {
                 font-size: 0.72rem;
@@ -928,10 +930,14 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-0 align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#testimoni">Testimoni</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#kontak">Kontak</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
+                            data-scroll-target="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
+                            data-scroll-target="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
+                            data-scroll-target="#testimoni">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
+                            data-scroll-target="#kontak">Kontak</a></li>
                     <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6285231260016"
                             target="_blank" rel="noopener">Hubungi Kami</a></li>
                 </ul>
@@ -960,8 +966,10 @@
                                     <p>Ar-Rahman E-Bike Bondowoso menghadirkan pilihan sepeda listrik untuk mobilitas
                                         harian, usaha, hingga gaya hidup modern.</p>
                                     <div class="hero-actions">
-                                        <a href="{{ route('home') }}" data-scroll-target="#produk" class="btn btn-brand">Lihat Produk</a>
-                                        <a href="{{ route('home') }}" data-scroll-target="#kontak" class="btn btn-outline-light">Kunjungi Toko</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#produk"
+                                            class="btn btn-brand">Lihat Produk</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#kontak"
+                                            class="btn btn-outline-light">Kunjungi Toko</a>
                                     </div>
                                 </div>
                             </div>
@@ -992,7 +1000,8 @@
                                     <p>Unit pilihan dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
                                         setiap hari.</p>
                                     <div class="hero-actions">
-                                        <a href="{{ route('home') }}" data-scroll-target="#testimoni" class="btn btn-outline-light">Lihat Testimoni</a>
+                                        <a href="{{ route('home') }}" data-scroll-target="#testimoni"
+                                            class="btn btn-outline-light">Lihat Testimoni</a>
                                     </div>
                                 </div>
                             </div>
@@ -1026,7 +1035,8 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Pilihan</span>
                     <h3>Model sepeda listrik yang siap menunjang mobilitas Anda</h3>
-                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
+                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
+                        <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
                 <div class="row g-4">
                     @forelse($products as $product)
@@ -1052,8 +1062,8 @@
                                             class="current-price">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
                                     </div>
                                     @if ($product->link)
-                                        <a href="{{ route('products.click', $product) }}"
-                                            target="_blank" rel="noopener" class="btn btn-brand w-100">
+                                        <a href="{{ route('products.click', $product) }}" target="_blank"
+                                            rel="noopener" class="btn btn-brand w-100">
                                             <i class="fa-solid fa-cart-shopping me-2"></i>Beli Produk
                                         </a>
                                     @else
@@ -1073,10 +1083,10 @@
                                     <i class="fa-solid fa-box-open"></i>
                                 </div>
                                 <h3>Produk Sementara Tidak Tersedia</h3>
-                                <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk informasi produk terkini.</p>
-                                <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik" 
-                                   target="_blank" 
-                                   class="btn btn-brand">
+                                <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
+                                    informasi produk terkini.</p>
+                                <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
+                                    target="_blank" class="btn btn-brand">
                                     <i class="fa-brands fa-whatsapp me-2"></i>
                                     Hubungi via WhatsApp
                                 </a>
@@ -1148,7 +1158,9 @@
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
                             <h2>Kunjungi toko kami di Bondowoso</h2>
-                            <p>Kunjugi toko kami untuk melihat langsung berbagai model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi yang paling sesuai dengan kebutuhan dan budget Anda.</p>
+                            <p>Kunjugi toko kami untuk melihat langsung berbagai model sepeda listrik dan berkonsultasi
+                                dengan tim kami untuk menemukan solusi transportasi yang paling sesuai dengan kebutuhan
+                                dan budget Anda.</p>
                             <ul class="contact-list list-unstyled mb-0">
                                 <li class="store-item">
                                     <div class="store-name">
@@ -1191,9 +1203,11 @@
                                 </li>
                                 <li>
                                     <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">+62 852-3126-0016</a>
+                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">+62
+                                        852-3126-0016</a>
                                     /
-                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62 813-3197-8800</a>
+                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62
+                                        813-3197-8800</a>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-clock"></i>
@@ -1219,7 +1233,8 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
+                            class="footer-logo">
                     </a>
                     <p>Pusat penjualan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman, dan siap pakai
                         untuk aktivitas sehari-hari.</p>

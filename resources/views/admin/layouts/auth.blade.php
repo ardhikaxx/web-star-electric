@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +15,8 @@
             --text: #102132;
             --muted: #607080;
             --text-muted: #607080;
-            --primary: #FF0205;
-            --primary-dark: #DA0003;
+            --primary: #E53935;
+            --primary-dark: #B71C1C;
             --accent: #f59e0b;
             --line: rgba(16, 33, 50, 0.08);
             --shadow: 0 20px 60px rgba(8, 19, 33, 0.12);
@@ -28,8 +29,10 @@
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --primary-light-alpha: rgba(255, 2, 5, 0.15); /* Added for consistent focus states */
-            --secondary: #343a40; /* Assuming a secondary color for login page background */
+            --primary-light-alpha: rgba(255, 2, 5, 0.15);
+            /* Added for consistent focus states */
+            --secondary: #343a40;
+            /* Assuming a secondary color for login page background */
         }
 
         * {
@@ -64,7 +67,7 @@
             background: rgba(255, 255, 255, 0.96);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 28px;
-            box-shadow: 0 24px 64px rgba(0,0,0,0.24);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.24);
             width: 100%;
             max-width: 430px;
             padding: clamp(1.4rem, 3.6vw, 2.5rem);
@@ -129,7 +132,7 @@
             border-color: var(--danger);
         }
 
-.login-logo {
+        .login-logo {
             width: 180px;
             height: 80px;
             display: flex;
@@ -183,6 +186,7 @@
     </style>
     @stack('styles')
 </head>
+
 <body>
     @yield('content')
 
@@ -191,4 +195,5 @@
     @include('admin.partials.sweetalert')
     @stack('scripts')
 </body>
+
 </html>
