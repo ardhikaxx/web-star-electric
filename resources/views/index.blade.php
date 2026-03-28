@@ -492,7 +492,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(180deg, rgba(255, 2, 5, 0.06), rgba(245, 158, 11, 0.02));
+            background: linear-gradient(180deg, rgba(229, 57, 53, 0.06), rgba(245, 158, 11, 0.02));
+        }
+
+        #googleReviews {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        #googleReviews iframe {
+            border-radius: var(--radius-lg);
         }
 
         .testimonial-card {
@@ -1105,49 +1115,8 @@
                     <h3>Apa kata pelanggan Ar-Rahman E-Bike Bondowoso</h3>
                     <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
                 </div>
-                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel"
-                    data-bs-interval="3500">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="testimonial-card">
-                                <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
-                                <p>Pelayanannya ramah, unitnya bagus, dan cocok dipakai harian ke kantor. Irit dan
-                                    nyaman sekali.</p>
-                                <h3>Rina Permata</h3>
-                                <span>Pelanggan Bondowoso</span>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="testimonial-card">
-                                <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
-                                <p>Banyak pilihan model, harganya masuk akal, dan toko cepat respon waktu saya tanya
-                                    lewat WhatsApp.</p>
-                                <h3>Andi Saputra</h3>
-                                <span>Pembeli Star Volt X</span>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="testimonial-card">
-                                <div class="quote-icon"><i class="fa-solid fa-quote-right"></i></div>
-                                <p>Saya pilih model keluarga, ternyata nyaman dipakai antar anak sekolah. Recommended
-                                    untuk yang cari sepeda listrik.</p>
-                                <h3>Dewi Lestari</h3>
-                                <span>Pelanggan Setia</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-controls">
-                        <button class="carousel-control-prev position-static" type="button"
-                            data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                            <span class="control-btn"><i class="fa-solid fa-arrow-left"></i></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next position-static" type="button"
-                            data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                            <span class="control-btn"><i class="fa-solid fa-arrow-right"></i></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
+                <div id="googleReviews">
+                    <iframe src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
                 </div>
             </div>
         </section>
