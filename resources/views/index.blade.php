@@ -102,10 +102,26 @@
 
         .section-heading h3,
         .contact-card h2 {
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(1.7rem, 1.25rem + 1.45vw, 2.65rem);
-            line-height: 1.15;
-            margin-bottom: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p {
+            margin-bottom: 1rem;
+        }
+
+        .shopee-embed {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .shopee-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
 
         .section-heading p,
@@ -1165,6 +1181,9 @@
                                 <li>
                                     <i class="fa-solid fa-shop"></i>
                                     <a href="https://shopee.co.id/diahayuros8" target="_blank" rel="noopener">Shopee - Ar-Rahman E-bike Bondowoso Official</a>
+                                </li>
+                                <li class="shopee-embed">
+                                    <iframe src="https://shopee.co.id/diahayuros8" loading="lazy" title="Toko Shopee Ar-Rahman E-Bike"></iframe>
                                 </li>
                                 <li class="store-item">
                                     <div class="store-name">
