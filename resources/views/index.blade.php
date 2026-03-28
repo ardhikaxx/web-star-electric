@@ -497,12 +497,16 @@
 
         #googleReviews {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
+            display: flex;
+            justify-content: center;
         }
 
         #googleReviews iframe {
             border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 100%;
         }
 
         .testimonial-card {
