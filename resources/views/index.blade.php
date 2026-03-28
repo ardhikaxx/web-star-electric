@@ -1157,10 +1157,10 @@
                     <div class="col-12 col-lg-5">
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
-                            <h2>Kunjungi toko kami di Bondowoso</h2>
-                            <p>Kunjugi toko kami untuk melihat langsung berbagai model sepeda listrik dan berkonsultasi
-                                dengan tim kami untuk menemukan solusi transportasi yang paling sesuai dengan kebutuhan
-                                dan budget Anda.</p>
+                            <h2>Hubungi kami di Bondowoso</h2>
+                            <p>Kunjugi toko offline kami atau pesan online melalui Shopee untuk melihat langsung berbagai
+                                model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi
+                                yang paling sesuai dengan kebutuhan dan budget Anda.</p>
                             <ul class="contact-list list-unstyled mb-0">
                                 <li>
                                     <i class="fa-solid fa-shop"></i>
