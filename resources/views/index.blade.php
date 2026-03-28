@@ -65,7 +65,7 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             color: var(--text);
             background:
-                radial-gradient(circle at top left, rgba(255, 2, 5, 0.14), transparent 28%),
+                radial-gradient(circle at top left, rgba(229, 57, 53, 0.14), transparent 28%),
                 radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 20%),
                 linear-gradient(180deg, #f8fbfd 0%, #eef5f8 100%);
             min-height: 100vh;
@@ -216,7 +216,7 @@
             border-radius: 14px;
             font-weight: 700;
             min-height: 54px;
-            box-shadow: 0 14px 30px rgba(255, 2, 5, 0.24);
+            box-shadow: 0 14px 30px rgba(229, 57, 53, 0.24);
         }
 
         .btn-brand:hover,
@@ -366,7 +366,7 @@
         .empty-icon-wrap {
             width: 90px;
             height: 90px;
-            background: linear-gradient(135deg, rgba(255, 2, 5, 0.15), rgba(255, 2, 5, 0.05));
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.15), rgba(229, 57, 53, 0.05));
             border-radius: 24px;
             display: flex;
             align-items: center;
@@ -395,13 +395,13 @@
             padding: 0.875rem 1.75rem;
             font-weight: 600;
             border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(255, 2, 5, 0.24);
+            box-shadow: 0 14px 30px rgba(229, 57, 53, 0.24);
             transition: all 0.3s ease;
         }
 
         .empty-products-card .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(255, 2, 5, 0.32);
+            box-shadow: 0 20px 40px rgba(229, 57, 53, 0.32);
         }
 
         .product-image-wrap {
@@ -715,13 +715,13 @@
         .swal2-confirm.swal-landing-confirm {
             border-radius: 14px;
             background: linear-gradient(135deg, var(--primary), #ff4d4d) !important;
-            box-shadow: 0 14px 30px rgba(255, 2, 5, 0.22);
+            box-shadow: 0 14px 30px rgba(229, 57, 53, 0.22);
             font-weight: 700;
             padding: 0.8rem 1.5rem;
         }
 
         .swal2-icon.swal2-info {
-            border-color: rgba(255, 2, 5, 0.24) !important;
+            border-color: rgba(229, 57, 53, 0.24) !important;
             color: var(--primary) !important;
         }
 
