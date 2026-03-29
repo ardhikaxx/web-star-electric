@@ -400,6 +400,60 @@
             border: 1px solid rgba(229, 57, 53, 0.08);
         }
 
+        .product-summary-actions {
+            display: grid;
+            gap: 0.85rem;
+        }
+
+        .product-summary-actions .btn {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.65rem;
+            padding: 0.95rem 1.25rem;
+            min-height: 54px;
+            border-radius: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease, border-color 0.22s ease,
+                color 0.22s ease;
+        }
+
+        .product-summary-actions .btn:hover,
+        .product-summary-actions .btn:focus {
+            transform: translateY(-2px);
+        }
+
+        .product-whatsapp-cta {
+            color: #fff;
+            border: 1px solid transparent;
+            background: linear-gradient(135deg, #25d366, #1da851);
+            box-shadow: 0 18px 32px rgba(37, 211, 102, 0.24);
+        }
+
+        .product-whatsapp-cta:hover,
+        .product-whatsapp-cta:focus {
+            color: #fff;
+            background: linear-gradient(135deg, #1ebe5d, #16974a);
+            box-shadow: 0 20px 36px rgba(29, 168, 81, 0.28);
+        }
+
+        .product-back-cta {
+            color: var(--text);
+            border: 1px solid rgba(16, 33, 50, 0.1);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 250, 0.98));
+            box-shadow: 0 14px 28px rgba(16, 33, 50, 0.08);
+        }
+
+        .product-back-cta:hover,
+        .product-back-cta:focus {
+            color: var(--primary-dark);
+            border-color: rgba(229, 57, 53, 0.14);
+            background: linear-gradient(135deg, rgba(229, 57, 53, 0.08), rgba(245, 158, 11, 0.08));
+            box-shadow: 0 18px 30px rgba(16, 33, 50, 0.1);
+        }
+
         @media (max-width: 767.98px) {
             .product-detail-hero {
                 padding-top: 6.7rem;
@@ -560,10 +614,10 @@
                         @endif
 
                         <a href="https://wa.me/6285231260016?text=Halo%20saya%20ingin%20tanya%20tentang%20{{ urlencode($product->name) }}"
-                            target="_blank" rel="noopener" class="btn btn-brand w-100 d-flex align-items-center justify-content-center gap-2" style="background-color: #25D366;">
+                            target="_blank" rel="noopener" class="btn product-whatsapp-cta">
                             <i class="fa-brands fa-whatsapp"></i>Tanya via WhatsApp
                         </a>
-                        <a href="{{ route('home') }}#produk" class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2">
+                        <a href="{{ route('home') }}#produk" class="btn product-back-cta">
                             <i class="fa-solid fa-arrow-left"></i>Kembali ke daftar produk
                         </a>
                     </div>
