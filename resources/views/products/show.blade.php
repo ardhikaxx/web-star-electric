@@ -226,15 +226,13 @@
         }
 
         .product-story-card,
-        .product-buy-card,
-        .product-insight-card {
+        .product-buy-card {
             position: relative;
             overflow: hidden;
         }
 
         .product-story-card::before,
-        .product-buy-card::before,
-        .product-insight-card::before {
+        .product-buy-card::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -255,16 +253,14 @@
         }
 
         .product-story-head h2,
-        .product-buy-card h2,
-        .product-insight-card h2 {
+        .product-buy-card h2 {
             font-family: 'Sora', sans-serif;
             font-size: clamp(1.45rem, 1.18rem + 0.8vw, 2rem);
             margin: 0;
         }
 
         .product-story-head p,
-        .product-buy-card p,
-        .product-insight-card p {
+        .product-buy-card p {
             margin: 0;
             color: var(--muted);
             line-height: 1.8;
@@ -430,8 +426,7 @@
             }
 
             .product-detail-quick-meta,
-            .product-story-grid,
-            .product-insight-grid {
+            .product-story-grid {
                 grid-template-columns: 1fr;
                 display: grid;
             }
@@ -542,33 +537,8 @@
                             @foreach ($descriptionParagraphs as $paragraph)
                                 <p>{{ $paragraph }}</p>
                             @endforeach
-                        </div>
-                    </article>
-
-                    <article class="map-card product-insight-card">
-                        <span class="section-tag">Kenapa Menarik</span>
-                        <h2>Informasi cepat yang paling sering dicari pembeli</h2>
-                        <p>Tiga poin ini ditaruh terpisah agar halaman detail terasa lebih rapi dan keputusan pembelian lebih cepat.</p>
-
-                        <div class="product-insight-grid">
-                            <div class="product-insight-mini">
-                                <i class="fa-solid fa-wallet"></i>
-                                <strong>{{ $hasDiscount ? 'Harga lebih efisien' : 'Harga tampil jelas' }}</strong>
-                                <p>{{ $hasDiscount ? 'Harga promo terlihat langsung bersama nominal penghematan.' : 'Calon pembeli bisa langsung melihat harga produk tanpa harus bertanya dulu.' }}</p>
-                            </div>
-                            <div class="product-insight-mini">
-                                <i class="fa-solid fa-link"></i>
-                                <strong>{{ $product->link ? 'Akses beli langsung' : 'Masih perlu konsultasi' }}</strong>
-                                <p>{{ $product->link ? 'Tombol beli akan mengarah ke link produk aktif dengan tracking klik otomatis.' : 'Belum ada link langsung, tetapi minat pembeli tetap tercatat saat tombol ditekan.' }}</p>
-                            </div>
-                            <div class="product-insight-mini">
-                                <i class="fa-brands fa-whatsapp"></i>
-                                <strong>Dibantu tim toko</strong>
-                                <p>Jika masih ragu soal stok atau model, calon pembeli bisa lanjut konsultasi lewat WhatsApp.</p>
-                            </div>
-                        </div>
-                    </article>
-                </div>
+                    </div>
+                </article>
 
                 <aside class="contact-card product-buy-card">
                     <div class="product-buy-media">
