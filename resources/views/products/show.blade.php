@@ -560,11 +560,11 @@
                         @endif
 
                         <a href="https://wa.me/6285231260016?text=Halo%20saya%20ingin%20tanya%20tentang%20{{ urlencode($product->name) }}"
-                            target="_blank" rel="noopener" class="btn btn-outline-dark">
-                            <i class="fa-brands fa-whatsapp me-2"></i>Tanya via WhatsApp
+                            target="_blank" rel="noopener" class="btn btn-brand w-100 d-flex align-items-center justify-content-center gap-2" style="background-color: #25D366;">
+                            <i class="fa-brands fa-whatsapp"></i>Tanya via WhatsApp
                         </a>
-                        <a href="{{ route('home') }}#produk" class="btn btn-outline-dark">
-                            <i class="fa-solid fa-arrow-left me-2"></i>Kembali ke daftar produk
+                        <a href="{{ route('home') }}#produk" class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center gap-2">
+                            <i class="fa-solid fa-arrow-left"></i>Kembali ke daftar produk
                         </a>
                     </div>
                 </aside>
