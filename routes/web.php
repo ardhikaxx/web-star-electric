@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', [LandingController::class, 'index'])->name('home');
+Route::get('/produk/{product}', [LandingController::class, 'showProduct'])->name('products.show');
 Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
 
 Route::prefix('admin')->name('admin.')->group(function () {

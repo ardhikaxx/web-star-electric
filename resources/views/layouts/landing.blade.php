@@ -1,18 +1,14 @@
-@php
-    $products = $products ?? collect();
-@endphp
-
 <!DOCTYPE html>
 <html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike Bondowoso | Spesialis Sepeda Listrik Jawa Timur</title>
+    <title>@yield('title', 'Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike Bondowoso | Spesialis Sepeda Listrik Jawa Timur')</title>
     <meta name="description"
-        content="Toko spesialis sepeda listrik yang melayani kebutuhan pelanggan di seluruh Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama, serta menjual beragam perlengkapan pendukung seperti sparepart, karpet sepeda listrik, baterai, dan charger baterai sepeda listrik. Dengan harga yang bersaing dan kualitas terjamin, StarBWS hadir sebagai solusi terpercaya untuk Anda yang mencari produk sepeda listrik dengan harga termurah di Jawa Timur.">
+        content="@yield('meta_description', 'Toko spesialis sepeda listrik yang melayani kebutuhan pelanggan di seluruh Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama, serta menjual beragam perlengkapan pendukung seperti sparepart, karpet sepeda listrik, baterai, dan charger baterai sepeda listrik. Dengan harga yang bersaing dan kualitas terjamin, StarBWS hadir sebagai solusi terpercaya untuk Anda yang mencari produk sepeda listrik dengan harga termurah di Jawa Timur.')">
     <meta name="keywords"
-        content="sepeda listrik, e-bike, e-bike Bondowoso, Ar-Rahman E-Bike, Ar-Rahman E-Bike Bondowoso, Star Sepeda Listrik, StarBWS, jual sepeda listrik, beli sepeda listrik, harga sepeda listrik, promo sepeda listrik, sepeda listrik terbaik, toko sepeda listrik terpercaya, toko sepeda listrik terdekat, distributor sepeda listrik, agen sepeda listrik resmi, NUV Sepeda Listrik, Star Volt, Sepeda Listrik Urban, Sepeda Listrik Keluarga, Sepeda Listrik Harian, Sepeda Listrik Anak Sekolah, Sepeda Listrik Kerja Kantor, Sepeda Listrik Murah, Sepeda Listrik Promo, Sepeda Listrik Garansi, Sepeda Listrik Service, Sparepart Sepeda Listrik, Karpet Sepeda Listrik, Baterai Sepeda Listrik, Charger Sepeda Listrik, Motor Listrik Sepeda, Kendaraan Hijau, Transportasi Ramah Lingkungan, Solusi Mobilitas, Sepeda Listrik Jawa Timur, Toko Sepeda Listrik Jawa Timur, Harga Promo Sepeda Listrik, Best Seller Sepeda Listrik, Sepeda Listrik Modern, Sepeda Listrik Stylish, Sepeda Listrik Nyaman, Sepeda Listrik Irit, Sepeda Listrik Hemat, Sepeda Listrik Berkualitas, Sepeda Listrik Terpercaya Jawa Timur, Sepeda Listrik Termurah Jawa Timur, Jual Beli Sepeda Listrik Bondowoso, Toko Sepeda Listrik Bondowoso, Pusat Sepeda Listrik Bondowoso, Agen Resmi Sepeda Listrik Bondowoso, Sepeda Listrik Sport, Sepeda Listrik Foldable, Sepeda Listrik Battery, Sepeda Listrik Charging, Sepeda Listrik Garansi Resmi, Service Center Sepeda Listrik, Aksesoris Sepeda Listrik, Helm Sepeda Listrik, Locks Sepeda Listrik, Spesialis Sepeda Listrik, Toko Sepeda Listrik Terbaik, Sepeda Listrik Termurah, Grosir Sepeda Listrik, Retail Sepeda Listrik, Kendaraan Listrik, Transportasi Listrik, Sepeda Listrik Indonesia, Merk Sepeda Listrik, Sepeda Listrik Vintage, Sepeda Listrik Custom, Modifikasi Sepeda Listrik, Perbaikan Sepeda Listrik, Servis Sepeda Listrik, Rental Sepeda Listrik, Ar-Rahman E-bike, Sepeda Listrik 2024, Sepeda Listrik 2025, Sepeda Listrik Terbaru, Sepeda Listrik Ori, Sepeda Listrik Bergaransi, Sepeda Listrik Terlaris, Sepeda Listrik Indonesia, Sepeda Listrik Lokal, Sepeda Listrik Import, Sepeda Listrik China, Sepeda Listrik Korea, Sepeda Listrik Jepang, Sepeda Listrik Elektrik, Sepeda Listrik Automatic, Sepeda Listrik Manual, Sepeda Listrik Lipat, Sepeda Listrik Dewasa, Sepeda Listrik Remaja, Sepeda Listrik Anak, Sepeda Listrik Perempuan, Sepeda Listrik Pria, Sepeda Listrik Muslim, Sepeda Listrik Hajatan, Sepeda Listrik Onthel, Sepeda Listrik Touring, Sepeda Listrik Adventure, Sepeda Listrik City, Sepeda Listrik Commuter, Sepeda Listrik Cargo, Sepeda Listrik Family, Sepeda Listrik Premium, Sepeda Listrik Budget, Sepeda Listrik Cash, Sepeda Listrik Cicilan, Sepeda Listrik Kredit, Toko Sepeda Listrik Terdekat, Jual Sepeda Listrik Terdekat, Harga Sepeda Listrik Terendah, Promo Sepeda Listrik Terbaru, Diskon Sepeda Listrik, Sale Sepeda Listrik, Bundling Sepeda Listrik, Aksesoris Sepeda Listrik Murah, Sparepart Sepeda Listrik Murah, Baterai Sepeda Listrik Ganti, Service Sepeda Listrik Terdekat, Perbaikan Sepeda Listrik Cepat, Teknisi Sepeda Listrik, Mekanik Sepeda Listrik, Montir Sepeda Listrik, Konsultasi Sepeda Listrik, Tanya Jawab Sepeda Listrik, Panduan Beli Sepeda Listrik, Tips Pilih Sepeda Listrik, Review Sepeda Listrik, Test Ride Sepeda Listrik, Showroom Sepeda Listrik, Gerai Sepeda Listrik, Komunitas Sepeda Listrik, Club Sepeda Listrik, Gowes Sepeda Listrik, Touring Sepeda Listrik, Gathering Sepeda Listrik, Edukasi Sepeda Listrik, Seminar Sepeda Listrik, Workshop Sepeda Listrik, Training Sepeda Listrik, Kursus Sepeda Listrik">
+        content="@yield('meta_keywords', 'sepeda listrik, e-bike, e-bike Bondowoso, Ar-Rahman E-Bike, Ar-Rahman E-Bike Bondowoso, Star Sepeda Listrik, StarBWS, jual sepeda listrik, beli sepeda listrik, harga sepeda listrik, promo sepeda listrik, sepeda listrik terbaik, toko sepeda listrik terpercaya, toko sepeda listrik terdekat, distributor sepeda listrik, agen sepeda listrik resmi, NUV Sepeda Listrik, Star Volt, Sepeda Listrik Urban, Sepeda Listrik Keluarga, Sepeda Listrik Harian, Sepeda Listrik Anak Sekolah, Sepeda Listrik Kerja Kantor, Sepeda Listrik Murah, Sepeda Listrik Promo, Sepeda Listrik Garansi, Sepeda Listrik Service, Sparepart Sepeda Listrik, Karpet Sepeda Listrik, Baterai Sepeda Listrik, Charger Sepeda Listrik, Motor Listrik Sepeda, Kendaraan Hijau, Transportasi Ramah Lingkungan, Solusi Mobilitas, Sepeda Listrik Jawa Timur, Toko Sepeda Listrik Jawa Timur, Harga Promo Sepeda Listrik, Best Seller Sepeda Listrik, Sepeda Listrik Modern, Sepeda Listrik Stylish, Sepeda Listrik Nyaman, Sepeda Listrik Irit, Sepeda Listrik Hemat, Sepeda Listrik Berkualitas, Sepeda Listrik Terpercaya Jawa Timur, Sepeda Listrik Termurah Jawa Timur, Jual Beli Sepeda Listrik Bondowoso, Toko Sepeda Listrik Bondowoso, Pusat Sepeda Listrik Bondowoso, Agen Resmi Sepeda Listrik Bondowoso, Sepeda Listrik Sport, Sepeda Listrik Foldable, Sepeda Listrik Battery, Sepeda Listrik Charging, Sepeda Listrik Garansi Resmi, Service Center Sepeda Listrik, Aksesoris Sepeda Listrik, Helm Sepeda Listrik, Locks Sepeda Listrik, Spesialis Sepeda Listrik, Toko Sepeda Listrik Terbaik, Sepeda Listrik Termurah, Grosir Sepeda Listrik, Retail Sepeda Listrik, Kendaraan Listrik, Transportasi Listrik, Sepeda Listrik Indonesia, Merk Sepeda Listrik, Sepeda Listrik Vintage, Sepeda Listrik Custom, Modifikasi Sepeda Listrik, Perbaikan Sepeda Listrik, Servis Sepeda Listrik, Rental Sepeda Listrik, Ar-Rahman E-bike, Sepeda Listrik 2024, Sepeda Listrik 2025, Sepeda Listrik Terbaru, Sepeda Listrik Ori, Sepeda Listrik Bergaransi, Sepeda Listrik Terlaris, Sepeda Listrik Indonesia, Sepeda Listrik Lokal, Sepeda Listrik Import, Sepeda Listrik China, Sepeda Listrik Korea, Sepeda Listrik Jepang, Sepeda Listrik Elektrik, Sepeda Listrik Automatic, Sepeda Listrik Manual, Sepeda Listrik Lipat, Sepeda Listrik Dewasa, Sepeda Listrik Remaja, Sepeda Listrik Anak, Sepeda Listrik Perempuan, Sepeda Listrik Pria, Sepeda Listrik Muslim, Sepeda Listrik Hajatan, Sepeda Listrik Onthel, Sepeda Listrik Touring, Sepeda Listrik Adventure, Sepeda Listrik City, Sepeda Listrik Commuter, Sepeda Listrik Cargo, Sepeda Listrik Family, Sepeda Listrik Premium, Sepeda Listrik Budget, Sepeda Listrik Cash, Sepeda Listrik Cicilan, Sepeda Listrik Kredit, Toko Sepeda Listrik Terdekat, Jual Sepeda Listrik Terdekat, Harga Sepeda Listrik Terendah, Promo Sepeda Listrik Terbaru, Diskon Sepeda Listrik, Sale Sepeda Listrik, Bundling Sepeda Listrik, Aksesoris Sepeda Listrik Murah, Sparepart Sepeda Listrik Murah, Baterai Sepeda Listrik Ganti, Service Sepeda Listrik Terdekat, Perbaikan Sepeda Listrik Cepat, Teknisi Sepeda Listrik, Mekanik Sepeda Listrik, Montir Sepeda Listrik, Konsultasi Sepeda Listrik, Tanya Jawab Sepeda Listrik, Panduan Beli Sepeda Listrik, Tips Pilih Sepeda Listrik, Review Sepeda Listrik, Test Ride Sepeda Listrik, Showroom Sepeda Listrik, Gerai Sepeda Listrik, Komunitas Sepeda Listrik, Club Sepeda Listrik, Gowes Sepeda Listrik, Touring Sepeda Listrik, Gathering Sepeda Listrik, Edukasi Sepeda Listrik, Seminar Sepeda Listrik, Workshop Sepeda Listrik, Training Sepeda Listrik, Kursus Sepeda Listrik')">
     <meta name="author" content="Ar-Rahman E-Bike Bondowoso">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Indonesian">
@@ -364,60 +360,6 @@
             z-index: 2;
         }
 
-        .empty-products-card {
-            background: rgba(255, 255, 255, 0.78);
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow);
-            padding: 3rem 2rem;
-            text-align: center;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .empty-icon-wrap {
-            width: 90px;
-            height: 90px;
-            background: linear-gradient(135deg, rgba(229, 57, 53, 0.15), rgba(229, 57, 53, 0.05));
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .empty-products-card h3 {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-            color: var(--text);
-        }
-
-        .empty-products-card p {
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
-        .empty-products-card .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 0.875rem 1.75rem;
-            font-weight: 600;
-            border-radius: 12px;
-            box-shadow: 0 14px 30px rgba(229, 57, 53, 0.24);
-            transition: all 0.3s ease;
-        }
-
-        .empty-products-card .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 20px 40px rgba(229, 57, 53, 0.32);
-        }
-
         .product-image-wrap {
             position: relative;
             overflow: hidden;
@@ -440,11 +382,6 @@
             border-radius: 999px;
             font-size: 0.74rem;
             font-weight: 800;
-        }
-
-        .product-badge.alt {
-            background: rgba(245, 158, 11, 0.92);
-            color: #fff;
         }
 
         .product-body {
@@ -502,76 +439,6 @@
             line-height: 1.2;
         }
 
-        .testimonial-section {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(180deg, rgba(229, 57, 53, 0.06), rgba(245, 158, 11, 0.02));
-        }
-
-        #googleReviews {
-            width: 100%;
-            max-width: 900px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-        }
-
-        #googleReviews iframe {
-            border-radius: 16px;
-            width: 100%;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .testimonial-card {
-            padding: clamp(1.5rem, 3vw, 2.2rem);
-            text-align: center;
-            max-width: 760px;
-            margin: 0 auto;
-        }
-
-        .testimonial-card p {
-            font-size: clamp(0.98rem, 0.9rem + 0.25vw, 1.08rem);
-            line-height: 1.85;
-            color: var(--text);
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-card span {
-            color: var(--muted);
-        }
-
-        .quote-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1rem;
-            border-radius: 20px;
-            display: grid;
-            place-items: center;
-            font-size: 1.4rem;
-            color: #fff;
-            background: linear-gradient(135deg, #f59e0b, #ffbf47);
-        }
-
-        .testimonial-controls {
-            display: flex;
-            justify-content: center;
-            gap: 0.75rem;
-            margin-top: 1.5rem;
-        }
-
-        .control-btn {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            background: #fff;
-            color: var(--text);
-            box-shadow: 0 12px 28px rgba(16, 33, 50, 0.12);
-        }
-
         .contact-card,
         .map-card {
             padding: clamp(1.2rem, 2.3vw, 1.85rem);
@@ -607,61 +474,6 @@
         .footer-brand {
             color: var(--text);
             text-decoration: none;
-        }
-
-        .store-item {
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            border-bottom: 1px solid #e8e8e8;
-        }
-
-        .store-item:last-of-type {
-            border-bottom: none;
-        }
-
-        .store-name {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--primary);
-            margin-bottom: -4px;
-            letter-spacing: 0.3px;
-        }
-
-        .store-name i {
-            color: var(--primary);
-            font-size: 0.9rem;
-        }
-
-        .store-address {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.6rem;
-            padding: 0.35rem 0 0.9rem;
-        }
-
-        .store-address i {
-            color: #999;
-            font-size: 0.8rem;
-            margin-top: 0.25rem;
-            flex-shrink: 0;
-        }
-
-        .store-address span {
-            font-size: 0.9rem;
-            color: #666;
-            line-height: 1.65;
-        }
-
-        .map-card iframe {
-            width: 100%;
-            height: 100%;
-            min-height: clamp(300px, 42vw, 460px);
-            border: 0;
-            border-radius: 22px;
         }
 
         .site-footer {
@@ -780,38 +592,18 @@
                 width: 100%;
             }
 
-            .hero-slide {
-                min-height: clamp(610px, 95svh, 780px);
-            }
-
-            .stats-section {
-                margin-top: -2rem;
-            }
-
             .footer-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
         @media (min-width: 768px) {
-
-            .stats-grid,
             .footer-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
-            .hero-slide {
-                align-items: center;
-                padding: 8.5rem 0 6rem;
-            }
-
-            .stat-card {
-                padding: 1.6rem;
-            }
-
             .contact-card,
-            .map-card,
-            .testimonial-card {
+            .map-card {
                 padding: 2rem;
             }
         }
@@ -823,31 +615,12 @@
                 --nav-offset: 82px;
             }
 
-            .section-heading {
-                margin-bottom: 1.7rem;
-            }
-
             .navbar .container {
                 padding: 0.68rem;
             }
 
             .navbar-logo {
                 height: 58px;
-            }
-
-            .hero-slide {
-                min-height: clamp(590px, 94svh, 720px);
-                padding: 6.15rem 0 3.6rem;
-                background-position: 58% center;
-            }
-
-            .hero-content {
-                max-width: 100%;
-            }
-
-            .hero-content h1,
-            .hero-content h2 {
-                font-size: clamp(2rem, 10vw, 3rem);
             }
 
             .hero-actions {
@@ -861,13 +634,8 @@
                 min-width: 0;
             }
 
-            .stats-grid,
             .footer-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .stat-card {
-                min-height: 0;
             }
 
             .product-image {
@@ -875,37 +643,16 @@
             }
 
             .contact-card,
-            .map-card,
-            .testimonial-card,
-            .empty-products-card {
+            .map-card {
                 border-radius: 22px;
-            }
-
-            .testimonial-controls {
-                gap: 0.55rem;
-                flex-wrap: wrap;
-            }
-
-            .control-btn {
-                width: 44px;
-                height: 44px;
             }
         }
 
         @media (max-width: 575.98px) {
-
             .section-tag,
             .eyebrow {
                 font-size: 0.72rem;
                 padding: 0.4rem 0.75rem;
-            }
-
-            .empty-products-card {
-                padding: 2rem 1.2rem;
-            }
-
-            .empty-products-card .btn {
-                width: 100%;
             }
 
             .product-body {
@@ -927,10 +674,6 @@
                 flex-grow: 0;
             }
 
-            .hero-content p {
-                font-size: 1.05rem;
-            }
-
             .section-space {
                 padding: 96px 0;
             }
@@ -939,13 +682,8 @@
                 grid-template-columns: 1.2fr 0.9fr 0.9fr;
             }
         }
-
-        @media (min-width: 1200px) {
-            .stats-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
     </style>
+    @stack('styles')
 </head>
 
 <body>
@@ -960,232 +698,18 @@
             </button>
             <div class="collapse navbar-collapse" id="mainNavbar">
                 <ul class="navbar-nav ms-auto mb-0 align-items-lg-center gap-lg-2">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
-                            data-scroll-target="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
-                            data-scroll-target="#produk">Produk</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
-                            data-scroll-target="#testimoni">Testimoni</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}"
-                            data-scroll-target="#kontak">Kontak</a></li>
-                    <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6285231260016"
-                            target="_blank" rel="noopener">Hubungi Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#produk">Produk</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#testimoni">Testimoni</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('home') }}" data-scroll-target="#kontak">Kontak</a></li>
+                    <li class="nav-item ms-lg-2"><a class="btn btn-brand" href="https://wa.me/6285231260016" target="_blank" rel="noopener">Hubungi Kami</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
     <main>
-        <section id="home" class="hero-section">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
-                <div class="carousel-indicators hero-indicators">
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250728000101Product%20highlight-05.jpg');">
-                            <div class="container">
-                                <div class="hero-content">
-                                    <h1>Jelajahi kota dengan sepeda listrik yang hemat dan nyaman.</h1>
-                                    <p>Ar-Rahman E-Bike Bondowoso menghadirkan pilihan sepeda listrik untuk mobilitas
-                                        harian, usaha, hingga gaya hidup modern.</p>
-                                    <div class="hero-actions">
-                                        <a href="{{ route('home') }}" data-scroll-target="#produk"
-                                            class="btn btn-brand">Lihat Produk</a>
-                                        <a href="{{ route('home') }}" data-scroll-target="#kontak"
-                                            class="btn btn-outline-light">Kunjungi Toko</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250727235527Product%20highlight-02.jpg');">
-                            <div class="container">
-                                <div class="hero-content">
-                                    <h2>Harga lebih menarik dengan performa baterai yang tahan lama.</h2>
-                                    <p>Dapatkan penawaran terbaik untuk berbagai model sepeda listrik dengan desain
-                                        elegan dan fitur kekinian.</p>
-                                    <div class="hero-actions">
-                                        <a href="https://wa.me/6285231260016" class="btn btn-brand" target="_blank"
-                                            rel="noopener">Pesan via WhatsApp</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20260303095623NUV%20S7%20-%20VERITON-2.jpg');">
-                            <div class="container">
-                                <div class="hero-content">
-                                    <h2>Temukan kendaraan ringkas untuk sekolah, kerja, dan kebutuhan keluarga.</h2>
-                                    <p>Unit pilihan dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
-                                        setiap hari.</p>
-                                    <div class="hero-actions">
-                                        <a href="{{ route('home') }}" data-scroll-target="#testimoni"
-                                            class="btn btn-outline-light">Lihat Testimoni</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="stats-section">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>100+</h3>
-                        <p>Pelanggan puas memilih sepeda listrik untuk kebutuhan harian.</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>6+</h3>
-                        <p>Model favorit dengan gaya berbeda untuk berbagai usia.</p>
-                    </div>
-                    <div class="stat-card">
-                        <h3>Fast Respon</h3>
-                        <p>Konsultasi cepat melalui WhatsApp untuk cek stok.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="produk" class="section-space products-section">
-            <div class="container">
-                <div class="section-heading text-center">
-                    <span class="section-tag">Produk Pilihan</span>
-                    <h3>Model sepeda listrik yang siap menunjang mobilitas Anda</h3>
-                    <p>Pilih unit favorit dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
-                        <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
-                </div>
-                <div class="row g-4">
-                    @forelse($products as $product)
-                        <div class="col-12 col-md-6 col-xl-3">
-                            @include('partials.landing.product-card', ['product' => $product])
-                        </div>
-                    @empty
-                        <div class="col-12">
-                            <div class="empty-products-card">
-                                <div class="empty-icon-wrap">
-                                    <i class="fa-solid fa-box-open"></i>
-                                </div>
-                                <h3>Produk Sementara Tidak Tersedia</h3>
-                                <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
-                                    informasi produk terkini.</p>
-                                <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
-                                    target="_blank" class="btn btn-brand">
-                                    <i class="fa-brands fa-whatsapp me-2"></i>
-                                    Hubungi via WhatsApp
-                                </a>
-                            </div>
-                        </div>
-                    @endforelse
-                </div>
-            </div>
-        </section>
-
-        <section id="testimoni" class="section-space testimonial-section">
-            <div class="container">
-                <div class="section-heading text-center">
-                    <span class="section-tag">Testimoni</span>
-                    <h3>Apa kata pelanggan Ar-Rahman E-Bike Bondowoso</h3>
-                    <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
-                </div>
-                <div id="googleReviews">
-                    <iframe src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
-                </div>
-            </div>
-        </section>
-
-        <section id="kontak" class="section-space contact-section">
-            <div class="container">
-                <div class="row g-4 align-items-stretch">
-                    <div class="col-12 col-lg-5">
-                        <div class="contact-card h-100">
-                            <span class="section-tag">Kontak & Lokasi</span>
-                            <h2>Kontak & Lokasi Toko Kami</h2>
-                            <p>Kunjugi toko offline kami atau pesan online melalui Shopee untuk melihat langsung berbagai
-                                model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi
-                                yang paling sesuai dengan kebutuhan dan budget Anda.</p>
-                            <ul class="contact-list list-unstyled mb-0">
-                                <li>
-                                    <i class="fa-solid fa-shop"></i>
-                                    <a href="https://shopee.co.id/diahayuros8" target="_blank" rel="noopener">Shopee - Ar-Rahman E-bike Bondowoso Official</a>
-                                </li>
-                                <li class="store-item">
-                                    <div class="store-name">
-                                        <i class="fa-solid fa-store"></i>
-                                        ARRAHMAN E-BIKE BONDOWOSO
-                                    </div>
-                                    <div class="store-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>Depan Dinas Pengairan, Jl. Ahmad Yani No.89, Penatu, Badean, Kec.
-                                            Bondowoso, Kabupaten Bondowoso, Jawa Timur 68214</span>
-                                    </div>
-                                </li>
-                                <li class="store-item">
-                                    <div class="store-name">
-                                        <i class="fa-solid fa-store"></i>
-                                        STAR SEPEDA LISTRIK
-                                    </div>
-                                    <div class="store-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kabupaten Bondowoso,
-                                            Jawa Timur 68214</span>
-                                    </div>
-                                </li>
-                                <li class="store-item">
-                                    <div class="store-name">
-                                        <i class="fa-solid fa-store"></i>
-                                        UWINFLY PUJER BONDOWOSO
-                                    </div>
-                                    <div class="store-address">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <span>Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten
-                                            Bondowoso, Jawa Timur 68271</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-phone-volume"></i>
-                                    <a href="tel:+6285231260016">+62 852-3126-0016</a>
-                                    /
-                                    <a href="tel:+6281331978800">+62 813-3197-8800</a>
-                                </li>
-                                <li>
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                    <a href="https://wa.me/6285231260016" target="_blank" rel="noopener">+62
-                                        852-3126-0016</a>
-                                    /
-                                    <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62
-                                        813-3197-8800</a>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-clock"></i>
-                                    <span>Siap melayani konsultasi pembelian dan info stok produk.</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-7">
-                        <div class="map-card h-100">
-                            <iframe title="Lokasi Ar-Rahman E-Bike Bondowoso"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.741758460526!2d113.81527601072808!3d-7.9220198788369105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd6dd5a2b77ad85%3A0xb9c33635d00b3d8e!2sARRAHMAN%20E-BIKE%20BONDOWOSO!5e0!3m2!1sid!2sid!4v1774357546917!5m2!1sid!2sid"
-                                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @yield('content')
     </main>
 
     <footer class="site-footer">
@@ -1193,8 +717,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
-                            class="footer-logo">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
                         dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>
@@ -1236,6 +759,7 @@
             const unavailableButtons = document.querySelectorAll('.product-unavailable-btn');
             const productCards = document.querySelectorAll('.product-card[data-product-url]');
             const productAlert = @json(session('product_alert'));
+            const interactiveSelector = 'a, button, input, select, textarea, label';
 
             const showProductAlert = function(payload) {
                 const title = payload?.title || 'Link pembelian belum tersedia';
@@ -1261,6 +785,27 @@
                         confirmButton: 'swal-landing-confirm'
                     }
                 });
+            };
+
+            const scrollToSection = function(hash) {
+                const target = document.querySelector(hash);
+
+                if (!target) {
+                    return false;
+                }
+
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+
+                if (navbarCollapseEl && navbarCollapseEl.classList.contains('show')) {
+                    navbarCollapse.hide();
+                }
+
+                window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
+
+                return true;
             };
 
             if (productAlert) {
@@ -1302,8 +847,6 @@
                 });
             });
 
-            const interactiveSelector = 'a, button, input, select, textarea, label';
-
             productCards.forEach(function(card) {
                 const navigateToProduct = function() {
                     const targetUrl = card.dataset.productUrl;
@@ -1329,30 +872,13 @@
                 });
             });
 
-            const scrollToSection = function(hash) {
-                const target = document.querySelector(hash);
-
-                if (!target) {
-                    return false;
-                }
-
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-
-                if (navbarCollapseEl && navbarCollapseEl.classList.contains('show')) {
-                    navbarCollapse.hide();
-                }
-
-                window.history.replaceState(null, '', `${window.location.pathname}${window.location.search}`);
-
-                return true;
-            };
-
             document.querySelectorAll('[data-scroll-target]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const hash = this.dataset.scrollTarget;
+
+                    if (!hash) {
+                        return;
+                    }
 
                     if (scrollToSection(hash)) {
                         e.preventDefault();
@@ -1375,6 +901,7 @@
             }
         });
     </script>
+    @stack('scripts')
 </body>
 
 </html>

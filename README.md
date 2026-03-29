@@ -1,7 +1,7 @@
 # 🚴 Ar-Rahman E-Bike Bondowoso
 
 <p align="center">
-  <img src="public/assets/logo.png" width="180" alt="Ar-Rahman E-Bike Bondowoso">
+  <img src="public/assets/logo.png" width="380" alt="Ar-Rahman E-Bike Bondowoso">
 </p>
 
 <p align="center">

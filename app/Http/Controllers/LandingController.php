@@ -17,6 +17,19 @@ class LandingController extends Controller
         return view('index', compact('products'));
     }
 
+    public function showProduct(Product $product)
+    {
+        abort_unless($product->is_active, 404);
+
+        $relatedProducts = Product::where('is_active', true)
+            ->whereKeyNot($product->id)
+            ->orderByDesc('created_at')
+            ->limit(4)
+            ->get();
+
+        return view('products.show', compact('product', 'relatedProducts'));
+    }
+
     public function clickProduct(Request $request, Product $product)
     {
         abort_unless($product->is_active, 404);
