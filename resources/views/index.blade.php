@@ -992,9 +992,8 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250728000101Product%20highlight-05.jpg');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h1>Solusi lengkap untuk kebutuhan kendaraan dan aksesoris Anda.</h1>
-                                    <p>Ar-Rahman E-Bike Bondowoso menghadirkan berbagai produk berkualitas untuk mobilitas
-                                        harian, usaha, hingga gaya hidup modern.</p>
+                                    <h1>Solusi lengkap untuk kebutuhan sepeda listrik dan aksesoris Anda.</h1>
+                                    <p>Ar-Rahman E-Bike Bondowoso menghadirkan berbagai pilihan sepeda listrik serta sparepart berkualitas seperti charger, karpet, baterai, dan aksesoris lainnya untuk mobilitas harian Anda.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#produk"
                                             class="btn btn-brand">Lihat Produk</a>
@@ -1010,9 +1009,8 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250727235527Product%20highlight-02.jpg');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h2>Harga lebih menarik dengan performa baterai yang tahan lama.</h2>
-                                    <p>Dapatkan penawaran terbaik untuk berbagai produk dengan desain
-                                        elegan dan fitur kekinian.</p>
+                                    <h2>Sparepart dan aksesoris Sepeda Listrik berkualitas terjamin.</h2>
+                                    <p>Dapatkan charger, karpet, baterai, dan berbagai aksesoris lainnya dengan harga terjangkau dan garansi resmi.</p>
                                     <div class="hero-actions">
                                         <a href="https://wa.me/6285231260016" class="btn btn-brand" target="_blank"
                                             rel="noopener">Pesan via WhatsApp</a>
@@ -1026,9 +1024,9 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20260303095623NUV%20S7%20-%20VERITON-2.jpg');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h2>Temukan kendaraan ringkas untuk sekolah, kerja, dan kebutuhan keluarga.</h2>
-                                    <p>Unit pilihan dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
-                                        setiap hari.</p>
+                                    <h2>Temukan Sepeda Listrik yang cocok untuk sekolah, kerja, dan kebutuhan keluarga.</h2>
+                                    <p>Pilih berbagai model dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
+                                        setiap hari dengan harga terjangkau.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#testimoni"
                                             class="btn btn-outline-light">Lihat Testimoni</a>
