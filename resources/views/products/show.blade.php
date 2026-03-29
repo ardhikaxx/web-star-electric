@@ -425,6 +425,10 @@
                 font-size: 0.82rem;
             }
 
+            .product-detail-main {
+                grid-template-columns: 1fr;
+            }
+
             .product-detail-quick-meta,
             .product-story-grid {
                 grid-template-columns: 1fr;
@@ -513,7 +517,7 @@
     <section class="section-space product-detail-section pt-0">
         <div class="container">
             <div class="product-detail-main">
-                <div class="d-grid gap-4">
+                <div class="d-flex gap-4">
                     <article class="contact-card product-story-card">
                         <div class="product-story-head">
                             <div>
