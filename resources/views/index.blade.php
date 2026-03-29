@@ -1063,7 +1063,7 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Pilihan</span>
                     <h3>Produk berkualitas yang siap mendukung kebutuhan Anda</h3>
-                    <p>Pilih produk favorit dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
+                    <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
                         <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
                 <div class="row g-4">
