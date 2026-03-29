@@ -579,7 +579,6 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Lainnya</span>
                     <h3>Masih ingin membandingkan model lain?</h3>
-                    <p>Card di bawah tetap memakai UI yang sama seperti landing page, jadi pengunjung bisa pindah ke detail produk lain tanpa kehilangan konteks visual.</p>
                 </div>
 
                 <div class="row g-4">
