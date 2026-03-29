@@ -195,16 +195,4 @@ DB_PASSWORD=
 
 ---
 
-## 🤝 Kontribusi
-
-Kontribusi selalu welcome! Silakan buat pull request atau laporkan issues di repository.
-
----
-
-## 📝 Lisensi
-
 MIT License - Copyright © 2026 Ar-Rahman E-Bike Bondowoso
-
----
-
-<p align="center">Made with ❤️ for Ar-Rahman E-Bike Bondowoso</p>
