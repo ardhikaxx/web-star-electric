@@ -578,7 +578,7 @@
             <div class="container">
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Lainnya</span>
-                    <h3>Masih ingin membandingkan model lain?</h3>
+                    <h3> Produk lainnya yang mungkin Anda butuhkan</h3>
                 </div>
 
                 <div class="row g-4">
