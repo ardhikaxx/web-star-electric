@@ -218,13 +218,6 @@
             z-index: 2;
         }
 
-        .product-detail-main {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-            gap: clamp(1.25rem, 2.6vw, 2rem);
-            align-items: start;
-        }
-
         .product-story-card,
         .product-buy-card {
             position: relative;
@@ -407,15 +400,6 @@
             border: 1px solid rgba(229, 57, 53, 0.08);
         }
 
-        .product-detail-visual {
-                min-height: 320px;
-            }
-
-            .product-buy-card {
-                position: static;
-            }
-        }
-
         @media (max-width: 767.98px) {
             .product-detail-hero {
                 padding-top: 6.7rem;
@@ -423,10 +407,6 @@
 
             .product-detail-breadcrumb {
                 font-size: 0.82rem;
-            }
-
-            .product-detail-main {
-                grid-template-columns: 1fr;
             }
 
             .product-detail-quick-meta,
@@ -516,8 +496,8 @@
 
     <section class="section-space product-detail-section pt-0">
         <div class="container">
-            <div class="product-detail-main">
-                <div class="d-flex gap-4">
+            <div class="row g-4">
+                <div class="col-12 col-lg-8">
                     <article class="contact-card product-story-card">
                         <div class="product-story-head">
                             <div>
@@ -543,8 +523,10 @@
                             @endforeach
                     </div>
                 </article>
+                </div>
 
-                <aside class="contact-card product-buy-card">
+                <div class="col-12 col-lg-4">
+                    <aside class="contact-card product-buy-card">
                     <div class="product-buy-media">
                         <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->name }}"
                             class="product-summary-image">
@@ -586,6 +568,7 @@
                         </a>
                     </div>
                 </aside>
+                </div>
             </div>
         </div>
     </section>
