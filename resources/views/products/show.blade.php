@@ -411,99 +411,7 @@
             border: 1px solid rgba(229, 57, 53, 0.08);
         }
 
-        .product-price-caption {
-            display: block;
-            color: var(--muted);
-            font-size: 0.84rem;
-            line-height: 1.7;
-            max-width: 190px;
-        }
-
-        .product-price-panel .price-wrap {
-            margin: 0;
-        }
-
-        .product-buy-list {
-            display: grid;
-            gap: 0.95rem;
-            margin: 0;
-        }
-
-        .product-buy-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-            color: var(--muted);
-            line-height: 1.8;
-        }
-
-        .product-buy-list i {
-            color: var(--primary);
-            font-size: 0.95rem;
-            margin-top: 0.28rem;
-        }
-
-        .product-summary-actions {
-            display: grid;
-            gap: 0.85rem;
-            margin-top: 0.15rem;
-        }
-
-        .product-summary-actions .btn {
-            width: 100%;
-        }
-
-        .product-summary-actions .btn-outline-dark {
-            border-width: 1.5px;
-            border-radius: 14px;
-            font-weight: 700;
-            min-height: 54px;
-        }
-
-        .product-insight-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .product-insight-mini {
-            padding: 1rem;
-            border-radius: 20px;
-            background: rgba(255, 255, 255, 0.64);
-            border: 1px solid rgba(16, 33, 50, 0.06);
-        }
-
-        .product-insight-mini i {
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 0.85rem;
-        }
-
-        .product-insight-mini strong {
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: 1rem;
-            margin-bottom: 0.4rem;
-            color: var(--text);
-        }
-
-        .product-insight-mini p {
-            font-size: 0.92rem;
-            line-height: 1.75;
-        }
-
-        @media (max-width: 991.98px) {
-            .product-detail-shell,
-            .product-detail-main {
-                grid-template-columns: 1fr;
-            }
-
-            .product-detail-copy h1 {
-                max-width: none;
-            }
-
-            .product-detail-visual {
+        .product-detail-visual {
                 min-height: 320px;
             }
 
@@ -617,7 +525,6 @@
                                 <span class="section-tag">Informasi Produk</span>
                                 <h2>{{ $product->name }}</h2>
                             </div>
-                            <p>Susunan informasi dibuat lebih fokus agar calon pembeli bisa memahami nilai produk ini dengan cepat.</p>
                         </div>
 
                         <div class="product-story-grid">
@@ -673,16 +580,6 @@
                         </span>
                     </div>
 
-                    <div class="product-buy-meta">
-                        <span class="section-tag">Ringkasan Pembelian</span>
-                        <h2>Siap dilanjutkan ke tahap berikutnya</h2>
-                        <p>Panel ini dirapikan khusus untuk menempatkan harga, status pembelian, dan CTA utama dalam satu area fokus.</p>
-                        <span class="product-buy-status">
-                            <i class="fa-solid fa-circle-check"></i>
-                            {{ $statusLabel }}
-                        </span>
-                    </div>
-
                     <div class="product-price-panel">
                         <div class="price-wrap">
                             @if ($product->old_price)
@@ -690,14 +587,7 @@
                             @endif
                             <span class="current-price">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
                         </div>
-                        <span class="product-price-caption">
-                            {{ $hasDiscount ? 'Harga lama tetap ditampilkan agar potongan lebih mudah dibandingkan.' : 'Harga utama ditampilkan dominan agar keputusan pembelian lebih cepat.' }}
-                        </span>
                     </div>
-
-                    <ul class="product-buy-list list-unstyled">
-                    </ul>
-                    </ul>
 
                     <div class="product-summary-actions">
                         @if ($product->link)
