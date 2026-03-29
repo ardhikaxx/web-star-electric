@@ -130,39 +130,6 @@
             color: #ffd37d;
         }
 
-        .product-hero-stats {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0.95rem;
-            margin-top: 1.55rem;
-        }
-
-        .product-hero-stat {
-            padding: 1rem 1rem 0.95rem;
-            border-radius: 22px;
-            background: rgba(255, 255, 255, 0.14);
-            border: 1px solid rgba(255, 255, 255, 0.14);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        .product-hero-stat span {
-            display: block;
-            color: rgba(255, 255, 255, 0.68);
-            font-size: 0.78rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 0.4rem;
-            font-weight: 700;
-        }
-
-        .product-hero-stat strong {
-            display: block;
-            font-family: 'Sora', sans-serif;
-            font-size: clamp(1rem, 0.92rem + 0.5vw, 1.35rem);
-            line-height: 1.3;
-        }
-
         .product-detail-visual {
             position: relative;
             min-height: clamp(380px, 48vw, 580px);
@@ -558,7 +525,6 @@
             }
 
             .product-detail-quick-meta,
-            .product-hero-stats,
             .product-story-grid,
             .product-insight-grid {
                 grid-template-columns: 1fr;
@@ -609,21 +575,6 @@
                             <i class="fa-solid {{ $product->link ? 'fa-link' : 'fa-message' }}"></i>
                             {{ $statusLabel }}
                         </span>
-                    </div>
-
-                    <div class="product-hero-stats">
-                        <div class="product-hero-stat">
-                            <span>Harga Sekarang</span>
-                            <strong>Rp{{ number_format($product->price, 0, ',', '.') }}</strong>
-                        </div>
-                        <div class="product-hero-stat">
-                            <span>Status Beli</span>
-                            <strong>{{ $product->link ? 'Bisa checkout online' : 'Hubungi toko dulu' }}</strong>
-                        </div>
-                        <div class="product-hero-stat">
-                            <span>Dukungan</span>
-                            <strong>Konsultasi cepat via WhatsApp</strong>
-                        </div>
                     </div>
 
                     <div class="hero-actions">
