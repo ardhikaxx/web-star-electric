@@ -25,20 +25,6 @@
 
 ---
 
-## 📋 Daftar Isi
-
-- [Tentang Kami](#tentang-kami)
-- [Fitur](#fitur)
-- [Tech Stack](#tech-stack)
-- [Installation](#installation)
-- [Konfigurasi](#konfigurasi)
-- [Lokasi Toko](#lokasi-toko)
-- [Struktur Project](#struktur-project)
-- [Kontak](#kontak)
-- [Lisensi](#lisensi)
-
----
-
 ## 🎯 Tentang Kami
 
 **Ar-Rahman E-Bike Bondowoso** adalah toko spesialis penjualan dan layanan sepeda listrik yang berlokasi di Bondowoso, Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama dengan harga bersaing dan kualitas terjamin.
