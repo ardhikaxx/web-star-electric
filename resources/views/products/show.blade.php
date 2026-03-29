@@ -426,17 +426,67 @@
         }
 
         .product-whatsapp-cta {
-            color: #fff;
+            position: relative;
+            color: #fff !important;
             border: 1px solid transparent;
             background: linear-gradient(135deg, #25d366, #1da851);
-            box-shadow: 0 18px 32px rgba(37, 211, 102, 0.24);
+            box-shadow: 0 14px 28px rgba(37, 211, 102, 0.25);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.85rem;
+            padding: 0.9rem 1.6rem;
+            min-height: 54px;
+            border-radius: 18px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .hero-actions .product-whatsapp-cta {
+                width: fit-content;
+                min-width: 240px;
+            }
         }
 
         .product-whatsapp-cta:hover,
         .product-whatsapp-cta:focus {
-            color: #fff;
+            transform: translateY(-5px) scale(1.02);
             background: linear-gradient(135deg, #1ebe5d, #16974a);
-            box-shadow: 0 20px 36px rgba(29, 168, 81, 0.28);
+            box-shadow: 0 22px 42px rgba(29, 168, 81, 0.35);
+        }
+
+        .product-whatsapp-cta i {
+            font-size: 1.4rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            animation: whatsappShake 3s infinite;
+        }
+
+        @keyframes whatsappShake {
+
+            0%,
+            100% {
+                transform: rotate(0);
+            }
+
+            5%,
+            15%,
+            25% {
+                transform: rotate(10deg);
+            }
+
+            10%,
+            20%,
+            30% {
+                transform: rotate(-10deg);
+            }
+
+            35% {
+                transform: rotate(0);
+            }
         }
 
         .product-back-cta {
@@ -529,8 +579,9 @@
                             </button>
                         @endif
                         <a href="https://wa.me/6285231260016?text=Halo%20saya%20ingin%20tanya%20tentang%20{{ urlencode($product->name) }}"
-                            target="_blank" rel="noopener" class="btn btn-outline-light">
-                            <i class="fa-brands fa-whatsapp"></i>Konsultasi via WhatsApp
+                            target="_blank" rel="noopener" class="product-whatsapp-cta">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Konsultasi WhatsApp</span>
                         </a>
                     </div>
                 </div>
@@ -614,8 +665,9 @@
                         @endif
 
                         <a href="https://wa.me/6285231260016?text=Halo%20saya%20ingin%20tanya%20tentang%20{{ urlencode($product->name) }}"
-                            target="_blank" rel="noopener" class="btn product-whatsapp-cta">
-                            <i class="fa-brands fa-whatsapp"></i>Tanya via WhatsApp
+                            target="_blank" rel="noopener" class="product-whatsapp-cta">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span>Tanya via WhatsApp</span>
                         </a>
                         <a href="{{ route('home') }}#produk" class="btn product-back-cta">
                             <i class="fa-solid fa-arrow-left"></i>Kembali ke daftar produk
