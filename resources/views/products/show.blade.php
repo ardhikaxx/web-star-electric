@@ -17,9 +17,6 @@
     $discountPercent = $hasDiscount ? round(($discountAmount / (float) $product->old_price) * 100) : null;
     $ctaLabel = $product->link ? 'Langsung Beli Sekarang' : 'Cek Ketersediaan Produk';
     $statusLabel = $product->link ? 'Pembelian online tersedia' : 'Pemesanan melalui konsultasi toko';
-    $statusCopy = $product->link
-        ? 'Tautan pembelian aktif. Klik tombol beli untuk lanjut ke halaman checkout atau marketplace.'
-        : 'Belum ada tautan pembelian langsung. Klik tombol beli untuk mengirim minat pembelian dan lanjut konsultasi.';
 @endphp
 
 @section('title', $product->name . ' - Detail Produk | Ar-Rahman E-Bike Bondowoso')
@@ -639,11 +636,6 @@
                                 <p>{{ $paragraph }}</p>
                             @endforeach
                         </div>
-
-                        <div class="product-description-highlight">
-                            <strong><i class="fa-solid fa-circle-info"></i>Catatan Pembelian</strong>
-                            <p>{{ $statusCopy }}</p>
-                        </div>
                     </article>
 
                     <article class="map-card product-insight-card">
@@ -704,18 +696,7 @@
                     </div>
 
                     <ul class="product-buy-list list-unstyled">
-                        <li>
-                            <i class="fa-solid fa-circle-info"></i>
-                            <span>{{ $statusCopy }}</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-store"></i>
-                            <span>Tersedia opsi konsultasi ke toko untuk cek stok, model, dan kecocokan kebutuhan harian.</span>
-                        </li>
-                        <li>
-                            <i class="fa-solid fa-shield-heart"></i>
-                            <span>Gaya tampilan halaman diselaraskan dengan landing page agar pengalaman pengguna tetap konsisten.</span>
-                        </li>
+                    </ul>
                     </ul>
 
                     <div class="product-summary-actions">
