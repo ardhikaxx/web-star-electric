@@ -653,17 +653,6 @@
                             <span>Harga Produk</span>
                             <strong>Rp{{ number_format($product->price, 0, ',', '.') }}</strong>
                         </div>
-                        @if ($hasDiscount)
-                            <div class="product-floating-discount">
-                                <i class="fa-solid fa-bolt"></i>
-                                Hemat {{ $discountPercent }}%
-                            </div>
-                        @else
-                            <div class="product-floating-discount">
-                                <i class="fa-solid fa-star"></i>
-                                Ready untuk ditanyakan
-                            </div>
-                        @endif
                     </div>
                 </div>
             </div>
