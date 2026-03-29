@@ -1,41 +1,52 @@
 <p align="center">
-  <img src="public/assets/logo.png" width="200" alt="STAR SEPEDA LISTRIK">
+  <img src="public/assets/logo.png" width="200" alt="Ar-Rahman E-Bike Bondowoso">
 </p>
 
-<h1 align="center">STAR SEPEDA LISTRIK BONDOWOSO</h1>
+<h1 align="center">AR-RAHMAN E-BIKE BONDOWOSO</h1>
 
 <p align="center">
-  Website e-commerce penjualan sepeda listrik terpercaya di Bondowoso, Jawa Timur.<br>
+  Website resmi penjualan dan layanan sepeda listrik terpercaya di Bondowoso, Jawa Timur.<br>
   <strong>Tech Stack:</strong> Laravel 11 + Bootstrap 5 + MySQL
 </p>
 
 ---
 
-## 🚀 Fitur
+## 🚀 Tentang Kami
 
-### Landing Page
-- Homepage dengan Hero Section, Produk, Testimoni, dan Kontak
-- Filter dan tampilan produk lengkap
-- Tracking klik produk (untuk analitik)
-- SEO-optimized dengan meta tags lengkap
-- Responsive design
-- WhatsApp Integration untuk pemesanan
+**Ar-Rahman E-Bike Bondowoso** adalah toko spesialis penjualan dan layanan sepeda listrik yang berlokasi di Bondowoso, Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama dengan harga bersaing dan kualitas terjamin. Tersedia juga layanan service, sparepart, dan pembelian online melalui Shopee.
 
-### Admin Panel
-- Dashboard dengan statistik produk dan klik
-- Manajemen produk (CRUD)
-- Ganti PIN admin
-- Login dengan sistem PIN 4 digit
+---
+
+## ✨ Fitur
+
+### 🌐 Landing Page (Frontend)
+- **Hero Section** - Tampilan utama yang menarik dengan Call-to-Action
+- **Produk** - Daftar lengkap produk sepeda listrik dengan harga dan deskripsi
+- **Testimoni** - Widget Google Reviews dari SociableKit
+- **Kontak & Lokasi** - Informasi kontak, 3 toko offline, dan link Shopee
+- **SEO Optimization** - Meta keywords dan description yang optimal
+- **WhatsApp Integration** - Pemesanan langsung via WhatsApp
+- **Responsive Design** - Tampilan optimal di semua device (desktop, tablet, mobile)
+
+### 🖥️ Admin Panel
+- **Dashboard** - Statistik produk dan klik produk
+- **Manajemen Produk** - CRUD lengkap (tambah, edit, hapus produk)
+- **Tracking** - Pencatatan klik produk untuk analitik
+- **Ganti PIN** - Sistem keamanan dengan PIN 4 digit
+- **Login System** - Login dengan PIN admin yang aman
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Framework:** Laravel 11
-- **Frontend:** Bootstrap 5, Font Awesome 6
-- **Database:** MySQL
-- **Design:** Custom responsive design
-- **Icons:** Font Awesome 6.6.0
+| Kategori | Teknologi |
+|----------|-----------|
+| **Backend** | Laravel 11 (PHP 8.2+) |
+| **Frontend** | Bootstrap 5, Font Awesome 6 |
+| **Database** | MySQL |
+| **Design** | Custom responsive design |
+| **External** | SociableKit (Google Reviews), SweetAlert2 |
+| **Icons** | Font Awesome 6.6.0 |
 
 ---
 
@@ -52,16 +63,16 @@ npm install
 # Copy environment file
 cp .env.example .env
 
-# Generate key
+# Generate application key
 php artisan key:generate
 
-# Run migration
+# Run database migration
 php artisan migrate
 
-# Seed data (optional)
+# Seed default data (optional)
 php artisan db:seed --class=AdminSettingSeeder
 
-# Run server
+# Run development server
 php artisan serve
 ```
 
@@ -72,18 +83,30 @@ php artisan serve
 | Item | Value |
 |------|-------|
 | PIN Admin | `1234` |
-| WhatsApp | `+62 852-3126-0016` |
+| WhatsApp Utama | `+62 852-3126-0016` |
+| WhatsApp Cadangan | `+62 813-3197-8800` |
 
 ---
 
-## 📂 Project Structure
+## 🏪 Lokasi Toko Offline
+
+| No | Nama Toko | Alamat |
+|----|-----------|--------|
+| 1 | ARRAHMAN E-BIKE BONDOWOSO | Depan Dinas Pengairan, Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kab. Bondowoso, Jawa Timur 68214 |
+| 2 | STAR SEPEDA LISTRIK | Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kab. Bondowoso, Jawa Timur 68214 |
+| 3 | UWINFLY PUJER BONDOWOSO | Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kab. Bondowoso, Jawa Timur 68271 |
+
+---
+
+## 📂 Struktur Project
 
 ```
-web-star-electric/
+sepeda-listrik/
 ├── app/
 │   ├── Http/Controllers/
-│   │   ├── Admin/          # Admin controllers
-│   │   └── LandingController.php
+│   │   ├── Admin/              # Admin controllers
+│   │   ├── LandingController.php
+│   │   └── ProductController.php
 │   └── Models/
 │       ├── AdminSetting.php
 │       └── Product.php
@@ -91,11 +114,13 @@ web-star-electric/
 │   ├── migrations/
 │   └── seeders/
 ├── public/
-│   └── assets/             # Images, logos
+│   ├── assets/                 # Images, logos, product images
+│   └── assets/css/
+│   └── assets/js/
 ├── resources/
 │   └── views/
-│       ├── admin/          # Admin panel views
-│       ├── index.blade.php # Landing page
+│       ├── admin/              # Admin panel views
+│       ├── index.blade.php     # Landing page
 ├── routes/
 │   └── web.php
 └── .env
@@ -106,32 +131,34 @@ web-star-electric/
 ## 📱 Screenshots
 
 ### Landing Page
-- Hero section dengan call-to-action
-- Daftar produk lengkap
-- Halaman testimoni
-- Peta lokasi toko
+- Hero section dengan CTA dan gambar produk
+- Daftar produk lengkap dengan harga dan tombolbeli
+- Widget Google Reviews
+- Peta lokasi dan informasi kontak
+- Footer dengan tautan navigasi
 
 ### Admin Panel
-- Dashboard statistik
-- Manajemen produk
-- Ganti PIN
+- Dashboard dengan statistik produk dan klik
+- Tampilan tabel manajemen produk
+- Form tambah/edit produk
 
 ---
 
-## 📞 Kontak
+## 📞 Kontak & Sosial Media
 
 | Channel | Info |
 |---------|------|
-| Alamat | Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten Bondowoso, Jawa Timur 68271 |
-| Telepon | +62 852-3126-0016, +62 813-3197-8800 |
-| WhatsApp | [Chat via WhatsApp](https://wa.me/6285231260016) |
+| 📍 Alamat | Bondowoso, Jawa Timur |
+| 📞 Telepon | +62 852-3126-0016 / +62 813-3197-8800 |
+| 💬 WhatsApp | [Hubungi via WhatsApp](https://wa.me/6285231260016) |
+| 🛒 Shopee | [Ar-Rahman E-bike Bondowoso Official](https://shopee.co.id/diahayuros8) |
 
 ---
 
 ## 📝 Lisensi
 
-MIT License - Copyright © 2026 STAR SEPEDA LISTRIK BONDOWOSO
+MIT License - Copyright © 2026 Ar-Rahman E-Bike Bondowoso
 
 ---
 
-<p align="center">Made with ❤️ for STAR SEPEDA LISTRIK Bondowoso</p>
+<p align="center">Made with ❤️ for Ar-Rahman E-Bike Bondowoso</p>
