@@ -11,10 +11,7 @@ Route::get('/produk/{product}', [LandingController::class, 'showProduct'])->name
 Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
 
 Route::prefix('admin')->name('admin.')->group(function () {
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.login');
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/change-pin', [AuthController::class, 'showChangePin'])->name('change-pin');
