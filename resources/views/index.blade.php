@@ -337,6 +337,77 @@
             position: relative;
         }
 
+        .skeleton {
+            background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 12px;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .skeleton-image {
+            height: 200px;
+            width: 100%;
+        }
+
+        .skeleton-body {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .skeleton-title {
+            height: 24px;
+            width: 80%;
+        }
+
+        .skeleton-text {
+            height: 16px;
+            width: 100%;
+        }
+
+        .skeleton-text.short {
+            width: 60%;
+        }
+
+        .skeleton-price {
+            height: 20px;
+            width: 50%;
+        }
+
+        .skeleton-btn {
+            height: 54px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .products-container {
+            display: contents;
+        }
+
+        .products-loaded .skeleton-card {
+            display: none;
+        }
+
         .product-card {
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1066,28 +1137,46 @@
                     <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
                         <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
-                <div class="row g-4">
-                    @forelse($products as $product)
+                <div class="row g-4" id="productsContainer">
+                    <div class="skeleton-loaders" id="skeletonLoaders">
+                        @for ($i = 0; $i < 8)
                         <div class="col-12 col-md-6 col-xl-3">
-                            @include('partials.landing.product-card', ['product' => $product])
-                        </div>
-                    @empty
-                        <div class="col-12">
-                            <div class="empty-products-card">
-                                <div class="empty-icon-wrap">
-                                    <i class="fa-solid fa-box-open"></i>
+                            <div class="skeleton-card">
+                                <div class="skeleton skeleton-image"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton skeleton-title"></div>
+                                    <div class="skeleton skeleton-text"></div>
+                                    <div class="skeleton skeleton-text short"></div>
+                                    <div class="skeleton skeleton-price"></div>
+                                    <div class="skeleton skeleton-btn"></div>
                                 </div>
-                                <h3>Produk Sementara Tidak Tersedia</h3>
-                                <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
-                                    informasi produk terkini.</p>
-                                <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
-                                    target="_blank" class="btn btn-brand">
-                                    <i class="fa-brands fa-whatsapp me-2"></i>
-                                    Hubungi via WhatsApp
-                                </a>
                             </div>
                         </div>
-                    @endforelse
+                        @endfor
+                    </div>
+                    <div class="products-actual" id="productsActual">
+                        @forelse($products as $product)
+                            <div class="col-12 col-md-6 col-xl-3">
+                                @include('partials.landing.product-card', ['product' => $product])
+                            </div>
+                        @empty
+                            <div class="col-12">
+                                <div class="empty-products-card">
+                                    <div class="empty-icon-wrap">
+                                        <i class="fa-solid fa-box-open"></i>
+                                    </div>
+                                    <h3>Produk Sementara Tidak Tersedia</h3>
+                                    <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
+                                        informasi produk terkini.</p>
+                                    <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
+                                        target="_blank" class="btn btn-brand">
+                                        <i class="fa-brands fa-whatsapp me-2"></i>
+                                        Hubungi via WhatsApp
+                                    </a>
+                                </div>
+                            </div>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </section>
@@ -1368,6 +1457,33 @@
                     scrollToSection(window.location.hash);
                 });
             }
+
+            // Skeleton Loading
+            (function() {
+                const skeletonLoaders = document.getElementById('skeletonLoaders');
+                const productsActual = document.getElementById('productsActual');
+                const productsContainer = document.getElementById('productsContainer');
+
+                if (skeletonLoaders && productsActual && productsContainer) {
+                    // Hide skeleton after page load
+                    window.addEventListener('load', function() {
+                        setTimeout(function() {
+                            if (skeletonLoaders) {
+                                skeletonLoaders.style.display = 'none';
+                            }
+                            productsContainer.classList.add('products-loaded');
+                        }, 800);
+                    });
+
+                    // Fallback: hide skeleton after timeout even if load event didn't fire
+                    setTimeout(function() {
+                        if (skeletonLoaders && skeletonLoaders.style.display !== 'none') {
+                            skeletonLoaders.style.display = 'none';
+                            productsContainer.classList.add('products-loaded');
+                        }
+                    }, 3000);
+                }
+            })();
         });
     </script>
 </body>
