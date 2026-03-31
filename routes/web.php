@@ -14,6 +14,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+    // Forgot PIN
+    Route::get('/forgot-pin', [AuthController::class, 'showForgotPin'])->name('forgot-pin');
+    Route::post('/forgot-pin', [AuthController::class, 'verifyRecoveryKey'])->name('forgot-pin.post');
+    Route::get('/reset-pin', [AuthController::class, 'showResetPinForm'])->name('reset-pin-form');
+    Route::post('/reset-pin', [AuthController::class, 'resetPin'])->name('reset-pin.post');
+
     Route::get('/change-pin', [AuthController::class, 'showChangePin'])->name('change-pin');
     Route::post('/change-pin', [AuthController::class, 'changePin']);
 

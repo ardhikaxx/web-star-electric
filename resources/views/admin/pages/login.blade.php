@@ -29,6 +29,12 @@
                     <i class="fa-solid fa-sign-in-alt me-2"></i>
                     Masuk
                 </button>
+
+                <div class="text-center mt-3">
+                    <a href="{{ route('admin.forgot-pin') }}" class="text-decoration-none" style="color: #6c757d; font-size: 0.85rem;">
+                        Lupa PIN?
+                    </a>
+                </div>
             </form>
 
             <div class="text-center mt-4">

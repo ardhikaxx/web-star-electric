@@ -44,6 +44,55 @@ class AuthController extends Controller
         return redirect()->route('admin.login')->with('success', 'Logout berhasil');
     }
 
+    public function showForgotPin()
+    {
+        return view('admin.pages.forgot-pin');
+    }
+
+    public function verifyRecoveryKey(Request $request)
+    {
+        $request->validate([
+            'recovery_key' => 'required',
+        ], [
+            'recovery_key.required' => 'Kunci Pemulihan wajib diisi',
+        ]);
+
+        if (AdminSetting::checkRecoveryKey($request->recovery_key)) {
+            session(['recovery_key_verified' => true]);
+            return redirect()->route('admin.reset-pin-form')->with('success', 'Kunci Pemulihan cocok. Silakan atur PIN baru Anda.');
+        }
+
+        return back()->with('error', 'Kunci Pemulihan tidak cocok')->withInput();
+    }
+
+    public function showResetPinForm()
+    {
+        if (!session()->has('recovery_key_verified')) {
+            return redirect()->route('admin.forgot-pin')->with('error', 'Sesi verifikasi telah berakhir. Silakan ulangi proses.');
+        }
+        return view('admin.pages.reset-pin');
+    }
+
+    public function resetPin(Request $request)
+    {
+        if (!session()->has('recovery_key_verified')) {
+            return redirect()->route('admin.forgot-pin');
+        }
+
+        $request->validate([
+            'new_pin' => 'required|digits:4|confirmed',
+        ], [
+            'new_pin.required' => 'PIN baru wajib diisi',
+            'new_pin.digits' => 'PIN baru harus 4 digit angka',
+            'new_pin.confirmed' => 'Konfirmasi PIN baru tidak cocok',
+        ]);
+
+        AdminSetting::setPin($request->new_pin);
+        session()->forget('recovery_key_verified');
+
+        return redirect()->route('admin.login')->with('success', 'PIN berhasil diperbarui. Silakan login dengan PIN baru.');
+    }
+
     public function showChangePin()
     {
         if (!session()->has('admin_logged_in')) {

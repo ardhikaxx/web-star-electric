@@ -1103,7 +1103,7 @@
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250728000101Product%20highlight-05.jpg');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner1.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h1>Pusat Sepeda Listrik & Motor Listrik Terlengkap - Solusi Hemat BBM & Ramah Lingkungan</h1>
@@ -1120,7 +1120,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20250727235527Product%20highlight-02.jpg');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner2.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h2>Sparepart dan aksesoris Sepeda Listrik berkualitas terjamin.</h2>
@@ -1135,7 +1135,7 @@
                     </div>
                     <div class="carousel-item">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('https://nuv.co.id/storage/app/vehicle/20260303095623NUV%20S7%20-%20VERITON-2.jpg');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner3.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h2>Temukan Sepeda Listrik yang cocok untuk sekolah, kerja, dan kebutuhan keluarga.</h2>

@@ -23,4 +23,10 @@ class AdminSetting extends Model
             ['value' => $pin]
         );
     }
+
+    public static function checkRecoveryKey($key)
+    {
+        $setting = self::where('key', 'admin_pin')->first();
+        return $setting && $setting->recovery_key === $key;
+    }
 }
