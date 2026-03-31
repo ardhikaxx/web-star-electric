@@ -400,12 +400,8 @@
             margin-top: auto;
         }
 
-        .products-loaded .skeleton-card {
+        .products-loaded .skeleton-item {
             display: none;
-        }
-
-        .products-loaded .products-actual {
-            display: contents;
         }
 
         .product-card {
@@ -1137,28 +1133,28 @@
                     <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
                         <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
-                <div class="row g-4" id="productsContainer">
-                    @php for ($i = 0; $i < 8; $i++) { @endphp
-                    <div class="col-12 col-md-6 col-xl-3 skeleton-item">
-                        <div class="skeleton-card">
-                            <div class="skeleton skeleton-image"></div>
-                            <div class="skeleton-body">
-                                <div class="skeleton skeleton-title"></div>
-                                <div class="skeleton skeleton-text"></div>
-                                <div class="skeleton skeleton-text short"></div>
-                                <div class="skeleton skeleton-price"></div>
-                                <div class="skeleton skeleton-btn"></div>
+                    <div class="row g-4" id="productsContainer">
+                        @php for ($i = 0; $i < 8; $i++) { @endphp
+                        <div class="col-12 col-md-6 col-xl-3 skeleton-item">
+                            <div class="skeleton-card">
+                                <div class="skeleton skeleton-image"></div>
+                                <div class="skeleton-body">
+                                    <div class="skeleton skeleton-title"></div>
+                                    <div class="skeleton skeleton-text"></div>
+                                    <div class="skeleton skeleton-text short"></div>
+                                    <div class="skeleton skeleton-price"></div>
+                                    <div class="skeleton skeleton-btn"></div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    @php } @endphp
-                    <div class="products-actual" id="productsActual" style="display: contents;">
+                        @php } @endphp
+
                         @forelse($products as $product)
-                            <div class="col-12 col-md-6 col-xl-3">
+                            <div class="col-12 col-md-6 col-xl-3 product-item d-none">
                                 @include('partials.landing.product-card', ['product' => $product])
                             </div>
                         @empty
-                            <div class="col-12">
+                            <div class="col-12 empty-products-wrapper d-none">
                                 <div class="empty-products-card">
                                     <div class="empty-icon-wrap">
                                         <i class="fa-solid fa-box-open"></i>
@@ -1175,7 +1171,6 @@
                             </div>
                         @endforelse
                     </div>
-                </div>
             </div>
         </section>
 
@@ -1459,29 +1454,26 @@
             // Skeleton Loading
             (function() {
                 const skeletonItems = document.querySelectorAll('.skeleton-item');
-                const productsActual = document.getElementById('productsActual');
                 const productsContainer = document.getElementById('productsContainer');
+                const productItems = document.querySelectorAll('.product-item, .empty-products-wrapper');
 
-                if (skeletonItems.length && productsActual && productsContainer) {
+                if (skeletonItems.length && productsContainer) {
+                    const finishLoading = function() {
+                        productsContainer.classList.add('products-loaded');
+                        productItems.forEach(item => item.classList.remove('d-none'));
+                    };
+
                     // Hide skeleton after page load
-                    window.addEventListener('load', function() {
-                        setTimeout(function() {
-                            skeletonItems.forEach(function(item) {
-                                item.style.display = 'none';
-                            });
-                            productsContainer.classList.add('products-loaded');
-                        }, 800);
-                    });
+                    if (document.readyState === 'complete') {
+                        setTimeout(finishLoading, 800);
+                    } else {
+                        window.addEventListener('load', function() {
+                            setTimeout(finishLoading, 800);
+                        });
+                    }
 
                     // Fallback: hide skeleton after timeout even if load event didn't fire
-                    setTimeout(function() {
-                        skeletonItems.forEach(function(item) {
-                            if (item.style.display !== 'none') {
-                                item.style.display = 'none';
-                            }
-                        });
-                        productsContainer.classList.add('products-loaded');
-                    }, 3000);
+                    setTimeout(finishLoading, 3000);
                 }
             })();
         });
