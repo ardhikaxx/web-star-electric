@@ -1139,7 +1139,7 @@
                 </div>
                 <div class="row g-4" id="productsContainer">
                     <div class="skeleton-loaders" id="skeletonLoaders">
-                        @for ($i = 0; $i < 8)
+                        @php for ($i = 0; $i < 8; $i++) { @endphp
                         <div class="col-12 col-md-6 col-xl-3">
                             <div class="skeleton-card">
                                 <div class="skeleton skeleton-image"></div>
@@ -1152,7 +1152,7 @@
                                 </div>
                             </div>
                         </div>
-                        @endfor
+                        @php } @endphp
                     </div>
                     <div class="products-actual" id="productsActual">
                         @forelse($products as $product)
