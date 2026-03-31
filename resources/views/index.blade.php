@@ -576,6 +576,30 @@
             background: linear-gradient(180deg, rgba(229, 57, 53, 0.06), rgba(245, 158, 11, 0.02));
         }
 
+        .tiktok-section {
+            background: linear-gradient(180deg, rgba(245, 158, 11, 0.04), rgba(229, 57, 53, 0.02));
+        }
+
+        .tiktok-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tiktok-grid blockquote {
+            margin: 0;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .tiktok-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         #googleReviews {
             width: 100%;
             max-width: 900px;
@@ -1184,6 +1208,40 @@
                 <div id="googleReviews">
                     <iframe src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
                 </div>
+            </div>
+        </section>
+
+        <section id="video" class="section-space tiktok-section">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">Video TikTok</span>
+                    <h3>Video Terbaru dari Toko Kami</h3>
+                    <p>Tonton video terbaru tentang koleksi dan promo sepeda listrik.</p>
+                </div>
+                <div class="tiktok-grid">
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7613312726793768212" data-video-id="7613312726793768212" style="max-width: 605px;min-width: 325px;">
+                        <section>
+                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿" href="https://www.tiktok.com/music/suara-asli-NEW-FAQZZ-PROJECT-7520569212558576440?refer=embed">♬ suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿</a>
+                        </section>
+                    </blockquote>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7610295600948858133" data-video-id="7610295600948858133" style="max-width: 605px;min-width: 325px;">
+                        <section>
+                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli  - rizz" href="https://www.tiktok.com/music/suara-asli-rizz-7609984025918245633?refer=embed">♬ suara asli  - rizz</a>
+                        </section>
+                    </blockquote>
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7609529543325781268" data-video-id="7609529543325781268" style="max-width: 605px;min-width: 325px;">
+                        <section>
+                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli  - Pisang GimbaL" href="https://www.tiktok.com/music/suara-asli-Pisang-GimbaL-7608766239133764360?refer=embed">♬ suara asli  - Pisang GimbaL</a>
+                        </section>
+                    </blockquote>
+                </div>
+                <script async src="https://www.tiktok.com/embed.js"></script>
             </div>
         </section>
 
