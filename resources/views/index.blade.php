@@ -1167,10 +1167,7 @@
                                     <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62
                                         813-3197-8800</a>
                                 </li>
-                                <li>
-                                    <i class="fa-solid fa-clock"></i>
-                                    <span>Siap melayani konsultasi pembelian dan info stok produk.</span>
-                                </li>
+
                             </ul>
                         </div>
                     </div>
