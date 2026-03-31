@@ -19,8 +19,66 @@
     <meta name="revisit-after" content="7 days">
     <meta name="geo.region" content="ID-JI">
     <meta name="geo.placename" content="Bondowoso">
-    <meta name="geo.position" content="-7.9220;113.8177">
+    <meta name="geo.position" content="-7.9220, 113.8177">
     <meta name="ICBM" content="-7.9220, 113.8177">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
+    <meta property="og:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi. Kunjungi Ar-Rahman E-Bike sekarang!">
+    <meta property="og:image" content="{{ asset('assets/logo.png') }}">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
+    <meta property="twitter:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
+    <meta property="twitter:image" content="{{ asset('assets/logo.png') }}">
+
+    <!-- JSON-LD Local Business Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BikeStore",
+      "name": "Ar-Rahman E-Bike Bondowoso",
+      "image": "{{ asset('assets/logo.png') }}",
+      "@id": "{{ url()->current() }}",
+      "url": "{{ url()->current() }}",
+      "telephone": "+6285231260016",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jl. Ahmad Yani No.89, Penatu, Badean",
+        "addressLocality": "Bondowoso",
+        "addressRegion": "Jawa Timur",
+        "postalCode": "68214",
+        "addressCountry": "ID"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -7.9220198788369105,
+        "longitude": 113.81527601072808
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "08:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://shopee.co.id/diahayuros8"
+      ]
+    }
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
