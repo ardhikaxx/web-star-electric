@@ -204,26 +204,6 @@
             height: 1.2rem;
         }
 
-        .btn-login-admin {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(16, 33, 50, 0.1);
-            color: var(--text);
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .btn-login-admin:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-
         .btn-brand {
             display: inline-flex;
             align-items: center;
@@ -802,27 +782,6 @@
             width: auto;
         }
 
-        .btn-login-admin-footer {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            transition: all 0.2s ease;
-            margin-left: 0.5rem;
-        }
-
-        .btn-login-admin-footer:hover {
-            background: var(--primary);
-            color: #fff;
-            border-color: var(--primary);
-        }
-
         .site-footer h3 {
             color: #fff;
         }
@@ -1083,11 +1042,8 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" data-scroll-target="#home">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('login') }}" title="Login Admin">
                 <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
-            </a>
-            <a href="{{ route('login') }}" class="btn-login-admin ms-2" title="Login Admin">
-                <i class="fa-solid fa-gear"></i>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -1371,11 +1327,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
+                    <a class="footer-brand" href="{{ route('login') }}" title="Login Admin">
                         <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
-                    </a>
-                    <a href="{{ route('login') }}" class="btn-login-admin-footer" title="Login Admin">
-                        <i class="fa-solid fa-gear"></i>
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
                         dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>
