@@ -400,12 +400,12 @@
             margin-top: auto;
         }
 
-        .products-container {
-            display: contents;
-        }
-
         .products-loaded .skeleton-card {
             display: none;
+        }
+
+        .products-loaded .products-actual {
+            display: contents;
         }
 
         .product-card {
@@ -1138,23 +1138,21 @@
                         <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
                 <div class="row g-4" id="productsContainer">
-                    <div class="skeleton-loaders" id="skeletonLoaders">
-                        @php for ($i = 0; $i < 8; $i++) { @endphp
-                        <div class="col-12 col-md-6 col-xl-3">
-                            <div class="skeleton-card">
-                                <div class="skeleton skeleton-image"></div>
-                                <div class="skeleton-body">
-                                    <div class="skeleton skeleton-title"></div>
-                                    <div class="skeleton skeleton-text"></div>
-                                    <div class="skeleton skeleton-text short"></div>
-                                    <div class="skeleton skeleton-price"></div>
-                                    <div class="skeleton skeleton-btn"></div>
-                                </div>
+                    @php for ($i = 0; $i < 8; $i++) { @endphp
+                    <div class="col-12 col-md-6 col-xl-3 skeleton-item">
+                        <div class="skeleton-card">
+                            <div class="skeleton skeleton-image"></div>
+                            <div class="skeleton-body">
+                                <div class="skeleton skeleton-title"></div>
+                                <div class="skeleton skeleton-text"></div>
+                                <div class="skeleton skeleton-text short"></div>
+                                <div class="skeleton skeleton-price"></div>
+                                <div class="skeleton skeleton-btn"></div>
                             </div>
                         </div>
-                        @php } @endphp
                     </div>
-                    <div class="products-actual" id="productsActual">
+                    @php } @endphp
+                    <div class="products-actual" id="productsActual" style="display: contents;">
                         @forelse($products as $product)
                             <div class="col-12 col-md-6 col-xl-3">
                                 @include('partials.landing.product-card', ['product' => $product])
@@ -1460,27 +1458,29 @@
 
             // Skeleton Loading
             (function() {
-                const skeletonLoaders = document.getElementById('skeletonLoaders');
+                const skeletonItems = document.querySelectorAll('.skeleton-item');
                 const productsActual = document.getElementById('productsActual');
                 const productsContainer = document.getElementById('productsContainer');
 
-                if (skeletonLoaders && productsActual && productsContainer) {
+                if (skeletonItems.length && productsActual && productsContainer) {
                     // Hide skeleton after page load
                     window.addEventListener('load', function() {
                         setTimeout(function() {
-                            if (skeletonLoaders) {
-                                skeletonLoaders.style.display = 'none';
-                            }
+                            skeletonItems.forEach(function(item) {
+                                item.style.display = 'none';
+                            });
                             productsContainer.classList.add('products-loaded');
                         }, 800);
                     });
 
                     // Fallback: hide skeleton after timeout even if load event didn't fire
                     setTimeout(function() {
-                        if (skeletonLoaders && skeletonLoaders.style.display !== 'none') {
-                            skeletonLoaders.style.display = 'none';
-                            productsContainer.classList.add('products-loaded');
-                        }
+                        skeletonItems.forEach(function(item) {
+                            if (item.style.display !== 'none') {
+                                item.style.display = 'none';
+                            }
+                        });
+                        productsContainer.classList.add('products-loaded');
                     }, 3000);
                 }
             })();
