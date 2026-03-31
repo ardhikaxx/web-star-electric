@@ -1,7 +1,3 @@
-@php
-    $products = $products ?? collect();
-@endphp
-
 <!DOCTYPE html>
 <html lang="id">
 
@@ -12,7 +8,7 @@
     <meta name="description"
         content="Pusat penjualan sepeda listrik, motor listrik, dan sparepart original di Jawa Timur. Ar-Rahman E-Bike Bondowoso menyediakan solusi transportasi hemat BBM, ramah lingkungan, dan modern. Melayani pengiriman ke seluruh Indonesia dengan harga grosir dan garansi resmi.">
     <meta name="keywords"
-        content="sepeda listrik, e-bike, e-bike Bondowoso, Ar-Rahman E-Bike, Ar-Rahman E-Bike Bondowoso, Star Sepeda Listrik, StarBWS, jual sepeda listrik, beli sepeda listrik, harga sepeda listrik, promo sepeda listrik, sepeda listrik terbaik, toko sepeda listrik terpercaya, toko sepeda listrik terdekat, distributor sepeda listrik, agen sepeda listrik resmi, NUV Sepeda Listrik, Star Volt, Sepeda Listrik Urban, Sepeda Listrik Keluarga, Sepeda Listrik Harian, Sepeda Listrik Anak Sekolah, Sepeda Listrik Kerja Kantor, Sepeda Listrik Murah, Sepeda Listrik Promo, Sepeda Listrik Garansi, Sepeda Listrik Service,  charger, charger e-bike, charger baterai, karpet, karpet e-bike, sparepart, sparepart e-bike, ban, ban e-bike, velg, rem, aki, aki e-bike, baterai, baterai e-bike, dinamo, controller, , Kendaraan Hijau, Transportasi Ramah Lingkungan, Solusi Mobilitas, Sepeda Listrik Jawa Timur, Toko Sepeda Listrik Jawa Timur, Harga Promo Sepeda Listrik, Best Seller Sepeda Listrik, Sepeda Listrik Modern, Sepeda Listrik Stylish, Sepeda Listrik Nyaman, Sepeda Listrik Irit, Sepeda Listrik Hemat, Sepeda Listrik Berkualitas, Sepeda Listrik Terpercaya Jawa Timur, Sepeda Listrik Termurah Jawa Timur, Jual Beli Sepeda Listrik Bondowoso, Toko Sepeda Listrik Bondowoso, Pusat Sepeda Listrik Bondowoso, Agen Resmi Sepeda Listrik Bondowoso, Sepeda Listrik Sport, Sepeda Listrik Foldable, Sepeda Listrik Battery, Sepeda Listrik Charging, Sepeda Listrik Garansi Resmi, Service Center Sepeda Listrik, Aksesoris Sepeda Listrik, Helm Sepeda Listrik, Locks Sepeda Listrik, Spesialis Sepeda Listrik, Toko Sepeda Listrik Terbaik, Sepeda Listrik Termurah, Grosir Sepeda Listrik, Retail Sepeda Listrik, Kendaraan Listrik, Transportasi Listrik, Sepeda Listrik Indonesia, Merk Sepeda Listrik, Sepeda Listrik Vintage, Sepeda Listrik Custom, Modifikasi Sepeda Listrik, Perbaikan Sepeda Listrik, Servis Sepeda Listrik, Rental Sepeda Listrik, Ar-Rahman E-bike, Sepeda Listrik 2024, Sepeda Listrik 2025, Sepeda Listrik Terbaru, Sepeda Listrik Ori, Sepeda Listrik Bergaransi, Sepeda Listrik Terlaris, Sepeda Listrik Indonesia, Sepeda Listrik Lokal, Sepeda Listrik Import, Sepeda Listrik China, Sepeda Listrik Korea, Sepeda Listrik Jepang, Sepeda Listrik Elektrik, Sepeda Listrik Automatic, Sepeda Listrik Manual, Sepeda Listrik Lipat, Sepeda Listrik Dewasa, Sepeda Listrik Remaja, Sepeda Listrik Anak, Sepeda Listrik Perempuan, Sepeda Listrik Pria, Sepeda Listrik Muslim, Sepeda Listrik Hajatan, Sepeda Listrik Onthel, Sepeda Listrik Touring, Sepeda Listrik Adventure, Sepeda Listrik City, Sepeda Listrik Commuter, Sepeda Listrik Cargo, Sepeda Listrik Family, Sepeda Listrik Premium, Sepeda Listrik Budget, Sepeda Listrik Cash, Sepeda Listrik Cicilan, Sepeda Listrik Kredit, Toko Sepeda Listrik Terdekat, Jual Sepeda Listrik Terdekat, Harga Sepeda Listrik Terendah, Promo Sepeda Listrik Terbaru, Diskon Sepeda Listrik, Sale Sepeda Listrik, Bundling Sepeda Listrik, Aksesoris Sepeda Listrik Murah, Sparepart Sepeda Listrik Murah, Baterai Sepeda Listrik Ganti, Service Sepeda Listrik Terdekat, Perbaikan Sepeda Listrik Cepat, Teknisi Sepeda Listrik, Mekanik Sepeda Listrik, Montir Sepeda Listrik, Konsultasi Sepeda Listrik, Tanya Jawab Sepeda Listrik, Panduan Beli Sepeda Listrik, Tips Pilih Sepeda Listrik, Review Sepeda Listrik, Test Ride Sepeda Listrik, Showroom Sepeda Listrik, Gerai Sepeda Listrik, Komunitas Sepeda Listrik, Club Sepeda Listrik, Gowes Sepeda Listrik, Touring Sepeda Listrik, Gathering Sepeda Listrik, Edukasi Sepeda Listrik, Seminar Sepeda Listrik, Workshop Sepeda Listrik, Training Sepeda Listrik, Kursus Sepeda Listrik">
+        content="sepeda listrik, motor listrik, kendaraan listrik, e-bike indonesia, jual sepeda listrik murah, distributor sepeda listrik jawa timur, pusat sepeda listrik bondowoso, uwinfly bondowoso, nuv sepeda listrik, solart volt, sepeda listrik anak, sepeda listrik dewasa, sparepart sepeda listrik, baterai sepeda listrik, charger e-bike, solusi hemat bbm, transportasi ramah lingkungan, toko sepeda listrik terdekat, harga sepeda listrik 2024, promo sepeda listrik hari ini, ar-rahman e-bike, toko sepeda listrik situbondo, toko sepeda listrik jember, toko sepeda listrik banyuwangi">
     <meta name="author" content="Ar-Rahman E-Bike Bondowoso">
     <meta name="robots" content="index, follow">
     <meta name="language" content="Indonesian">
@@ -39,16 +35,16 @@
     <!-- JSON-LD Local Business Schema -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "BikeStore",
+      "@@context": "https://schema.org",
+      "@@type": "BikeStore",
       "name": "Ar-Rahman E-Bike Bondowoso",
       "image": "{{ asset('assets/logo.png') }}",
-      "@id": "{{ url()->current() }}",
+      "@@id": "{{ url()->current() }}",
       "url": "{{ url()->current() }}",
       "telephone": "+6285231260016",
       "priceRange": "$$",
       "address": {
-        "@type": "PostalAddress",
+        "@@type": "PostalAddress",
         "streetAddress": "Jl. Ahmad Yani No.89, Penatu, Badean",
         "addressLocality": "Bondowoso",
         "addressRegion": "Jawa Timur",
@@ -56,12 +52,12 @@
         "addressCountry": "ID"
       },
       "geo": {
-        "@type": "GeoCoordinates",
+        "@@type": "GeoCoordinates",
         "latitude": -7.9220198788369105,
         "longitude": 113.81527601072808
       },
       "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
+        "@@type": "OpeningHoursSpecification",
         "dayOfWeek": [
           "Monday",
           "Tuesday",
@@ -862,37 +858,6 @@
             text-align: center;
         }
 
-        .swal2-popup.swal-landing-popup {
-            border-radius: 24px;
-            padding: 1.4rem 1.25rem 1.2rem;
-            box-shadow: 0 24px 55px rgba(16, 33, 50, 0.18);
-        }
-
-        .swal2-title.swal-landing-title {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.35rem;
-            color: var(--text);
-        }
-
-        .swal2-html-container.swal-landing-content {
-            font-size: 0.95rem;
-            color: var(--muted);
-            line-height: 1.7;
-        }
-
-        .swal2-confirm.swal-landing-confirm {
-            border-radius: 14px;
-            background: linear-gradient(135deg, var(--primary), #ff4d4d) !important;
-            box-shadow: 0 14px 30px rgba(229, 57, 53, 0.22);
-            font-weight: 700;
-            padding: 0.8rem 1.5rem;
-        }
-
-        .swal2-icon.swal2-info {
-            border-color: rgba(229, 57, 53, 0.24) !important;
-            color: var(--primary) !important;
-        }
-
         @media (max-width: 991.98px) {
             :root {
                 --nav-offset: 86px;
@@ -1100,7 +1065,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.login') }}" title="Login Admin">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
                 <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -1215,8 +1180,8 @@
                     <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
                         <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
                 </div>
-                    <div class="row g-4" id="productsContainer">
-                        @php for ($i = 0; $i < 8; $i++) { @endphp
+                <div class="row g-4" id="productsContainer">
+                    @for ($i = 0; $i < 8; $i++)
                         <div class="col-12 col-md-6 col-xl-3 skeleton-item">
                             <div class="skeleton-card">
                                 <div class="skeleton skeleton-image"></div>
@@ -1229,30 +1194,30 @@
                                 </div>
                             </div>
                         </div>
-                        @php } @endphp
+                    @endfor
 
-                        @forelse($products as $product)
-                            <div class="col-12 col-md-6 col-xl-3 product-item d-none">
-                                @include('partials.landing.product-card', ['product' => $product])
-                            </div>
-                        @empty
-                            <div class="col-12 empty-products-wrapper d-none">
-                                <div class="empty-products-card">
-                                    <div class="empty-icon-wrap">
-                                        <i class="fa-solid fa-box-open"></i>
-                                    </div>
-                                    <h3>Produk Sementara Tidak Tersedia</h3>
-                                    <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
-                                        informasi produk terkini.</p>
-                                    <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
-                                        target="_blank" class="btn btn-brand">
-                                        <i class="fa-brands fa-whatsapp me-2"></i>
-                                        Hubungi via WhatsApp
-                                    </a>
+                    @forelse($products as $product)
+                        <div class="col-12 col-md-6 col-xl-3 product-item d-none">
+                            @include('partials.landing.product-card', ['product' => $product])
+                        </div>
+                    @empty
+                        <div class="col-12 empty-products-wrapper d-none">
+                            <div class="empty-products-card">
+                                <div class="empty-icon-wrap">
+                                    <i class="fa-solid fa-box-open"></i>
                                 </div>
+                                <h3>Produk Sementara Tidak Tersedia</h3>
+                                <p>Kami sedang memperbarui koleksi produk terbaru untuk Anda. Silakan hubungi kami untuk
+                                    informasi produk terkini.</p>
+                                <a href="https://wa.me/6281234567890?text=Halo%20saya%20ingin%20tanya%20tentang%20produk%20sepeda%20listrik"
+                                    target="_blank" class="btn btn-brand">
+                                    <i class="fa-brands fa-whatsapp me-2"></i>
+                                    Hubungi via WhatsApp
+                                </a>
                             </div>
-                        @endforelse
-                    </div>
+                        </div>
+                    @endforelse
+                </div>
             </div>
         </section>
 
@@ -1385,8 +1350,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a class="footer-brand" href="{{ route('admin.login') }}" title="Login Admin">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
+                    <a class="footer-brand" href="{{ route('home') }}">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
+                            class="footer-logo">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
                         dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>
@@ -1427,7 +1393,7 @@
             }) : null;
             const unavailableButtons = document.querySelectorAll('.product-unavailable-btn');
             const productCards = document.querySelectorAll('.product-card[data-product-url]');
-            const productAlert = @json(session('product_alert'));
+            const productAlert = {{ Js::from(session('product_alert')) }};
 
             const showProductAlert = function(payload) {
                 const title = payload?.title || 'Link pembelian belum tersedia';
