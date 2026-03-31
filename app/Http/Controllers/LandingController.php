@@ -11,6 +11,7 @@ class LandingController extends Controller
     public function index()
     {
         $products = Product::where('is_active', true)
+            ->orderByDesc('click_count')
             ->orderByDesc('created_at')
             ->get();
 
