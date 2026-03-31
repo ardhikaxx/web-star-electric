@@ -18,6 +18,14 @@ class LandingController extends Controller
         return view('index', compact('products'));
     }
 
+    public function sitemap()
+    {
+        $products = Product::where('is_active', true)->get();
+        return response()->view('sitemap', [
+            'products' => $products
+        ])->header('Content-Type', 'text/xml');
+    }
+
     public function showProduct(Product $product)
     {
         abort_unless($product->is_active, 404);
