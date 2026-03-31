@@ -360,6 +360,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            margin-bottom: 1.5rem;
         }
 
         .skeleton-image {
@@ -414,6 +415,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            margin-bottom: 1.5rem;
         }
 
         .product-card:hover {
