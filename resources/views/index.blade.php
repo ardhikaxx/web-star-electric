@@ -1065,7 +1065,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.login') }}">
                 <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
@@ -1350,7 +1350,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a class="footer-brand" href="{{ route('home') }}">
+                    <a class="footer-brand" href="{{ route('admin.login') }}">
                         <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
                             class="footer-logo">
                     </a>
