@@ -12,13 +12,17 @@ Route::get('/sitemap.xml', [LandingController::class, 'sitemap']);
 Route::get('/produk/{product}', [LandingController::class, 'showProduct'])->name('products.show');
 Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
 
+use Illuminate\Support\Facades\File;
+
 Route::get('/uploads/products/{filename}', function ($filename) {
     $path = storage_path('uploads/products/' . $filename);
-    if (!file_exists($path)) {
+    if (!File::exists($path)) {
         abort(404);
     }
-    return response()->file($path);
-})->name('product.image');
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    return response($file, 200)->header('Content-Type', $type);
+});
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

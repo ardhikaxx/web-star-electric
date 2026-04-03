@@ -6,7 +6,7 @@
 <article class="product-card h-100 is-clickable" data-product-url="{{ $detailUrl }}" tabindex="0" role="link"
     aria-label="Lihat detail produk {{ $product->name }}">
     <div class="product-image-wrap">
-        <img src="{{ route('product.image', $product->image) }}" alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" class="product-image"
+        <img src="/uploads/products/{{ $product->image }}" alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" class="product-image"
             loading="lazy">
         <span class="product-badge">Lihat Detail</span>
     </div>
