@@ -1,13 +1,74 @@
 @php
     $detailUrl = route('products.show', $product);
     $desc = \Illuminate\Support\Str::limit(trim(strip_tags($product->description)), 80, '...');
+    $images = $product->images->count() > 0 ? $product->images : collect([ (object)['image_path' => $product->image] ]);
 @endphp
+
+<style>
+    .product-image-slider {
+        position: relative;
+        width: 100%;
+        height: clamp(230px, 28vw, 310px);
+        overflow: hidden;
+    }
+    .slider-track {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        transition: transform 0.5s ease-in-out;
+    }
+    .slider-item {
+        flex: 0 0 100%;
+        width: 100%;
+        height: 100%;
+    }
+    .slider-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .slider-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 5px;
+        z-index: 2;
+    }
+    .slider-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
+    }
+    .slider-dot.active {
+        background: #fff;
+        width: 12px;
+        border-radius: 10px;
+    }
+</style>
 
 <article class="product-card h-100 is-clickable" data-product-url="{{ $detailUrl }}" tabindex="0" role="link"
     aria-label="Lihat detail produk {{ $product->name }}">
     <div class="product-image-wrap">
-        <img src="/uploads/products/{{ $product->image }}" alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" class="product-image"
-            loading="lazy">
+        <div class="product-image-slider" data-image-count="{{ $images->count() }}">
+            <div class="slider-track">
+                @foreach($images as $img)
+                    <div class="slider-item">
+                        <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" loading="lazy">
+                    </div>
+                @endforeach
+            </div>
+            @if($images->count() > 1)
+                <div class="slider-dots">
+                    @foreach($images as $index => $img)
+                        <div class="slider-dot {{ $index === 0 ? 'active' : '' }}"></div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
         <span class="product-badge">Lihat Detail</span>
     </div>
     <div class="product-body">

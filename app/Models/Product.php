@@ -28,4 +28,9 @@ class Product extends Model
         'interest_click_count' => 'integer',
         'last_clicked_at' => 'datetime',
     ];
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class)->orderBy('position');
+    }
 }

@@ -135,11 +135,17 @@
             min-height: 150px;
         }
 
+        .image-upload-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
         .image-preview-wrapper {
             position: relative;
-            width: 100%;
-            padding-top: 100%; /* 1:1 Aspect Ratio */
-            border-radius: var(--radius-lg);
+            aspect-ratio: 1/1;
+            border-radius: var(--radius-md);
             overflow: hidden;
             background: var(--bg-light);
             border: 2px dashed var(--line);
@@ -152,61 +158,48 @@
 
         .image-preview-wrapper:hover {
             border-color: var(--primary);
-            transform: scale(1.02);
+            background: var(--primary-light-alpha);
+        }
+
+        .image-preview-wrapper.has-image {
+            border-style: solid;
         }
 
         .image-preview-wrapper img {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: none;
+        }
+
+        .remove-image {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 24px;
+            height: 24px;
+            background: var(--danger);
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .upload-placeholder {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
             color: var(--muted);
-            width: 100%;
-            padding: 1rem;
+            padding: 0.5rem;
         }
 
         .upload-placeholder i {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--line);
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
             display: block;
-        }
-
-        .image-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            opacity: 0;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-        }
-
-        .image-preview-wrapper.has-image:hover .image-overlay {
-            opacity: 1;
-        }
-
-        .image-overlay i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
         }
 
         .status-badge {
@@ -338,63 +331,6 @@
             font-size: 0.78rem;
             line-height: 1.55;
         }
-
-        @media (max-width: 991.98px) {
-            .page-header {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
-            }
-
-            .status-badge {
-                width: fit-content;
-            }
-            
-            .action-bar {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .btn-modern {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 767.98px) {
-            .page-header h2 i {
-                width: 44px;
-                height: 44px;
-                border-radius: 12px;
-                font-size: 1.1rem;
-            }
-
-            .status-badge {
-                width: 100%;
-                justify-content: center;
-                border-radius: 16px;
-            }
-
-            .image-preview-wrapper {
-                max-width: 360px;
-                margin-inline: auto;
-            }
-
-            .custom-switch {
-                padding: 0.9rem;
-                align-items: flex-start;
-            }
-        }
-
-        @media (max-width: 575.98px) {
-            .form-card {
-                border-radius: 22px;
-            }
-
-            .btn-modern {
-                padding-inline: 1.2rem;
-            }
-        }
     </style>
 @endpush
 
@@ -418,7 +354,7 @@
         </div>
     </div>
 
-    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.products.store') }}" method="POST" enctype="multipart/form-data" id="productForm">
         @csrf
 
         <div class="row g-4">
@@ -429,28 +365,25 @@
                         <h3><i class="fa-solid fa-image me-2"></i>Foto Produk</h3>
                     </div>
                     <div class="form-card-body">
-                        <div class="image-preview-wrapper" id="imageUploadArea">
-                            <div class="upload-placeholder" id="uploadPlaceholder">
-                                <i class="fa-solid fa-cloud-arrow-up"></i>
-                                <div style="font-weight: 700; font-size: 0.95rem;">Klik untuk pilih foto</div>
-                                <div style="font-size: 0.8rem;">atau tarik gambar ke sini</div>
-                            </div>
-                            <img src="" id="previewImg" alt="Preview">
-                            <div class="image-overlay">
-                                <i class="fa-solid fa-camera-rotate"></i>
-                                <span>Ganti Foto Produk</span>
+                        <label class="form-label">Upload Beberapa Foto <span class="required">*</span></label>
+                        <div class="image-upload-container" id="imageContainer">
+                            <div class="image-preview-wrapper" id="addMoreBtn">
+                                <div class="upload-placeholder">
+                                    <i class="fa-solid fa-plus"></i>
+                                    <div style="font-weight: 700; font-size: 0.8rem;">Tambah Foto</div>
+                                </div>
                             </div>
                         </div>
-                        <input type="file" name="image" id="imageInput" class="d-none"
+                        <input type="file" name="images[]" id="imageInput" class="d-none" multiple
                             accept="image/jpeg,image/png,image/webp">
                         
                         <div class="mt-4">
                             <div class="alert alert-info py-2 px-3 mb-0" style="font-size: 0.8rem; border-radius: var(--radius-sm);">
                                 <i class="fa-solid fa-circle-info me-2"></i>
-                                Format: JPG, PNG, WebP (Max 2MB). Foto produk wajib diisi.
+                                Klik "+" untuk menambah foto. Foto pertama akan menjadi foto utama. (Max 2MB per foto)
                             </div>
                         </div>
-                        @error('image')
+                        @error('images')
                             <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
                         @enderror
                     </div>
@@ -588,142 +521,87 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const imageUploadArea = document.getElementById('imageUploadArea');
+            const addMoreBtn = document.getElementById('addMoreBtn');
             const imageInput = document.getElementById('imageInput');
-            const previewImg = document.getElementById('previewImg');
-            const uploadPlaceholder = document.getElementById('uploadPlaceholder');
+            const imageContainer = document.getElementById('imageContainer');
             const priceInput = document.getElementById('priceInput');
             const oldPriceInput = document.getElementById('oldPriceInput');
+            let dataTransfer = new DataTransfer();
 
             function setupOldPriceSuggestion(priceField, oldPriceField) {
-                if (!priceField || !oldPriceField) {
-                    return;
-                }
-
+                if (!priceField || !oldPriceField) return;
                 let oldPriceManuallyEdited = oldPriceField.value.trim() !== '';
-
-                function parseNumeric(value) {
-                    return Number(String(value).replace(/[^\d]/g, '')) || 0;
-                }
-
+                function parseNumeric(value) { return Number(String(value).replace(/[^\d]/g, '')) || 0; }
                 function getRoundingBase(price) {
-                    if (price >= 5000000) {
-                        return 100000;
-                    }
-
-                    if (price >= 1000000) {
-                        return 50000;
-                    }
-
-                    if (price >= 100000) {
-                        return 10000;
-                    }
-
+                    if (price >= 5000000) return 100000;
+                    if (price >= 1000000) return 50000;
+                    if (price >= 100000) return 10000;
                     return 1000;
                 }
-
                 function suggestOldPrice(price) {
-                    if (!price) {
-                        return '';
-                    }
-
+                    if (!price) return '';
                     const roundingBase = getRoundingBase(price);
                     const suggested = Math.ceil((price * 1.15) / roundingBase) * roundingBase;
                     return suggested <= price ? price + roundingBase : suggested;
                 }
-
                 function syncOldPrice() {
                     const currentPrice = parseNumeric(priceField.value);
-
-                    if (!currentPrice) {
-                        if (!oldPriceManuallyEdited) {
-                            oldPriceField.value = '';
-                        }
-
-                        return;
-                    }
-
+                    if (!currentPrice) { if (!oldPriceManuallyEdited) oldPriceField.value = ''; return; }
                     oldPriceField.value = suggestOldPrice(currentPrice);
                 }
-
-                if (!oldPriceManuallyEdited && parseNumeric(priceField.value) > 0) {
-                    syncOldPrice();
-                }
-
-                priceField.addEventListener('input', function() {
-                    if (!oldPriceManuallyEdited) {
-                        syncOldPrice();
-                    }
-                });
-
-                oldPriceField.addEventListener('input', function() {
+                if (!oldPriceManuallyEdited && parseNumeric(priceField.value) > 0) syncOldPrice();
+                priceField.addEventListener('input', () => { if (!oldPriceManuallyEdited) syncOldPrice(); });
+                oldPriceField.addEventListener('input', () => {
                     oldPriceManuallyEdited = oldPriceField.value.trim() !== '';
-
-                    if (!oldPriceManuallyEdited) {
-                        syncOldPrice();
-                    }
+                    if (!oldPriceManuallyEdited) syncOldPrice();
                 });
             }
 
             setupOldPriceSuggestion(priceInput, oldPriceInput);
 
-            imageUploadArea.addEventListener('click', function() {
-                imageInput.click();
-            });
-
-            // Drag and drop handling
-            imageUploadArea.addEventListener('dragover', function(e) {
-                e.preventDefault();
-                imageUploadArea.style.borderColor = 'var(--primary)';
-                imageUploadArea.style.background = 'var(--primary-light-alpha)';
-            });
-
-            imageUploadArea.addEventListener('dragleave', function() {
-                imageUploadArea.style.borderColor = '';
-                imageUploadArea.style.background = '';
-            });
-
-            imageUploadArea.addEventListener('drop', function(e) {
-                e.preventDefault();
-                imageUploadArea.style.borderColor = '';
-                imageUploadArea.style.background = '';
-
-                const files = e.dataTransfer.files;
-                if (files.length > 0) {
-                    imageInput.files = files;
-                    handleImagePreview(files[0]);
-                }
-            });
+            addMoreBtn.addEventListener('click', () => imageInput.click());
 
             imageInput.addEventListener('change', function() {
-                if (this.files && this.files[0]) {
-                    handleImagePreview(this.files[0]);
-                }
+                Array.from(this.files).forEach(file => {
+                    if (file.type.match('image.*')) {
+                        dataTransfer.items.add(file);
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const wrapper = document.createElement('div');
+                            wrapper.className = 'image-preview-wrapper has-image';
+                            wrapper.innerHTML = `
+                                <img src="${e.target.result}">
+                                <button type="button" class="remove-image"><i class="fa-solid fa-xmark"></i></button>
+                            `;
+                            
+                            const removeBtn = wrapper.querySelector('.remove-image');
+                            removeBtn.onclick = (event) => {
+                                event.stopPropagation();
+                                const idx = Array.from(imageContainer.querySelectorAll('.has-image')).indexOf(wrapper);
+                                wrapper.remove();
+                                removeFileFromFileList(idx);
+                            };
+                            
+                            imageContainer.insertBefore(wrapper, addMoreBtn);
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+                imageInput.files = dataTransfer.files;
             });
 
-            function handleImagePreview(file) {
-                if (file.type.match('image.*')) {
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        previewImg.src = e.target.result;
-                        previewImg.style.display = 'block';
-                        uploadPlaceholder.style.display = 'none';
-                        imageUploadArea.classList.add('has-image');
-                        
-                        // Visual feedback for success
-                        imageUploadArea.style.borderColor = 'var(--success)';
-                        setTimeout(() => {
-                            imageUploadArea.style.borderColor = 'var(--line)';
-                        }, 2000);
-                    };
-                    reader.readAsDataURL(file);
+            function removeFileFromFileList(index) {
+                const newDataTransfer = new DataTransfer();
+                const files = dataTransfer.files;
+                for (let i = 0; i < files.length; i++) {
+                    if (i !== index) newDataTransfer.items.add(files[i]);
                 }
+                dataTransfer = newDataTransfer;
+                imageInput.files = dataTransfer.files;
             }
 
-            // Smoothly update the status badge when toggle changes
             const isActiveToggle = document.getElementById('isActive');
             const statusBadge = document.getElementById('statusBadge');
-            
             isActiveToggle.addEventListener('change', function() {
                 if(this.checked) {
                     statusBadge.classList.add('active');

@@ -364,7 +364,14 @@
         .stats-section {
             position: relative;
             margin-top: clamp(-2.25rem, -3vw, -3.25rem);
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
             z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .brand-section {
@@ -1014,7 +1021,6 @@
 
         @media (min-width: 768px) {
 
-            .stats-grid,
             .footer-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
@@ -1846,11 +1852,41 @@
                 });
             });
 
-            if (window.location.hash && document.querySelector(window.location.hash)) {
-                requestAnimationFrame(function() {
-                    scrollToSection(window.location.hash);
-                });
-            }
+            // Product Image Auto-slide
+            const productSliders = document.querySelectorAll('.product-image-slider');
+            productSliders.forEach(slider => {
+                const track = slider.querySelector('.slider-track');
+                const dots = slider.querySelectorAll('.slider-dot');
+                const count = parseInt(slider.dataset.imageCount);
+                if (count <= 1) return;
+
+                let currentSlide = 0;
+                let interval;
+
+                const goToSlide = (n) => {
+                    currentSlide = n % count;
+                    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+                };
+
+                const startSlider = () => {
+                    interval = setInterval(() => {
+                        goToSlide(currentSlide + 1);
+                    }, 3000);
+                };
+
+                const stopSlider = () => clearInterval(interval);
+
+                // Start sliding automatically
+                startSlider();
+
+                // Pause on hover, resume on leave
+                slider.addEventListener('mouseenter', stopSlider);
+                slider.addEventListener('mouseleave', startSlider);
+                
+                slider.addEventListener('touchstart', stopSlider, { passive: true });
+                slider.addEventListener('touchend', startSlider, { passive: true });
+            });
 
             // Skeleton Loading
             (function() {

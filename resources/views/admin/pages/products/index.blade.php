@@ -426,6 +426,56 @@
             overflow: hidden;
         }
 
+        .product-image-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 4px;
+            z-index: 2;
+        }
+
+        .slider-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background: #fff;
+            width: 10px;
+            border-radius: 10px;
+        }
+
         .product-image-container::after {
             content: "";
             position: absolute;
@@ -1041,7 +1091,25 @@
             @foreach ($products as $product)
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="/uploads/products/{{ $product->image }}" alt="{{ $product->name }}">
+                        @php
+                            $images = $product->images->count() > 0 ? $product->images : collect([ (object)['image_path' => $product->image] ]);
+                        @endphp
+                        <div class="product-image-slider" data-image-count="{{ $images->count() }}">
+                            <div class="slider-track">
+                                @foreach($images as $img)
+                                    <div class="slider-item">
+                                        <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="{{ $product->name }}">
+                                    </div>
+                                @endforeach
+                            </div>
+                            @if($images->count() > 1)
+                                <div class="slider-dots">
+                                    @foreach($images as $index => $img)
+                                        <div class="slider-dot {{ $index === 0 ? 'active' : '' }}"></div>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
                         <span class="product-status-badge {{ $product->is_active ? 'active' : 'inactive' }}">
                             {{ $product->is_active ? 'Aktif' : 'Nonaktif' }}
                         </span>
@@ -1077,17 +1145,6 @@
                         <div class="product-copy">
                             <h3>{{ $product->name }}</h3>
                             <p>{{ $product->description }}</p>
-                        </div>
-
-                        <div class="product-insights-row">
-                            <div class="product-insight">
-                                <span>Minat Tanpa Link</span>
-                                <strong>{{ number_format($product->interest_click_count) }} klik</strong>
-                            </div>
-                            <div class="product-insight">
-                                <span>Klik Terakhir</span>
-                                <strong>{{ $product->last_clicked_at ? $product->last_clicked_at->format('d M Y, H:i') : 'Belum ada klik' }}</strong>
-                            </div>
                         </div>
 
                         <div class="product-price-row">
@@ -1139,4 +1196,42 @@
             </div>
         @endif
     @endif
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Product Image Auto-slide
+            const productSliders = document.querySelectorAll('.product-image-slider');
+            productSliders.forEach(slider => {
+                const track = slider.querySelector('.slider-track');
+                const dots = slider.querySelectorAll('.slider-dot');
+                const count = parseInt(slider.dataset.imageCount);
+                if (count <= 1) return;
+
+                let currentSlide = 0;
+                let interval;
+
+                const goToSlide = (n) => {
+                    currentSlide = n % count;
+                    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+                    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentSlide));
+                };
+
+                const startSlider = () => {
+                    interval = setInterval(() => {
+                        goToSlide(currentSlide + 1);
+                    }, 3000);
+                };
+
+                const stopSlider = () => clearInterval(interval);
+
+                startSlider();
+
+                slider.addEventListener('mouseenter', stopSlider);
+                slider.addEventListener('mouseleave', startSlider);
+                slider.addEventListener('touchstart', stopSlider, { passive: true });
+                slider.addEventListener('touchend', startSlider, { passive: true });
+            });
+        });
+    </script>
+@endpush
 @endsection
