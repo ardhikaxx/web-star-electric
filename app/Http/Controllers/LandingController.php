@@ -29,6 +29,7 @@ class LandingController extends Controller
     public function showProduct(Product $product)
     {
         abort_unless($product->is_active, 404);
+        $product->load('images');
 
         $relatedProducts = Product::where('is_active', true)
             ->whereKeyNot($product->id)
