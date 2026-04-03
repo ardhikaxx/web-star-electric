@@ -373,8 +373,9 @@
         @if ($relatedProducts->isNotEmpty())
             <div class="mt-5 pt-4">
                 <div class="section-heading text-center">
-                    <span class="section-tag">Rekomendasi</span>
-                    <h3>Produk Lainnya</h3>
+                    <span class="section-tag">Pilihan Spesial</span>
+                    <h3>Mungkin Anda Juga Menyukai Ini</h3>
+                    <p>Temukan berbagai model kendaraan listrik unggulan lainnya yang siap menemani aktivitas harian Anda dengan lebih hemat dan bergaya.</p>
                 </div>
                 <div class="row g-4 mt-2">
                     @foreach ($relatedProducts as $relatedProduct)
