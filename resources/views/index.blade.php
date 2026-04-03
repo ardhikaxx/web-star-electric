@@ -367,7 +367,91 @@
             z-index: 2;
         }
 
-        .stats-grid {
+        .brand-section {
+            padding: 3rem 0;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.4);
+            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
+            position: relative;
+        }
+
+        /* Gradient overlays for a smoother fade on the edges */
+        .brand-section::before,
+        .brand-section::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .brand-section::before {
+            left: 0;
+            background: linear-gradient(to right, #f8fbfd, transparent);
+        }
+
+        .brand-section::after {
+            right: 0;
+            background: linear-gradient(to left, #f8fbfd, transparent);
+        }
+
+        .brand-track {
+            display: flex;
+            width: max-content;
+            animation: brandMarquee 40s linear infinite;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+            padding-right: 5rem;
+        }
+
+        @keyframes brandMarquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .brand-item {
+            flex-shrink: 0;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 10px 30px rgba(16, 33, 50, 0.08);
+            border: 4px solid #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .brand-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 33, 50, 0.12);
+        }
+
+        @media (max-width: 767.98px) {
+            .brand-section { padding: 2rem 0; }
+            .brand-item { width: 85px; height: 85px; }
+            .brand-group { gap: 3rem; padding-right: 3rem; }
+            .brand-track { animation-duration: 25s; }
+            .brand-section::before, .brand-section::after { width: 60px; }
+        }
+
+        .products-section {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1rem;
@@ -1255,6 +1339,89 @@
                     <div class="stat-card">
                         <h3>Fast Respon</h3>
                         <p>Konsultasi cepat melalui WhatsApp untuk cek stok.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="brand-section">
+            <div class="brand-track">
+                <!-- Group 1 -->
+                <div class="brand-group">
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                </div>
+                <!-- Group 2 (Exact duplicate of Group 1) -->
+                <div class="brand-group">
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
                     </div>
                 </div>
             </div>
