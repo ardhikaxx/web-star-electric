@@ -338,13 +338,27 @@
         }
 
         .hero-indicators {
-            bottom: clamp(1.25rem, 3vw, 2rem);
+            bottom: clamp(1.5rem, 4vw, 2.5rem);
+            margin-bottom: 0;
+            gap: 10px;
+            z-index: 10;
         }
 
         .hero-indicators button {
             width: 10px !important;
             height: 10px !important;
-            border-radius: 50%;
+            border-radius: 20px !important;
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            border: none !important;
+            transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1) !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            opacity: 1 !important;
+        }
+
+        .hero-indicators button.active {
+            width: 35px !important;
+            background-color: #fff !important;
         }
 
         .stats-section {
@@ -1090,24 +1104,51 @@
             height: 100%;
         }
 
-        .hero-section .carousel-item {
+        .hero-section .hero-carousel-container {
+            position: relative;
+            height: var(--hero-min-height);
+            min-height: var(--hero-min-height);
+            overflow: hidden;
+        }
+
+        .hero-section .hero-scroll-wrapper {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
             height: 100%;
         }
 
+        .hero-section .hero-scroll-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hero-section .carousel-item {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+            scroll-snap-align: start;
+            display: block;
+            margin: 0;
+            position: relative;
+        }
+
         .hero-section .hero-content > * {
-            animation: heroContentFade 0.4s ease-out forwards;
+            animation: heroContentFade 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
             opacity: 0;
-            animation-delay: 0.08s;
+            animation-delay: 0.1s;
         }
 
         @keyframes heroContentFade {
             from {
                 opacity: 0;
-                transform: translateY(15px);
+                transform: translateX(30px);
             }
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: translateX(0);
             }
         }
     </style>
@@ -1141,17 +1182,9 @@
 
     <main>
         <section id="home" class="hero-section">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
-                <div class="carousel-indicators hero-indicators">
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+            <div class="hero-carousel-container" id="heroCarousel">
+                <div class="hero-scroll-wrapper">
+                    <div class="carousel-item active" id="slide-0">
                         <div class="hero-slide"
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner1.png') }}');">
                             <div class="container">
@@ -1168,7 +1201,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item" id="slide-1">
                         <div class="hero-slide"
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner2.png') }}');">
                             <div class="container">
@@ -1183,7 +1216,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item" id="slide-2">
                         <div class="hero-slide"
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner3.png') }}');">
                             <div class="container">
@@ -1198,6 +1231,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="carousel-indicators hero-indicators">
+                    <button type="button" class="active" data-bs-slide-to="0" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-slide-to="2" aria-label="Slide 3"></button>
                 </div>
             </div>
         </section>
@@ -1436,6 +1475,71 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Hero Scroll Snap Carousel Logic
+            const heroCarousel = document.getElementById('heroCarousel');
+            if (heroCarousel) {
+                const scrollWrapper = heroCarousel.querySelector('.hero-scroll-wrapper');
+                const slides = heroCarousel.querySelectorAll('.carousel-item');
+                const indicators = heroCarousel.querySelectorAll('.hero-indicators button');
+                let currentIndex = 0;
+                let autoSlideTimer;
+
+                const updateIndicators = (index) => {
+                    indicators.forEach((btn, i) => {
+                        btn.classList.toggle('active', i === index);
+                    });
+                };
+
+                const scrollToSlide = (index) => {
+                    if (index < 0) index = slides.length - 1;
+                    if (index >= slides.length) index = 0;
+                    
+                    currentIndex = index;
+                    const slideWidth = scrollWrapper.offsetWidth;
+                    scrollWrapper.scrollTo({
+                        left: slideWidth * index,
+                        behavior: 'smooth'
+                    });
+                    updateIndicators(index);
+                };
+
+                const startAutoSlide = () => {
+                    stopAutoSlide();
+                    autoSlideTimer = setInterval(() => {
+                        scrollToSlide(currentIndex + 1);
+                    }, 4000);
+                };
+
+                const stopAutoSlide = () => {
+                    if (autoSlideTimer) clearInterval(autoSlideTimer);
+                };
+
+                // Handle Indicators Click
+                indicators.forEach((btn, i) => {
+                    btn.addEventListener('click', () => {
+                        scrollToSlide(i);
+                        startAutoSlide(); // Reset timer on manual click
+                    });
+                });
+
+                // Update currentIndex on manual scroll
+                scrollWrapper.addEventListener('scroll', () => {
+                    const index = Math.round(scrollWrapper.scrollLeft / scrollWrapper.offsetWidth);
+                    if (index !== currentIndex) {
+                        currentIndex = index;
+                        updateIndicators(index);
+                    }
+                }, { passive: true });
+
+                // Pause on hover/touch
+                heroCarousel.addEventListener('mouseenter', stopAutoSlide);
+                heroCarousel.addEventListener('mouseleave', startAutoSlide);
+                heroCarousel.addEventListener('touchstart', stopAutoSlide, { passive: true });
+                heroCarousel.addEventListener('touchend', startAutoSlide, { passive: true });
+
+                startAutoSlide();
+            }
+
             const navbarCollapseEl = document.getElementById('mainNavbar');
             const navbarCollapse = navbarCollapseEl ? bootstrap.Collapse.getOrCreateInstance(navbarCollapseEl, {
                 toggle: false
