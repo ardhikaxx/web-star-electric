@@ -414,7 +414,7 @@
                     </div>
                     <div class="form-card-body">
                         <div class="image-preview-wrapper" id="imageUploadArea">
-                            <img src="{{ asset('storage/uploads/products/' . $product->image) }}" id="previewImg"
+                            <img src="{{ route('product.image', $product->image) }}" id="previewImg"
                                 alt="{{ $product->name }}">
                             <div class="image-overlay">
                                 <i class="fa-solid fa-camera-rotate"></i>

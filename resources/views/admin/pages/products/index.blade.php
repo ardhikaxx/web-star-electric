@@ -1041,7 +1041,7 @@
             @foreach ($products as $product)
                 <div class="product-card">
                     <div class="product-image-container">
-                        <img src="{{ asset('storage/uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
+                        <img src="{{ route('product.image', $product->image) }}" alt="{{ $product->name }}">
                         <span class="product-status-badge {{ $product->is_active ? 'active' : 'inactive' }}">
                             {{ $product->is_active ? 'Aktif' : 'Nonaktif' }}
                         </span>

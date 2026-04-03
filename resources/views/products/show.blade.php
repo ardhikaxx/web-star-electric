@@ -534,7 +534,7 @@
 
 @section('content')
     <section class="product-detail-hero"
-        style="--hero-background: url('{{ asset('storage/uploads/products/' . $product->image) }}');">
+        style="--hero-background: url('{{ route('product.image', $product->image) }}');">
         <div class="container">
             <div class="product-detail-breadcrumb">
                 <a href="{{ route('home') }}#produk"><i class="fa-solid fa-arrow-left me-2"></i>Kembali ke katalog</a>
@@ -587,7 +587,7 @@
                 </div>
 
                 <div class="product-detail-visual">
-                    <img src="{{ asset('storage/uploads/products/' . $product->image) }}" alt="{{ $product->name }}">
+                    <img src="{{ route('product.image', $product->image) }}" alt="{{ $product->name }}">
                     <div class="product-visual-floating-card">
                         <div>
                             <span>Harga Produk</span>
@@ -633,7 +633,7 @@
                 <div class="col-12 col-lg-4">
                     <aside class="contact-card product-buy-card">
                     <div class="product-buy-media">
-                        <img src="{{ asset('storage/uploads/products/' . $product->image) }}" alt="{{ $product->name }}"
+                        <img src="{{ route('product.image', $product->image) }}" alt="{{ $product->name }}"
                             class="product-summary-image">
                         <span class="product-buy-badge">
                             <i class="fa-solid fa-eye"></i>

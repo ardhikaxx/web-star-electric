@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -10,6 +11,14 @@ Route::get('/', [LandingController::class, 'index'])->name('home');
 Route::get('/sitemap.xml', [LandingController::class, 'sitemap']);
 Route::get('/produk/{product}', [LandingController::class, 'showProduct'])->name('products.show');
 Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
+
+Route::get('/uploads/products/{filename}', function ($filename) {
+    $path = storage_path('app/uploads/products/' . $filename);
+    if (!file_exists($path)) {
+        abort(404);
+    }
+    return response()->file($path);
+})->name('product.image');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
