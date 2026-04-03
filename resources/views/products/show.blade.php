@@ -372,7 +372,7 @@
 
         @if ($relatedProducts->isNotEmpty())
             <div class="mt-5 pt-4">
-                <div class="section-heading">
+                <div class="section-heading text-center">
                     <span class="section-tag">Rekomendasi</span>
                     <h3>Produk Lainnya</h3>
                 </div>
