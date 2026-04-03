@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
@@ -84,7 +83,7 @@ class ProductController extends Controller
         ]);
 
         $imageName = 'product_' . time() . '_' . uniqid() . '.' . $request->image->extension();
-        $request->image->storeAs('uploads/products', $imageName);
+        $request->image->move(storage_path('uploads/products'), $imageName);
 
         Product::create([
             'name' => $request->name,
@@ -131,12 +130,13 @@ class ProductController extends Controller
         ];
 
         if ($request->hasFile('image')) {
-            if (Storage::exists('uploads/products/' . $product->image)) {
-                Storage::delete('public/uploads/products/' . $product->image);
+            $oldImagePath = storage_path('uploads/products/' . $product->image);
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
             }
 
             $imageName = 'product_' . time() . '_' . uniqid() . '.' . $request->image->extension();
-            $request->image->storeAs('uploads/products', $imageName);
+            $request->image->move(storage_path('uploads/products'), $imageName);
             $data['image'] = $imageName;
         }
 
@@ -147,8 +147,9 @@ class ProductController extends Controller
 
     public function destroy(Product $product)
     {
-        if (Storage::exists('uploads/products/' . $product->image)) {
-            Storage::delete('public/uploads/products/' . $product->image);
+        $imagePath = storage_path('uploads/products/' . $product->image);
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
         }
 
         $product->delete();

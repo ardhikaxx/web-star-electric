@@ -13,7 +13,7 @@ Route::get('/produk/{product}', [LandingController::class, 'showProduct'])->name
 Route::get('/produk/{product}/klik', [LandingController::class, 'clickProduct'])->name('products.click');
 
 Route::get('/uploads/products/{filename}', function ($filename) {
-    $path = storage_path('app/uploads/products/' . $filename);
+    $path = storage_path('uploads/products/' . $filename);
     if (!file_exists($path)) {
         abort(404);
     }
