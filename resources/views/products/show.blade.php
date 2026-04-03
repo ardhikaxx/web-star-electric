@@ -72,6 +72,31 @@
             transition: opacity 0.3s ease;
         }
 
+        .zoom-hint {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .main-image-viewer:hover .zoom-hint {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
         .thumbnail-strip {
             display: flex;
             gap: 0.75rem;
@@ -296,7 +321,12 @@
                 <div class="col-12 col-lg-6">
                     <div class="product-gallery-container">
                         <div class="main-image-viewer">
-                            <img src="{{ url('uploads/products/' . ($images[0]->image_path ?? $product->image)) }}" id="mainImage" alt="{{ $product->name }}">
+                            <a data-fslightbox="product-gallery" id="mainImageLink" href="{{ url('uploads/products/' . ($images[0]->image_path ?? $product->image)) }}">
+                                <div class="zoom-hint">
+                                    <i class="fa-solid fa-magnifying-glass-plus"></i>
+                                </div>
+                                <img src="{{ url('uploads/products/' . ($images[0]->image_path ?? $product->image)) }}" id="mainImage" alt="{{ $product->name }}">
+                            </a>
                         </div>
                         
                         @if($images->count() > 1)
@@ -305,6 +335,10 @@
                                 <div class="thumb-item {{ $index === 0 ? 'active' : '' }}" onclick="changeImage('{{ url('uploads/products/' . $img->image_path) }}', this)">
                                     <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="Thumbnail {{ $index + 1 }}">
                                 </div>
+                                <!-- Hidden links for fslightbox to include all images in the loop -->
+                                @if($index > 0)
+                                    <a data-fslightbox="product-gallery" href="{{ url('uploads/products/' . $img->image_path) }}" class="d-none"></a>
+                                @endif
                             @endforeach
                         </div>
                         @endif
@@ -390,14 +424,23 @@
 @endsection
 
 @push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fslightbox/3.4.1/index.min.js"></script>
     <script>
         function changeImage(src, thumb) {
             const mainImg = document.getElementById('mainImage');
+            const mainLnk = document.getElementById('mainImageLink');
+            
             mainImg.style.opacity = '0';
             
             setTimeout(() => {
                 mainImg.src = src;
+                mainLnk.href = src;
                 mainImg.style.opacity = '1';
+                
+                // Refresh fslightbox to recognize the new main image source if needed
+                // though fslightbox usually works best with static links, 
+                // we'll ensure all images are in the gallery loop below.
+                refreshFsLightbox();
             }, 200);
 
             // Update active thumbnail
