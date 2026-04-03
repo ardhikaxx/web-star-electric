@@ -284,6 +284,7 @@
         }
 
         .hero-slide {
+            height: 100%;
             min-height: var(--hero-min-height);
             display: flex;
             align-items: flex-end;
@@ -896,6 +897,12 @@
 
             .hero-slide {
                 min-height: clamp(610px, 95svh, 780px);
+                height: clamp(610px, 95svh, 780px);
+            }
+
+            .hero-section .carousel {
+                min-height: clamp(610px, 95svh, 780px);
+                height: clamp(610px, 95svh, 780px);
             }
 
             .stats-section {
@@ -917,6 +924,13 @@
             .hero-slide {
                 align-items: center;
                 padding: 8.5rem 0 6rem;
+                height: auto;
+                min-height: var(--hero-min-height);
+            }
+
+            .hero-section .carousel {
+                height: var(--hero-min-height);
+                min-height: var(--hero-min-height);
             }
 
             .stat-card {
@@ -951,8 +965,14 @@
 
             .hero-slide {
                 min-height: clamp(590px, 94svh, 720px);
+                height: clamp(590px, 94svh, 720px);
                 padding: 6.15rem 0 3.6rem;
                 background-position: 58% center;
+            }
+
+            .hero-section .carousel {
+                min-height: clamp(590px, 94svh, 720px);
+                height: clamp(590px, 94svh, 720px);
             }
 
             .hero-content {
@@ -1059,8 +1079,38 @@
                 grid-template-columns: repeat(3, minmax(0, 1fr));
             }
         }
+
+        .hero-section .carousel {
+            height: var(--hero-min-height);
+            min-height: var(--hero-min-height);
+            overflow: hidden;
+        }
+
+        .hero-section .carousel-inner {
+            height: 100%;
+        }
+
+        .hero-section .carousel-item {
+            height: 100%;
+        }
+
+        .hero-section .hero-content > * {
+            animation: heroContentFade 0.4s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.08s;
+        }
+
+        @keyframes heroContentFade {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
-</head>
 
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -1091,7 +1141,7 @@
 
     <main>
         <section id="home" class="hero-section">
-            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
+            <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000" data-bs-touch="true">
                 <div class="carousel-indicators hero-indicators">
                     <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -1106,8 +1156,8 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner1.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h1>Pusat Sepeda Listrik & Motor Listrik Terlengkap - Solusi Hemat BBM & Ramah Lingkungan</h1>
-                                    <p>Ar-Rahman E-Bike Bondowoso menghadirkan berbagai pilihan sepeda listrik berkualitas, motor listrik modern, serta sparepart original seperti charger, baterai, dan aksesoris lainnya untuk seluruh wilayah Jawa Timur.</p>
+                                    <h1>Sepeda Listrik Berkualitas di Bondowoso</h1>
+                                    <p>Dapatkan sepeda listrik terbaik dengan harga termurah. Gratis servis seumur hidup dan garansi resmi.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#produk"
                                             class="btn btn-brand">Lihat Produk</a>
@@ -1123,8 +1173,8 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner2.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h2>Sparepart dan aksesoris Sepeda Listrik berkualitas terjamin.</h2>
-                                    <p>Dapatkan charger, karpet, baterai, dan berbagai aksesoris lainnya dengan harga terjangkau dan garansi resmi.</p>
+                                    <h2>Sparepart & Aksesoris Sepeda Listrik</h2>
+                                    <p>Tersedia charger, baterai, ban, dan semua aksesoris original untuk semua merk.</p>
                                     <div class="hero-actions">
                                         <a href="https://wa.me/6285231260016" class="btn btn-brand" target="_blank"
                                             rel="noopener">Pesan via WhatsApp</a>
@@ -1138,9 +1188,8 @@
                             style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner3.png') }}');">
                             <div class="container">
                                 <div class="hero-content">
-                                    <h2>Temukan Sepeda Listrik yang cocok untuk sekolah, kerja, dan kebutuhan keluarga.</h2>
-                                    <p>Pilih berbagai model dengan tampilan modern, efisien, dan siap mendukung aktivitas Anda
-                                        setiap hari dengan harga terjangkau.</p>
+                                    <h2>Bermacam Merk Sepeda Listrik</h2>
+                                    <p>Pilih merk terpercaya sesuai kebutuhan Anda dengan harga terjangkau.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#testimoni"
                                             class="btn btn-outline-light">Lihat Testimoni</a>
