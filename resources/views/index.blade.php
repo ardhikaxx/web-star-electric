@@ -1184,6 +1184,123 @@
             }
         }
 
+        /* Floating WhatsApp Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .wa-text {
+            background: #fff;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .floating-wa:hover .wa-text {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .wa-icon {
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+            animation: waPulse 2s infinite;
+        }
+
+        @keyframes waPulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        @media (max-width: 767.98px) {
+            .floating-wa {
+                bottom: 20px;
+                right: 20px;
+            }
+            .wa-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 26px;
+            }
+            .wa-text {
+                display: none;
+            }
+        }
+
+        /* FAQ Section */
+        .faq-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--line);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .faq-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            color: var(--text);
+            gap: 1rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-card.active .faq-answer {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        .faq-card.active .faq-icon {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+
+        .faq-icon {
+            transition: all 0.3s ease;
+            color: var(--muted);
+        }
+
         .hero-section .carousel {
             height: var(--hero-min-height);
             min-height: var(--hero-min-height);
@@ -1526,6 +1643,56 @@
                     </blockquote>
                 </div>
                 <script async src="https://www.tiktok.com/embed.js"></script>
+            </div>
+        </section>
+
+        <section id="faq" class="section-space" style="background: rgba(229, 57, 53, 0.03);">
+            <div class="container">
+                <div class="section-heading text-center">
+                    <span class="section-tag">FAQ</span>
+                    <h3>Pertanyaan Umum</h3>
+                    <p>Temukan jawaban cepat untuk pertanyaan yang sering diajukan oleh pelanggan kami.</p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-12 col-lg-8">
+                        <div class="faq-card">
+                            <div class="faq-question">
+                                Apakah ada garansi untuk setiap pembelian?
+                                <i class="fa-solid fa-chevron-down faq-icon"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Tentu saja! Setiap unit sepeda dan motor listrik di Ar-Rahman E-Bike dilengkapi dengan garansi resmi pabrik untuk rangka, dinamo, dan baterai. Kami juga memberikan gratis servis selamanya untuk pelanggan kami.
+                            </div>
+                        </div>
+                        <div class="faq-card">
+                            <div class="faq-question">
+                                Bagaimana cara melakukan pengisian daya (charging)?
+                                <i class="fa-solid fa-chevron-down faq-icon"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Pengisian daya sangat mudah, cukup colokkan charger ke stopkontak rumah biasa (daya minimal 450W-900W tergantung tipe). Waktu pengisian rata-rata adalah 4-6 jam dari posisi kosong hingga penuh.
+                            </div>
+                        </div>
+                        <div class="faq-card">
+                            <div class="faq-question">
+                                Apakah bisa dikirim ke luar kota atau luar pulau?
+                                <i class="fa-solid fa-chevron-down faq-icon"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Ya, kami melayani pengiriman ke seluruh wilayah Jawa Timur dan juga ke seluruh Indonesia menggunakan ekspedisi spesialis kendaraan yang aman dan berasuransi.
+                            </div>
+                        </div>
+                        <div class="faq-card">
+                            <div class="faq-question">
+                                Apakah baterainya tahan air saat hujan?
+                                <i class="fa-solid fa-chevron-down faq-icon"></i>
+                            </div>
+                            <div class="faq-answer">
+                                Seluruh unit kami sudah didesain tahan air (water resistant) sehingga aman digunakan saat hujan gerimis maupun melewati genangan air dangkal. Namun, sangat tidak disarankan untuk merendam unit dalam banjir yang tinggi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1913,8 +2080,29 @@
                     setTimeout(finishLoading, 3000);
                 }
             })();
+
+            // FAQ Logic
+            const faqCards = document.querySelectorAll('.faq-card');
+            faqCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const isActive = card.classList.contains('active');
+                    // Close all others
+                    faqCards.forEach(c => c.classList.remove('active'));
+                    // Toggle current
+                    if (!isActive) {
+                        card.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
+
+    <a href="https://wa.me/6285231260016?text=Halo%20Ar-Rahman%20E-Bike%2C%20saya%20ingin%20konsultasi%20mengenai%20sepeda/motor%20listrik..." class="floating-wa" target="_blank" rel="noopener">
+        <div class="wa-text">Konsultasi Gratis</div>
+        <div class="wa-icon">
+            <i class="fa-brands fa-whatsapp"></i>
+        </div>
+    </a>
 </body>
 
 </html>
