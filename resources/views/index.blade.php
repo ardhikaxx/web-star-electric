@@ -32,15 +32,22 @@
     <meta property="twitter:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
     <meta property="twitter:image" content="https://arrahmanebike.web.id/assets/banner1.png">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://arrahmanebike.web.id/">
+
+    <!-- Google / Publisher -->
+    <meta name="google-site-verification" content="...">
+    <meta name="publisher" content="Ar-Rahman E-Bike Bondowoso">
+
     <!-- JSON-LD Local Business Schema -->
     <script type="application/ld+json">
     {
       "@@context": "https://schema.org",
       "@@type": "BikeStore",
       "name": "Ar-Rahman E-Bike Bondowoso",
-      "image": "{{ asset('assets/logo.png') }}",
-      "@@id": "{{ url()->current() }}",
-      "url": "{{ url()->current() }}",
+      "image": "https://arrahmanebike.web.id/assets/logo.png",
+      "@@id": "https://arrahmanebike.web.id/",
+      "url": "https://arrahmanebike.web.id/",
       "telephone": "+6285231260016",
       "priceRange": "$$",
       "address": {
@@ -72,6 +79,48 @@
       },
       "sameAs": [
         "https://shopee.co.id/diahayuros8"
+      ],
+      "areaServed": {
+        "@@type": "Country",
+        "name": "Indonesia"
+      },
+      "potentialAction": {
+        "@@type": "BuyAction",
+        "target": "https://arrahmanebike.web.id/"
+      }
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@@type": "Question",
+          "name": "Sepeda listrik apa yang terbaik di Bondowoso?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Ar-Rahman E-Bike Bondowoso menyediakan berbagai merk sepeda listrik terbaik seperti Uwinfly, Exotic, Pacific, dan Goda dengan garansi resmi."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Berapa harga sepeda listrik di Bondowoso?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Harga sepeda listrik di Ar-Rahman E-Bike mulai dari Rp 5.000.000 dengan berbagai pilihan merk dan model. Klik tombol WhatsApp untuk info terbaru."
+          }
+        },
+        {
+          "@@type": "Question",
+          "name": "Apakah ada servis sepeda listrik di Bondowoso?",
+          "acceptedAnswer": {
+            "@@type": "Answer",
+            "text": "Ya, Ar-Rahman E-Bike menyediakan layanan servis dan sparepart asli untuk semua merk sepeda listrik."
+          }
+        }
       ]
     }
     </script>
