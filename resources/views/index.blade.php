@@ -1133,35 +1133,17 @@
                 height: 44px;
             }
 
-            .contact-buttons {
-                display: flex;
-                flex-direction: column;
-                gap: 0.75rem;
-                width: 100%;
+            .contact-list {
+                overflow-x: visible;
             }
 
-            .contact-buttons .btn {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.6rem;
-                padding: 0.85rem 1.25rem;
-                border-radius: 14px;
-                font-weight: 700;
-                font-size: 1rem;
-                text-decoration: none;
+            .contact-list li {
+                flex-wrap: wrap;
             }
 
-            .contact-buttons .btn-call {
-                background: linear-gradient(135deg, var(--primary), #ff4d4d);
-                color: #fff;
-                box-shadow: 0 10px 25px rgba(229, 57, 53, 0.28);
-            }
-
-            .contact-buttons .btn-wa {
-                background: #25D366;
-                color: #fff;
-                box-shadow: 0 10px 25px rgba(37, 211, 102, 0.28);
+            .contact-list li a,
+            .contact-list li i:first-child {
+                word-break: break-word;
             }
         }
 
@@ -1779,23 +1761,13 @@
                                             Bondowoso, Jawa Timur 68271</span>
                                     </div>
                                 </li>
-                                <li class="contact-cta-mobile d-lg-none">
-                                    <div class="contact-buttons">
-                                        <a href="tel:+6285231260016" class="btn btn-call">
-                                            <i class="fa-solid fa-phone"></i> Telepon
-                                        </a>
-                                        <a href="https://wa.me/6285231260016" class="btn btn-wa" target="_blank" rel="noopener">
-                                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-                                        </a>
-                                    </div>
-                                </li>
-                                <li class="d-none d-lg-block">
+                                <li>
                                     <i class="fa-solid fa-phone-volume"></i>
                                     <a href="tel:+6281331978800">+62 813-3197-8800</a>
                                     /
                                     <a href="tel:+6285231260016">+62 852-3126-0016</a>
                                 </li>
-                                <li class="d-none d-lg-block">
+                                <li>
                                     <i class="fa-brands fa-whatsapp"></i>
                                     <a href="https://wa.me/6281331978800" target="_blank" rel="noopener">+62
                                         813-3197-8800</a>
