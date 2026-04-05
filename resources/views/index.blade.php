@@ -1099,6 +1099,10 @@
                 min-width: 0;
             }
 
+            .stats-section {
+                margin-top: 1.5rem;
+            }
+
             .stats-grid,
             .footer-grid {
                 grid-template-columns: 1fr;
