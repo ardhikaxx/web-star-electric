@@ -38,6 +38,10 @@
     <!-- Google / Publisher -->
     <meta name="google-site-verification" content="...">
     <meta name="publisher" content="Ar-Rahman E-Bike Bondowoso">
+    <meta name="author" content="Ar-Rahman E-Bike Bondowoso">
+    <meta name="copyright" content="{{ date('Y') }} Ar-Rahman E-Bike Bondowoso">
+    <meta name="coverage" content="Indonesia">
+    <meta name="rating" content="General">
 
     <!-- JSON-LD Local Business Schema -->
     <script type="application/ld+json">
