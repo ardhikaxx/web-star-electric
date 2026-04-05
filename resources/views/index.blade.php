@@ -20,17 +20,17 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:url" content="https://arrahmanebike.web.id/">
     <meta property="og:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
     <meta property="og:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi. Kunjungi Ar-Rahman E-Bike sekarang!">
-    <meta property="og:image" content="{{ asset('assets/logo.png') }}">
+    <meta property="og:image" content="https://arrahmanebike.web.id/assets/banner1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="{{ url()->current() }}">
+    <meta property="twitter:url" content="https://arrahmanebike.web.id/">
     <meta property="twitter:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
     <meta property="twitter:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
-    <meta property="twitter:image" content="{{ asset('assets/logo.png') }}">
+    <meta property="twitter:image" content="https://arrahmanebike.web.id/assets/banner1.png">
 
     <!-- JSON-LD Local Business Schema -->
     <script type="application/ld+json">
