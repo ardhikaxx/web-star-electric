@@ -1881,8 +1881,21 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
     <script defer>
+        // Lazy load SweetAlert2 on first interaction
+        const loadSweetAlert = () => {
+            if (!window.Swal) {
+                const script = document.createElement('script');
+                script.src = 'https://cdn.jsdelivr.net/npm/sweetalert2@11';
+                script.async = true;
+                document.head.appendChild(script);
+            }
+            document.removeEventListener('click', loadSweetAlert);
+            document.removeEventListener('touchstart', loadSweetAlert);
+        };
+        document.addEventListener('click', loadSweetAlert);
+        document.addEventListener('touchstart', loadSweetAlert);
+
         document.addEventListener('DOMContentLoaded', function() {
             // Hero Scroll Snap Carousel Logic
             const heroCarousel = document.getElementById('heroCarousel');
