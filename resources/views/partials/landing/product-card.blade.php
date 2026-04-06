@@ -57,7 +57,11 @@
             <div class="slider-track">
                 @foreach($images as $img)
                     <div class="slider-item">
-                        <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" loading="lazy">
+                        <img src="{{ url('uploads/products/' . $img->image_path) }}" 
+                             alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" 
+                             loading="lazy"
+                             width="400" 
+                             height="400">
                     </div>
                 @endforeach
             </div>

@@ -23,15 +23,17 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
         rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
     <style>
         :root {
             --bg: #f4f8fb;
             --surface: rgba(255, 255, 255, 0.72);
             --surface-strong: #ffffff;
             --text: #102132;
-            --muted: #607080;
+            --muted: #4a5568;
             --primary: #E53935;
             --primary-dark: #B71C1C;
             --accent: #f59e0b;
@@ -690,7 +692,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('home') }}" data-scroll-target="#home">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo" width="84" height="84">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -717,7 +719,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('home') }}" data-scroll-target="#home">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="footer-logo" width="112" height="112">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
                         dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>

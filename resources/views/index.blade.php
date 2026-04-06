@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pusat Sepeda Listrik & Motor Listrik Jawa Timur - Ar-Rahman E-Bike Bondowoso | Distributor Resmi Sepeda Listrik Murah</title>
+    <title>Pusat Sepeda Listrik & Motor Listrik Jawa Timur - Ar-Rahman E-Bike Bondowoso | Distributor Resmi Sepeda
+        Listrik Murah</title>
     <meta name="description"
         content="Pusat penjualan sepeda listrik, motor listrik, dan sparepart original di Jawa Timur. Ar-Rahman E-Bike Bondowoso menyediakan solusi transportasi hemat BBM, ramah lingkungan, dan modern. Melayani pengiriman ke seluruh Indonesia dengan harga grosir dan garansi resmi.">
     <meta name="keywords"
@@ -22,14 +23,16 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arrahmanebike.web.id/">
     <meta property="og:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
-    <meta property="og:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi. Kunjungi Ar-Rahman E-Bike sekarang!">
+    <meta property="og:description"
+        content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi. Kunjungi Ar-Rahman E-Bike sekarang!">
     <meta property="og:image" content="https://arrahmanebike.web.id/assets/banner1.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://arrahmanebike.web.id/">
     <meta property="twitter:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
-    <meta property="twitter:description" content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
+    <meta property="twitter:description"
+        content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
     <meta property="twitter:image" content="https://arrahmanebike.web.id/assets/banner1.png">
 
     <!-- Canonical URL -->
@@ -131,22 +134,31 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="{{ asset('assets/banner1.webp') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"></noscript>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></noscript>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="preload" as="image" href="{{ asset('assets/banner1.webp') }}" fetchpriority="high">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print"
+        onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    </noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </noscript>
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
+
         :root {
             --bg: #f4f8fb;
             --surface: rgba(255, 255, 255, 0.72);
             --surface-strong: #ffffff;
             --text: #102132;
-            --muted: #607080;
+            --muted: #4a5568;
             --primary: #E53935;
             --primary-dark: #B71C1C;
             --accent: #f59e0b;
@@ -476,8 +488,13 @@
         }
 
         @keyframes brandMarquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
         .brand-item {
@@ -508,11 +525,28 @@
         }
 
         @media (max-width: 767.98px) {
-            .brand-section { padding: 2rem 0; }
-            .brand-item { width: 85px; height: 85px; }
-            .brand-group { gap: 3rem; padding-right: 3rem; }
-            .brand-track { animation-duration: 25s; }
-            .brand-section::before, .brand-section::after { width: 60px; }
+            .brand-section {
+                padding: 2rem 0;
+            }
+
+            .brand-item {
+                width: 85px;
+                height: 85px;
+            }
+
+            .brand-group {
+                gap: 3rem;
+                padding-right: 3rem;
+            }
+
+            .brand-track {
+                animation-duration: 25s;
+            }
+
+            .brand-section::before,
+            .brand-section::after {
+                width: 60px;
+            }
         }
 
         .products-section {
@@ -562,8 +596,13 @@
         }
 
         @keyframes shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
         }
 
         .skeleton-card {
@@ -1280,7 +1319,7 @@
             border-radius: 12px;
             font-size: 0.85rem;
             font-weight: 700;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             opacity: 0;
             transform: translateX(20px);
             transition: all 0.3s ease;
@@ -1308,9 +1347,17 @@
         }
 
         @keyframes waPulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
         }
 
         @media (max-width: 767.98px) {
@@ -1318,11 +1365,13 @@
                 bottom: 20px;
                 right: 20px;
             }
+
             .wa-icon {
                 width: 52px;
                 height: 52px;
                 font-size: 26px;
             }
+
             .wa-text {
                 display: none;
             }
@@ -1341,7 +1390,7 @@
 
         .faq-card:hover {
             border-color: var(--primary);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .faq-question {
@@ -1418,7 +1467,7 @@
             position: relative;
         }
 
-        .hero-section .hero-content > * {
+        .hero-section .hero-content>* {
             animation: heroContentFade 0.5s cubic-bezier(0.65, 0, 0.35, 1) forwards;
             opacity: 0;
             animation-delay: 0.1s;
@@ -1429,6 +1478,7 @@
                 opacity: 0;
                 transform: translateX(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -1440,7 +1490,8 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.login') }}">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo" width="84" height="84">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo"
+                    width="84" height="84">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -1473,7 +1524,8 @@
                             <div class="container">
                                 <div class="hero-content">
                                     <h1>Sepeda Listrik Berkualitas di Bondowoso</h1>
-                                    <p>Dapatkan sepeda listrik terbaik dengan harga termurah. Gratis servis seumur hidup dan garansi resmi.</p>
+                                    <p>Dapatkan sepeda listrik terbaik dengan harga termurah. Gratis servis seumur hidup
+                                        dan garansi resmi.</p>
                                     <div class="hero-actions">
                                         <a href="{{ route('home') }}" data-scroll-target="#produk"
                                             class="btn btn-brand">Lihat Produk</a>
@@ -1490,7 +1542,8 @@
                             <div class="container">
                                 <div class="hero-content">
                                     <h2>Sparepart & Aksesoris Sepeda Listrik</h2>
-                                    <p>Tersedia charger, baterai, ban, dan semua aksesoris original untuk semua merk.</p>
+                                    <p>Tersedia charger, baterai, ban, dan semua aksesoris original untuk semua merk.
+                                    </p>
                                     <div class="hero-actions">
                                         <a href="https://wa.me/6285231260016" class="btn btn-brand" target="_blank"
                                             rel="noopener">Pesan via WhatsApp</a>
@@ -1548,79 +1601,79 @@
                 <!-- Group 1 -->
                 <div class="brand-group">
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                 </div>
                 <!-- Group 2 (Exact duplicate of Group 1) -->
                 <div class="brand-group">
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                 </div>
             </div>
@@ -1631,8 +1684,10 @@
                 <div class="section-heading text-center">
                     <span class="section-tag">Produk Pilihan</span>
                     <h3>Produk berkualitas yang siap memenuhi kebutuhan Anda</h3>
-                    <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern, fitur nyaman, dan harga yang lebih menarik. Lihat juga
-                        <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!</p>
+                    <p>Pilih produk favorit seperti Sepeda Listrik, charger, karpet, dan aksesoris dengan desain modern,
+                        fitur nyaman, dan harga yang lebih menarik. Lihat juga
+                        <a href="{{ route('home') }}" data-scroll-target="#kontak">layanan purna jual</a> kami!
+                    </p>
                 </div>
                 <div class="row g-4" id="productsContainer">
                     @for ($i = 0; $i < 8; $i++)
@@ -1683,7 +1738,9 @@
                     <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
                 </div>
                 <div id="googleReviews">
-                    <iframe title="Google Reviews Ar-Rahman E-Bike Bondowoso" src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
+                    <iframe title="Google Reviews Ar-Rahman E-Bike Bondowoso"
+                        src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0"
+                        width="100%" height="1000px" loading="lazy"></iframe>
                 </div>
             </div>
         </section>
@@ -1695,30 +1752,62 @@
                     <h3>Video Terbaru dari Toko Kami</h3>
                     <p>Tonton video terbaru tentang koleksi dan promo sepeda listrik.</p>
                 </div>
-                <div class="tiktok-grid">
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7613312726793768212" data-video-id="7613312726793768212" style="max-width: 605px;min-width: 325px;">
+                <div class="tiktok-grid" id="tiktokGrid">
+                    <blockquote class="tiktok-embed"
+                        cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7613312726793768212"
+                        data-video-id="7613312726793768212" style="max-width: 605px;min-width: 325px;">
                         <section>
-                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
-                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
-                            <a target="_blank" title="♬ suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿" href="https://www.tiktok.com/music/suara-asli-NEW-FAQZZ-PROJECT-7520569212558576440?refer=embed">♬ suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿</a>
+                            <a target="_blank" title="@sepedalistrikbondowoso"
+                                href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085
+                            231 260 016<a title="sepedalistrik" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a
+                                title="sepedalistrikbondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a>
+                            <a title="uwinflybondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿"
+                                href="https://www.tiktok.com/music/suara-asli-NEW-FAQZZ-PROJECT-7520569212558576440?refer=embed">♬
+                                suara asli - NEW FAQZZ PROJECT - 🗽⃢⃢🗿</a>
                         </section>
                     </blockquote>
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7610295600948858133" data-video-id="7610295600948858133" style="max-width: 605px;min-width: 325px;">
+                    <blockquote class="tiktok-embed"
+                        cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7610295600948858133"
+                        data-video-id="7610295600948858133" style="max-width: 605px;min-width: 325px;">
                         <section>
-                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
-                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
-                            <a target="_blank" title="♬ suara asli  - rizz" href="https://www.tiktok.com/music/suara-asli-rizz-7609984025918245633?refer=embed">♬ suara asli  - rizz</a>
+                            <a target="_blank" title="@sepedalistrikbondowoso"
+                                href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085
+                            231 260 016<a title="sepedalistrik" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a
+                                title="sepedalistrikbondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a>
+                            <a title="uwinflybondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli  - rizz"
+                                href="https://www.tiktok.com/music/suara-asli-rizz-7609984025918245633?refer=embed">♬
+                                suara asli - rizz</a>
                         </section>
                     </blockquote>
-                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7609529543325781268" data-video-id="7609529543325781268" style="max-width: 605px;min-width: 325px;">
+                    <blockquote class="tiktok-embed"
+                        cite="https://www.tiktok.com/@sepedalistrikbondowoso/video/7609529543325781268"
+                        data-video-id="7609529543325781268" style="max-width: 605px;min-width: 325px;">
                         <section>
-                            <a target="_blank" title="@sepedalistrikbondowoso" href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
-                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085 231 260 016<a title="sepedalistrik" target="_blank" href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a title="sepedalistrikbondowoso" target="_blank" href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a> <a title="uwinflybondowoso" target="_blank" href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
-                            <a target="_blank" title="♬ suara asli  - Pisang GimbaL" href="https://www.tiktok.com/music/suara-asli-Pisang-GimbaL-7608766239133764360?refer=embed">♬ suara asli  - Pisang GimbaL</a>
+                            <a target="_blank" title="@sepedalistrikbondowoso"
+                                href="https://www.tiktok.com/@sepedalistrikbondowoso?refer=embed">@sepedalistrikbondowoso</a>
+                            Sepeda Listrik Berkualitas &#38; Harga Terjangiblebih_LENGKAP : 📲 081 331 978 800 &#47; 085
+                            231 260 016<a title="sepedalistrik" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrik?refer=embed">#sepedalistrik</a> <a
+                                title="sepedalistrikbondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/sepedalistrikbondowoso?refer=embed">#sepedalistrikbondowoso</a>
+                            <a title="uwinflybondowoso" target="_blank"
+                                href="https://www.tiktok.com/tag/uwinflybondowoso?refer=embed">#uwinflybondowoso</a>
+                            <a target="_blank" title="♬ suara asli  - Pisang GimbaL"
+                                href="https://www.tiktok.com/music/suara-asli-Pisang-GimbaL-7608766239133764360?refer=embed">♬
+                                suara asli - Pisang GimbaL</a>
                         </section>
                     </blockquote>
                 </div>
-                <script async src="https://www.tiktok.com/embed.js"></script>
             </div>
         </section>
 
@@ -1737,7 +1826,9 @@
                                 <i class="fa-solid fa-chevron-down faq-icon"></i>
                             </div>
                             <div class="faq-answer">
-                                Tentu saja! Setiap unit sepeda dan motor listrik di Ar-Rahman E-Bike dilengkapi dengan garansi resmi pabrik untuk rangka, dinamo, dan baterai. Kami juga memberikan gratis servis selamanya untuk pelanggan kami.
+                                Tentu saja! Setiap unit sepeda dan motor listrik di Ar-Rahman E-Bike dilengkapi dengan
+                                garansi resmi pabrik untuk rangka, dinamo, dan baterai. Kami juga memberikan gratis
+                                servis selamanya untuk pelanggan kami.
                             </div>
                         </div>
                         <div class="faq-card">
@@ -1746,7 +1837,9 @@
                                 <i class="fa-solid fa-chevron-down faq-icon"></i>
                             </div>
                             <div class="faq-answer">
-                                Pengisian daya sangat mudah, cukup colokkan charger ke stopkontak rumah biasa (daya minimal 450W-900W tergantung tipe). Waktu pengisian rata-rata adalah 4-6 jam dari posisi kosong hingga penuh.
+                                Pengisian daya sangat mudah, cukup colokkan charger ke stopkontak rumah biasa (daya
+                                minimal 450W-900W tergantung tipe). Waktu pengisian rata-rata adalah 4-6 jam dari posisi
+                                kosong hingga penuh.
                             </div>
                         </div>
                         <div class="faq-card">
@@ -1755,7 +1848,8 @@
                                 <i class="fa-solid fa-chevron-down faq-icon"></i>
                             </div>
                             <div class="faq-answer">
-                                Ya, kami melayani pengiriman ke seluruh wilayah Jawa Timur dan juga ke seluruh Indonesia menggunakan ekspedisi spesialis kendaraan yang aman dan berasuransi.
+                                Ya, kami melayani pengiriman ke seluruh wilayah Jawa Timur dan juga ke seluruh Indonesia
+                                menggunakan ekspedisi spesialis kendaraan yang aman dan berasuransi.
                             </div>
                         </div>
                         <div class="faq-card">
@@ -1764,7 +1858,9 @@
                                 <i class="fa-solid fa-chevron-down faq-icon"></i>
                             </div>
                             <div class="faq-answer">
-                                Seluruh unit kami sudah didesain tahan air (water resistant) sehingga aman digunakan saat hujan gerimis maupun melewati genangan air dangkal. Namun, sangat tidak disarankan untuk merendam unit dalam banjir yang tinggi.
+                                Seluruh unit kami sudah didesain tahan air (water resistant) sehingga aman digunakan
+                                saat hujan gerimis maupun melewati genangan air dangkal. Namun, sangat tidak disarankan
+                                untuk merendam unit dalam banjir yang tinggi.
                             </div>
                         </div>
                     </div>
@@ -1779,13 +1875,16 @@
                         <div class="contact-card h-100">
                             <span class="section-tag">Kontak & Lokasi</span>
                             <h2>Kontak & Lokasi Toko Kami</h2>
-                            <p>Kunjugi toko offline kami atau pesan online melalui Shopee untuk melihat langsung berbagai
-                                model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi transportasi
+                            <p>Kunjugi toko offline kami atau pesan online melalui Shopee untuk melihat langsung
+                                berbagai
+                                model sepeda listrik dan berkonsultasi dengan tim kami untuk menemukan solusi
+                                transportasi
                                 yang paling sesuai dengan kebutuhan dan budget Anda.</p>
                             <ul class="contact-list list-unstyled mb-0">
                                 <li>
                                     <i class="fa-solid fa-shop"></i>
-                                    <a href="https://shopee.co.id/diahayuros8" target="_blank" rel="noopener">Shopee - Ar-Rahman E-bike Bondowoso Official</a>
+                                    <a href="https://shopee.co.id/diahayuros8" target="_blank" rel="noopener">Shopee
+                                        - Ar-Rahman E-bike Bondowoso Official</a>
                                 </li>
                                 <li class="store-item">
                                     <div class="store-name">
@@ -1855,8 +1954,8 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('admin.login') }}">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" loading="lazy" width="112" height="112">
-                            class="footer-logo">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
+                            loading="lazy" width="112" height="112" class="footer-logo">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
                         dan siap pakai untuk aktivitas sehari-hari. Tersedia juga di Shopee untuk pembelian online.</p>
@@ -1922,7 +2021,7 @@
                 const scrollToSlide = (index) => {
                     if (index < 0) index = slides.length - 1;
                     if (index >= slides.length) index = 0;
-                    
+
                     currentIndex = index;
                     const slideWidth = scrollWrapper.offsetWidth;
                     scrollWrapper.scrollTo({
@@ -1958,13 +2057,19 @@
                         currentIndex = index;
                         updateIndicators(index);
                     }
-                }, { passive: true });
+                }, {
+                    passive: true
+                });
 
                 // Pause on hover/touch
                 heroCarousel.addEventListener('mouseenter', stopAutoSlide);
                 heroCarousel.addEventListener('mouseleave', startAutoSlide);
-                heroCarousel.addEventListener('touchstart', stopAutoSlide, { passive: true });
-                heroCarousel.addEventListener('touchend', startAutoSlide, { passive: true });
+                heroCarousel.addEventListener('touchstart', stopAutoSlide, {
+                    passive: true
+                });
+                heroCarousel.addEventListener('touchend', startAutoSlide, {
+                    passive: true
+                });
 
                 startAutoSlide();
             }
@@ -2062,7 +2167,8 @@
                 });
 
                 card.addEventListener('keydown', function(event) {
-                    if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest(interactiveSelector)) {
+                    if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest(
+                            interactiveSelector)) {
                         event.preventDefault();
                         navigateToProduct();
                     }
@@ -2139,9 +2245,13 @@
                 // Pause on hover, resume on leave
                 slider.addEventListener('mouseenter', stopSlider);
                 slider.addEventListener('mouseleave', startSlider);
-                
-                slider.addEventListener('touchstart', stopSlider, { passive: true });
-                slider.addEventListener('touchend', startSlider, { passive: true });
+
+                slider.addEventListener('touchstart', stopSlider, {
+                    passive: true
+                });
+                slider.addEventListener('touchend', startSlider, {
+                    passive: true
+                });
             });
 
             // Skeleton Loading
@@ -2183,10 +2293,28 @@
                     }
                 });
             });
+
+            // Lazy Load TikTok Script
+            const tiktokGrid = document.getElementById('tiktokGrid');
+            if (tiktokGrid && 'IntersectionObserver' in window) {
+                const tiktokObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const script = document.createElement('script');
+                            script.src = 'https://www.tiktok.com/embed.js';
+                            script.async = true;
+                            document.body.appendChild(script);
+                            observer.unobserve(tiktokGrid);
+                        }
+                    });
+                }, { rootMargin: '200px' });
+                tiktokObserver.observe(tiktokGrid);
+            }
         });
     </script>
 
-    <a href="https://wa.me/6285231260016?text=Halo%20Ar-Rahman%20E-Bike%2C%20saya%20ingin%20konsultasi%20mengenai%20sepeda/motor%20listrik..." class="floating-wa" target="_blank" rel="noopener">
+    <a href="https://wa.me/6285231260016?text=Halo%20Ar-Rahman%20E-Bike%2C%20saya%20ingin%20konsultasi%20mengenai%20sepeda/motor%20listrik..."
+        class="floating-wa" target="_blank" rel="noopener">
         <div class="wa-text">Konsultasi Gratis</div>
         <div class="wa-icon">
             <i class="fa-brands fa-whatsapp"></i>
