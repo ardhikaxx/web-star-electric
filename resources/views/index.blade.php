@@ -1541,79 +1541,79 @@
                 <!-- Group 1 -->
                 <div class="brand-group">
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                 </div>
                 <!-- Group 2 (Exact duplicate of Group 1) -->
                 <div class="brand-group">
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1">
+                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2">
+                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3">
+                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -1848,7 +1848,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('admin.login') }}">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" loading="lazy">
                             class="footer-logo">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
