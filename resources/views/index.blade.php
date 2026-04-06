@@ -1467,7 +1467,7 @@
                 <div class="hero-scroll-wrapper">
                     <div class="carousel-item active" id="slide-0">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner1.png') }}');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner1.webp') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h1>Sepeda Listrik Berkualitas di Bondowoso</h1>
@@ -1484,7 +1484,7 @@
                     </div>
                     <div class="carousel-item" id="slide-1">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner2.png') }}');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner2.webp') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h2>Sparepart & Aksesoris Sepeda Listrik</h2>
@@ -1499,7 +1499,7 @@
                     </div>
                     <div class="carousel-item" id="slide-2">
                         <div class="hero-slide"
-                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner3.png') }}');">
+                            style="background-image: linear-gradient(180deg, rgba(4,11,19,.12), rgba(4,11,19,0.9)), url('{{ asset('assets/banner3.webp') }}');">
                             <div class="container">
                                 <div class="hero-content">
                                     <h2>Bermacam Merk Sepeda Listrik</h2>
