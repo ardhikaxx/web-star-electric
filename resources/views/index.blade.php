@@ -1011,7 +1011,7 @@
 
         .footer-links a,
         .footer-links span {
-            color: rgba(255, 255, 255, 0.74);
+            color: rgba(255, 255, 255, 0.85);
         }
 
         .footer-bottom {
@@ -1051,10 +1051,12 @@
 
             .nav-link {
                 width: 100%;
+                min-height: 48px;
             }
 
             .navbar .btn-brand {
                 width: 100%;
+                min-height: 48px;
             }
 
             .hero-slide {
@@ -1438,7 +1440,7 @@
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.login') }}">
-                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo">
+                <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo" width="84" height="84">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -1681,7 +1683,7 @@
                     <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
                 </div>
                 <div id="googleReviews">
-                    <iframe src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
+                    <iframe title="Google Reviews Ar-Rahman E-Bike Bondowoso" src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0" width="100%" height="1000px"></iframe>
                 </div>
             </div>
         </section>
@@ -1853,7 +1855,7 @@
             <div class="footer-grid">
                 <div>
                     <a class="footer-brand" href="{{ route('admin.login') }}">
-                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" loading="lazy">
+                        <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso" loading="lazy" width="112" height="112">
                             class="footer-logo">
                     </a>
                     <p>Pusat penjualan dan layanan sepeda listrik di Bondowoso dengan pilihan model modern, nyaman,
