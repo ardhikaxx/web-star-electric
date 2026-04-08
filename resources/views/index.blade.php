@@ -19,21 +19,28 @@
     <meta name="geo.position" content="-7.9220, 113.8177">
     <meta name="ICBM" content="-7.9220, 113.8177">
 
-    <!-- Open Graph / Facebook -->
+<!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arrahmanebike.web.id/">
-    <meta property="og:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
+    <meta property="og:title" content="Toko Sepeda Listrik &amp; Motor Listrik Bondowoso - Ar-Rahman E-Bike">
     <meta property="og:description"
-        content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi. Kunjungi Ar-Rahman E-Bike sekarang!">
-    <meta property="og:image" content="https://arrahmanebike.web.id/assets/banner1.png">
+        content="Pusat penjualan sepeda listrik, motor listrik, dan sparepart original di Jawa Timur. Gratis servis seumur hidup, garansi resmi, harga termurah. Kunjungi Ar-Rahman E-Bike sekarang!">
+    <meta property="og:image" content="https://arrahmanebike.web.id/assets/banner1.webp">
+    <meta property="og:image:secure_url" content="https://arrahmanebike.web.id/assets/banner1.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Ar-Rahman E-Bike - Toko Sepeda Listrik Bondowoso">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:site_name" content="Ar-Rahman E-Bike">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://arrahmanebike.web.id/">
-    <meta property="twitter:title" content="Toko Sepeda Listrik Bondowoso - Ar-Rahman E-Bike">
+    <meta property="twitter:title" content="Toko Sepeda Listrik &amp; Motor Listrik Bondowoso - Ar-Rahman E-Bike">
     <meta property="twitter:description"
-        content="Pusat sepeda listrik termurah di Bondowoso. Tersedia berbagai merk, sparepart, dan layanan servis resmi.">
-    <meta property="twitter:image" content="https://arrahmanebike.web.id/assets/banner1.png">
+        content="Pusat penjualan sepeda listrik, motor listrik, dan sparepart original di Jawa Timur. Gratis servis seumur hidup, garansi resmi.">
+    <meta property="twitter:image" content="https://arrahmanebike.web.id/assets/banner1.webp">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://arrahmanebike.web.id/">
@@ -860,15 +867,175 @@
             width: 100%;
             max-width: 900px;
             margin: 0 auto;
-            display: flex;
-            justify-content: center;
+            position: relative;
+            min-height: 1000px;
         }
 
         #googleReviews iframe {
             border-radius: 16px;
             width: 100%;
+            height: 1000px;
             max-width: 100%;
             overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        #googleReviews.is-loaded iframe {
+            opacity: 1;
+        }
+
+        .google-reviews-skeleton {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            padding: clamp(1rem, 2vw, 1.5rem);
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 248, 240, 0.92));
+            box-shadow: var(--shadow);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        #googleReviews.is-loaded .google-reviews-skeleton {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .google-reviews-skeleton-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .google-reviews-skeleton-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .google-reviews-skeleton-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 16px;
+            flex-shrink: 0;
+        }
+
+        .google-reviews-skeleton-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            width: min(280px, 100%);
+        }
+
+        .google-reviews-skeleton-stars {
+            width: 130px;
+            height: 20px;
+        }
+
+        .google-reviews-skeleton-title {
+            width: 220px;
+            height: 18px;
+        }
+
+        .google-reviews-skeleton-score {
+            width: 110px;
+            height: 44px;
+            border-radius: 14px;
+        }
+
+        .google-reviews-skeleton-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .google-reviews-skeleton-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 220px;
+            padding: 1.1rem;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.82);
+            border: 1px solid rgba(241, 245, 249, 0.95);
+        }
+
+        .google-reviews-skeleton-card-head {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+        }
+
+        .google-reviews-skeleton-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .google-reviews-skeleton-user {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .google-reviews-skeleton-name {
+            width: 72%;
+            height: 16px;
+        }
+
+        .google-reviews-skeleton-date {
+            width: 42%;
+            height: 14px;
+        }
+
+        .google-reviews-skeleton-line {
+            height: 14px;
+        }
+
+        .google-reviews-skeleton-line.short {
+            width: 68%;
+        }
+
+        @media (max-width: 992px) {
+            #googleReviews {
+                min-height: 880px;
+            }
+
+            #googleReviews iframe {
+                height: 880px;
+            }
+
+            .google-reviews-skeleton-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #googleReviews {
+                min-height: 760px;
+            }
+
+            #googleReviews iframe {
+                height: 760px;
+            }
+
+            .google-reviews-skeleton-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .google-reviews-skeleton-score {
+                width: 140px;
+            }
         }
 
         .testimonial-card {
@@ -1737,8 +1904,38 @@
                     <h3>Apa kata pelanggan Ar-Rahman E-Bike Bondowoso</h3>
                     <p>Beberapa pengalaman pelanggan setelah menggunakan sepeda listrik dari toko kami.</p>
                 </div>
-                <div id="googleReviews">
+                <div id="googleReviews" class="is-loading" aria-busy="true">
+                    <div class="google-reviews-skeleton" aria-hidden="true">
+                        <div class="google-reviews-skeleton-top">
+                            <div class="google-reviews-skeleton-brand">
+                                <div class="skeleton google-reviews-skeleton-icon"></div>
+                                <div class="google-reviews-skeleton-meta">
+                                    <div class="skeleton google-reviews-skeleton-stars"></div>
+                                    <div class="skeleton google-reviews-skeleton-title"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton google-reviews-skeleton-score"></div>
+                        </div>
+                        <div class="google-reviews-skeleton-grid">
+                            @for ($i = 0; $i < 3; $i++)
+                                <div class="google-reviews-skeleton-card">
+                                    <div class="google-reviews-skeleton-card-head">
+                                        <div class="skeleton google-reviews-skeleton-avatar"></div>
+                                        <div class="google-reviews-skeleton-user">
+                                            <div class="skeleton google-reviews-skeleton-name"></div>
+                                            <div class="skeleton google-reviews-skeleton-date"></div>
+                                        </div>
+                                    </div>
+                                    <div class="skeleton google-reviews-skeleton-stars"></div>
+                                    <div class="skeleton google-reviews-skeleton-line"></div>
+                                    <div class="skeleton google-reviews-skeleton-line"></div>
+                                    <div class="skeleton google-reviews-skeleton-line short"></div>
+                                </div>
+                            @endfor
+                        </div>
+                    </div>
                     <iframe title="Google Reviews Ar-Rahman E-Bike Bondowoso"
+                        id="googleReviewsFrame"
                         src="https://widgets.sociablekit.com/google-reviews/iframe/25667767" frameborder="0"
                         width="100%" height="1000px" loading="lazy"></iframe>
                 </div>
@@ -2279,6 +2476,34 @@
                 }
             })();
 
+            (function() {
+                const reviewsContainer = document.getElementById('googleReviews');
+                const reviewsFrame = document.getElementById('googleReviewsFrame');
+
+                if (!reviewsContainer || !reviewsFrame) {
+                    return;
+                }
+
+                let hasLoaded = false;
+
+                const finishReviewsLoading = function() {
+                    if (hasLoaded) {
+                        return;
+                    }
+
+                    hasLoaded = true;
+                    reviewsContainer.classList.remove('is-loading');
+                    reviewsContainer.classList.add('is-loaded');
+                    reviewsContainer.setAttribute('aria-busy', 'false');
+                };
+
+                reviewsFrame.addEventListener('load', function() {
+                    setTimeout(finishReviewsLoading, 200);
+                }, {
+                    once: true
+                });
+            })();
+
             // FAQ Logic
             const faqCards = document.querySelectorAll('.faq-card');
             faqCards.forEach(card => {
@@ -2322,3 +2547,4 @@
 </body>
 
 </html>
+

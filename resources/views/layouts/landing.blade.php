@@ -18,6 +18,8 @@
     <meta name="geo.position" content="-7.9220;113.8177">
     <meta name="ICBM" content="-7.9220, 113.8177">
 
+    @yield('additional_meta')
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -789,6 +791,29 @@
                 });
             };
 
+            const pendingScrollTargetKey = 'landing-scroll-target';
+
+            const persistScrollTarget = function(hash) {
+                try {
+                    sessionStorage.setItem(pendingScrollTargetKey, hash);
+                } catch (error) {
+                    // Ignore storage access issues and continue with default navigation.
+                }
+            };
+
+            const consumePendingScrollTarget = function() {
+                try {
+                    const pendingHash = sessionStorage.getItem(pendingScrollTargetKey);
+
+                    if (pendingHash) {
+                        sessionStorage.removeItem(pendingScrollTargetKey);
+                    }
+
+                    return pendingHash;
+                } catch (error) {
+                    return null;
+                }
+            };
             const scrollToSection = function(hash) {
                 const target = document.querySelector(hash);
 
@@ -891,12 +916,19 @@
 
                     if (href) {
                         e.preventDefault();
-                        window.location.href = `${href}${hash}`;
+                        persistScrollTarget(hash);
+                        window.location.href = href;
                     }
                 });
             });
 
-            if (window.location.hash && document.querySelector(window.location.hash)) {
+            const pendingScrollTarget = consumePendingScrollTarget();
+
+            if (pendingScrollTarget && document.querySelector(pendingScrollTarget)) {
+                requestAnimationFrame(function() {
+                    scrollToSection(pendingScrollTarget);
+                });
+            } else if (window.location.hash && document.querySelector(window.location.hash)) {
                 requestAnimationFrame(function() {
                     scrollToSection(window.location.hash);
                 });
@@ -907,3 +939,4 @@
 </body>
 
 </html>
+

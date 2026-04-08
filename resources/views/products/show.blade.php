@@ -24,6 +24,29 @@
 @section('title', $product->name . ' - Detail Produk | Ar-Rahman E-Bike Bondowoso')
 @section('meta_description', \Illuminate\Support\Str::limit($plainDescription, 155, '...'))
 
+@php
+    $ogImage = $images->first()->image_path ?? $product->image;
+    $ogImageUrl = url('uploads/products/' . $ogImage);
+@endphp
+
+@section('additional_meta')
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="product">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:title" content="{{ $product->name }} - Ar-Rahman E-Bike Bondowoso">
+<meta property="og:description" content="{{ \Illuminate\Support\Str::limit($plainDescription, 155) }}">
+<meta property="og:image" content="{{ $ogImageUrl }}">
+<meta property="product:price:amount" content="{{ $product->price }}">
+<meta property="product:price:currency" content="IDR">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ url()->current() }}">
+<meta property="twitter:title" content="{{ $product->name }} - Ar-Rahman E-Bike Bondowoso">
+<meta property="twitter:description" content="{{ \Illuminate\Support\Str::limit($plainDescription, 155) }}">
+<meta property="twitter:image" content="{{ $ogImageUrl }}">
+@endsection
+
 @push('styles')
     <style>
         .product-detail-hero {
@@ -311,7 +334,7 @@
     <div class="product-detail-hero">
         <div class="container">
             <div class="product-detail-breadcrumb">
-                <a href="{{ route('home') }}#produk"><i class="fa-solid fa-arrow-left me-2"></i>Katalog</a>
+                <a href="{{ route('home') }}" data-scroll-target="#produk"><i class="fa-solid fa-arrow-left me-2"></i>Katalog</a>
                 <span>/</span>
                 <span>{{ $product->name }}</span>
             </div>
@@ -325,7 +348,7 @@
                                 <div class="zoom-hint">
                                     <i class="fa-solid fa-magnifying-glass-plus"></i>
                                 </div>
-                                <img src="{{ url('uploads/products/' . ($images[0]->image_path ?? $product->image)) }}" id="mainImage" alt="{{ $product->name }}">
+                                <img src="{{ url('uploads/products/' . ($images[0]->image_path ?? $product->image)) }}" id="mainImage" alt="{{ $product->name }}" loading="eager" fetchpriority="high" width="800" height="600">
                             </a>
                         </div>
                         
@@ -333,7 +356,7 @@
                         <div class="thumbnail-strip">
                             @foreach($images as $index => $img)
                                 <div class="thumb-item {{ $index === 0 ? 'active' : '' }}" onclick="changeImage('{{ url('uploads/products/' . $img->image_path) }}', this)">
-                                    <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="Thumbnail {{ $index + 1 }}">
+                                    <img src="{{ url('uploads/products/' . $img->image_path) }}" alt="Thumbnail {{ $index + 1 }}" loading="lazy" decoding="async" width="80" height="80">
                                 </div>
                                 <!-- Hidden links for fslightbox to include all images in the loop -->
                                 @if($index > 0)
@@ -465,3 +488,4 @@
         });
     </script>
 @endpush
+

@@ -26,6 +26,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
     }
     .slider-dots {
         position: absolute;
@@ -55,11 +56,13 @@
     <div class="product-image-wrap">
         <div class="product-image-slider" data-image-count="{{ $images->count() }}">
             <div class="slider-track">
-                @foreach($images as $img)
+                @foreach($images as $index => $img)
                     <div class="slider-item">
                         <img src="{{ url('uploads/products/' . $img->image_path) }}" 
                              alt="Jual {{ $product->name }} Murah - Ar-Rahman E-Bike Bondowoso" 
-                             loading="lazy"
+                             loading="{{ $index === 0 ? 'eager' : 'lazy' }}"
+                             {{ $index === 0 ? 'fetchpriority="high"' : '' }}
+                             decoding="async"
                              width="400" 
                              height="400">
                     </div>
