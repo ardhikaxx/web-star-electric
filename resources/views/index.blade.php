@@ -1656,7 +1656,7 @@
 <body>
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="{{ route('admin.login') }}">
+            <a class="navbar-brand d-flex align-items-center" href="{{ route('login') }}">
                 <img src="{{ asset('assets/logo-navbar.png') }}" alt="Ar-Rahman E-Bike Bondowoso" class="navbar-logo"
                     width="84" height="84">
             </a>
@@ -2150,7 +2150,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div>
-                    <a class="footer-brand" href="{{ route('admin.login') }}">
+                    <a class="footer-brand" href="{{ route('login') }}">
                         <img src="{{ asset('assets/logo-footer.png') }}" alt="Ar-Rahman E-Bike Bondowoso"
                             loading="lazy" width="112" height="112" class="footer-logo">
                     </a>

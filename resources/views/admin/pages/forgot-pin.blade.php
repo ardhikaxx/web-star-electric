@@ -1,6 +1,6 @@
 @extends('admin.layouts.auth')
 
-@section('title', 'Lupa PIN - Admin Ar-Rahman E-Bike')
+@section('title', 'Lupa PIN')
 
 @section('content')
     <div class="login-page">
@@ -10,27 +10,28 @@
                 <div class="login-logo">
                     <img src="{{ asset('assets/logo-auth.png') }}" alt="Ar-Rahman E-Bike">
                 </div>
-                <h2>Lupa PIN Admin</h2>
-                <p>Masukkan Kunci Pemulihan untuk mereset PIN Anda.</p>
+                <h2>Lupa PIN</h2>
+                <p>Masukkan nomor telepon yang sudah terdaftar pada sistem. Jika cocok, Anda akan diarahkan ke halaman ubah PIN baru.</p>
             </div>
 
-            <form action="{{ route('admin.forgot-pin.post') }}" method="POST">
+            <form action="{{ route('pin.forgot.submit') }}" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="recovery_key" class="form-label fw-bold small text-muted text-uppercase mb-2">Kunci Pemulihan</label>
-                    <input type="password" name="recovery_key" id="recovery_key" 
-                        class="form-control form-control-lg @error('recovery_key') is-invalid @enderror" 
-                        placeholder="Masukkan kunci rahasia..." required>
-                    @error('recovery_key')
+                    <label for="phone_number" class="form-label fw-bold small text-muted text-uppercase mb-2">Nomor Telepon</label>
+                    <input type="text" name="phone_number" id="phone_number"
+                        class="form-control form-control-lg @error('phone_number') is-invalid @enderror"
+                        value="{{ old('phone_number') }}"
+                        placeholder="Contoh: 081234567890" required>
+                    @error('phone_number')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="d-grid gap-3">
                     <button type="submit" class="btn btn-primary btn-lg fw-bold">
-                        Verifikasi Kunci
+                        Verifikasi Nomor Telepon
                     </button>
-                    <a href="{{ route('admin.login') }}" class="btn btn-link text-decoration-none text-muted small mt-2">
+                    <a href="{{ route('login') }}" class="btn btn-link text-decoration-none text-muted small mt-2">
                         Kembali ke Login
                     </a>
                 </div>

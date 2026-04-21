@@ -1,14 +1,18 @@
+@php
+    $homeRoute = auth()->check() && auth()->user()->isEmployee() ? route('employee.dashboard') : route('admin.dashboard');
+@endphp
+
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb breadcrumb-custom">
         <li class="breadcrumb-item">
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ $homeRoute }}">
                 <i class="fa-solid fa-house me-1"></i>
                 Home
             </a>
         </li>
-        @if(isset($links))
-            @foreach($links as $link)
-                @if(isset($link['url']))
+        @if (isset($links))
+            @foreach ($links as $link)
+                @if (isset($link['url']))
                     <li class="breadcrumb-item">
                         <a href="{{ $link['url'] }}">{{ $link['label'] }}</a>
                     </li>

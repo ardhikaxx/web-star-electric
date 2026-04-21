@@ -1,6 +1,6 @@
 @extends('admin.layouts.auth')
 
-@section('title', 'Atur PIN Baru - Admin Ar-Rahman E-Bike')
+@section('title', 'Ubah PIN Baru')
 
 @section('content')
     <div class="login-page">
@@ -10,40 +10,40 @@
                 <div class="login-logo">
                     <img src="{{ asset('assets/logo-auth.png') }}" alt="Ar-Rahman E-Bike">
                 </div>
-                <h2>Atur PIN Baru</h2>
-                <p>Silakan buat 4 digit PIN baru untuk akun admin Anda.</p>
+                <h2>Ubah PIN Baru Anda</h2>
+                <p>Buat PIN 4 digit baru lalu konfirmasi ulang untuk menyimpan perubahan.</p>
             </div>
 
-            <form action="{{ route('admin.reset-pin.post') }}" method="POST" id="resetPinForm">
+            <form action="{{ route('pin.reset.submit') }}" method="POST" id="resetPinForm">
                 @csrf
                 <div class="mb-4 text-center">
                     <label class="form-label fw-bold small text-muted text-uppercase mb-3">PIN Baru (4 Digit)</label>
-                    <div class="pin-input">
+                    <div class="pin-input" data-pin-block>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                     </div>
-                    <input type="hidden" name="new_pin" id="new_pin_hidden">
-                    @error('new_pin')
+                    <input type="hidden" name="pin" id="pin_hidden">
+                    @error('pin')
                         <div class="text-danger small mt-2">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-4 text-center">
                     <label class="form-label fw-bold small text-muted text-uppercase mb-3">Konfirmasi PIN Baru</label>
-                    <div class="pin-input">
+                    <div class="pin-input" data-pin-block>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                         <input type="text" maxlength="1" inputmode="numeric" pattern="[0-9]*" class="form-control" required>
                     </div>
-                    <input type="hidden" name="new_pin_confirmation" id="new_pin_confirmation_hidden">
+                    <input type="hidden" name="pin_confirmation" id="pin_confirmation_hidden">
                 </div>
 
                 <div class="d-grid">
                     <button type="submit" class="btn btn-primary btn-lg fw-bold">
-                        Ubah PIN
+                        Simpan PIN Baru
                     </button>
                 </div>
             </form>
@@ -51,45 +51,39 @@
     </div>
 
     @push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const forms = document.querySelectorAll('.pin-input');
-            const hiddenInputs = [
-                document.getElementById('new_pin_hidden'),
-                document.getElementById('new_pin_confirmation_hidden')
-            ];
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const blocks = document.querySelectorAll('[data-pin-block]');
+                const hiddenInputs = [
+                    document.getElementById('pin_hidden'),
+                    document.getElementById('pin_confirmation_hidden')
+                ];
 
-            forms.forEach((container, formIndex) => {
-                const inputs = container.querySelectorAll('input');
-                
-                inputs.forEach((input, index) => {
-                    input.addEventListener('input', function(e) {
-                        if (e.target.value.length === 1) {
-                            if (index < inputs.length - 1) {
+                blocks.forEach((block, blockIndex) => {
+                    const inputs = block.querySelectorAll('input');
+
+                    const syncHidden = function() {
+                        hiddenInputs[blockIndex].value = Array.from(inputs).map(input => input.value).join('');
+                    };
+
+                    inputs.forEach((input, index) => {
+                        input.addEventListener('input', function(e) {
+                            e.target.value = e.target.value.replace(/\D/g, '');
+                            syncHidden();
+
+                            if (e.target.value.length === 1 && index < inputs.length - 1) {
                                 inputs[index + 1].focus();
                             }
-                        }
-                        updateHiddenInput(formIndex);
-                    });
+                        });
 
-                    input.addEventListener('keydown', function(e) {
-                        if (e.key === 'Backspace' && e.target.value.length === 0) {
-                            if (index > 0) {
+                        input.addEventListener('keydown', function(e) {
+                            if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
                                 inputs[index - 1].focus();
                             }
-                        }
+                        });
                     });
                 });
-
-                function updateHiddenInput(idx) {
-                    let pin = '';
-                    container.querySelectorAll('input').forEach(input => {
-                        pin += input.value;
-                    });
-                    hiddenInputs[idx].value = pin;
-                }
             });
-        });
-    </script>
+        </script>
     @endpush
 @endsection
