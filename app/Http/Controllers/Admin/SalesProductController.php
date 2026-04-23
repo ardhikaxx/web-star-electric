@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\SalesProduct;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -24,7 +25,8 @@ class SalesProductController extends Controller
 
     public function create()
     {
-        return view('admin.pages.sales-products.create');
+        $catalogProducts = Product::orderBy('name')->get();
+        return view('admin.pages.sales-products.create', compact('catalogProducts'));
     }
 
     public function store(Request $request)
@@ -37,17 +39,25 @@ class SalesProductController extends Controller
             'is_active' => 'nullable|boolean',
         ]);
 
-        SalesProduct::create([
-            ...$data,
-            'is_active' => (bool) ($data['is_active'] ?? true),
-        ]);
+        \Illuminate\Support\Facades\DB::transaction(function () use ($data) {
+            $salesProduct = SalesProduct::create([
+                ...$data,
+                'stock' => 0, // initially 0, then updated via updateStock for logging
+                'is_active' => (bool) ($data['is_active'] ?? true),
+            ]);
+
+            if ($data['stock'] > 0) {
+                $salesProduct->updateStock($data['stock'], 'initial_stock');
+            }
+        });
 
         return redirect()->route('admin.sales-products.index')->with('success', 'Produk penjualan berhasil ditambahkan.');
     }
 
     public function edit(SalesProduct $salesProduct)
     {
-        return view('admin.pages.sales-products.edit', compact('salesProduct'));
+        $catalogProducts = Product::orderBy('name')->get();
+        return view('admin.pages.sales-products.edit', compact('salesProduct', 'catalogProducts'));
     }
 
     public function update(Request $request, SalesProduct $salesProduct)
@@ -65,10 +75,23 @@ class SalesProductController extends Controller
             'is_active' => 'nullable|boolean',
         ]);
 
-        $salesProduct->update([
-            ...$data,
-            'is_active' => (bool) ($data['is_active'] ?? false),
-        ]);
+        \Illuminate\Support\Facades\DB::transaction(function () use ($data, $salesProduct) {
+            $oldStock = $salesProduct->stock;
+            $newStock = (int) $data['stock'];
+
+            $salesProduct->update([
+                'name' => $data['name'],
+                'purchase_price' => $data['purchase_price'],
+                'selling_price' => $data['selling_price'],
+                'is_active' => (bool) ($data['is_active'] ?? false),
+            ]);
+
+            if ($newStock !== $oldStock) {
+                $change = $newStock - $oldStock;
+                $type = $change > 0 ? 'restock' : 'correction';
+                $salesProduct->updateStock($change, $type);
+            }
+        });
 
         return redirect()->route('admin.sales-products.index')->with('success', 'Produk penjualan berhasil diperbarui.');
     }

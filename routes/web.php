@@ -72,6 +72,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::delete('/sales-products/{salesProduct}', [SalesProductController::class, 'destroy'])->name('sales-products.destroy');
 
     Route::get('/reports', [AdminReportController::class, 'index'])->name('reports.index');
+    Route::get('/reports/export-excel', [AdminReportController::class, 'exportExcel'])->name('reports.export-excel');
+    Route::get('/reports/export-pdf', [AdminReportController::class, 'exportPdf'])->name('reports.export-pdf');
     Route::get('/reports/{dailyReport}', [AdminReportController::class, 'show'])->name('reports.show');
 
     Route::get('/profile', [AdminProfileController::class, 'edit'])->name('profile.edit');

@@ -31,6 +31,12 @@
                     <span class="menu-label">Pelaporan</span>
                 </a>
             @else
+                <a href="{{ route('admin.products.index') }}" class="menu-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
+                    <span class="menu-icon">
+                        <i class="fa-solid fa-box"></i>
+                    </span>
+                    <span class="menu-label">Produk Katalog</span>
+                </a>
                 <a href="{{ route('admin.employees.index') }}" class="menu-item {{ request()->routeIs('admin.employees.*') ? 'active' : '' }}">
                     <span class="menu-icon">
                         <i class="fa-solid fa-users"></i>
@@ -48,12 +54,6 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </span>
                     <span class="menu-label">Laporan Admin</span>
-                </a>
-                <a href="{{ route('admin.products.index') }}" class="menu-item {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
-                    <span class="menu-icon">
-                        <i class="fa-solid fa-box"></i>
-                    </span>
-                    <span class="menu-label">Produk Katalog</span>
                 </a>
             @endif
 

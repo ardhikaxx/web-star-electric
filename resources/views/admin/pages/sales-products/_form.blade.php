@@ -1,7 +1,17 @@
 <div class="row g-4">
     <div class="col-12 col-lg-6">
-        <label class="form-label">Nama Produk</label>
-        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $salesProduct->name ?? '') }}" required>
+        <label class="form-label">Nama Produk (Dari Katalog)</label>
+        @if(isset($salesProduct))
+            <input type="text" name="name" class="form-control" value="{{ $salesProduct->name }}" readonly>
+            <small class="text-muted">Nama produk tidak dapat diubah setelah ditambahkan.</small>
+        @else
+            <select name="name" class="form-select select2-product @error('name') is-invalid @enderror" required>
+                <option value=""></option>
+                @foreach($catalogProducts as $catalog)
+                    <option value="{{ $catalog->name }}" @selected(old('name') === $catalog->name)>{{ $catalog->name }}</option>
+                @endforeach
+            </select>
+        @endif
         @error('name')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
@@ -35,3 +45,15 @@
         </label>
     </div>
 </div>
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.select2-product').select2({
+                theme: 'bootstrap-5',
+                placeholder: 'Cari nama produk katalog...',
+                allowClear: true
+            });
+        });
+    </script>
+@endpush

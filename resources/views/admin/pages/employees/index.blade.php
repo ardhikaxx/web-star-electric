@@ -65,7 +65,13 @@
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-2">
                                         <a href="{{ route('admin.employees.edit', $employee) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                        <form action="{{ route('admin.employees.destroy', $employee) }}" method="POST">
+                                        <form action="{{ route('admin.employees.destroy', $employee) }}" method="POST"
+                                            data-swal-confirm
+                                            data-confirm-title="Hapus Karyawan?"
+                                            data-confirm-text="Karyawan {{ $employee->name }} akan dihapus secara permanen."
+                                            data-confirm-button-text="Ya, hapus"
+                                            data-cancel-button-text="Batal"
+                                            data-confirm-icon="warning">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-outline-danger" type="submit">Hapus</button>

@@ -31,7 +31,7 @@
     <h2>Penjualan Produk</h2>
     <table>
         <thead>
-            <tr><th>Produk</th><th>Type</th><th>Warna</th><th>Pembayaran</th><th>Harga</th></tr>
+            <tr><th>Produk</th><th>Type</th><th>Warna</th><th>Qty</th><th>Pembayaran</th><th>Harga</th></tr>
         </thead>
         <tbody>
             @forelse ($report->productSales as $item)
@@ -39,11 +39,12 @@
                     <td>{{ $item->product_name }}</td>
                     <td>{{ $item->product_type ?: '-' }}</td>
                     <td>{{ $item->color ?: '-' }}</td>
+                    <td>{{ $item->quantity }}</td>
                     <td>{{ strtoupper($item->payment_type) }}</td>
                     <td>{{ $currency($item->price) }}</td>
                 </tr>
             @empty
-                <tr><td colspan="5">Tidak ada penjualan produk.</td></tr>
+                <tr><td colspan="6">Tidak ada penjualan produk.</td></tr>
             @endforelse
         </tbody>
     </table>

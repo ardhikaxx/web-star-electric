@@ -2,24 +2,30 @@
     $report = $report ?? null;
     $productRows = collect(old('product_sales', $report?->productSales->map(fn ($item) => [
         'row_key' => $item->row_key ?: 'product-' . $item->id,
+        'sales_product_id' => $item->sales_product_id,
         'product_name' => $item->product_name,
         'product_type' => $item->product_type,
         'color' => $item->color,
         'payment_type' => $item->payment_type,
         'price' => (int) $item->price,
-    ])->all() ?? [['row_key' => 'product-' . uniqid(), 'product_name' => '', 'product_type' => '', 'color' => '', 'payment_type' => 'dp', 'price' => '']]));
+        'quantity' => $item->quantity,
+    ])->all() ?? [['row_key' => 'product-' . uniqid(), 'sales_product_id' => '', 'product_type' => '', 'color' => '', 'payment_type' => 'dp', 'price' => '', 'quantity' => 1]]));
+    
     $sparepartRows = collect(old('sparepart_sales', $report?->sparepartSales->map(fn ($item) => [
         'sparepart_name' => $item->sparepart_name,
         'price' => (int) $item->price,
     ])->all() ?? []));
+    
     $shippingSaleRows = collect(old('shipping_sales', $report?->shippings->where('shipping_type', 'sale')->map(fn ($item) => [
         'product_row_key' => $item->productSale?->row_key ?? '',
         'price' => (int) $item->price,
     ])->all() ?? []));
+    
     $returnShippingRows = collect(old('return_shippings', $report?->shippings->where('shipping_type', 'return')->map(fn ($item) => [
         'product_name' => $item->product_name,
         'price' => (int) $item->price,
     ])->all() ?? []));
+    
     $serviceRows = collect(old('services', $report?->services->map(fn ($item) => [
         'service_name' => $item->service_name,
         'price' => (int) $item->price,
@@ -48,12 +54,6 @@
     </div>
 </div>
 
-<datalist id="sales-product-options">
-    @foreach ($salesProducts as $salesProduct)
-        <option value="{{ $salesProduct->name }}">{{ $salesProduct->name }}</option>
-    @endforeach
-</datalist>
-
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span>Pelaporan Penjualan Produk</span>
@@ -62,13 +62,23 @@
         </button>
     </div>
     <div class="card-body d-flex flex-column gap-3" data-row-container="product-sales">
+        @error('product_sales')
+            <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
         @foreach ($productRows as $index => $row)
             <div class="border rounded p-3 report-row">
                 <input type="hidden" name="product_sales[{{ $index }}][row_key]" value="{{ $row['row_key'] }}" class="product-row-key">
                 <div class="row g-3">
                     <div class="col-12 col-lg-3">
-                        <label class="form-label">Nama Produk</label>
-                        <input type="text" list="sales-product-options" name="product_sales[{{ $index }}][product_name]" class="form-control product-sale-name" value="{{ $row['product_name'] }}">
+                        <label class="form-label">Produk Penjualan</label>
+                        <select name="product_sales[{{ $index }}][sales_product_id]" class="form-select select2-product product-sale-id" required>
+                            <option value="">Pilih Produk</option>
+                            @foreach ($salesProducts as $salesProduct)
+                                <option value="{{ $salesProduct->id }}" data-name="{{ $salesProduct->name }}" @selected((string) $row['sales_product_id'] === (string) $salesProduct->id)>
+                                    {{ $salesProduct->name }} (Stok: {{ $salesProduct->stock }})
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="col-12 col-lg-2">
                         <label class="form-label">Type</label>
@@ -77,6 +87,10 @@
                     <div class="col-12 col-lg-2">
                         <label class="form-label">Warna</label>
                         <input type="text" name="product_sales[{{ $index }}][color]" class="form-control" value="{{ $row['color'] }}">
+                    </div>
+                    <div class="col-12 col-lg-1">
+                        <label class="form-label">Qty</label>
+                        <input type="number" name="product_sales[{{ $index }}][quantity]" class="form-control" value="{{ $row['quantity'] }}" min="1" required>
                     </div>
                     <div class="col-12 col-lg-2">
                         <label class="form-label">Pembayaran</label>
@@ -212,7 +226,17 @@
 
 @push('scripts')
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        $(document).ready(function() {
+            const initSelect2 = (el) => {
+                $(el).select2({
+                    theme: 'bootstrap-5',
+                    placeholder: 'Pilih Produk',
+                    width: '100%'
+                });
+            };
+
+            initSelect2('.select2-product');
+
             const counters = {
                 productSales: document.querySelectorAll('[data-row-container="product-sales"] .report-row').length,
                 spareparts: document.querySelectorAll('[data-row-container="spareparts"] .report-row').length,
@@ -223,9 +247,11 @@
 
             const getProductOptions = function () {
                 return Array.from(document.querySelectorAll('[data-row-container="product-sales"] .report-row')).map(function (row) {
+                    const select = row.querySelector('.product-sale-id');
+                    const selectedOption = select?.options[select.selectedIndex];
                     return {
                         key: row.querySelector('.product-row-key')?.value || '',
-                        name: row.querySelector('.product-sale-name')?.value || ''
+                        name: selectedOption ? selectedOption.getAttribute('data-name') : ''
                     };
                 }).filter(function (item) {
                     return item.key && item.name;
@@ -255,13 +281,22 @@
                 if (section === 'product-sales') {
                     const index = counters.productSales++;
                     const rowKey = 'product-' + Date.now() + '-' + index;
+                    const options = $('#sales-product-template-options').html();
+                    
                     return `
                         <div class="border rounded p-3 report-row">
                             <input type="hidden" name="product_sales[${index}][row_key]" value="${rowKey}" class="product-row-key">
                             <div class="row g-3">
-                                <div class="col-12 col-lg-3"><label class="form-label">Nama Produk</label><input type="text" list="sales-product-options" name="product_sales[${index}][product_name]" class="form-control product-sale-name"></div>
+                                <div class="col-12 col-lg-3">
+                                    <label class="form-label">Produk Penjualan</label>
+                                    <select name="product_sales[${index}][sales_product_id]" class="form-select select2-product-new product-sale-id" required>
+                                        <option value="">Pilih Produk</option>
+                                        ${options}
+                                    </select>
+                                </div>
                                 <div class="col-12 col-lg-2"><label class="form-label">Type</label><input type="text" name="product_sales[${index}][product_type]" class="form-control"></div>
                                 <div class="col-12 col-lg-2"><label class="form-label">Warna</label><input type="text" name="product_sales[${index}][color]" class="form-control"></div>
+                                <div class="col-12 col-lg-1"><label class="form-label">Qty</label><input type="number" name="product_sales[${index}][quantity]" class="form-control" value="1" min="1" required></div>
                                 <div class="col-12 col-lg-2"><label class="form-label">Pembayaran</label><select name="product_sales[${index}][payment_type]" class="form-select"><option value="dp">DP</option><option value="lunas">Lunas</option></select></div>
                                 <div class="col-12 col-lg-2"><label class="form-label">Harga</label><input type="number" step="0.01" min="0" name="product_sales[${index}][price]" class="form-control"></div>
                                 <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
@@ -321,32 +356,37 @@
                 `;
             };
 
-            document.querySelectorAll('[data-add-row]').forEach(function (button) {
-                button.addEventListener('click', function () {
-                    const section = this.dataset.addRow;
-                    document.querySelector(`[data-row-container="${section}"]`).insertAdjacentHTML('beforeend', createRow(section));
-                    refreshShippingProductOptions();
-                });
-            });
-
-            document.addEventListener('click', function (event) {
-                const button = event.target.closest('[data-remove-row]');
-
-                if (!button) {
-                    return;
+            $('[data-add-row]').on('click', function () {
+                const section = $(this).data('add-row');
+                const $container = $(`[data-row-container="${section}"]`);
+                const html = createRow(section);
+                $container.append(html);
+                
+                if (section === 'product-sales') {
+                    initSelect2($container.find('.select2-product-new').last());
                 }
-
-                button.closest('.report-row')?.remove();
+                
                 refreshShippingProductOptions();
             });
 
-            document.addEventListener('input', function (event) {
-                if (event.target.classList.contains('product-sale-name')) {
-                    refreshShippingProductOptions();
-                }
+            $(document).on('click', '[data-remove-row]', function () {
+                $(this).closest('.report-row').remove();
+                refreshShippingProductOptions();
+            });
+
+            $(document).on('change', '.product-sale-id', function () {
+                refreshShippingProductOptions();
             });
 
             refreshShippingProductOptions();
         });
+    </script>
+    
+    <script type="text/template" id="sales-product-template-options">
+        @foreach ($salesProducts as $salesProduct)
+            <option value="{{ $salesProduct->id }}" data-name="{{ $salesProduct->name }}">
+                {{ $salesProduct->name }} (Stok: {{ $salesProduct->stock }})
+            </option>
+        @endforeach
     </script>
 @endpush

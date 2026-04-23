@@ -16,6 +16,7 @@ class DailyReportProductSale extends Model
         'color',
         'payment_type',
         'price',
+        'quantity',
     ];
 
     protected function casts(): array

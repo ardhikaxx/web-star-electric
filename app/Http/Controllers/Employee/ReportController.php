@@ -128,9 +128,11 @@ class ReportController extends Controller
     {
         $report = $this->ownedReport($request, $dailyReport);
         $report->load(['user', 'location', 'productSales.salesProduct', 'sparepartSales', 'shippings.productSale', 'services']);
-        $metrics = $report->calculateMetrics();
-
-        return view('employee.pages.reports.print', compact('report', 'metrics'));
+        
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('employee.pages.reports.pdf_export', compact('report'));
+        
+        $filename = 'Laporan_' . $report->report_date->format('Ymd') . '_' . $report->location->name . '.pdf';
+        return $pdf->download($filename);
     }
 
     private function ownedReport(Request $request, DailyReport $dailyReport): DailyReport
@@ -168,13 +170,14 @@ class ReportController extends Controller
             'product_sales' => collect($request->input('product_sales', []))
                 ->map(fn ($row) => [
                     'row_key' => trim((string) ($row['row_key'] ?? '')),
-                    'product_name' => trim((string) ($row['product_name'] ?? '')),
+                    'sales_product_id' => $row['sales_product_id'] ?? null,
                     'product_type' => trim((string) ($row['product_type'] ?? '')),
                     'color' => trim((string) ($row['color'] ?? '')),
                     'payment_type' => trim((string) ($row['payment_type'] ?? '')),
                     'price' => $row['price'] ?? null,
+                    'quantity' => $row['quantity'] ?? 1,
                 ])
-                ->filter(fn ($row) => $row['product_name'] !== '' || $row['product_type'] !== '' || $row['color'] !== '' || $row['payment_type'] !== '' || $row['price'] !== null)
+                ->filter(fn ($row) => $row['sales_product_id'] !== null || $row['product_type'] !== '' || $row['color'] !== '' || $row['payment_type'] !== '' || $row['price'] !== null)
                 ->values()
                 ->all(),
             'sparepart_sales' => collect($request->input('sparepart_sales', []))
@@ -224,11 +227,12 @@ class ReportController extends Controller
 
         validator($payload, [
             'product_sales.*.row_key' => 'required|string|max:100',
-            'product_sales.*.product_name' => 'required|string|max:255',
+            'product_sales.*.sales_product_id' => 'required|exists:sales_products,id',
             'product_sales.*.product_type' => 'nullable|string|max:255',
             'product_sales.*.color' => 'nullable|string|max:255',
             'product_sales.*.payment_type' => 'required|in:dp,lunas',
             'product_sales.*.price' => 'required|numeric|min:0',
+            'product_sales.*.quantity' => 'required|integer|min:1',
             'sparepart_sales.*.sparepart_name' => 'required|string|max:255',
             'sparepart_sales.*.price' => 'required|numeric|min:0',
             'shipping_sales.*.product_row_key' => 'required|string|max:100',
@@ -242,22 +246,38 @@ class ReportController extends Controller
         $productModels = [];
         $stockUsage = [];
 
+        // Check stock availability first
         foreach ($sections['product_sales'] as $row) {
-            $salesProduct = SalesProduct::where('name', $row['product_name'])->first();
+            $salesProduct = SalesProduct::find($row['sales_product_id']);
+            if ($salesProduct) {
+                $requestedQty = (int) $row['quantity'];
+                $stockUsage[$salesProduct->id] = ($stockUsage[$salesProduct->id] ?? 0) + $requestedQty;
+                
+                if ($salesProduct->stock < $stockUsage[$salesProduct->id]) {
+                    throw \Illuminate\Validation\ValidationException::withMessages([
+                        'product_sales' => ["Stok produk '{$salesProduct->name}' tidak mencukupi (Sisa: {$salesProduct->stock})."]
+                    ]);
+                }
+            }
+        }
+
+        foreach ($sections['product_sales'] as $row) {
+            $salesProduct = SalesProduct::find($row['sales_product_id']);
             $productModel = $report->productSales()->create([
                 'sales_product_id' => $salesProduct?->id,
                 'row_key' => $row['row_key'],
-                'product_name' => $row['product_name'],
+                'product_name' => $salesProduct?->name,
                 'product_type' => $row['product_type'] ?: null,
                 'color' => $row['color'] ?: null,
                 'payment_type' => $row['payment_type'],
                 'price' => $row['price'],
+                'quantity' => $row['quantity'],
             ]);
 
             $productModels[$row['row_key']] = $productModel;
 
             if ($salesProduct) {
-                $stockUsage[$salesProduct->id] = ($stockUsage[$salesProduct->id] ?? 0) + 1;
+                $salesProduct->updateStock(-(int)$row['quantity'], 'sale', $productModel);
             }
         }
 
@@ -287,36 +307,20 @@ class ReportController extends Controller
         foreach ($sections['services'] as $row) {
             $report->services()->create($row);
         }
-
-        $this->applyStocks($stockUsage);
     }
 
     private function restoreStocks(DailyReport $report): void
     {
-        $usage = $report->productSales
-            ->filter(fn ($sale) => $sale->sales_product_id !== null)
-            ->countBy('sales_product_id')
-            ->all();
-
-        foreach ($usage as $salesProductId => $count) {
-            $salesProduct = SalesProduct::find($salesProductId);
-
-            if ($salesProduct) {
-                $salesProduct->increment('stock', $count);
+        foreach ($report->productSales as $sale) {
+            if ($sale->sales_product_id) {
+                $salesProduct = SalesProduct::find($sale->sales_product_id);
+                if ($salesProduct) {
+                    $salesProduct->updateStock($sale->quantity, 'cancel_sale', $sale);
+                }
             }
         }
     }
 
-    private function applyStocks(array $usage): void
-    {
-        foreach ($usage as $salesProductId => $count) {
-            $salesProduct = SalesProduct::find($salesProductId);
+    // applyStocks method is no longer needed as it's handled in syncReportSections
 
-            if ($salesProduct) {
-                $salesProduct->update([
-                    'stock' => max(0, $salesProduct->stock - $count),
-                ]);
-            }
-        }
-    }
 }

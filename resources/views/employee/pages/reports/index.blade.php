@@ -51,8 +51,14 @@
                                 <td class="text-end">
                                     <div class="d-flex justify-content-end gap-2">
                                         <a href="{{ route('employee.reports.edit', $report) }}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                        <a href="{{ route('employee.reports.print', $report) }}" class="btn btn-sm btn-outline-secondary" target="_blank">Print PDF</a>
-                                        <form action="{{ route('employee.reports.destroy', $report) }}" method="POST">
+                                        <a href="{{ route('employee.reports.print', $report) }}" class="btn btn-sm btn-outline-secondary">Print PDF</a>
+                                        <form action="{{ route('employee.reports.destroy', $report) }}" method="POST"
+                                            data-swal-confirm
+                                            data-confirm-title="Hapus Laporan?"
+                                            data-confirm-text="Laporan tanggal {{ $report->report_date->format('d/m/Y') }} akan dihapus permanen."
+                                            data-confirm-button-text="Ya, hapus"
+                                            data-cancel-button-text="Batal"
+                                            data-confirm-icon="warning">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn btn-sm btn-outline-danger" type="submit">Hapus</button>

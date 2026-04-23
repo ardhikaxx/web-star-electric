@@ -50,8 +50,14 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col-12 d-grid d-md-flex justify-content-md-end">
-                    <button class="btn btn-primary px-4">Terapkan Filter</button>
+                <div class="col-12 d-grid d-md-flex justify-content-md-end gap-2">
+                    <button type="submit" class="btn btn-primary px-4">Terapkan Filter</button>
+                    <a href="{{ route('admin.reports.export-excel', request()->all()) }}" class="btn btn-success px-4">
+                        <i class="fa-solid fa-file-excel me-2"></i>Export Excel
+                    </a>
+                    <a href="{{ route('admin.reports.export-pdf', request()->all()) }}" class="btn btn-danger px-4">
+                        <i class="fa-solid fa-file-pdf me-2"></i>Export PDF
+                    </a>
                 </div>
             </form>
         </div>
