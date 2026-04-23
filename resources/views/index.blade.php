@@ -116,7 +116,7 @@
           "name": "Sepeda listrik apa yang terbaik di Bondowoso?",
           "acceptedAnswer": {
             "@@type": "Answer",
-            "text": "Ar-Rahman E-Bike Bondowoso menyediakan berbagai merk sepeda listrik terbaik seperti Uwinfly, Exotic, Pacific, dan Goda dengan garansi resmi."
+            "text": "Ar-Rahman E-Bike Bondowoso menyediakan various merk sepeda listrik terbaik seperti Uwinfly, Exotic, Pacific, dan Goda dengan garansi resmi."
           }
         },
         {
@@ -138,6 +138,8 @@
       ]
     }
     </script>
+
+    <link rel="shortcut icon" href="{{ asset('assets/logo-x.png') }}" type="image/x-icon">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

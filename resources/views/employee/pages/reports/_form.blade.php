@@ -101,7 +101,7 @@
                     </div>
                     <div class="col-12 col-lg-2">
                         <label class="form-label">Harga</label>
-                        <input type="number" step="0.01" min="0" name="product_sales[{{ $index }}][price]" class="form-control" value="{{ $row['price'] }}">
+                        <input type="text" name="product_sales[{{ $index }}][price]" class="form-control format-price" value="{{ $row['price'] }}">
                     </div>
                     <div class="col-12 col-lg-1 d-flex align-items-end">
                         <button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button>
@@ -129,7 +129,7 @@
                     </div>
                     <div class="col-12 col-lg-5">
                         <label class="form-label">Harga</label>
-                        <input type="number" step="0.01" min="0" name="sparepart_sales[{{ $index }}][price]" class="form-control" value="{{ $row['price'] }}">
+                        <input type="text" name="sparepart_sales[{{ $index }}][price]" class="form-control format-price" value="{{ $row['price'] }}">
                     </div>
                     <div class="col-12 col-lg-1 d-flex align-items-end">
                         <button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button>
@@ -157,7 +157,7 @@
                     </div>
                     <div class="col-12 col-lg-5">
                         <label class="form-label">Harga Ongkir</label>
-                        <input type="number" step="0.01" min="0" name="shipping_sales[{{ $index }}][price]" class="form-control" value="{{ $row['price'] }}">
+                        <input type="text" name="shipping_sales[{{ $index }}][price]" class="form-control format-price" value="{{ $row['price'] }}">
                     </div>
                     <div class="col-12 col-lg-1 d-flex align-items-end">
                         <button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button>
@@ -185,7 +185,7 @@
                     </div>
                     <div class="col-12 col-lg-5">
                         <label class="form-label">Harga Ongkir</label>
-                        <input type="number" step="0.01" min="0" name="return_shippings[{{ $index }}][price]" class="form-control" value="{{ $row['price'] }}">
+                        <input type="text" name="return_shippings[{{ $index }}][price]" class="form-control format-price" value="{{ $row['price'] }}">
                     </div>
                     <div class="col-12 col-lg-1 d-flex align-items-end">
                         <button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button>
@@ -213,7 +213,7 @@
                     </div>
                     <div class="col-12 col-lg-5">
                         <label class="form-label">Harga Perbaikan</label>
-                        <input type="number" step="0.01" min="0" name="services[{{ $index }}][price]" class="form-control" value="{{ $row['price'] }}">
+                        <input type="text" name="services[{{ $index }}][price]" class="form-control format-price" value="{{ $row['price'] }}">
                     </div>
                     <div class="col-12 col-lg-1 d-flex align-items-end">
                         <button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button>
@@ -298,7 +298,7 @@
                                 <div class="col-12 col-lg-2"><label class="form-label">Warna</label><input type="text" name="product_sales[${index}][color]" class="form-control"></div>
                                 <div class="col-12 col-lg-1"><label class="form-label">Qty</label><input type="number" name="product_sales[${index}][quantity]" class="form-control" value="1" min="1" required></div>
                                 <div class="col-12 col-lg-2"><label class="form-label">Pembayaran</label><select name="product_sales[${index}][payment_type]" class="form-select"><option value="dp">DP</option><option value="lunas">Lunas</option></select></div>
-                                <div class="col-12 col-lg-2"><label class="form-label">Harga</label><input type="number" step="0.01" min="0" name="product_sales[${index}][price]" class="form-control"></div>
+                                <div class="col-12 col-lg-2"><label class="form-label">Harga</label><input type="text" name="product_sales[${index}][price]" class="form-control format-price"></div>
                                 <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
                             </div>
                         </div>
@@ -311,7 +311,7 @@
                         <div class="border rounded p-3 report-row">
                             <div class="row g-3">
                                 <div class="col-12 col-lg-6"><label class="form-label">Nama Sparepart</label><input type="text" name="sparepart_sales[${index}][sparepart_name]" class="form-control"></div>
-                                <div class="col-12 col-lg-5"><label class="form-label">Harga</label><input type="number" step="0.01" min="0" name="sparepart_sales[${index}][price]" class="form-control"></div>
+                                <div class="col-12 col-lg-5"><label class="form-label">Harga</label><input type="text" name="sparepart_sales[${index}][price]" class="form-control format-price"></div>
                                 <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
                             </div>
                         </div>
@@ -324,7 +324,7 @@
                         <div class="border rounded p-3 report-row">
                             <div class="row g-3">
                                 <div class="col-12 col-lg-6"><label class="form-label">Produk Penjualan</label><select name="shipping_sales[${index}][product_row_key]" class="form-select shipping-product-select"></select></div>
-                                <div class="col-12 col-lg-5"><label class="form-label">Harga Ongkir</label><input type="number" step="0.01" min="0" name="shipping_sales[${index}][price]" class="form-control"></div>
+                                <div class="col-12 col-lg-5"><label class="form-label">Harga Ongkir</label><input type="text" name="shipping_sales[${index}][price]" class="form-control format-price"></div>
                                 <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
                             </div>
                         </div>
@@ -337,7 +337,7 @@
                         <div class="border rounded p-3 report-row">
                             <div class="row g-3">
                                 <div class="col-12 col-lg-6"><label class="form-label">Nama Produk Retur</label><input type="text" name="return_shippings[${index}][product_name]" class="form-control"></div>
-                                <div class="col-12 col-lg-5"><label class="form-label">Harga Ongkir</label><input type="number" step="0.01" min="0" name="return_shippings[${index}][price]" class="form-control"></div>
+                                <div class="col-12 col-lg-5"><label class="form-label">Harga Ongkir</label><input type="text" name="return_shippings[${index}][price]" class="form-control format-price"></div>
                                 <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
                             </div>
                         </div>
@@ -349,7 +349,7 @@
                     <div class="border rounded p-3 report-row">
                         <div class="row g-3">
                             <div class="col-12 col-lg-6"><label class="form-label">Nama Perbaikan</label><input type="text" name="services[${index}][service_name]" class="form-control"></div>
-                            <div class="col-12 col-lg-5"><label class="form-label">Harga Perbaikan</label><input type="number" step="0.01" min="0" name="services[${index}][price]" class="form-control"></div>
+                            <div class="col-12 col-lg-5"><label class="form-label">Harga Perbaikan</label><input type="text" name="services[${index}][price]" class="form-control format-price"></div>
                             <div class="col-12 col-lg-1 d-flex align-items-end"><button type="button" class="btn btn-outline-danger w-100" data-remove-row><i class="fa-solid fa-minus"></i></button></div>
                         </div>
                     </div>

@@ -22,7 +22,7 @@ class AuthController extends Controller
     {
         $request->validate([
             'username' => 'required|string',
-            'pin' => 'required|digits:4',
+            'pin' => 'required|digits:4', // Validation remains for the combined PIN
         ], [
             'username.required' => 'Username wajib diisi.',
             'pin.required' => 'PIN wajib diisi.',
@@ -34,6 +34,7 @@ class AuthController extends Controller
             ->where('is_active', true)
             ->first();
 
+        // Check if the user exists and if the entered PIN matches the stored hashed PIN
         if (! $user || ! Hash::check($request->pin, $user->pin)) {
             return back()->with('error', 'Username atau PIN tidak sesuai.')->withInput();
         }

@@ -474,24 +474,22 @@
                                 <label class="form-label">Harga Jual <span class="required">*</span></label>
                                 <div class="price-input-wrapper">
                                     <span class="price-symbol">Rp</span>
-                                    <input type="number" name="price" id="priceInput"
-                                        class="form-control-custom form-control-price @error('price') is-invalid @enderror"
-                                        value="{{ old('price') }}" placeholder="0" min="0">
+                                    <input type="text" name="price" id="priceInput"
+                                        class="form-control-custom form-control-price format-price @error('price') is-invalid @enderror"
+                                        value="{{ old('price') }}" placeholder="0">
                                 </div>
                                 @error('price')
                                     <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
                                 @enderror
-                            </div>
-                            <div class="col-md-6">
+                                </div>
+                                <div class="col-md-6">
                                 <label class="form-label">Harga Coret (Diskon)</label>
                                 <div class="price-input-wrapper">
                                     <span class="price-symbol">Rp</span>
-                                    <input type="number" name="old_price" id="oldPriceInput"
-                                        class="form-control-custom form-control-price @error('old_price') is-invalid @enderror"
-                                        value="{{ old('old_price') }}" placeholder="0"
-                                        min="0">
-                                </div>
-                                <div class="price-helper">
+                                    <input type="text" name="old_price" id="oldPriceInput"
+                                        class="form-control-custom form-control-price format-price @error('old_price') is-invalid @enderror"
+                                        value="{{ old('old_price') }}" placeholder="0">
+                                </div>                                <div class="price-helper">
                                     Otomatis disarankan sekitar 15% di atas harga jual agar diskon terlihat lebih menarik. Tetap bisa Anda ubah manual.
                                 </div>
                                 @error('old_price')

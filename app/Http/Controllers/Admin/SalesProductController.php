@@ -31,6 +31,13 @@ class SalesProductController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->has('purchase_price')) {
+            $request->merge(['purchase_price' => str_replace('.', '', $request->purchase_price)]);
+        }
+        if ($request->has('selling_price')) {
+            $request->merge(['selling_price' => str_replace('.', '', $request->selling_price)]);
+        }
+
         $data = $request->validate([
             'name' => 'required|string|max:255|unique:sales_products,name',
             'purchase_price' => 'required|numeric|min:0',
@@ -62,6 +69,13 @@ class SalesProductController extends Controller
 
     public function update(Request $request, SalesProduct $salesProduct)
     {
+        if ($request->has('purchase_price')) {
+            $request->merge(['purchase_price' => str_replace('.', '', $request->purchase_price)]);
+        }
+        if ($request->has('selling_price')) {
+            $request->merge(['selling_price' => str_replace('.', '', $request->selling_price)]);
+        }
+
         $data = $request->validate([
             'name' => [
                 'required',

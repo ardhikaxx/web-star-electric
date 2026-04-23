@@ -55,6 +55,10 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $user = $request->user()->load('locations');
+        
+        // Clean price inputs from dots
+        $this->cleanPriceInputs($request);
+        
         $data = $this->validateReport($request, $user->locations->pluck('id')->all());
         $sections = $this->normalizeSections($request);
 
@@ -87,6 +91,10 @@ class ReportController extends Controller
     public function update(Request $request, DailyReport $dailyReport)
     {
         $report = $this->ownedReport($request, $dailyReport);
+        
+        // Clean price inputs from dots
+        $this->cleanPriceInputs($request);
+        
         $data = $this->validateReport($request, $request->user()->locations->pluck('id')->all(), $report->id);
         $sections = $this->normalizeSections($request);
 
@@ -109,6 +117,59 @@ class ReportController extends Controller
         });
 
         return redirect()->route('employee.reports.index')->with('success', 'Pelaporan harian berhasil diperbarui.');
+    }
+
+    private function cleanPriceInputs(Request $request): void
+    {
+        if ($request->has('product_sales')) {
+            $productSales = $request->input('product_sales');
+            foreach ($productSales as $key => $val) {
+                if (isset($val['price'])) {
+                    $productSales[$key]['price'] = str_replace('.', '', $val['price']);
+                }
+            }
+            $request->merge(['product_sales' => $productSales]);
+        }
+
+        if ($request->has('sparepart_sales')) {
+            $sparepartSales = $request->input('sparepart_sales');
+            foreach ($sparepartSales as $key => $val) {
+                if (isset($val['price'])) {
+                    $sparepartSales[$key]['price'] = str_replace('.', '', $val['price']);
+                }
+            }
+            $request->merge(['sparepart_sales' => $sparepartSales]);
+        }
+
+        if ($request->has('shipping_sales')) {
+            $shippingSales = $request->input('shipping_sales');
+            foreach ($shippingSales as $key => $val) {
+                if (isset($val['price'])) {
+                    $shippingSales[$key]['price'] = str_replace('.', '', $val['price']);
+                }
+            }
+            $request->merge(['shipping_sales' => $shippingSales]);
+        }
+
+        if ($request->has('return_shippings')) {
+            $returnShippings = $request->input('return_shippings');
+            foreach ($returnShippings as $key => $val) {
+                if (isset($val['price'])) {
+                    $returnShippings[$key]['price'] = str_replace('.', '', $val['price']);
+                }
+            }
+            $request->merge(['return_shippings' => $returnShippings]);
+        }
+
+        if ($request->has('services')) {
+            $services = $request->input('services');
+            foreach ($services as $key => $val) {
+                if (isset($val['price'])) {
+                    $services[$key]['price'] = str_replace('.', '', $val['price']);
+                }
+            }
+            $request->merge(['services' => $services]);
+        }
     }
 
     public function destroy(Request $request, DailyReport $dailyReport)

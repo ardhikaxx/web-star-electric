@@ -63,29 +63,30 @@
                 </span>
                 <span class="menu-label">Profile</span>
             </a>
-        </nav>
 
-        <div class="sidebar-footer">
-            <a href="{{ url('/') }}" target="_blank" class="footer-link">
-                <span class="footer-link-icon">
+            <hr class="my-2 opacity-50 text-white">
+
+            <a href="{{ url('/') }}" target="_blank" class="menu-item">
+                <span class="menu-icon">
                     <i class="fa-solid fa-globe"></i>
                 </span>
-                <span class="footer-link-title">Lihat Website</span>
+                <span class="menu-label">Lihat Website</span>
             </a>
-            <form action="{{ route('logout') }}" method="POST" class="logout-form" data-swal-confirm
+
+            <a href="#" class="menu-item" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <span class="menu-icon text-white">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                </span>
+                <span class="menu-label">Logout</span>
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none" data-swal-confirm
                 data-confirm-title="Keluar dari panel?"
                 data-confirm-text="Sesi login saat ini akan diakhiri dan Anda perlu login kembali."
                 data-confirm-button-text="Ya, logout"
                 data-cancel-button-text="Batal"
                 data-confirm-icon="question">
                 @csrf
-                <button type="submit" class="logout-btn">
-                    <div class="item-left">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                        <span>Logout</span>
-                    </div>
-                </button>
             </form>
-        </div>
+        </nav>
     </div>
 </aside>

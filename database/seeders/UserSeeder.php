@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'phone_number' => '081234567890',
-                'pin' => '2222',
+                'pin' => Hash::make('2222'), // Hash the PIN
                 'role' => 'admin',
                 'is_active' => true,
                 'email' => 'admin@arrrahman-ebike.local',
@@ -22,3 +23,4 @@ class UserSeeder extends Seeder
         );
     }
 }
+

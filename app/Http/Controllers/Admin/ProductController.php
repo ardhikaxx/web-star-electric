@@ -68,6 +68,13 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
+        if ($request->has('price')) {
+            $request->merge(['price' => str_replace('.', '', $request->price)]);
+        }
+        if ($request->has('old_price')) {
+            $request->merge(['old_price' => str_replace('.', '', $request->old_price)]);
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
@@ -123,6 +130,13 @@ class ProductController extends Controller
 
     public function update(Request $request, Product $product)
     {
+        if ($request->has('price')) {
+            $request->merge(['price' => str_replace('.', '', $request->price)]);
+        }
+        if ($request->has('old_price')) {
+            $request->merge(['old_price' => str_replace('.', '', $request->old_price)]);
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',

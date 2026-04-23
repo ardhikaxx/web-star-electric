@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'Admin - Ar-Rahman E-Bike Bondowoso')</title>
+    <link rel="shortcut icon" href="{{ asset('assets/logo-x.png') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
@@ -862,57 +863,34 @@
     @include('admin.partials.sweetalert')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const sidebar = document.querySelector('.sidebar');
-            const overlay = document.querySelector('.sidebar-overlay');
-            const mobileMedia = window.matchMedia('(max-width: 991.98px)');
+            // ... (kode sidebar yang sudah ada)
 
-            if (!sidebar || !overlay) {
-                return;
-            }
-
-            const closeSidebar = function() {
-                sidebar.classList.remove('show');
-                overlay.classList.remove('show');
-                document.body.classList.remove('sidebar-open');
+            // Global Price Formatter
+            const formatNumber = (num) => {
+                return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             };
 
-            const openSidebar = function() {
-                sidebar.classList.add('show');
-                overlay.classList.add('show');
-                document.body.classList.add('sidebar-open');
+            const unformatNumber = (num) => {
+                return num.replace(/\./g, "");
             };
 
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function() {
-                    if (sidebar.classList.contains('show')) {
-                        closeSidebar();
-                        return;
+            $(document).on('input', '.format-price', function() {
+                let val = unformatNumber($(this).val());
+                if (val !== "") {
+                    if (!isNaN(val)) {
+                        $(this).val(formatNumber(val));
+                        // Set actual value to hidden field or use unformat in backend
+                    } else {
+                        $(this).val(val.replace(/\D/g, ""));
                     }
-
-                    openSidebar();
-                });
-            }
-
-            overlay.addEventListener('click', closeSidebar);
-
-            sidebar.querySelectorAll('a').forEach(function(link) {
-                link.addEventListener('click', function() {
-                    if (mobileMedia.matches) {
-                        closeSidebar();
-                    }
-                });
-            });
-
-            window.addEventListener('resize', function() {
-                if (!mobileMedia.matches) {
-                    closeSidebar();
                 }
             });
 
-            document.addEventListener('keydown', function(event) {
-                if (event.key === 'Escape' && sidebar.classList.contains('show')) {
-                    closeSidebar();
+            // Initialize formatting for existing values
+            $('.format-price').each(function() {
+                let val = $(this).val();
+                if (val !== "") {
+                    $(this).val(formatNumber(unformatNumber(val)));
                 }
             });
         });
