@@ -39,42 +39,34 @@
     </div>
 
     <div class="row g-4 mb-4">
-        <div class="col-12 col-md-6 col-xl-3">
-            <div class="stat-card h-100">
-                <div class="stat-icon primary"><i class="fa-solid fa-wallet"></i></div>
-                <div class="stat-info">
-                    <h3>{{ $currency($reportSummary['gross_revenue']) }}</h3>
-                    <p>Omzet laporan bulan ini</p>
+        @php
+            $stats = [
+                ['icon' => 'fa-wallet', 'value' => $currency($reportSummary['gross_revenue']), 'label' => 'Omzet Laporan', 'color' => 'primary'],
+                ['icon' => 'fa-sack-dollar', 'value' => $currency($reportSummary['profit']), 'label' => 'Keuntungan Bersih', 'color' => 'success'],
+                ['icon' => 'fa-file-lines', 'value' => number_format($reportSummary['reports_count']), 'label' => 'Total Laporan', 'color' => 'warning'],
+                ['icon' => 'fa-truck-fast', 'value' => $currency($reportSummary['return_shipping']), 'label' => 'Ongkir Retur', 'color' => 'danger'],
+            ];
+        @endphp
+
+        @foreach ($stats as $stat)
+            <div class="col-12 col-md-6 col-xl-3">
+                <div class="card border-0 shadow-sm overflow-hidden position-relative" style="border-radius: 20px; transition: transform 0.3s ease;">
+                    <div class="card-body p-4 position-relative">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 52px; height: 52px; background: rgba(var(--bs-{{ $stat['color'] }}-rgb), 0.15); color: var(--bs-{{ $stat['color'] }});">
+                                <i class="fa-solid {{ $stat['icon'] }} fa-lg"></i>
+                            </div>
+                        </div>
+                        <h3 class="h4 fw-bold mb-1">{{ $stat['value'] }}</h3>
+                        <p class="text-muted mb-0 fw-medium">{{ $stat['label'] }}</p>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="position-absolute opacity-10" style="right: -10px; bottom: -10px; font-size: 5rem; color: var(--bs-{{ $stat['color'] }}); transform: rotate(-15deg);">
+                        <i class="fa-solid {{ $stat['icon'] }}"></i>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-            <div class="stat-card h-100">
-                <div class="stat-icon success"><i class="fa-solid fa-sack-dollar"></i></div>
-                <div class="stat-info">
-                    <h3>{{ $currency($reportSummary['profit']) }}</h3>
-                    <p>Keuntungan bersih bulan ini</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-            <div class="stat-card h-100">
-                <div class="stat-icon warning"><i class="fa-solid fa-file-lines"></i></div>
-                <div class="stat-info">
-                    <h3>{{ number_format($reportSummary['reports_count']) }}</h3>
-                    <p>Total laporan bulan ini</p>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-            <div class="stat-card h-100">
-                <div class="stat-icon muted"><i class="fa-solid fa-truck-fast"></i></div>
-                <div class="stat-info">
-                    <h3>{{ $currency($reportSummary['return_shipping']) }}</h3>
-                    <p>Total ongkir retur bulan ini</p>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="row g-4 mb-4">

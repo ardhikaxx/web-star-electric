@@ -612,6 +612,16 @@
             color: var(--success);
         }
 
+        .stat-icon.warning {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .stat-icon.muted {
+            background: rgba(108, 117, 125, 0.1);
+            color: #6c757d;
+        }
+
         .stat-info h3 {
             font-size: 1.75rem;
             font-weight: 700;

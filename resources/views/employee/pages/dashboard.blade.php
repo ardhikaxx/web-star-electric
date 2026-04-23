@@ -23,28 +23,36 @@
     </div>
 
     <div class="row g-4 mb-4">
-        <div class="col-12 col-md-6">
-            <div class="stat-card h-100 shadow-sm border-0">
-                <div class="card-body d-flex align-items-center gap-3">
-                    <div class="stat-icon primary bg-primary bg-opacity-10 text-primary rounded-circle p-3"><i class="fa-solid fa-location-dot fa-2x"></i></div>
-                    <div class="stat-info">
-                        <h3 class="mb-0">{{ number_format($summary['assigned_locations']) }}</h3>
-                        <p class="text-muted mb-0">Lokasi penugasan</p>
+        @php
+            $stats = [
+                ['icon' => 'fa-location-dot', 'value' => $summary['assigned_locations'], 'label' => 'Lokasi Penugasan', 'color' => 'primary'],
+                ['icon' => 'fa-box-open', 'value' => $summary['units_sold'], 'label' => 'Unit Terjual (Bulan ini)', 'color' => 'success'],
+                ['icon' => 'fa-file-lines', 'value' => $summary['reports'], 'label' => 'Laporan (Bulan ini)', 'color' => 'warning'],
+            ];
+        @endphp
+
+        @foreach ($stats as $stat)
+            <div class="col-12 col-md-4">
+                <div class="card border-0 shadow-sm overflow-hidden position-relative" style="border-radius: 20px; transition: transform 0.3s ease;">
+                    <div class="card-body p-4 position-relative">
+                        <div class="d-flex align-items-center justify-content-between mb-3">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 52px; height: 52px; background: rgba(var(--bs-{{ $stat['color'] }}-rgb), 0.15); color: var(--bs-{{ $stat['color'] }});">
+                                <i class="fa-solid {{ $stat['icon'] }} fa-lg"></i>
+                            </div>
+                            <div class="small fw-bold px-2 py-1 rounded-pill" style="background: rgba(var(--bs-{{ $stat['color'] }}-rgb), 0.1); color: var(--bs-{{ $stat['color'] }});">
+                                Aktif
+                            </div>
+                        </div>
+                        <h3 class="h2 fw-bold mb-1">{{ number_format($stat['value']) }}</h3>
+                        <p class="text-muted mb-0 fw-medium">{{ $stat['label'] }}</p>
+                    </div>
+                    <!-- Decorative Element -->
+                    <div class="position-absolute opacity-10" style="right: -10px; bottom: -10px; font-size: 5rem; color: var(--bs-{{ $stat['color'] }}); transform: rotate(-15deg);">
+                        <i class="fa-solid {{ $stat['icon'] }}"></i>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6">
-            <div class="stat-card h-100 shadow-sm border-0">
-                <div class="card-body d-flex align-items-center gap-3">
-                    <div class="stat-icon warning bg-warning bg-opacity-10 text-warning rounded-circle p-3"><i class="fa-solid fa-file-lines fa-2x"></i></div>
-                    <div class="stat-info">
-                        <h3 class="mb-0">{{ number_format($summary['reports']) }}</h3>
-                        <p class="text-muted mb-0">Laporan bulan ini</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <div class="card border-0 shadow-sm">

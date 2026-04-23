@@ -29,9 +29,12 @@ class DashboardController extends Controller
     {
         return $reports->reduce(function (array $carry, DailyReport $report): array {
             $carry['reports']++;
+            // Menjumlahkan quantity dari setiap produk yang terjual dalam laporan
+            $carry['units_sold'] += $report->productSales->sum('quantity');
             return $carry;
         }, [
             'reports' => 0,
+            'units_sold' => 0,
             'assigned_locations' => request()->user()->locations->count(),
         ]);
     }

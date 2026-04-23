@@ -13,7 +13,7 @@
     <div class="card border-0 shadow-sm">
         <div class="card-body">
             <div class="d-flex flex-column flex-lg-row justify-content-between gap-3 mb-4">
-                <form method="GET" class="d-flex gap-2 flex-grow-1">
+                <form method="GET" class="d-flex gap-2 grow">
                     <input type="text" name="search" class="form-control" placeholder="Cari produk penjualan" value="{{ request('search') }}">
                     <button class="btn btn-outline-primary">Cari</button>
                 </form>
