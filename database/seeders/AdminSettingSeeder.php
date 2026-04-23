@@ -11,7 +11,7 @@ class AdminSettingSeeder extends Seeder
     {
         AdminSetting::updateOrCreate(
             ['key' => 'admin_pin'],
-            ['value' => '1234']
+            ['value' => '2222']
         );
     }
 }

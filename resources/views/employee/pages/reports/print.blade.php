@@ -86,6 +86,26 @@
         </tbody>
     </table>
 
+    @if(isset($salesProducts) && $salesProducts->count() > 0)
+    <h2>Sisa Stok Produk</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th>Sisa Stok</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($salesProducts as $product)
+                <tr>
+                    <td>{{ $product->name }}</td>
+                    <td>{{ $product->stock }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @endif
+
     <script>
         window.addEventListener('load', function () {
             window.print();

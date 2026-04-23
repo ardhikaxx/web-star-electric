@@ -116,6 +116,26 @@
     </table>
     @endif
 
+    @if(isset($salesProducts) && $salesProducts->count() > 0)
+    <h2>Sisa Stok Produk</h2>
+    <table class="main-table">
+        <thead>
+            <tr>
+                <th>Nama Produk</th>
+                <th class="text-right">Sisa Stok</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($salesProducts as $product)
+                <tr>
+                    <td>{{ $product->name }}</td>
+                    <td class="text-right">{{ $product->stock }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @endif
+
     <div class="footer">
         Dicetak pada: {{ now()->translatedFormat('d F Y H:i') }}
     </div>

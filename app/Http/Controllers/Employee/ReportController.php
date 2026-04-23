@@ -129,7 +129,9 @@ class ReportController extends Controller
         $report = $this->ownedReport($request, $dailyReport);
         $report->load(['user', 'location', 'productSales.salesProduct', 'sparepartSales', 'shippings.productSale', 'services']);
         
-        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('employee.pages.reports.pdf_export', compact('report'));
+        $salesProducts = SalesProduct::where('is_active', true)->orderBy('name')->get();
+        
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('employee.pages.reports.pdf_export', compact('report', 'salesProducts'));
         
         $filename = 'Laporan_' . $report->report_date->format('Ymd') . '_' . $report->location->name . '.pdf';
         return $pdf->download($filename);

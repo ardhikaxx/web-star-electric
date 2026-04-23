@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
             [
                 'name' => 'Administrator',
                 'phone_number' => '081234567890',
-                'pin' => '1234',
+                'pin' => '2222',
                 'role' => 'admin',
                 'is_active' => true,
                 'email' => 'admin@arrrahman-ebike.local',
