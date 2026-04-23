@@ -18,14 +18,14 @@
     </div>
     <div class="col-12 col-md-6 mb-3">
         <label class="form-label">Harga Beli</label>
-        <input type="text" name="purchase_price" class="form-control format-price @error('purchase_price') is-invalid @enderror" value="{{ old('purchase_price', $salesProduct->purchase_price ?? '') }}" required>
+        <input type="text" name="purchase_price" class="form-control format-price @error('purchase_price') is-invalid @enderror" value="{{ old('purchase_price', isset($salesProduct->purchase_price) ? number_format($salesProduct->purchase_price, 0, '', '') : '') }}" required>
         @error('purchase_price')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror
     </div>
     <div class="col-12 col-md-6 mb-3">
         <label class="form-label">Harga Jual</label>
-        <input type="text" name="selling_price" class="form-control format-price @error('selling_price') is-invalid @enderror" value="{{ old('selling_price', $salesProduct->selling_price ?? '') }}" required>
+        <input type="text" name="selling_price" class="form-control format-price @error('selling_price') is-invalid @enderror" value="{{ old('selling_price', isset($salesProduct->selling_price) ? number_format($salesProduct->selling_price, 0, '', '') : '') }}" required>
         @error('selling_price')
             <div class="invalid-feedback">{{ $message }}</div>
         @enderror

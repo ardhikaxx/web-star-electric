@@ -157,7 +157,7 @@ class ProductController extends Controller
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
-            'old_price' => $this->resolveOldPrice((float) $request->price, $request->old_price),
+            'old_price' => $request->filled('old_price') ? $request->old_price : $product->old_price,
             'link' => $request->link,
             'is_active' => $request->has('is_active'),
         ]);

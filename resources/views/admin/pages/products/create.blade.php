@@ -555,6 +555,16 @@
                 });
             }
 
+                // Handle form submission to clean price formats
+            document.getElementById('productForm').addEventListener('submit', function() {
+                const priceInput = document.getElementById('priceInput');
+                const oldPriceInput = document.getElementById('oldPriceInput');
+                
+                // Clean input values by removing thousand separators
+                priceInput.value = priceInput.value.replace(/\./g, '');
+                oldPriceInput.value = oldPriceInput.value.replace(/\./g, '');
+            });
+
             setupOldPriceSuggestion(priceInput, oldPriceInput);
 
             addMoreBtn.addEventListener('click', () => imageInput.click());

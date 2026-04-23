@@ -59,9 +59,6 @@
             </form>
 
             <div class="text-center mt-4">
-                <div class="small text-muted mb-3">
-                    Akun awal admin: <strong>admin</strong> / <strong>1234</strong>
-                </div>
                 <a href="{{ url('/') }}" class="text-decoration-none" style="color: #6c757d; font-size: 0.85rem;">
                     <i class="fa-solid fa-arrow-left me-1"></i>
                     Kembali ke Landing Page

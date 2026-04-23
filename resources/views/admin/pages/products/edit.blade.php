@@ -485,7 +485,7 @@
                                     <span class="price-symbol">Rp</span>
                                     <input type="text" name="price" id="priceInput"
                                         class="form-control-custom form-control-price format-price @error('price') is-invalid @enderror"
-                                        value="{{ old('price', $product->price) }}" placeholder="0">
+                                        value="{{ old('price', isset($product->price) ? number_format($product->price, 0, '', '') : '') }}" placeholder="0">
                                 </div>
                                 @error('price')
                                     <div class="error-feedback"><i class="fa-solid fa-triangle-exclamation"></i> {{ $message }}</div>
@@ -497,7 +497,7 @@
                                     <span class="price-symbol">Rp</span>
                                     <input type="text" name="old_price" id="oldPriceInput"
                                         class="form-control-custom form-control-price format-price @error('old_price') is-invalid @enderror"
-                                        value="{{ old('old_price', $product->old_price) }}" placeholder="0">
+                                        value="{{ old('old_price', isset($product->old_price) ? number_format($product->old_price, 0, '', '') : '') }}" placeholder="0">
                                 </div>                                <div class="price-helper">
                                     Otomatis disarankan sekitar 15% di atas harga jual agar diskon terlihat lebih menarik.
                                 </div>
@@ -564,7 +564,17 @@
                 });
             }
 
-            setupOldPriceSuggestion(priceInput, oldPriceInput);
+            // setupOldPriceSuggestion(priceInput, oldPriceInput); // Disabled for edit page to prevent auto-recalculation
+
+            // Handle form submission to clean price formats
+            document.getElementById('productForm').addEventListener('submit', function() {
+                const priceInput = document.getElementById('priceInput');
+                const oldPriceInput = document.getElementById('oldPriceInput');
+                
+                // Clean input values by removing thousand separators
+                priceInput.value = priceInput.value.replace(/\./g, '');
+                oldPriceInput.value = oldPriceInput.value.replace(/\./g, '');
+            });
 
             // Handle existing image removal
             document.querySelectorAll('.existing-image-remove').forEach(btn => {
