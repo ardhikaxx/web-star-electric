@@ -534,11 +534,12 @@
 
         .table-responsive {
             border-radius: var(--radius-md);
-            overflow: hidden;
+            overflow-x: auto;
         }
 
         .table {
             margin-bottom: 0;
+            white-space: nowrap;
         }
 
         .table thead th {
@@ -873,7 +874,32 @@
     @include('admin.partials.sweetalert')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ... (kode sidebar yang sudah ada)
+            // Sidebar Toggle for Mobile
+            const menuToggle = document.querySelector('.menu-toggle');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.sidebar-overlay');
+            const body = document.body;
+
+            if (menuToggle && sidebar && overlay) {
+                const toggleSidebar = () => {
+                    sidebar.classList.toggle('show');
+                    overlay.classList.toggle('show');
+                    body.classList.toggle('sidebar-open');
+                };
+
+                menuToggle.addEventListener('click', toggleSidebar);
+                overlay.addEventListener('click', toggleSidebar);
+
+                // Close sidebar when clicking menu items on mobile
+                const menuItems = sidebar.querySelectorAll('.menu-item:not([onclick])');
+                menuItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        if (window.innerWidth < 992) {
+                            toggleSidebar();
+                        }
+                    });
+                });
+            } 
 
             // Global Price Formatter
             const formatNumber = (num) => {
