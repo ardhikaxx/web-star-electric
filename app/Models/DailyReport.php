@@ -56,7 +56,7 @@ class DailyReport extends Model
     {
         $productRevenue = (float) $this->productSales->sum('price');
         $productCost = (float) $this->productSales->sum(
-            fn (DailyReportProductSale $sale) => (float) ($sale->salesProduct?->purchase_price ?? 0)
+            fn (DailyReportProductSale $sale) => $sale->payment_type === 'lunas' ? (float) ($sale->salesProduct?->purchase_price ?? 0) : 0
         );
         $sparepartRevenue = (float) $this->sparepartSales->sum('price');
         $shippingSales = (float) $this->shippings->where('shipping_type', 'sale')->sum('price');
