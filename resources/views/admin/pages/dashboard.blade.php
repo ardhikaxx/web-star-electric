@@ -42,9 +42,9 @@
         @php
             $stats = [
                 ['icon' => 'fa-wallet', 'value' => $currency($reportSummary['gross_revenue']), 'label' => 'Omzet Laporan', 'color' => 'primary'],
+                ['icon' => 'fa-plug-circle-bolt', 'value' => $currency($reportSummary['sparepart_revenue']), 'label' => 'Penjualan Sparepart', 'color' => 'danger'],
                 ['icon' => 'fa-sack-dollar', 'value' => $currency($reportSummary['profit']), 'label' => 'Keuntungan Bersih', 'color' => 'success'],
                 ['icon' => 'fa-file-lines', 'value' => number_format($reportSummary['reports_count']), 'label' => 'Total Laporan', 'color' => 'warning'],
-                ['icon' => 'fa-truck-fast', 'value' => $currency($reportSummary['return_shipping']), 'label' => 'Ongkir Retur', 'color' => 'danger'],
             ];
         @endphp
 

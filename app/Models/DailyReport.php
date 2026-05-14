@@ -63,7 +63,7 @@ class DailyReport extends Model
         $returnShipping = (float) $this->shippings->where('shipping_type', 'return')->sum('price');
         $serviceRevenue = (float) $this->services->sum('price');
         $grossRevenue = $productRevenue + $sparepartRevenue + $shippingSales + $serviceRevenue;
-        $profit = ($productRevenue - $productCost) + $sparepartRevenue + $shippingSales + $serviceRevenue - $returnShipping;
+        $profit = ($productRevenue - $productCost) + $shippingSales + $serviceRevenue - $returnShipping;
 
         return [
             'product_revenue' => $productRevenue,

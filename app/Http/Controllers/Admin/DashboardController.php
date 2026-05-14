@@ -106,6 +106,7 @@ class DashboardController extends Controller
         $summary = [
             'reports_count' => $reports->count(),
             'gross_revenue' => 0,
+            'sparepart_revenue' => 0,
             'profit' => 0,
             'return_shipping' => 0,
             'total_employees' => User::where('role', 'employee')->count(),
@@ -116,6 +117,7 @@ class DashboardController extends Controller
         foreach ($reports as $report) {
             $metrics = $report->calculateMetrics();
             $summary['gross_revenue'] += $metrics['gross_revenue'];
+            $summary['sparepart_revenue'] += $metrics['sparepart_revenue'];
             $summary['profit'] += $metrics['profit'];
             $summary['return_shipping'] += $metrics['return_shipping'];
         }
