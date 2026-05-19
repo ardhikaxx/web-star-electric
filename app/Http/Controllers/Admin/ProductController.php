@@ -92,12 +92,17 @@ class ProductController extends Controller
             'images.*.max' => 'Ukuran gambar maksimal 2MB',
         ]);
 
+        $link = $request->link;
+        if (empty($link)) {
+            $link = 'https://wa.me/6285231260016';
+        }
+
         $product = Product::create([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'old_price' => $this->resolveOldPrice((float) $request->price, $request->old_price),
-            'link' => $request->link,
+            'link' => $link,
             'is_active' => $request->has('is_active'),
         ]);
 
@@ -153,12 +158,17 @@ class ProductController extends Controller
             'images.*.max' => 'Ukuran gambar maksimal 2MB',
         ]);
 
+        $link = $request->link;
+        if (empty($link)) {
+            $link = 'https://wa.me/6285231260016';
+        }
+
         $product->update([
             'name' => $request->name,
             'description' => $request->description,
             'price' => $request->price,
             'old_price' => $request->filled('old_price') ? $request->old_price : $product->old_price,
-            'link' => $request->link,
+            'link' => $link,
             'is_active' => $request->has('is_active'),
         ]);
 
