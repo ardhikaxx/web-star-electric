@@ -1,4 +1,4 @@
-# 🚴 Ar-Rahman E-Bike Bondowoso
+﻿# 🚴 Ar-Rahman E-Bike Bondowoso
 
 <p align="center">
   <img src="public/assets/logo.png" width="380" alt="Ar-Rahman E-Bike Bondowoso">
@@ -190,7 +190,7 @@ Jika project ini bermanfaat, Anda dapat mendukung pengembangan selanjutnya melal
 
 <div align="center">
 
-![QRIS](public/assets/qris.png)
+<img src="public/assets/qris.png" alt="QRIS" width="250" />
 
 **Scan QRIS di atas untuk berdonasi**
 
