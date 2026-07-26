@@ -14,6 +14,7 @@ class StoreLocationSeeder extends Seeder
             'Ar-Rahman E-Bike Bondowoso',
             'Star E-Bike Bondowoso',
             'Ar-Rahman E-Bike Pujer',
+            'Saige Pujer Bondowoso',
         ])->each(function (string $name): void {
             StoreLocation::updateOrCreate(
                 ['name' => $name],

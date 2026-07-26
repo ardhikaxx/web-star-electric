@@ -1750,11 +1750,11 @@
             <div class="container">
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>100+</h3>
+                        <h3>500+</h3>
                         <p>Pelanggan puas memilih produk untuk kebutuhan harian.</p>
                     </div>
                     <div class="stat-card">
-                        <h3>6+</h3>
+                        <h3>Banyak Pilihan</h3>
                         <p>Model favorit dengan gaya berbeda untuk berbagai kebutuhan.</p>
                     </div>
                     <div class="stat-card">
@@ -1779,22 +1779,13 @@
                         <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand4.jpg') }}" alt="Brand 4" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand5.jpg') }}" alt="Brand 5" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand6.jpg') }}" alt="Brand 6" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
                         <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
@@ -1804,6 +1795,15 @@
                     </div>
                     <div class="brand-item">
                         <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand4.jpg') }}" alt="Brand 4" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand5.jpg') }}" alt="Brand 5" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand6.jpg') }}" alt="Brand 6" loading="lazy" width="110" height="110">
                     </div>
                 </div>
                 <!-- Group 2 (Exact duplicate of Group 1) -->
@@ -1818,22 +1818,13 @@
                         <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand4.jpg') }}" alt="Brand 4" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand5.jpg') }}" alt="Brand 5" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand2.jpg') }}" alt="Brand 2" loading="lazy" width="110" height="110">
-                    </div>
-                    <div class="brand-item">
-                        <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
+                        <img src="{{ asset('assets/logo-brand6.jpg') }}" alt="Brand 6" loading="lazy" width="110" height="110">
                     </div>
                     <div class="brand-item">
                         <img src="{{ asset('assets/logo-brand1.jpg') }}" alt="Brand 1" loading="lazy" width="110" height="110">
@@ -1843,6 +1834,15 @@
                     </div>
                     <div class="brand-item">
                         <img src="{{ asset('assets/logo-brand3.jpg') }}" alt="Brand 3" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand4.jpg') }}" alt="Brand 4" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand5.jpg') }}" alt="Brand 5" loading="lazy" width="110" height="110">
+                    </div>
+                    <div class="brand-item">
+                        <img src="{{ asset('assets/logo-brand6.jpg') }}" alt="Brand 6" loading="lazy" width="110" height="110">
                     </div>
                 </div>
             </div>
@@ -2099,6 +2099,17 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
+                                        ARRAHMAN E-BIKE PUJER
+                                    </div>
+                                    <div class="store-address">
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <span>Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten
+                                            Bondowoso, Jawa Timur 68271</span>
+                                    </div>
+                                </li>
+                                <li class="store-item">
+                                    <div class="store-name">
+                                        <i class="fa-solid fa-store"></i>
                                         STAR SEPEDA LISTRIK
                                     </div>
                                     <div class="store-address">
@@ -2110,12 +2121,11 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
-                                        UWINFLY PUJER BONDOWOSO
+                                        SAIGE BONDOWOSO
                                     </div>
                                     <div class="store-address">
                                         <i class="fa-solid fa-location-dot"></i>
-                                        <span>Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten
-                                            Bondowoso, Jawa Timur 68271</span>
+                                        <span>Jl. Raya Pakisan, Krasak, Maskuning Kulon, Kec. Pujer, Kabupaten Bondowoso, Jawa Timur 68271</span>
                                     </div>
                                 </li>
                                 <li>
