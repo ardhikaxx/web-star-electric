@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\SalesProductController;
+use App\Http\Controllers\Admin\StoreLocationController;
 use App\Http\Controllers\Employee\DashboardController as EmployeeDashboardController;
 use App\Http\Controllers\Employee\ProfileController as EmployeeProfileController;
 use App\Http\Controllers\Employee\ReportController as EmployeeReportController;
@@ -56,6 +57,13 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:admin'])->grou
     Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
     Route::delete('/products/image/{image}', [ProductController::class, 'deleteImage'])->name('products.delete-image');
+
+    Route::get('/store-locations', [StoreLocationController::class, 'index'])->name('store-locations.index');
+    Route::get('/store-locations/create', [StoreLocationController::class, 'create'])->name('store-locations.create');
+    Route::post('/store-locations', [StoreLocationController::class, 'store'])->name('store-locations.store');
+    Route::get('/store-locations/{storeLocation}/edit', [StoreLocationController::class, 'edit'])->name('store-locations.edit');
+    Route::put('/store-locations/{storeLocation}', [StoreLocationController::class, 'update'])->name('store-locations.update');
+    Route::delete('/store-locations/{storeLocation}', [StoreLocationController::class, 'destroy'])->name('store-locations.destroy');
 
     Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.index');
     Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');

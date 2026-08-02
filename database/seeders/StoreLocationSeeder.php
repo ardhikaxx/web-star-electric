@@ -11,10 +11,10 @@ class StoreLocationSeeder extends Seeder
     public function run(): void
     {
         collect([
-            'Ar-Rahman E-Bike Bondowoso',
-            'Star E-Bike Bondowoso',
-            'Ar-Rahman E-Bike Pujer',
-            'Saige Pujer Bondowoso',
+            'Ar-Rahman Sepeda Listrik Bondowoso',
+            'NUV Sepeda Listrik Bondowoso',
+            'Ar-Rahman Sepeda Listrik Pujer',
+            'Saige Sepeda Listrik Bondowoso',
         ])->each(function (string $name): void {
             StoreLocation::updateOrCreate(
                 ['name' => $name],

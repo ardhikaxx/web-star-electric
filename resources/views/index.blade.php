@@ -2110,7 +2110,7 @@
                                 <li class="store-item">
                                     <div class="store-name">
                                         <i class="fa-solid fa-store"></i>
-                                        STAR SEPEDA LISTRIK
+                                        NUV SEPEDA LISTRIK BONDOWOSO
                                     </div>
                                     <div class="store-address">
                                         <i class="fa-solid fa-location-dot"></i>

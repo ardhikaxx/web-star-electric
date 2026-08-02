@@ -43,6 +43,12 @@
                     </span>
                     <span class="menu-label">Manajemen Karyawan</span>
                 </a>
+                <a href="{{ route('admin.store-locations.index') }}" class="menu-item {{ request()->routeIs('admin.store-locations.*') ? 'active' : '' }}">
+                    <span class="menu-icon">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </span>
+                    <span class="menu-label">Manajemen Toko Cabang</span>
+                </a>
                 <a href="{{ route('admin.sales-products.index') }}" class="menu-item {{ request()->routeIs('admin.sales-products.*') ? 'active' : '' }}">
                     <span class="menu-icon">
                         <i class="fa-solid fa-cash-register"></i>
