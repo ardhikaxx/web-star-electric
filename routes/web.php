@@ -29,7 +29,12 @@ Route::get('/uploads/products/{filename}', function ($filename) {
     }
     $file = File::get($path);
     $type = File::mimeType($path);
-    return response($file, 200)->header('Content-Type', $type);
+    $lastModified = File::lastModified($path);
+    return response($file, 200)
+        ->header('Content-Type', $type)
+        ->header('Cache-Control', 'public, max-age=31536000, immutable')
+        ->header('Last-Modified', gmdate('D, d M Y H:i:s', $lastModified) . ' GMT')
+        ->header('ETag', md5($file));
 });
 
 Route::middleware('guest')->group(function () {

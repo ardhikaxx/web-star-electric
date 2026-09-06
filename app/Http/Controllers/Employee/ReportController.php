@@ -334,6 +334,7 @@ class ReportController extends Controller
                 'color' => $row['color'] ?: null,
                 'payment_type' => $row['payment_type'],
                 'price' => $row['price'],
+                'purchase_price' => $salesProduct?->purchase_price ?? 0,
                 'quantity' => $row['quantity'],
             ]);
 

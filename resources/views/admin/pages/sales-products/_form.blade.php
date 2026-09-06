@@ -1,9 +1,8 @@
 <div class="row g-4">
     <div class="col-12 col-lg-6">
-        <label class="form-label">Nama Produk (Dari Katalog)</label>
+        <label class="form-label">Nama Produk</label>
         @if(isset($salesProduct))
-            <input type="text" name="name" class="form-control" value="{{ $salesProduct->name }}" readonly>
-            <small class="text-muted">Nama produk tidak dapat diubah setelah ditambahkan.</small>
+            <input type="text" name="name" class="form-control" value="{{ $salesProduct->name }}" required>
         @else
             <select name="name" class="form-select select2-product @error('name') is-invalid @enderror" required>
                 <option value=""></option>

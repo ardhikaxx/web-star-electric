@@ -16,6 +16,7 @@ class DailyReportProductSale extends Model
         'color',
         'payment_type',
         'price',
+        'purchase_price',
         'quantity',
     ];
 
@@ -23,6 +24,7 @@ class DailyReportProductSale extends Model
     {
         return [
             'price' => 'decimal:2',
+            'purchase_price' => 'decimal:2',
         ];
     }
 
