@@ -1,202 +1,138 @@
-﻿# 🚴 Ar-Rahman E-Bike Bondowoso
+# ⚡ Website Ar-Rahman E-Bike Bondowoso - Penjualan & Layanan Sepeda Listrik
 
-<p align="center">
-  <img src="public/assets/logo.png" width="380" alt="Ar-Rahman E-Bike Bondowoso">
-</p>
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white)](https://php.net)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://mysql.com)
+[![Tailwind](https://img.shields.io/badge/Tailwind-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](./LICENSE)
+[![Author](https://img.shields.io/badge/Author-Yanuar%20Ardhika%20Rahmadhani%20Ubaidillah-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ardhikaxx)
 
-<p align="center">
-  Website resmi penjualan dan layanan <strong>sepeda listrik terpercaya</strong> di Bondowoso, Jawa Timur
-</p>
-
-<p align="center">
-  <a href="https://github.com/ardhikaxx/web-star-electric">
-    <img src="https://img.shields.io/github/license/ardhikaxx/web-star-electric?style=for-the-badge" alt="License">
-  </a>
-  <a href="https://laravel.com">
-    <img src="https://img.shields.io/badge/Laravel-11-orange?style=for-the-badge&logo=laravel" alt="Laravel">
-  </a>
-  <a href="https://getbootstrap.com">
-    <img src="https://img.shields.io/badge/Bootstrap-5-purple?style=for-the-badge&logo=bootstrap" alt="Bootstrap">
-  </a>
-  <a href="https://php.net">
-    <img src="https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php" alt="PHP">
-  </a>
-</p>
+Website **Ar-Rahman E-Bike Bondowoso (Star Electric)** adalah platform penjualan & layanan sepeda listrik: katalog produk, aksesoris, booking servis, dan pemesanan via WhatsApp. Dibangun untuk meningkatkan jangkauan pemasaran toko offline ke online dengan admin panel yang mudah dikelola.
 
 ---
 
-## 🎯 Tentang Kami
+## ✨ Fitur Utama
 
-**Ar-Rahman E-Bike Bondowoso** adalah toko spesialis penjualan dan layanan sepeda listrik yang berlokasi di Bondowoso, Jawa Timur. Kami menyediakan berbagai pilihan sepeda listrik dari berbagai merk ternama dengan harga bersaing dan kualitas terjamin.
+### 1. 🛵 Katalog Produk
+- Daftar sepeda listrik & aksesoris: foto, spesifikasi, harga, stok, kategori.
 
-### 💡 Mengapa Memilih Kami?
+### 2. 🔍 Pencarian & Filter
+- Pencarian nama produk, filter kategori & rentang harga.
 
-✅ **Produk Berkualitas** - Sepeda listrik dari merk terpercaya dengan garansi resmi
+### 3. 🧺 Keranjang & Pemesanan
+- Keranjang belanja dengan checkout terhubung WhatsApp admin.
 
-✅ **Harga Kompetitif** - Harga terbaik dengan berbagai pilihan budget
+### 4. 🔧 Booking Servis
+- Formulir booking servis dengan pilihan tanggal & keluhan.
 
-✅ **Layanan Purna Jual** - Service center dan sparepart tersedia
+### 5. ⭐ Testimoni & Galeri
+- Testimoni pelanggan dan galeri toko/unit.
 
-✅ **3 Toko Offline** - Mudah dikunjungi untuk melihat dan mencoba langsung
-
-✅ **Belanja Online** - Tersedia juga di Shopee untuk kemudahan pembelian
-
-✅ **Konsultasi Gratis** - Tim kami siap membantu memilih produk yang tepat
-
----
-
-## ✨ Fitur
-
-### 🌐 Landing Page (Frontend)
-
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🏠 **Hero Section** | Tampilan utama menarik dengan Call-to-Action |
-| 🛒 **Daftar Produk** | Produk lengkap dengan harga, deskripsi, dan gambar |
-| ⭐ **Testimoni** | Widget Google Reviews dari SociableKit |
-| 📍 **Kontak & Lokasi** | Info kontak, 3 toko offline, dan link Shopee |
-| 🔍 **SEO Optimization** | Meta tags optimal untuk mesin pencari |
-| 💬 **WhatsApp Integration** | Pemesanan langsung via WhatsApp |
-| 📱 **Responsive Design** | Tampilan optimal di semua device |
-| 🗺️ **Google Maps** | Peta lokasi toko terintegrasi |
-
-### 🖥️ Admin Panel
-
-| Fitur | Deskripsi |
-|-------|-----------|
-| 📊 **Dashboard** | Statistik produk dan klik produk |
-| 📦 **Manajemen Produk** | CRUD lengkap (Create, Read, Update, Delete) |
-| 📈 **Tracking** | Pencatatan klik produk untuk analitik |
-| 🔐 **Ganti PIN** | Sistem keamanan dengan PIN 4 digit |
-| 🔑 **Login System** | Login aman dengan PIN |
+### 6. 📊 Admin Panel
+- CRUD produk, banner, testimoni, pesanan, dan laporan penjualan sederhana.
 
 ---
 
-## 🛠️ Tech Stack
+## 👥 Hak Akses Pengguna (Role-Based Access Control)
 
-### Backend
-- **Framework:** Laravel 11
-- **PHP:** Version 8.2+
-- **Database:** MySQL
+| Role | Akses & Wewenang |
+| :--- | :--- |
+| **Pengunjung** | Lihat katalog, booking servis, checkout via WhatsApp. |
+| **Admin** | Kelola produk, pesanan, konten, dan laporan. |
 
-### Frontend
-- **CSS Framework:** Bootstrap 5
-- **Icons:** Font Awesome 6.6.0
-- **Fonts:** Google Fonts (Plus Jakarta Sans, Sora)
-
-### External Services
-- **Google Reviews:** SociableKit Widget
-- **Maps:** Google Maps Embed
-- **Notifications:** SweetAlert2
-- **Communication:** WhatsApp API
+> Otorisasi ditegakkan di backend (middleware/Policy) — bukan sekadar menyembunyikan menu.
 
 ---
 
-## 📦 Installation
+## 🛠️ Tech Stack & Dependensi
 
+* **Backend**: Laravel 12.x (PHP 8.2+)
+* **Database**: MySQL 8.0+
+* **Frontend**: Blade, {css}, SweetAlert2, vanilla JS/Chart.js
+* **Testing**: PHPUnit / Pest
+* **Code Style**: Laravel Pint (PSR-12)
+
+---
+
+## ⚙️ Panduan Instalasi & Menjalankan Aplikasi
+
+### 1. Kloning Repositori
 ```bash
-# 1. Clone repository
-git clone https://github.com/ardhikaxx/web-star-electric.git
-
-# 2. Masuk ke direktori project
+git clone https://github.com/ardhikaxx/web-star-electric
 cd web-star-electric
-
-# 3. Install dependencies
-composer install
-npm install
-
-# 4. Copy environment file
-cp .env.example .env
-
-# 5. Generate application key
-php artisan key:generate
-
-# 6. Konfigurasi database di file .env
-# DB_CONNECTION=mysql
-# DB_HOST=127.0.0.1
-# DB_PORT=3306
-# DB_DATABASE=sepeda_listrik
-# DB_USERNAME=root
-# DB_PASSWORD=
-
-# 7. Run database migration
-php artisan migrate
-
-# 8. Seed default data (optional)
-php artisan db:seed --class=AdminSettingSeeder
-
-# 9. Run development server
-php artisan serve
 ```
 
----
+### 2. Install Dependensi PHP
+```bash
+composer install
+```
 
-## ⚙️ Konfigurasi
-
-### Default Credentials
-
-| Item | Value |
-|------|-------|
-| PIN Admin | `1234` |
-| WhatsApp Utama | `+62 852-3126-0016` |
-| WhatsApp Cadangan | `+62 813-3197-8800` |
-
-### Environment Variables
-
+### 3. Konfigurasi Environment (`.env`)
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+Sesuaikan koneksi database MySQL di file `.env`:
 ```env
-APP_NAME="Ar-Rahman E-Bike Bondowoso"
-APP_URL=http://localhost:8000
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=sepeda_listrik
+DB_DATABASE=web_star_electric
 DB_USERNAME=root
 DB_PASSWORD=
 ```
 
----
+### 4. Migrasi & Seeding
+```bash
+php artisan migrate --seed
+```
+Development (database boleh dikosongkan):
+```bash
+php artisan migrate:fresh --seed
+```
 
-## 🏪 Lokasi Toko Offline
-
-### 1. Toko Utama - ARRAHMAN E-BIKE BONDOWOSO
-- 📍 **Alamat:** Depan Dinas Pengairan, Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kab. Bondowoso, Jawa Timur 68214
-- 📞 **Telepon:** +62 852-3126-0016
-
-### 2. Toko Cabang - STAR SEPEDA LISTRIK
-- 📍 **Alamat:** Jl. Ahmad Yani No.89, Penatu, Badean, Kec. Bondowoso, Kab. Bondowoso, Jawa Timur 68214
-
-### 3. Toko Koordinator - UWINFLY PUJER BONDOWOSO
-- 📍 **Alamat:** Jl. Raya Pakisan No.51, Krasak, Maskuning Kulon, Kec. Pujer, Kab. Bondowoso, Jawa Timur 68271
-
----
-
-## 📞 Kontak & Sosial Media Kontak & Sosial Media
-
-| Channel | Link |
-|---------|------|
-| 📍 **Alamat** | Bondowoso, Jawa Timur |
-| 📞 **Telepon** | +62 852-3126-0016 / +62 813-3197-8800 |
-| 💬 **WhatsApp** | [Hubungi via WhatsApp](https://wa.me/6285231260016) |
-| 🛒 **Shopee** | [Ar-Rahman E-bike Bondowoso Official](https://shopee.co.id/diahayuros8) |
+### 5. Jalankan Server Lokal
+```bash
+php artisan serve
+```
+Buka: `http://127.0.0.1:8000`
 
 ---
 
-MIT License - Copyright © 2026 Ar-Rahman E-Bike Bondowoso
+## 📚 Dokumentasi Sistem
 
+* [⚖️ **LICENSE**](./LICENSE) — Lisensi resmi **Proprietary Software License (All Rights Reserved)**.
+* [🛡️ **SECURITY.md**](./SECURITY.md) — Kebijakan keamanan & pelaporan celah (*Responsible Disclosure*).
+* [🤝 **CONTRIBUTING.md**](./CONTRIBUTING.md) — Pedoman kontribusi kode & standar.
+* [📜 **CODE_OF_CONDUCT.md**](./CODE_OF_CONDUCT.md) — Pedoman perilaku komunitas pengembang.
+* [💬 **SUPPORT.md**](./SUPPORT.md) — Kanal bantuan teknis & komunikasi resmi pengembang.
+* [📋 **CHANGELOG.md**](./CHANGELOG.md) — Riwayat rilis fitur terstruktur (*Keep a Changelog* & SemVer).
+* [📚 **CITATION.md**](./CITATION.md) — Format sitasi karya untuk keperluan akademik.
 
-## Donasi
+---
 
-Jika project ini bermanfaat, Anda dapat mendukung pengembangan selanjutnya melalui donasi:
+## 💖 Dukungan & Donasi
 
-<div align="center">
+Jika proyek **Website Ar-Rahman E-Bike Bondowoso - Penjualan & Layanan Sepeda Listrik** ini bermanfaat bagi Anda dan telah menghemat banyak jam kerja Anda, Anda dapat menunjukkan apresiasi dengan memberikan traktiran kopi (donasi) melalui pemindaian kode QRIS di bawah ini:
 
-<img src="public/assets/qris.png" alt="QRIS" width="250" />
+<p align="center">
+  <img src="./qris.png" alt="QRIS Donasi" width="300"/>
+</p>
 
-**Scan QRIS di atas untuk berdonasi**
+> Donasi sepenuhnya bersifat sukarela dan tidak mengikat. Aplikasi tetap dapat digunakan secara utuh tanpa donasi.
 
-Setiap donasi akan digunakan untuk:
-- Pengembangan fitur baru
-- Perbaikan bug & maintenance
-- Infrastruktur server
+---
 
-</div>
+## ⚠️ Ketentuan Penggunaan
+
+Proyek ini dilindungi lisensi **Proprietary Software License (All Rights Reserved)**. Anda **dilarang** menyalin, memodifikasi, mendistribusikan ulang, atau menjual kode ini tanpa izin tertulis dari pemilik hak cipta. Lihat [LICENSE](./LICENSE) untuk detail lengkap.
+
+---
+
+## 👨‍💻 Pengembang & Hak Cipta
+
+Dirancang dan dikembangkan dengan penuh dedikasi oleh:
+**[Yanuar Ardhika Rahmadhani Ubaidillah (@ardhikaxx)](https://github.com/ardhikaxx)**
+*Lead Software Architect & Maintainer*
+
+> **Copyright (c) 2024 - 2026 Yanuar Ardhika Rahmadhani Ubaidillah (@ardhikaxx). All Rights Reserved.**
